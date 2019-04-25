@@ -1,0 +1,130 @@
+<mat-sidenav-container class="mobile-sidenav" [hasBackdrop]="hasBackdrop">
+  <mat-sidenav [(opened)]="opened" mode="over" #sidenav class="user-sidenav mat-elevation-z6 ">
+    <div class="close-btn"><img (click)="sidenav.close()" class="close-icon"
+                                src="../../../../../assets/images/icons/close-btn.svg"></div>
+
+    <div class="login-sec">
+      <button (click)="loginDialog()" mat-flat-button class="login-btn" *ngIf="!isLoggedIn"> Log in / Sign Up</button>
+      <span class="user-account" *ngIf="isLoggedIn">
+        <img class="user-ac-icon" src="../../../../assets/images/icons/user-ac-icon.svg">
+                 <span class="account-name">{{userName.usrFrstName || myAccount?.labelName}}</span>
+
+      </span>
+    </div>
+    <mat-divider></mat-divider>
+    <a class="nav-menu" mat-flat-button routerLink="/chennai/marriage-halls">Marriage Halls</a>
+    <mat-divider></mat-divider>
+    <a class="nav-menu" mat-flat-button routerLink="/chennai/mini-halls">Mini Halls </a>
+    <mat-divider></mat-divider>
+    <a class="nav-menu" mat-flat-button routerLink="/chennai/banquet-halls">Banquet Halls </a>
+    <mat-divider></mat-divider>
+    <a class="nav-menu" mat-flat-button routerLink="/chennai/party-halls">Party Halls </a>
+    <mat-divider></mat-divider>
+    <a class="nav-menu" mat-flat-button routerLink="/chennai/party-halls">My Account </a>
+    <mat-divider></mat-divider>
+    <a class="nav-menu" mat-flat-button routerLink="/register-venue">Register a Venue </a>
+    <mat-divider></mat-divider>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title class="more-option">
+            More Option
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <a class="nav-menu" mat-flat-button routerLink="/about-us">About Us </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/faq">FAQ </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/terms">Terms & Conditions </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/privacy">Privacy </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/security">Security </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/feedback">Feedback </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/how-it-works">How it works? </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/cookies">Cookies Policy </a>
+        <mat-divider></mat-divider>
+        <a class="nav-menu" mat-flat-button routerLink="/disclaimer">Disclaimer </a>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-divider></mat-divider>
+    <div fxlayout="row" class="nav-menu">
+      <span fxFlexAlign="center">
+        <a target="_blank" href="https://www.facebook.com/hallsdiary"><img class="social-icon"
+                                                                           src="../../../../../assets/images/icons/facebook-logo-button.svg"> </a>
+        <a target="_blank" href="https://twitter.com/@hallsdiary"><img class="social-icon"
+                                                                       src="../../../../../assets/images/icons/twitter.svg"> </a>
+        <a href="#"><img class="social-icon" src="../../../../../assets/images/icons/youtube.svg"> </a>
+      </span>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>
+<mat-toolbar style="min-height: 30px" fxHide.sm fxHide.xs>
+
+  <mat-toolbar-row fxLayoutAlign="none" class="header-top top-toolbar theme-container" fxHide fxShow.gt-xs>
+    <span class="item-1" fxFlex="10%" fxFlex.md="15%" fxFlex.sm="20%" fxShow="false" fxShow.gt-xs
+          fxLayoutAlign="center center">Great Discount ! </span>
+    <span class="item-2" fxFlex="60%" fxFlex.md="45%" fxFlex.sm="55%" fxShow="false" fxShow.gt-xs
+          fxLayoutAlign="space-between center">Save upto 20% on Hall Booking.</span>
+    <span class="item-3" fxFlex="8%" fxFlex.md="10%" fxFlex.sm="10%" fxShow="false" fxHide.sm
+          fxShow.gt-xs>Own a hall?</span>
+    <span class="item item-4" fxFlex="10%" fxFlex.md="15%" fxFlex.sm="15%" fxShow="false" fxHide.sm fxShow.gt-xs>
+      <a routerLink="/register-venue" mat-flat-button class="register-btn">Register a Venue</a>
+    </span>
+    <span class="item item-5" fxFlex="12%" fxFlex.md="15%" fxFlex.sm="20%" fxShow="false" fxShow.gt-xs>
+      <span class="phone-icon"><i
+        class="fas fa-phone fa-rotate-90"></i></span>+91 9940005705
+    </span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-toolbar class="header-bottom" id="top-header">
+  <mat-toolbar-row fxLayoutAlign="space-between center" class="logo-toolbar theme-container header-bottom top-menu">
+    <!--<div class="nav-menu">-->
+    <span fxHide.lg fxHide.md="true">
+                <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
+                    <!--<mat-icon>menu</mat-icon>-->
+                  <img class="toggle-btn" src="../../../../../assets/images/icons/toggle.svg">
+                </button>
+    </span>
+    <div class="item-left" fxFlex="20%" fxFlex.sm="50" fxFlex.xs="45" fxLayoutAlign="space-between center">
+      <a routerLink="/"><img class="hd-logo" src="../../../../../assets/images/hd-logo.svg"></a>
+    </div>
+    <div class="center-menu" fxFlex="65%" fxFlex.sm="75" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="40px" fxHide fxShow.gt-sm="true">
+
+      <div class="nav-menu"><a class="menu-link" routerLink="/chennai/marriage-halls"
+                               [routerLinkActive]="['menu-active']" >Marriage Halls</a></div>
+      <div class="nav-menu"><a class="menu-link" routerLink="/chennai/mini-halls" [routerLinkActive]="['menu-active']">Mini
+        Halls</a></div>
+      <div class="nav-menu"><a class="menu-link" routerLink="/chennai/banquet-halls"
+                               [routerLinkActive]="['menu-active']">Banquet Halls</a></div>
+      <div class="nav-menu"><a class="menu-link" routerLink="/chennai/party-halls" [routerLinkActive]="['menu-active']">Party
+        Halls</a></div>
+    </div>
+    <div fxFlex="15%" fxLayout="row" [ngStyle.sm]="{'max-width.%': 40}" [ngStyle.xs]="{'max-width.%': 40}"
+         [ngStyle.md]="{'max-width.%': 15}" [ngStyle.lg]="{'max-width.%': 15}" *ngIf="isLoggedIn">
+      <div fxLayoutAlign.xs="space-evenly center" fxLayoutAlign.sm="space-evenly center">
+        <span class="phone-btn" fxHide.lg fxHide.md><a href="tel:+91 9940005705"><img class="phone-icon"
+                                                                                      src="../../../../../assets/images/icons/phone.svg"> </a> </span>
+        <app-my-account [myAccount]="toolbarHelpers?.myAccount"></app-my-account>
+      </div>
+    </div>
+    <div fxFlex="15%" fxLayout="row" [ngStyle.sm]="{'max-width.%': 25}" [ngStyle.xs]="{'max-width.%': 40}"
+         [ngStyle.md]="{'max-width.%': 15}" [ngStyle.lg]="{'max-width.%': 15}" *ngIf="!isLoggedIn">
+      <div class="item-6">
+        <a (click)="loginDialog()" class="signin-link" fxHide fxShow.gt-xs fxHide.sm>Login / Sign Up</a>
+        <span class="phone-btn-1" fxHide.lg fxHide.md><a href="tel:+91 9940005705"><img class="phone-icon"
+                                                                                        src="../../../../../assets/images/icons/phone.svg"> </a> </span>
+        <span class="user-icon" fxHide.lg fxHide.md><a (click)="loginDialog()" class=""><img
+          src="../../../../assets/images/icons/user-ac-icon.svg"><span class="login-link">Log In</span></a></span>
+      </div>
+    </div>
+    <!--</div>-->
+  </mat-toolbar-row>
+
+</mat-toolbar>

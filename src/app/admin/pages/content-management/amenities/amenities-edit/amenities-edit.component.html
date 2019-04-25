@@ -1,0 +1,99 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container" *ngIf="amenities">
+              <form [formGroup]="amenitiesForm" (ngSubmit)="updateAmenities()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Edit Amenities</h1>
+                </div>
+
+                <div class="form" style="display:none">
+                    <mat-form-field>
+                      <input matInput  formControlName="facId" placeholder="ID" [(ngModel)]="amenities.facId">
+                    </mat-form-field>
+                </div>
+
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="attrId" placeholder="Type Of Amenities" [(ngModel)]="amenities.attrId" required>
+                        <mat-option *ngFor="let type of displayType" [value]="type.value">
+                          {{type.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="amenitiesForm.controls['attrId'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form">
+                    <div class="form">
+                        <mat-form-field>
+                            <input type="text" matInput formControlName="facName" [(ngModel)]="amenities.facName" placeholder="Header">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center"
+                         class="widgetHolder ">
+                      <quill-editor #disciplineQE id="discipline-qe"
+                                    formControlName="facSpec" style=" min-height: 170px;" placeholder="Description" [(ngModel)]="amenities.facSpec"
+                                    [required]="true"
+                                    [ngClass]="{ 'is-invalid': submitted && f.facSpec.errors }"></quill-editor>
+    
+                      <div *ngIf="submitted && f.facSpec.errors" class="invalid-feedback">
+                        <div *ngIf="f.facSpec.errors.required">Enter Description
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form">
+                      <mat-form-field>
+                        <mat-select formControlName="facSeq" placeholder="Display Sequence" [(ngModel)]="amenities.facSeq" required>
+                          <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.value">
+                            {{sequence.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                  </div>
+
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="facAct" placeholder="Is Active" [(ngModel)]="amenities.facAct">
+                        <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                          {{status.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="amenitiesForm.controls['facAct'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+  
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+  
+                  <div fxFlex="50" fxFlex.xs="100">
+                    <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                    <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                      <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                      </div>
+                    </div>
+                  </div>
+  
+  
+                  <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                    <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                         fxLayoutAlign.xs="space-around center">
+                      <button mat-raised-button class="save-btn">Update</button>
+                      <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+  

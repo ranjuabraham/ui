@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 227.874 44.738">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: #fff;
+      }
+
+      .cls-1 {
+        font-size: 25px;
+        font-family: Montserrat-SemiBold, Montserrat;
+        font-weight: 600;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #fff;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+
+      .cls-3 {
+        font-size: 8px;
+        font-family: SegoeUI, Segoe UI;
+      }
+    </style>
+  </defs>
+  <g id="Group_4312" data-name="Group 4312" transform="translate(-47.263 -87.76)">
+    <text id="HALLS_DIARY" data-name="HALLS DIARY" class="cls-1" transform="translate(101.137 119.757)"><tspan x="0" y="0">HALLS DIARY</tspan></text>
+    <g id="Group_4311" data-name="Group 4311" transform="translate(48.879 89.26)">
+      <g id="Group_4106" data-name="Group 4106">
+        <g id="Group_4105" data-name="Group 4105" transform="translate(0 0)">
+          <path id="Path_3129" data-name="Path 3129" class="cls-2" d="M41.115,24.806l-17.2,17.208a.442.442,0,0,1-.633,0l-22.7-22.7a.442.442,0,0,1,0-.633l17.208-17.2a3.267,3.267,0,0,1,4.621,0L41.125,20.195A3.264,3.264,0,0,1,41.115,24.806Z" transform="translate(-0.45 -0.525)"/>
+        </g>
+        <text id="HD" class="cls-3" transform="translate(19.725 25.049) rotate(-45)"><tspan x="0" y="0">HD</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10.604" height="11.255" viewBox="0 0 10.604 11.255">
+  <g id="building-elevator-doors" transform="translate(-13.641)">
+    <g id="Group_4239" data-name="Group 4239" transform="translate(13.641)">
+      <path id="Path_3167" data-name="Path 3167" d="M60.343,0V11.255h.812V.812H69.02V11.255h.812V0Z" transform="translate(-59.228)" fill="#8c37db"/>
+      <g id="Group_4238" data-name="Group 4238" transform="translate(2.48 1.632)">
+        <rect id="Rectangle_838" data-name="Rectangle 838" width="3.563" height="8.981" fill="#8c37db"/>
+        <rect id="Rectangle_839" data-name="Rectangle 839" width="3.563" height="8.981" transform="translate(3.044)" fill="#8c37db"/>
+      </g>
+      <path id="Path_3168" data-name="Path 3168" d="M13.641,192.238h.879v-2.181h-.879Zm.439-1.9.271.457H13.81Zm.271,1.172-.271.457-.271-.457Z" transform="translate(-13.641 -185.519)" fill="#8c37db"/>
+    </g>
+  </g>
+</svg>

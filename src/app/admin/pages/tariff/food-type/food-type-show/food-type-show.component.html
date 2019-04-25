@@ -1,0 +1,78 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="food-type-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Food Type</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/food-type/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/food-type/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+         <!-- Header -->
+         <ng-container matColumnDef="fdTypHdr">
+          <mat-header-cell *matHeaderCellDef class="width40">Food Type Name</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width40" ngClass.sm="width100" ngClass.xs="width100" data-label="Food Type: ">{{row.fdTypHdr}}</mat-cell>
+        </ng-container>
+
+         <!-- Sequence-->
+         <ng-container matColumnDef="fdTypSeq">
+          <mat-header-cell *matHeaderCellDef class="width20">Sequence</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Sequence: "> {{row.fdTypSeq}}</mat-cell>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="fdTypAct">
+          <mat-header-cell *matHeaderCellDef class="width20">Status</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+            <span *ngIf="row.fdTypAct === 1;">
+                <span style="color: green">Active</span>
+              </span>
+            <span *ngIf="row.fdTypAct !== 1;">
+                <span style="color: #FE0000">De-active</span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width20">
+            Action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                <a mat-icon-button routerLink="/venue/food-type/edit/{{row.prdctDetId}}/{{row.fdTypId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 25]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

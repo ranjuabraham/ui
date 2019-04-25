@@ -1,0 +1,19 @@
+<div class="close-btn" (click)="dialogCloce()"><img class="close-icon" src="../../../../../assets/images/icons/close-btn.svg"></div>
+<div class="check-availability-container" *ngIf="subHalls">
+  <div fxlayout="row" fxLayout.sm="row" fxLayout.xs="row" fxLayoutAlign="space-between center"
+       fxlayoutalign.xs="space-between center" fxlayoutalign.sm="space-between center">
+    <div class="dialog-header">Check Availability</div>
+    <div class="form">
+      <mat-form-field>
+        <mat-select placeholder="Select Sub Halls" (selectionChange)="onChangeSubHalls($event)"
+                    [(ngModel)]="data.subHallId">
+          <mat-option *ngFor="let subHall of subHalls" [value]="subHall['subPrdctDetId']">
+            {{subHall['dcdeHdr']}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <app-my-date-picker [options]="checkAvailability" [placeholder]="'DDD'">
+  </app-my-date-picker>
+</div>

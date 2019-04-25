@@ -1,0 +1,46 @@
+@import "../../../@theme/styles/variables";
+.book-dialog-section{
+  height: 310px;
+  .left-column{
+    width: 45%;
+    float: left;
+    position: relative;
+    .book-dialog-icon{
+      position: absolute;
+      top: 85px;
+      left: 47px;
+    }
+  }
+
+  .right-column{
+    position: relative;
+    .book-info{
+      position: absolute;
+      top: 30px;
+      padding: 35px;
+      font-family: $font-family;
+      text-align: center;
+      .content{
+        color: #687B8E;
+        font-size: 15px;
+        line-height: 28px;
+      }
+    }
+    .action-btn{
+      padding: 45px 30px;
+      .continue-btn{
+        background-color: #00AA00;
+        color: #FFFFFF;
+        width: 85px;
+        font-family: $font-family;
+      }
+      .cancel-btn{
+        color: #00AA00;
+        border: #00AA00 1px solid;
+        margin-left: 20px;
+        width: 85px;
+        font-family: $font-family;
+      }
+    }
+  }
+}

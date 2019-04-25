@@ -1,0 +1,69 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container">
+              <form [formGroup]="searchForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Add Search Map</h1>
+                </div>
+                
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="searchId" placeholder="Master" required (selectionChange)="loadMasterDetails($event)">
+                        <mat-option *ngFor="let index of master" [value]="index.searchId">
+                          {{index.searchDesc}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+    
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="searchDetId" placeholder="Category">
+                        <mat-option *ngFor="let index of category" [value]="index.searchDetId">
+                          {{index.searchDetDesc}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+    
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="searchDetMap" placeholder="Activate" [(ngModel)]="searchMap">
+                        <mat-option *ngFor="let type of displayMap" [value]="type.value" selected>
+                          {{type.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="searchForm.controls['searchDetMap'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+  
+                  <div fxFlex="50" fxFlex.xs="100">
+                    <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                    <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                      <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                      </div>
+                    </div>
+                  </div>
+  
+  
+                  <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                    <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                         fxLayoutAlign.xs="space-around center">
+                      <button mat-raised-button class="save-btn">Add</button>
+                      <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+  

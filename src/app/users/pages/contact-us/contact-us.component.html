@@ -1,0 +1,16 @@
+<div class="hd-container">
+  <div fxLayout="column" fxLayoutAlign="center">
+    <div class="abt-header">About Us</div>
+    <div class="abt-content">
+      <div *ngFor="let contactUs of contactUsData">
+        <div class="cnt">{{contactUs.cntctUsName}}</div>
+        <div class="cnt">{{contactUs.cntctUsAddr}}</div>
+        <div class="cnt">{{contactUs.cntctUsBus}}</div>
+        <div class="cnt">{{contactUs.cntctUsDir}}</div>
+        <div class="cnt">{{contactUs.cntctUsEmail}}</div>
+        <div class="cnt">{{contactUs.cntctUsMob2}}</div>
+        <div class="cnt">{{contactUs.cntctUsPhn}}</div>
+      </div>
+    </div>
+  </div>
+</div>

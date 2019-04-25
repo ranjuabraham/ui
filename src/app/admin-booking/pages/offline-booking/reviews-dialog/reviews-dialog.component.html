@@ -1,0 +1,52 @@
+<div class="close-btn-outer">
+<button mat-mini-fab color="warn" (click)="close()"><mat-icon>close</mat-icon></button>
+</div>
+<div mat-dialog-content class="review-dialog">
+  <div fxLayout="row">
+    <div fxLayout="column" fxFlex="70">
+      <div class="dialog-title">Reviews</div>
+      <div class="hall-name">{{hallName}}</div>
+    </div>
+  </div>
+  <div fxLayout="row wrap" class="content-container">
+    <div fxFlex="100" fxFlex.gt-sm="100" ngClass.gt-sm="px-2 m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+
+      <div class="content-section" *ngFor="let reviewData of reviewDatas" perfectScrollbar>
+        <div fxLayout="row" class="review-row">
+          <div fxFlex="10">
+            <div class="user-img">
+              <img style="width: 55px" src="../../../../assets/images/icons/hall-list/user-img.svg">
+            </div>
+          </div>
+          <div fxFlex="90">
+            <div fxLayout="column" class="user-review">
+              <div fxLayout="row" class="user-name">
+                <div>{{reviewData.rvwName}}</div>
+                <div><span class="rating">
+                <input type="radio"   [checked]="reviewData.rvwRating===5" value="{{reviewData.rvwRating}}"/>
+                <label title="Excellent!">5 stars</label>
+
+                <input type="radio"   [checked]="reviewData.rvwRating===4" value="{{reviewData.rvwRating}}"/>
+                <label title="Good">4 stars</label>
+
+                <input type="radio"  [checked]="reviewData.rvwRating===3" value="{{reviewData.rvwRating}}"/>
+                <label title="Average">3 stars</label>
+
+                <input type="radio"  [checked]="reviewData.rvwRating===2" value="{{reviewData.rvwRating}}"/>
+                <label title="Low">2 stars</label>
+
+                <input type="radio"  [checked]="reviewData.rvwRating===1" value="{{reviewData.rvwRating}}"/>
+                <label title="Poor">1 star</label>
+
+              </span></div>
+              </div>
+              <div class="post-time">{{reviewData.rvwDate}}</div>
+              <div class="review-content">{{reviewData.rvwBody}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,272 @@
+<div class="food-menu-selection-container" ngClass.sm="food-menu-selection-container"
+     ngClass.xs="food-menu-selection-container" [ngStyle.sm]="{'background-color': 'transparent'}"
+     [ngStyle.xs]="{'background-color': 'transparent'}">
+  <div class="food-menu-header" ngClass.sm="m-food-menu-header" ngClass.xs="m-food-menu-header" id="food-menu-header">
+    <div class="theme-container">
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between center"
+           fxLayoutAlign.sm="start none" fxLayoutAlign.xs="start none">
+        <div fxFlex="80" fxFlex.sm="100" fxFlex.xs="100" fxLayout.sm="column" fxLayout.xs="column" *ngIf="selectedList"
+             style="font-size: 10px" class="header-breadcrumb">
+          <div fxFlex="45" fxFlex.sm="100" fxFlex.xs="100">
+            <div><span class="venue-name" title="Venue Name">{{selectedList.venueName}}</span>
+              <span title="Sub Hall Name">- {{selectedList.subHallName}}</span>
+              <span title="Event Name">- {{selectedList.eventTypeName}}</span>
+            </div>
+            <div>
+              <span title="Session Name">{{selectedList.sessionName}}</span>
+              <span class="event-date" ngClass.sm="m-event-date" ngClass.xs="m-event-date">
+              <span title="Event start date">{{selectedList.eventStartDate}}</span> <mat-icon>arrow_right_alt</mat-icon>
+          <span title="Event end date">{{selectedList.eventEndDate}}</span>
+          </span>
+            </div>
+          </div>
+
+          <div fxFlex="55" fxFlex.xs="100">
+            <span style="text-align: center;" fxLayoutAlign="start center" fxLayoutAlign.sm="center"
+                  fxLayoutAlign.xs="center"> <span class="fd-type" ngClass.sm="m-fd-type"
+                                                   ngClass.xs="m-fd-type">{{selectedList.foodTypeName}}</span></span>
+          </div>
+        </div>
+        <div fxFlex="20" fxFlex.sm="100" fxFlex.xs="100" fxLayoutAlign.sm="center" fxLayoutAlign.xs="center">
+          <div class="group-btn" ngClass.sm="m-group-btn" ngClass.xs="m-group-btn"
+               *ngIf="!reservePeriod && selectedFoodItems && checkedList.length > 0">
+            <button mat-flat-button style="width: 100%" class="book-btn" (click)="continueToBook()">
+              Book &nbsp;&nbsp;{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+          </div>
+          <div class="group-btn" *ngIf="reservePeriod && selectedFoodItems && checkedList.length > 0">
+            <button mat-flat-button class="book-btn" (click)="continueToBook()">
+              Book &nbsp;&nbsp;{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+            <button mat-flat-button class="reserve-btn" (click)="continueToReserve()">
+              Reserve &nbsp;&nbsp;{{reserveAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="theme-container food-menu-container" *ngIf="foodMenuData">
+    <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+      <div fxFlex="65" fxFlex.xs="100" class="food-menu-section">
+        <div fxFlex="40" class="category-section" fxHide.sm="true" fxHide.xs="true">
+          <div class="category-list">
+            <div class="listed">
+              <div class="listed-item" style="margin-right: -17px;  padding-right: 17px;">
+                <div class="list">
+                  <a *ngFor="let foodMenu of foodMenuData['menu']" class="food-item"
+                     id="categoryId{{foodMenu['catgId']}}"
+                     pageScroll [pageScrollOffset]="130" [pageScrollDuration]="0"
+                     (pageScrollFinish)="foodMenuHeader($event)" href="#category{{foodMenu['catgId']}}">
+                    <div class="item">{{foodMenu['catgHdr']}}</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="60" fxFlex.sm="100" fxFlex.xs="100" class="item-container" ngClass.xs="m-item-container">
+
+
+          <mat-accordion>
+            <mat-expansion-panel class="menu-section" *ngFor="let foodMenus of foodMenuData['menu']; let i = index"
+                                 [expanded]="i === 0">
+              <mat-expansion-panel-header ngClass.xs="m-mat-expansion-panel-header">
+                <mat-panel-title>
+                  <div class="menu-list menu-list1" ngClass.xs="m-menu-list" id="category{{foodMenus['catgId']}}"
+                       fxLayout="column wrap">
+                    <div>{{foodMenus['catgHdr']}}</div>
+                    <div class="item-count" ngClass.xs="m-item-count">{{foodMenus['items'].length}} ITEMS
+                      <span id="message{{foodMenus['catgId']}}"
+                            style="display: none; color: #FE0000; font-size: 10px"></span>
+                    </div>
+                  </div>
+                </mat-panel-title>
+                <mat-panel-description fxLayoutAlign="end center">
+                  <span class="description" ngClass.xs="m-description"
+                        *ngIf="foodMenus['description']">({{foodMenus['description']}})</span>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <!--<div id="message{{foodMenus['catgId']}}" style="display: none; color: #FE0000"></div>-->
+              <div id="checkbox-{{foodMenus['catgId']}}">
+                <div class="menu-item" *ngFor="let menu of foodMenus.items">
+                  <mat-checkbox ngClass="checkbox-{{menu['catgId']}}" [value]="menu['itemIdx']"
+                                [(ngModel)]="menu.selected"
+                                aria-label="{{menu['itemHdr']}}"
+                                (change)="getCheckedItemList()">{{menu['itemHdr']}}</mat-checkbox>
+                </div>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <!--<div class="menu-section" *ngFor="let foodMenus of foodMenuData['menu']; trackBy: identify" fxShow="true" fxHide.sm="true" fxHide.xs="true">-->
+          <!--<div class="menu-list menu-list1" id="category{{foodMenus['catgId']}}">{{foodMenus['catgHdr']}}</div>-->
+          <!--<span class="description">({{foodMenus['description']}})</span>-->
+          <!--<div class="item-count">{{foodMenus['items'].length}} ITEMS</div>-->
+          <!--<div id="message{{foodMenus['catgId']}}" style="display: none; color: #FE0000"></div>-->
+          <!--<div id="checkboxa-{{foodMenus['catgId']}}">-->
+          <!--<div class="menu-item" *ngFor="let menu of foodMenus.items">-->
+          <!--<mat-checkbox  ngClass="checkbox-{{menu['catgId']}}" [value]="menu['itemIdx']"  [(ngModel)]="menu.selected"-->
+          <!--aria-label="{{menu['itemHdr']}}"-->
+          <!--(change)="getCheckedItemList()">{{menu['itemHdr']}}</mat-checkbox>-->
+          <!--</div>-->
+          <!--</div>-->
+          <!--</div>-->
+        </div>
+      </div>
+
+      <div fxFlex="35" fxFlex.xs="100" class="tariff-sectionaa">
+        <div class="selected-items-section" ngClass.sm="m-selected-items-section" ngClass.xs="m-selected-items-section"
+             *ngIf="selectedFoodItems">
+          <div class="tariff-section" *ngIf="checkedList.length > 0" ngClass.xs="m-tariff-section">
+            <div class="category-list">
+              <div class="header" fxHide.xs="true">
+                Selected Menu List
+                <span class="item-count" *ngIf="checkedList">{{checkedList.length}} ITEMS</span>
+              </div>
+              <div class="listed" ngClass.sm="m-listed" ngClass.xs="m-listed">
+                <div class="listed-item" ngClass.xs="m-listed-item">
+                  <div class="list" ngClass.sm="m-list" ngClass.xs="m-list">
+                    <div>
+                      <!--<pre>{{selectedFoodItems | json}}</pre>-->
+                      <div class="selected-list" fxHide.sm="true" fxHide.xs="true">
+                        <div *ngFor="let categories of selectedFoodItems;">
+
+                          <div class="category-header" *ngIf="categories.count > 0">{{categories.category}}</div>
+                          <div class="selected-items" *ngFor="let items of categories.value">
+                            <span *ngIf="items['selected'] === true">{{items['itemHdr']}}</span>
+                          </div>
+                        </div>
+                        <div class="non-choices">
+                          <div class="category-header">Non Choices</div>
+                          <div [innerHTML]="nonChoices['buffComp']" style="line-height: 24px;
+    font-size: 13px; margin-bottom: 20px"></div>
+                        </div>
+                      </div>
+                      <mat-divider fxHide.sm="true" fxHide.xs="true"></mat-divider>
+                      <div fxLayout="row" fxLayoutAlign="end center">
+                        <span class="editBtn" (click)="editTariff()" *ngIf="editBtn">Edit</span>
+                      </div>
+                      <form [formGroup]="cartForm" class="rt-form">
+
+                        <div class="cart-value-section">
+                          <div class="cart-item value1">Price Per Head
+                            <span style="float: right"><span>{{pricePerHeadAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                            <input type="number" *ngIf="editInput" [(ngModel)]="pricePerHeadAmount" formControlName="pricePerHeadAmt"></span>
+                            <span class="description">Minimum Pax : {{guaranteedPaxMinDec}}</span>
+                          </div>
+                          <div class="cart-item value2">
+                            <span>Guaranteed pax</span>
+                            <span style="float: right">
+                      <input type="text" maxlength="5" id="guaranteedPaxMinInput" style="border: 1px #7b1fa2 dotted;
+                                  padding: 3px 4px;" [value]="guaranteedPaxMinInput" (keyup)="guaranteedPax($event)">
+                    </span>
+                          </div>
+                          <div class="cart-item value3">
+                            <span>Buffet Cost</span>
+                            <span style="float: right">{{buffetCostAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                          </div>
+                          <div class="cart-item value4 discount">
+                     <span>Offers Discount
+                       <mat-chip-list style="display: inline-block;">
+                          <mat-chip selected>
+                            {{offerDiscountValue}}%
+                          </mat-chip>
+                        </mat-chip-list>
+                      </span>
+                            <span
+                              style="float: right"> - {{offerDiscountAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                          </div>
+                          <mat-divider></mat-divider>
+
+                          <div class="cart-item item gst">
+                            <span>Sub Total</span>
+                            <span style="float: right">{{subTotalAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                          </div>
+
+                          <div class="cart-item item gst">
+                     <span>GST
+                          <mat-chip-list style="display: inline-block;">
+                              <mat-chip selected>
+                                 {{gstValue}}%
+                             </mat-chip>
+                        </mat-chip-list>
+                      </span>
+                            <span style="float: right">{{gstAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                          </div>
+
+                          <mat-divider style="border-bottom: 2px solid #6b7081;"></mat-divider>
+                          <div class="cart-item  total-amount">
+                            <span>To Pay</span>
+                            <span class="total-amount"
+                                  style="float: right">{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="divider mat-divider"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-policy-section box-section" *ngIf="checkedList.length > 0">
+
+            <div class="group-btn" *ngIf="!reservePeriod && selectedFoodItems" fxHide.sm="true" fxHide.xs="true">
+              <button mat-flat-button style="width: 100%" class="book-btn" (click)="continueToBook()">
+                Book &nbsp;&nbsp;{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+            </div>
+            <div class="group-btn" *ngIf="reservePeriod" fxHide.sm="true" fxHide.xs="true">
+              <button mat-flat-button class="book-btn" (click)="continueToBook()">
+                Book &nbsp;&nbsp;{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+              <button mat-flat-button class="reserve-btn" (click)="continueToReserve()">
+                Reserve &nbsp;&nbsp;{{reserveAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+            </div>
+            <div *ngIf="nonChoices.description" [ngStyle.sm]="{'background-color': '#ffffff'}"
+                 [ngStyle.xs]="{'background-color': '#ffffff'}">
+              <div class="reserve-notify" ngClass.sm="m-reserve-notify" ngClass.xs="m-reserve-notify">
+                <div class="notification">
+                            <span class="content">Pay <span [innerHTML]="nonChoices.description"></span>% of Total tariff to reserve / Block the date
+                                for next 15 calender days
+                           </span>
+                </div>
+              </div>
+            </div>
+            <div class="halls-terms" ngClass.sm="m-halls-terms" ngClass.xs="m-halls-terms">
+              <div class="halls-info-header">Heads Up</div>
+              <div class="halls-cancellation-policy">+ Cancellation Policy</div>
+              <div class="halls-container halls-conditions">
+                <ul class="halls-conditionList">
+                  <li class="halls-conditionItem">
+                <span class="halls-conditionText">
+                  Refundable deposit or Miscellaneous charges  <span>Rs </span><span>{{'if any'}}</span>
+                should be payable at venue on or before
+                </span>
+                  </li>
+                  <li class="halls-conditionItem">
+                 <span class="halls-conditionText">
+                      Any additional charges incurred to any
+                additional services/amenties availed should be
+                Payable at the venue.For more details , kindly check
+                Amenties & Other services section
+                 </span>
+                  </li>
+                </ul>
+                <button mat-flat-button class="halls-termsAndCancellation">Terms and conditions</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <div fxLayout="row" fxLayoutAlign.sm="center" fxLayoutAlign.xs="center" fxHide fxShow.sm="true" fxShow.xs="true"
+       *ngIf="selectedFoodItems && checkedList.length > 0">
+    <button mat-raised-button class="selected-menu-btn" ngClass.xs="m-selected-menu-btn" (click)="openBottomSheet()">
+      Selected Menu
+    </button>
+  </div>
+</div>

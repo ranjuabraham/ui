@@ -1,0 +1,54 @@
+@import "../../@theme/styles/variables";
+
+
+.faq-container{
+  background-color: #F6F6F6;
+  ::ng-deep.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    margin-bottom: 5px !important;
+  }
+  .faq-section{
+    padding: 0 6% 4% 6%;
+    .abt-content{
+      .abt-header{
+        padding-top: 25px;
+        padding-bottom: 25px;
+        font-size: 22px;
+        font-weight: 900;
+      }
+      .inner-cnt{
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+      .abt-cnt{
+        color: #6f767d;
+        font-size: 13px;
+        margin-bottom: 15px;
+        line-height: 20px;
+        letter-spacing: 0.3px;
+        text-align: justify;
+        font-family: $font-family;
+      }
+      .panel-header{
+        font-size: 13px;
+        font-family: $font-family-semiBold;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 960px) {
+.faq-container {
+  .abt-header {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    font-size: 16px !important;
+  }
+  .panel-header{
+    font-size: 11px !important;
+  }
+  .abt-cnt{
+    font-size: 11px !important;
+  }
+}
+
+}
+

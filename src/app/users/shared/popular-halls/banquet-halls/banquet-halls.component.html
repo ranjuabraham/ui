@@ -1,0 +1,49 @@
+<div *ngIf="popularBanquestHalls" class="halls-row">
+  <div class="swiper-container" [swiper]="banquetConfig">
+    <div class="swiper-wrapper h-100">
+      <div *ngFor="let hall of popularBanquestHalls" class="swiper-slide" style="">
+        <div class="popular-halls">
+          <div class="halls-item">
+            <a  target="_blank" [routerLink]="['/chennai/banquet-halls', appService.findAndReplace(hall.prdctDetDesc, ' ', '-').toLowerCase()]"
+                [queryParams]="{categoryId: hall.prdctId, venueId: hall.prdctDetId, hallId: hall.subPrdctDetId, date: '0'}" class="image-link">
+              <img [attr.data-src]="hall.ovrAttrDetURL" class="swiper-lazy"/>
+              <div class="overlay">
+                <a class="info image-link" target="_blank"
+                   [routerLink]="['/chennai/marriage-halls', appService.findAndReplace(hall.prdctDetDesc, ' ', '-').toLowerCase()]"
+                   [queryParams]="{categoryId: hall.prdctId, venueId: hall.prdctDetId, hallId: hall.subPrdctDetId, date: '0'}">Know
+                  More</a>
+<!--                <div class="swiper-lazy-preloader"></div>-->
+              </div>
+              <div fxLayout="row" class="off-row">
+                <mat-chip-list *ngIf="hall.discVal" style="float: right">
+                  <mat-chip color="warn" selected="true">{{hall.discVal}}% off</mat-chip>
+                </mat-chip-list>
+              </div>
+              <div fxLayout="row" fxLayoutAlign="space-between center" class="halls-details">
+                <div fxLayout="column">
+                  <div fxLayout="row" class="dt-row">
+                    <p class="hall-name text-muted"><span *ngIf="hall.prdctDetDesc">{{hall.prdctDetDesc}}</span></p>
+                  </div>
+                  <div fxLayout="row" class="dt-row-1">
+                    <p class="hall-city">
+                      <mat-icon>location_on constant</mat-icon>
+                      {{hall.city}}
+                    </p>
+                    <p class="hall-price">{{hall.tariff | currency:'INR':'symbol':'1.0-0'}}</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button mat-mini-fab class="swiper-button-prev swipe-arrow">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+    <button mat-mini-fab class="swiper-button-next swipe-arrow">
+      <mat-icon>keyboard_arrow_right</mat-icon>
+    </button>
+  </div>
+</div>
+

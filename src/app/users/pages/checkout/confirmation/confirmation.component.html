@@ -1,0 +1,293 @@
+<div class="confirmation-container">
+  <div class="theme-container confirmation-section" ngClass.xs="m-confirmation-section">
+    <div fxLayoutAlign="end end">
+      <a target="_blank"  mat-flat-button class="pdf-download-btn"(click)="captureScreen()">download pdf</a>
+    </div>
+    <mat-card class="invoice-box" id="contentToConvert" [ngStyle]="{'padding.px': 30}" [ngStyle.xs]="{'padding.px': 0}"
+              [ngStyle.sm]="{'padding.px': 10}" *ngIf="responseData">
+      <div class="header-row" ngClass.xs="m-header-row" fxlayout="row" fxLayoutAlign="center center">
+        <span class="header">Your <span *ngIf="responseData.isBlk === 1">Booking</span> <span
+          *ngIf="responseData.isBlk === 2">Reservation</span>  is Confirmed</span>
+      </div>
+      <div fxLayout="column wrap" class="cus-info" ngClass.xs="m-cus-info" ngClass.sm="m-cus-info">
+        <div>Dear {{responseData.frstName}} ,</div>
+        <div>Thank you for your <span *ngIf="responseData.isBlk === 1">Booking</span> <span
+          *ngIf="responseData.isBlk === 2">Reservation</span> done with us.
+        </div>
+        <div>Your Reservation confirmation against Ref No.{{responseData.txnId}} details are</div>
+        <div>Please print the details for future references.</div>
+      </div>
+
+      <section class="confirm-details" ngClass.xs="m-confirm-details" [@fadeIn]>
+        <div class="des" ngClass.xs="m-des">Please show this receipt and get invoice bill from the Venue.</div>
+        <div fxLayout="row wrap" fxlayout.xs="column wrap" fxLayoutAlign="" fxLayoutGap="45px" fxLayoutGap.xs="0">
+          <div fxFlex="48" fxFlex.xs="100" class="customer-details" ngClass.xs="m-customer-details">
+            <div fxLayoutAlign="center center" class="header">Customer Details</div>
+            <div class="content" ngClass.xs="m-content">
+              <div class="cus-details" ngClass.xs="m-cus-details">
+                <div>{{responseData.frstName}}</div>
+                <div>{{responseData.emailId}}</div>
+                <div>{{responseData.mobile}}</div>
+                <div>{{responseData.address}}</div>
+                <div class="customer-gst" *ngIf="responseData.customerGst"><span class="gst-text">GSTIN: </span> <span
+                  class="gst-no mr-1">{{responseData.customerGst}}</span></div>
+              </div>
+              <div class="divider"></div>
+              <div class="bk-details">
+                <div fxLayout="row wrap">
+                  <div fxFlex="40">Start Date :</div>
+                  <div fxFlex="60">{{responseData.muhurtDts}}</div>
+                </div>
+                <div fxLayout="row wrap">
+                  <div fxFlex="40">End Date :</div>
+                  <div fxFlex="60">{{responseData.endDt}}</div>
+                </div>
+
+                <div fxLayout="row wrap">
+                  <div fxFlex="40">Duration :</div>
+                  <div fxFlex="60">{{responseData.durName}}</div>
+                </div>
+
+                <div fxLayout="row wrap">
+                  <div fxFlex="40">Food Type :</div>
+                  <div fxFlex="60">{{responseData.fdTypName}}</div>
+                </div>
+                <div fxLayout="row wrap">
+                  <div fxFlex="40">Event :</div>
+                  <div fxFlex="60">{{responseData.evtName}}</div>
+                </div>
+                <div fxLayout="row wrap">
+                  <div fxFlex="40">Status :</div>
+                  <div fxFlex="60">{{responseData.status}}</div>
+                </div>
+                <div fxLayout="row wrap">
+                  <div fxFlex="40">Paid Status :</div>
+                  <div fxFlex="60">{{responseData.paidStatus}}</div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+
+          <div fxFlex="48" fxFlex.xs="100" class="venue-details" ngClass.xs="m-venue-details">
+            <div fxLayoutAlign="center center" class="header">Venue Details</div>
+            <div class="content">
+              <div class="hall-details" ngClass.xs="m-hall-details">
+                <div>{{responseData.prdctDetDesc}}</div>
+                <div>{{responseData.dcdeHdr}}</div>
+                <div>{{responseData.cntUsAddr}}</div>
+                <div>{{responseData.city}} - {{responseData.pincode}}</div>
+                <div class="venue-gst" *ngIf="responseData.venueGst"><span class="gst-text">GST: </span> <span
+                  class="gst-no mr-1">{{responseData.venueGst}}</span></div>
+              </div>
+
+              <div class="divider"></div>
+              <div class="bk-details">
+                <!--                <div fxLayout="row">-->
+                <!--                  <div fxFlex="40">Hall Name :</div>-->
+                <!--                  <div fxFlex="60">{{responseData.prdctDetDesc}}</div>-->
+                <!--                </div>-->
+                <!---- Buffet tariff--------->
+                <div fxLayout="row" *ngIf="responseData.bookTyp === 'BUFFET'">
+                  <div fxFlex="50">Buffet Count :</div>
+                  <div fxFlex="50">{{responseData.buffCount}}</div>
+                </div>
+                <div fxLayout="row" *ngIf="responseData.bookTyp === 'BUFFET'">
+                  <div fxFlex="50">Price Per Head :</div>
+                  <div fxFlex="50">{{responseData.buffTar | currency:'Rs.':'symbol':'1.0-0'}}</div>
+                </div>
+
+                <div fxLayout="row" *ngIf="responseData.bookTyp === 'BUFFET'">
+                  <div fxFlex="50">Buffet Cost :</div>
+                  <div fxFlex="50">{{responseData.buffFinal | currency:'Rs.':'symbol':'1.0-0'}}</div>
+                </div>
+
+                <!---- end Buffet tariff--------->
+                <div fxLayout="row" *ngIf="responseData.bookTyp !== 'BUFFET'">
+                  <div fxFlex="50">Rent for a session :</div>
+                  <div fxFlex="50">{{responseData.rentFinal | currency:'Rs.':'symbol':'1.0-0'}}</div>
+                </div>
+
+                <div fxLayout="row" *ngIf="responseData.adnlDurHrs">
+                  <div fxFlex="50">Additional {{responseData.adnlDurHrs}} Hours ({{responseData.hourlyAmt}}/ hr) :</div>
+                  <div
+                    fxFlex="50">{{responseData.adnlDurHrs * responseData.hourlyAmt | currency:'Rs.':'symbol':'1.0-0'}}</div>
+                </div>
+
+                <div fxLayout="row" class="in-discount" *ngIf="responseData.disAmount">
+                  <div fxFlex="50">Offer Discount (   {{responseData.discVal}}% ) :</div>
+                  <div fxFlex="50">{{responseData.disAmount | currency:'Rs.':'symbol':'1.0-0'}}  (-)</div>
+                </div>
+
+                <div fxLayout="row" class="in-divider" *ngIf="responseData.disAmount">
+                  <div fxFlex="100">
+                    <mat-divider></mat-divider>
+                  </div>
+                </div>
+
+                <div fxLayout="row" *ngIf="responseData.disAmount">
+                  <div fxFlex="50">Subtotal:</div>
+                  <div
+                    fxFlex="50">{{responseData.subTotal | currency:'Rs.':'symbol':'1.0-0'}}</div>
+                </div>
+
+                <div fxLayout="row" *ngIf="responseData.servChrg">
+                  <div fxFlex="50">GSTIN( {{responseData.servChrg}}% ) :</div>
+                  <div fxFlex="50">{{responseData.taxesFinal | currency:'Rs.':'symbol':'1.0-0'}} (+)</div>
+                </div>
+
+                <div fxLayout="row" class="in-divider">
+                  <div fxFlex="100">
+                    <mat-divider></mat-divider>
+                  </div>
+                </div>
+
+                <div fxLayout="row" class="invoice-total">
+                  <div fxFlex="50" class="in-total">Total</div>
+                  <div fxFlex="50" class="in-total-amt">{{responseData.totalFinal | currency:'Rs.':'symbol':'1.0-0'}}
+                    /-
+                  </div>
+                </div>
+
+                <div fxLayout="row" *ngIf="responseData.isBlk === 2">
+                  <div fxFlex="50">Reservation Amount Paid :</div>
+                  <div fxFlex="50">{{responseData.reservFinal | currency:'Rs.':'symbol':'1.0-0'}} /- ( Expires on
+                    {{responseData.expDt}} )
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="selected-food-menus mb15" ngClass.xs="m-selected-food-menus" ngClass.sm="m-selected-food-menus" *ngIf="responseData.selectedFoodMenus" [@fadeIn]>
+        <div class="header">Selected Food Menus</div>
+        <div fxLayout="row warp" fxLayout.xs="column">
+          <span fxFlex="25" fxFlex.xs="100" fxFlex.sm="50"
+                *ngFor="let selectedFoodMenu of responseData.selectedFoodMenus">
+            <div class="menu-header">
+              {{selectedFoodMenu.category}}
+            </div>
+            <span *ngFor="let items of selectedFoodMenu.value">
+              <span *ngFor="let item of [items]">
+                <span style="line-height: 30px" class="b-value">{{item['itemHdr']}}</span>
+              </span>
+            </span>
+          </span>
+        </div>
+      </section>
+
+
+      <div class="cnt-1" ngClass.xs="m-cnt-1" *ngIf="responseData.isBlk === 1">Payment Received for
+        Booking {{responseData.totalFinal | currency:'Rs.':'symbol':'1.0-0'}} /-
+      </div>
+      <div class="cnt-1" ngClass.xs="m-cnt-1" *ngIf="responseData.isBlk === 2">Pay Balance amount <span
+        style="color: #FE0000">{{responseData.totalFinal - responseData.reservFinal | currency:'INR':'symbol':'1.0-0'}}
+        /-</span> before {{responseData.expDt}} ) to Confirm the venue.
+      </div>
+      <div style="padding-bottom: 20px" ngClass.xs="m-cnt-2" *ngIf="responseData.venueMisc !== 0">Additional Charges (
+        Payable at venue ) : Misc + Deposit ( EB + Others )
+        : {{responseData.venueMisc | currency:'Rs.':'symbol':'1.0-0'}}</div>
+
+      <ul class="cn-note" ngClass.xs="m-cn-note" *ngIf="responseData.isBlk === 2">
+        <li>Note :</li>
+        <li class="list">
+          <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98" fxFlex.xs="92">Please pay the remaining amount within 15 days to confirm your venue.</span>
+        </li>
+        <li>
+            <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98" fxFlex.xs="92">Reservation amount will be included in confirmed booking payment</span>
+        </li>
+        <li>
+            <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98" fxFlex.xs="92">Reservation amount  is non - transferable and non - refundable.</span>
+        </li>
+        <li>
+            <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98" fxFlex.xs="92">This is only an acknowledgement receipt for a Booking.</span>
+        </li>
+        <li>
+            <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98"
+                fxFlex.xs="92">Misc + Deposit ( if any ) should be Payable at Venue during your first Visit.</span>
+        </li>
+        <li><span fxFlexOffset="2" fxFlexOffset.xs="8" style="font-weight: 400;">
+          ( ** i.e Earliest before a month of the event date.Failing to Pay this amount would lead to void of booking / reservation.)
+T&C Apply.
+        </span></li>
+      </ul>
+
+      <ul class="cn-note" ngClass.xs="m-cn-note" *ngIf="responseData.isBlk === 1">
+        <li>Note :</li>
+        <li class="list">
+          <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98" fxFlex.xs="92">Booking Amount is non - transferable and non - refundable.</span>
+        </li>
+
+        <li class="list">
+          <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98" fxFlex.xs="92">This is only an acknowledgement receipt for a Booking.</span>
+        </li>
+        <li class="list">
+          <span fxFlex="2" fxFlex.xs="8">
+                <img style="width: 16px; height: auto"
+                     src="../../../../../assets/images/icons/approval-request/red-tick-icon.svg">
+              </span>
+          <span fxFlex="98"
+                fxFlex.xs="92">Misc + Deposit ( if any ) should be Payable at Venue during your first Visit.</span>
+        </li>
+
+        <li><span fxFlexOffset="2" fxFlexOffset.xs="8" style="font-weight: 400;">
+          ( ** i.e Earliest before a month of the event date.Failing to Pay this amount would lead to void of booking / reservation.)
+T&C Apply.
+        </span></li>
+      </ul>
+
+      <div class="invoice-footer-sec mt30" fxLayout="column" fxLayoutAlign="center center">
+        <div>Booking through:</div>
+        <div class="cnt"> Leading booking partner: <a href="https://hallsdiary.com"
+                                                      target="_blank">www.hallsdiary.com</a></div>
+        <div class="cnt">Powered By: <a href="http://www.m2consultancies.com/" target="_blank">M2 Consultancies</a>
+        </div>
+        <div class="cnt">No.3A/1, Sri Sakthi Vijaylakshmi Nagar, Velachery, Chennai-600042</div>
+        <div class="cnt">GSTIN: 33AAWFM5365N2ZF</div>
+        <div class="cnt"><a href="https://hallsdiary.com" target="_blank">www.hallsdiary.com</a> | <a
+          href="mailto:contact@hallsdiary.com" target="_top">contact@hallsdiary.com</a> |
+          <a href="tel:+044-42159872">+044-42159872</a> | <a href="tel:+91-9940005705">+044-42159872</a></div>
+      </div>
+
+
+    </mat-card>
+
+
+  </div>
+
+</div>

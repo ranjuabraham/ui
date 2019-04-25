@@ -1,0 +1,216 @@
+<div class="checkout-preview-page" ngClass.xs="m-checkout-preview-page">
+  <div class="theme-container">
+    <div class="preview-header" ngClass.xs="m-preview-header">
+      Review Your Details
+    </div>
+    <mat-card class="mat-card-box" ngClass.xs="m-mat-cart-box">
+      <div fxlayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
+        <div fxFlex="60" fxFlex.xs="100" fxLayoutGap="20px" fxLayoutGap.xs="5px">
+          <div fxFlex="40" fxFlex.xs="30" class="venue-gallery" ngClass.xs="m-venue-gallery">
+            <div class="venue-image">
+              <img *ngIf="productImage" src="{{productImage['big']}}">
+              <img *ngIf="!productImage" src="../../../../../assets/images/others/KSV_1.jpeg">
+            </div>
+            <div class="images-link" fxHide.xs="true">
+              <img mat-icon-button matTooltip="Gallery"
+                   src="{{iconUrl}}photo-camera.svg">
+            </div>
+          </div>
+
+          <div fxFlex="58" fxFlex.xs="70">
+            <div class="venue-details" *ngIf="venueDetails">
+              <div class="venue-name" ngClass.xs="m-venue-name">
+                {{venueDetails['cntctUsName']}}
+              </div>
+              <div class="venue-address" [ngStyle.xs]="{'margin-top.px': 0}">
+                <span class="venue-city"> {{venueDetails['city']}} -  {{venueDetails['pincode']}}</span>
+                <span class="map-icon" (click)="mapViewDialog()"
+                      *ngIf="contactUsMap">
+                      <img src="{{iconUrl}}map-icon.svg"> Map</span>
+              </div>
+              <div class="hall-rating" [ngStyle.xs]="{'padding.px': 0}" fxLayout="row">
+                <mat-chip-list *ngIf="rating > 0">
+                  <mat-chip color="primary" selected>
+                    <mat-icon>star</mat-icon>
+                    {{rating}}
+                  </mat-chip>
+                </mat-chip-list>
+                <div class="review-count">
+                    <span *ngIf="review > 0" class="review-link" (click)="openReviewDialog()">  {{review}}
+                      Reviews</span>
+                  <span *ngIf="review === 0"> No reviews</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="40" fxFlex.xs="100">
+          <div fxLayout="column" class="booking-details" ngClass.xs="m-booking-details" *ngIf="formData">
+            <div class="event-date" ngClass.xs="m-event-date">
+              <span class="from-date">{{formData['eventStartDate']}}</span>
+              <span class="arrow-icon" ngClass.xs="m-arrow-icon"><mat-icon>arrow_forward constant</mat-icon></span>
+              <span class="to-date">{{formData['eventEndDate']}}</span>
+              <span class="venue-edit-link" fxHide.xs="true" (click)="goBack()">Edit</span>
+            </div>
+            <div class="event-type" [ngStyle.xs]="{'font-size.px': 12}">
+              <span>Event :</span>
+              <span>{{formData['eventTypeName']}}</span>
+            </div>
+
+            <div class="session-type" [ngStyle.xs]="{'font-size.px': 12}">
+              <span>Session :</span>
+              <span>{{formData['sessionName']}}</span>
+            </div>
+
+            <div class="food-type" [ngStyle.xs]="{'font-size.px': 12}">
+              <span>Food :</span>
+              <span>{{formData['foodTypeName']}}</span>
+            </div>
+            <div class="additional-hours" *ngIf="formData['additionalHours'] > 0" [ngStyle.xs]="{'font-size.px': 12}">
+              <span>Additional Hours :</span>
+              <span>{{formData['additionalHours']}} hours</span>
+            </div>
+
+            <div fxLayoutAlign="end end" class="to-pay" *ngIf="blockType === 1">
+              <span>{{ tariffData['totalAmount'] | currency:'INR':'symbol':'1.0-0'}}</span>
+            </div>
+            <div fxLayoutAlign="end end" class="to-pay" *ngIf="blockType === 2">
+              <span>{{ tariffData['reserveAmount'] | currency:'INR':'symbol':'1.0-0'}}</span>
+            </div>
+            <div fxLayoutAlign="end end" class="save-amount" *ngIf="tariffData['discountAmount'] > 0">
+              your Total Savings {{ tariffData['discountAmount'] | currency:'INR':'symbol':'1.0-0'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+
+    <mat-card *ngIf="buffetData" style="margin-top: 6px" class="mat-card-box selected-menu-sec"
+              ngClass.xs="m-mat-cart-box m-selected-menu-sec">
+      <div class="header" ngClass.xs="m-header">Selected menu list <span class="item-count">{{itemData.length}}
+        Items</span></div>
+      <a class="edit-link" [routerLink]="['/checkout/modify-food-menus']"
+         [queryParams]="{productDetId: loadData.prdctDetId, subHallId: loadData.subPrdctDetId, foodTypeId: loadData['fdTypId'], bookingId: loadData.txnId}"
+         *ngIf="loadData">Edit</a>
+      <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <div class="menu-list" ngClass.xs="m-menu-list" *ngFor="let buffet of buffetData" fxFlex="25" fxFlex.sm="50"
+             fxFlex.xs="50">
+          <div style="font-weight: bolder">{{buffet.category}} - <span>{{buffet.limit}}</span></div>
+          <div *ngFor="let items of buffet.value">
+            <div *ngFor="let item of [items]">
+              <div class="menu-item">{{item['itemHdr']}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card style="margin-top: 5px; margin-bottom: 30px" *ngIf="userData" class="mat-card-box"
+              ngClass.xs="m-mat-cart-box m-customer-details">
+
+
+      <div class="profile-edit-form">
+        <form [formGroup]="editProfileForm" class="editProfileForm" (ngSubmit)="customerProfileForm()"
+              [ngStyle.xs]="{'padding.px': 5}">
+          <mat-card-header [ngStyle.xs]="{'font-size.px': 16}">Customer Details</mat-card-header>
+          <mat-card-content>
+            <div fxlayout="row wrap" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="space-between" class="profile-preview"
+                 ngClass.xs="m-profile-preview">
+              <div fxFlex="100" fxFlex.xs="100" fxLayout.xs="column" fxLayoutAlign.xs="start">
+                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="100" class="customer-name form">
+                  <mat-form-field appearance="outline" [ngStyle.xs]="{'width.%': 100}" [ngStyle.sm]="{'width.%': 100}">
+                    <mat-label>Full Name</mat-label>
+                    <input matInput formControlName="userName">
+                    <mat-error *ngIf="editProfileForm.controls['userName'].hasError('required')"> Enter your customer
+                      full name
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+                <div fxFlex="30" fxFlex.xs="100" fxFlex.sm="100" class="form">
+                  <mat-form-field appearance="outline" [ngStyle.xs]="{'width.%': 100}" [ngStyle.sm]="{'width.%': 100}">
+                    <mat-label>Mobile Number</mat-label>
+                    <input matInput formControlName="userMobile" (keypress)="keyPress($event)">
+                    <mat-error *ngIf="editProfileForm.controls['userMobile'].hasError('required')"> Enter your
+                      customer mobile number
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+                <div class="form" fxFlex="40" fxFlex.xs="100" fxFlex.sm="100">
+                  <mat-form-field appearance="outline" [ngStyle]="{'width.%': 100}">
+                    <mat-label>Address</mat-label>
+                    <input matInput formControlName="address" [(ngModel)]="userData['address']" autocomplete="off">
+                    <mat-error *ngIf="editProfileForm.controls['address'].hasError('required')"> Enter your
+                      Address
+                    </mat-error>
+                    <mat-error *ngIf="editProfileForm.controls['address'].hasError('minlength')"> Enter your
+                      Address minimum 6 chars
+                    </mat-error>
+                  </mat-form-field>
+                </div>
+
+              </div>
+
+            </div>
+            <div class="pay-details">
+              <mat-card-content class="amount-details" [ngStyle.xs]="{'width.%': 100}">
+
+
+                <div fxLayout="column" fxLayoutAlign="end end">
+                  <div>Amount to be paid</div>
+                  <div class="total"
+                       *ngIf="blockType === 1">{{ tariffData['totalAmount'] | currency:'INR':'symbol':'1.0-0'}}</div>
+                  <div class="total"
+                       *ngIf="blockType === 2">{{ tariffData['reserveAmount'] | currency:'INR':'symbol':'1.0-0'}}</div>
+                  <div class="save-amount" [ngStyle.xs]="{'font-size.px': 12}" *ngIf="tariffData['discountAmount'] > 0">
+                    your Total Savings {{ tariffData['discountAmount'] | currency:'INR':'symbol':'1.0-0'}} </div>
+                </div>
+              </mat-card-content>
+
+            </div>
+            <div fxLayout="column wrap">
+              <div fxLayout="row wrap">
+                <mat-checkbox class="agree-checkbox" color="primary" formControlName="agree" [(ngModel)]="checked"
+                              required>I agree with
+                  <a  fxLayout="row wrap" class="amenities-link" (click)="chargeableAmenitiesDialog()">amenities</a> ( if any additional
+                  charges payable at venue) and
+                  <a class="polices-link" (click)="policyDialog()">Policies</a></mat-checkbox>
+              </div>
+              <mat-error *ngIf="editProfileForm.controls['agree'].hasError('required')">
+                ! Accept Terms & Conditions of Hallsdiary.com
+              </mat-error>
+            </div>
+
+            <mat-card-actions>
+              <button mat-flat-button class="continue-btn" *ngIf="bookingType === 1">
+                <mat-icon>arrow_right_alt</mat-icon>
+                Continue to Book
+              </button>
+              <button mat-flat-button class="continue-btn" *ngIf="bookingType === 2">
+                <mat-icon>arrow_right_alt</mat-icon>
+                Continue to Reserve
+              </button>
+            </mat-card-actions>
+
+
+            <mat-card-actions>
+              <button mat-flat-button class="continue-btn" [ngStyle.xs]="{'width.%': 100}" *ngIf="blockType === 1"
+                      (click)="continueBook()">Continue to Book
+              </button>
+              <button mat-flat-button class="continue-btn" [ngStyle.xs]="{'width.%': 100}" *ngIf="blockType === 2"
+                      (click)="continueReserve()">Continue to Reserve
+              </button>
+            </mat-card-actions>
+
+
+          </mat-card-content>
+        </form>
+      </div>
+
+    </mat-card>
+
+  </div>
+
+
+</div>

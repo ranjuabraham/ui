@@ -1,0 +1,217 @@
+@import "../../@theme/styles/variables";
+
+#my-wishlist {
+  background-color: $bg-color;
+
+  .header-1 {
+    padding: 20px 10px;
+    color: #001731;
+    font-family: $font-family;
+    font-weight: 900;
+
+    .wishlist-count {
+      color: #5E23DC;
+      font-family: $font-family;
+      font-weight: 900;
+    }
+  }
+
+  .wishlist-container {
+    .wishlist {
+      background-color: #FFFFFF;
+
+      .list-box {
+        padding: 10px 0;
+      }
+
+      .loop-list {
+        padding: 10px 0;
+      }
+    }
+
+  }
+
+
+  .wlist {
+    border-bottom: #ececec 1px solid;
+    //padding: 12px 10px;
+  }
+
+  .no-data {
+    margin-bottom: 25px;
+    color: #8695A3;
+    font-family: $font-family-semiBold;
+    font-size: 15px;
+  }
+
+  .hall-image {
+    padding: 10px;
+
+    .hall-img {
+      height: 130px;
+      width: 100%;
+    }
+  }
+
+  .venue-details {
+    padding: 10px;
+
+    .hall-name {
+      font-weight: 600;
+    }
+
+    .hall-address {
+      font-size: 13px;
+      color: #545862;
+      padding: 4px 0;
+      margin-bottom: 5px;
+      font-family: $font-family;
+      font-weight: 500;
+
+      ::ng-deep .mat-icon {
+        height: 14px !important;
+        width: 15px;
+        vertical-align: bottom;
+        font-size: 14px !important;
+        color: #92949B;
+        margin-left: -4px;
+      }
+    }
+
+  }
+
+
+  .hall-price {
+    font-weight: $font-weight;
+    font-family: $font-family;
+    color: #00aa00;
+
+    .onwards{
+      font-size: 11px;
+      color: #545862;
+      margin-left: 5px;
+    }
+
+    .hall-discount {
+      background-color: #FF7631;
+      color: #ffffff;
+      border-radius: 0;
+      line-height: 25px !important;
+      margin-left: 37px !important;
+      font-size: 12px;
+      font-weight: $font-weight;
+      font-family: $font-family;
+    }
+  }
+
+  .hall-rating {
+    font-size: 13px;
+    padding: 6px 0;
+
+    ::ng-deep .mat-icon {
+      height: 14px !important;
+      width: 15px;
+      vertical-align: text-top;
+      font-size: 14px !important;
+      color: #FE0000;
+    }
+  }
+
+  .check-btn {
+    color: #00aa00;
+    /* line-height: 25px !important; */
+    margin-bottom: 10px;
+    width: 155px;
+    border-radius: 0;
+    border-color: #00aa00;
+    font-family: $font-family;
+    font-weight: $font-weight;
+  }
+
+  .book-btn {
+    background-color: #00aa01;
+    color: #FFFFFF;
+    border-radius: 0;
+    width: 155px;
+    font-family: $font-family;
+    font-weight: $font-weight;
+
+    a {
+      text-decoration: none;
+      color: #FFFFFF;
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  #my-wishlist {
+    background-color: #FFFFFF !important;
+
+    .mat-elevation-z1 {
+      box-shadow: unset !important;
+    }
+
+    .hd-container {
+      margin: 0 1% 0 1% !important;
+    }
+
+    .wishlist {
+      .loop-list {
+        padding: 0 !important;
+      }
+      .hall-image {
+        .hall-img {
+          width: 100%;
+          height: 90px !important;
+        }
+      }
+
+      .venue-details {
+        padding: 10px 0 !important;
+
+        .hall-name {
+          font-family: $font-family;
+          font-weight: $font-weight;
+          color: #001731;
+          font-size: 13px;
+        }
+
+        .hall-address {
+          font-size: 12px !important;
+
+          mat-icon {
+            height: 14px !important;
+            width: 15px;
+            vertical-align: bottom;
+            font-size: 14px !important;
+            color: #92949B;
+            margin-left: -4px;
+          }
+        }
+      }
+
+      .check-btn {
+        width: 95px !important;
+        font-size: 10px !important;
+        font-family: $font-family;
+        font-weight: $font-weight;
+      }
+
+      .book-btn {
+        width: 95px !important;
+        font-size: 10px !important;
+        line-height: 27px !important;
+        padding: 0 !important;
+        margin-left: 6px;
+        font-family: $font-family;
+        font-weight: $font-weight;
+      }
+
+      .mat-stroked-button {
+        padding: 0 !important;
+        line-height: 25px !important;
+      }
+    }
+
+  }
+}

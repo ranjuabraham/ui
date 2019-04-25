@@ -1,0 +1,94 @@
+
+.editVenueCategory {
+  background-color: white;
+}
+
+.form-header {
+  background-color: #327ebd;
+  color: white;
+  padding: 0 5px;
+}
+
+.validation-message {
+  background-color: #00BCD4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+}
+
+.container > * {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  padding-top: 6px;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+.reconcile-report {
+  .mat-form-field {
+    margin-right: 10px;
+    padding: 0px 10px;
+    width: 30%;
+  }
+
+  //report table
+  .report-table {
+    //margin-top: 20px;
+  }
+
+  .no-record-found {
+    font-size: 18px;
+    color: red;
+    font-style: italic;
+  }
+  .margin-right-10 {
+    margin-right: 15px;
+  }
+
+  //toatl amount report
+  .count-table {
+    table {
+      border-collapse: collapse;
+      width: 40%;
+    }
+
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    tr th {
+      //text-transform: uppercase;
+      font-size: 14px;
+    }
+    tr th span{
+      color: #666666; font-size: 11px; font-weight: normal;
+    }
+    tr td {
+      text-align: right;
+    }
+  }
+
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 450px;
+}
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 500px;
+  min-width: 300px;
+  overflow: auto;
+}

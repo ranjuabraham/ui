@@ -1,0 +1,129 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container" *ngIf="resultInfo">
+              <form [formGroup]="buffetForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Edit Buffet Category</h1>
+                </div>
+  
+                <div class="form" style="display:none">
+                  <mat-form-field>
+                      <input matInput  formControlName="buffSubId" placeholder="ID" [(ngModel)]="resultInfo.buffSubId">
+                  </mat-form-field>
+                </div>
+                  
+                <!-- Food Type Selection -->
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="fdTypId" placeholder="Select FoodType" [(ngModel)]="resultInfo.fdTypId">
+                        <mat-option [value]='0'>--Select--</mat-option>
+                        <mat-option *ngFor="let items of foodItems" [value]="items.fdTypId">
+                          {{items.fdTypHdr}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="buffetForm.controls['fdTypId'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <!-- Buffet CAtegory -->
+                <div class="form">
+                    <mat-form-field>
+                      <input matInput #input formControlName="buffSubHdr" placeholder="Category Name" [(ngModel)]="resultInfo.buffSubHdr" required>
+                      <mat-error *ngIf="buffetForm.controls['fdTypId'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+                  
+                  <!-- Complement Items / Add on Menu -->
+                  <div class="form">
+                      <div fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center"
+                           class="widgetHolder ">
+                        <quill-editor #disciplineQE id="discipline-qe"
+                                      formControlName="buffSubDesc" style=" min-height: 170px;" placeholder="Category Description" [(ngModel)]="resultInfo.buffSubDesc"
+                                      [required]="true"
+                                      [ngClass]="{ 'is-invalid': submitted && f.buffSubDesc.errors }"></quill-editor>
+      
+                        <div *ngIf="submitted && f.buffSubDesc.errors" class="invalid-feedback">
+                        <div *ngIf="f.buffSubDesc.errors.required">Enter Complement Items
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Is Have Live Counter-->
+                  <div class="form">
+                      <mat-form-field>
+                        <mat-select formControlName="isFlg" placeholder="Is Live Counter" [(ngModel)]="resultInfo.isFlg" required>
+                          <mat-option *ngFor="let type of displayLiveCounter" [value]="type.value">
+                            {{type.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="buffetForm.controls['isFlg'].hasError('required')">Select Anyone</mat-error>
+                      </mat-form-field>
+                  </div>
+
+                <!-- Choose Limit-->
+                <div class="form">
+                      <mat-form-field>
+                        <mat-select formControlName="alwToChoose" placeholder="Choosable Limit" [(ngModel)]="resultInfo.alwToChoose" required>
+                          <mat-option *ngFor="let type of displayItems" [value]="type.value">
+                            {{type.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="buffetForm.controls['alwToChoose'].hasError('required')">Select Anyone</mat-error>
+                      </mat-form-field>
+                </div>
+
+                <!-- Sequence  -->
+                <div class="form">
+                  <mat-form-field>
+                      <mat-select formControlName="buffSubSeq" placeholder="Sequence" [(ngModel)]="resultInfo.buffSubSeq" required>
+                        <mat-option *ngFor="let type of displaySequence" [value]="type.value">
+                          {{type.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="buffetForm.controls['buffSubSeq'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+                  
+                 <!-- Status-->
+                <div class="form">
+                  <mat-form-field>
+                    <mat-select formControlName="buffSubAct" placeholder="Is Active" [(ngModel)]="resultInfo.buffSubAct">
+                      <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                        {{status.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="buffetForm.controls['buffSubAct'].hasError('required')">Select Anyone</mat-error>
+                 </mat-form-field>
+                </div>
+                
+                <!-- Captch Validation -->
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                    <div fxFlex="50" fxFlex.xs="100">
+                      <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                      <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                        <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                      </div>
+                      </div>
+                  </div>
+    
+                  <!-- Action -->
+                  <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                    <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                        fxLayoutAlign.xs="space-around center">
+                      <button mat-raised-button class="save-btn">Update</button>
+                      <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+   </div>
+</div>
+      
+    

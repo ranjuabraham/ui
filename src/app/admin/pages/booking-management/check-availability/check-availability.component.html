@@ -1,0 +1,22 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="promotion-show-sec components-container">
+  <div fxFlex class="bg-white table-component-holder mat-elevation-z1">
+    <div fxLayout="column">
+      <div class="check-availability">
+        <div class="form">
+          <mat-form-field>
+            <mat-select placeholder="Select Sub Halls" (selectionChange)="onChangeSubHalls($event)" >
+              <mat-option *ngFor="let subHall of subHalls" [value]="subHall.subPrdctDetId">
+                {{subHall.dcdeHdr}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <app-my-date-picker [options]="checkAvailability"
+                            [placeholder]="'DDD'">
+        </app-my-date-picker>
+      </div>
+    </div>
+
+</div>
+</div>

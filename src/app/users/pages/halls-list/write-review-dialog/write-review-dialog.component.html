@@ -1,0 +1,67 @@
+<div class="close-btn"><img (click)="dialogClose()"class="close-icon" src="../../../../../assets/images/icons/close-btn.svg"></div>
+
+<div mat-dialog-content class="new-review-dialog">
+  <div fxLayout="row" class="dialog-header">
+    <div fxLayout="column" fxFlex="100" class="title">
+      <div class="dialog-title">Write a review</div>
+      <div class="hall-name">{{data.hallName}}</div>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" class="content-sec">
+    <div fxFlex="100" fxFlex.gt-sm="100" ngClass.gt-sm="m-0" ngClass.sm="mt-2" ngClass.xs="mt-2">
+
+      <div class="content-section" perfectScrollbar>
+        <form [formGroup]="writeReviewForm" (ngSubmit)="onSubmit()">
+          <div fxLayout="row" class="review-row" fxLayoutGap="5px">
+            <div fxFlex="10">
+              <div class="user-img">
+                <img style="width: 30px" src="../../../../assets/images/icons/hall-list/user-img.svg">
+              </div>
+            </div>
+            <div fxLayout="column" fxFlex="60">
+              <div class="user-name">{{firstName + ' ' + lastName}}</div>
+              <div class="city">Chennai</div>
+            </div>
+            <div fxFlex="30">
+              <div fxLayout="column" class="user-review">
+                <div fxLayout="row">
+                  <div><span class="rating">
+                <input type="radio"  formControlName="rvmRating" [checked]="rvwRating===5"/>
+                <label title="Excellent!" (click)='onClick(5)'>5 stars</label>
+
+                <input type="radio"  formControlName="rvmRating" [checked]="rvwRating===4"/>
+                <label title="Good" (click)='onClick(4)'>4 stars</label>
+
+                <input type="radio" formControlName="rvmRating" [checked]="rvwRating===3"/>
+                <label title="Average" (click)='onClick(3)'>3 stars</label>
+
+                <input type="radio"  formControlName="rvmRating" [checked]="rvwRating===2"/>
+                <label title="Low" (click)='onClick(2)'>2 stars</label>
+
+                <input type="radio"  formControlName="rvmRating" [checked]="rvwRating===1"/>
+                <label title="Poor" (click)='onClick(1)'>1 star</label>
+
+              </span></div>
+                </div>
+                <div class="post-time"></div>
+                <div class="review-content">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <mat-form-field appearance="outline">
+              <textarea rows="7" matInput formControlName="rvmBody" [(ngModel)]="reviewContent" placeholder="best hall I ever seen..worth it"></textarea>
+            </mat-form-field>
+          </div>
+          <div fxLayout="row" fxLayoutAlign="end center">
+            <span matRipple mat-button class="cancel-btn" (click)="dialogClose()">Cancel</span>
+            <button mat-button class="post-btn">Post</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

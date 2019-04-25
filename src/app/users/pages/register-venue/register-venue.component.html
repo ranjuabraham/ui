@@ -1,0 +1,152 @@
+<div class="theme-container register-container">
+  <div class="hd-container mb30">
+    <div class="register-header"><h3>Register a Venue</h3></div>
+    <div class="register-sec" fxLayout="row"
+         fxLayoutAlign="start center" fxLayoutWrap fxLayoutGap="">
+
+      <div class="register-form" fxFlex.lg="100%" fxFlex.md="100%"
+           fxFlex.sm="100%" fxFlex.xs="100%">
+        <div fxFlex class="form-component-holder mat-elevation-z1 prform">
+          <h3 class="rvform-header" fxLayoutAlign="center">Happy to add you as our venue partner and increase your occupancy and revenue</h3>
+          <div class="pform-in">
+            <!--<div class="alert alert-success" *ngIf="data == 'SUCCESS'">-->
+            <!--Your Personal information is successfully updated.-->
+            <!--</div>-->
+            <!--<div class="alert alert-danger" *ngIf="data == 'FAILURE'">-->
+            <!--Oops! Something went wrong. Please try again later-->
+            <!--</div>-->
+            <!--<div class="alert alert-danger" *ngIf="data == 'ERROR'">-->
+            <!--Oops! Something went wrong. Please try again later-->
+            <!--</div>-->
+
+            <div class="form-row rvform" >
+              <form [formGroup]="registerVenueForm" (ngSubmit)="onSubmit()">
+
+                <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"  class="form">
+                  <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%" class="fgroup">
+                    <mat-form-field
+                      [hideRequiredMarker]="registerVenueForm.value.hideRequired"
+                      [floatLabel]="registerVenueForm.value.floatLabel">
+                      <input type="text" matInput formControlName="venueName" placeholder="Hall Name"
+                             required autocomplete="off">
+                      <mat-error *ngIf="registerVenueForm.controls['venueName'].hasError('required')"> Enter your
+                        Hall Name
+                      </mat-error>
+                      <mat-error *ngIf="registerVenueForm.controls['venueName'].hasError('maxlength')"> Hall Name should be
+                        max 60 chars.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%" class="fgroup">
+                    <mat-form-field
+                      [hideRequiredMarker]="registerVenueForm.value.hideRequired"
+                      [floatLabel]="registerVenueForm.value.floatLabel">
+                      <input type="text" matInput formControlName="venueArea" placeholder="Location of the Hall"
+                            required autocomplete="off">
+                      <mat-error *ngIf="registerVenueForm.controls['venueArea'].hasError('required')"> Enter your
+                        Location
+                      </mat-error>
+                      <mat-error *ngIf="registerVenueForm.controls['venueArea'].hasError('maxlength')"> location should be
+                        max 50 chars.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column"  class="form">
+                  <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%"  class="fgroup">
+<!--                    <mat-form-field-->
+<!--                      [hideRequiredMarker]="registerVenueForm.value.hideRequired"-->
+<!--                      [floatLabel]="registerVenueForm.value.floatLabel">-->
+<!--                      <mat-select formControlName="venueState" placeholder="Select State" required autocomplete="off">-->
+<!--                        <option>-&#45;&#45; Select State -&#45;&#45;</option>-->
+<!--                        <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.viewValue">-->
+<!--                          {{sequence.viewValue}}-->
+<!--                        </mat-option>-->
+<!--                      </mat-select>-->
+<!--                      <mat-error *ngIf="registerVenueForm.controls['venueState'].hasError('required')"> Select your State-->
+<!--                      </mat-error>-->
+<!--                    </mat-form-field>-->
+
+                    <mat-form-field>
+                      <mat-label>State</mat-label>
+                      <input matInput  value="Tamil Nadu" disabled="disabled">
+                    </mat-form-field>
+
+                  </div>
+
+                  <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%"  class="fgroup">
+                    <mat-form-field
+                      [hideRequiredMarker]="registerVenueForm.value.hideRequired"
+                      [floatLabel]="registerVenueForm.value.floatLabel">
+                      <input type="text" matInput formControlName="venueCity"  placeholder="City" required autocomplete="off">
+                      <mat-error *ngIf="registerVenueForm.controls['venueCity'].hasError('required')"> Enter your City
+                      </mat-error>
+                      <mat-error *ngIf="registerVenueForm.controls['venueCity'].hasError('maxlength')"> City should be
+                        max 30 chars.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="form">
+                  <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%" class="fgroup">
+                    <mat-form-field
+                      [hideRequiredMarker]="registerVenueForm.value.hideRequired"
+                      [floatLabel]="registerVenueForm.value.floatLabel">
+                      <input type="text" matInput formControlName="cntName" placeholder="Your Name"  required autocomplete="off">
+                      <mat-error *ngIf="registerVenueForm.controls['cntName'].hasError('required')"> Enter your
+                        Name
+                      </mat-error>
+                      <mat-error *ngIf="registerVenueForm.controls['cntName'].hasError('maxlength')"> Name should be
+                        max 40 chars.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%" class="fgroup">
+                    <mat-form-field
+                      [hideRequiredMarker]="registerVenueForm.value.hideRequired"
+                      [floatLabel]="registerVenueForm.value.floatLabel">
+                      <input type="text" matInput formControlName="cntMob" placeholder="Your Mobile Number" maxlength="10"
+                             (keypress)="keyPress($event)" required autocomplete="off">
+                      <mat-error *ngIf="registerVenueForm.controls['cntMob'].hasError('required')"> Enter your
+                        Mobile Number
+                      </mat-error>
+                      <mat-error *ngIf="registerVenueForm.controls['cntMob'].hasError('minlength')">Mobile number should be min
+                        10 chars.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="form">
+                  <div fxFlex="50%" fxFlex.sm="100%" fxFlex.xs="100%" class="fgroup">
+                    <mat-form-field
+                      [hideRequiredMarker]="registerVenueForm.value.hideRequired"
+                      [floatLabel]="registerVenueForm.value.floatLabel">
+                      <input type="text" matInput formControlName="cntMail" placeholder="Email"  required autocomplete="off">
+                      <mat-error *ngIf="registerVenueForm.controls['cntMail'].errors?.required">Enter your email address
+                      </mat-error>
+                      <mat-error *ngIf="registerVenueForm.controls['cntMail'].hasError('invalidEmail')|| registerVenueForm.controls['cntMail'].hasError('email')">Invalid email address
+                      </mat-error>
+                      <mat-error *ngIf="registerVenueForm.controls['cntMail'].hasError('maxlength')">Email should be max
+                        60 chars.
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center" class="form">
+                  <button mat-raised-button type="submit" class="btn btn-primary submit-btn mt20"  [disabled]="registerVenueForm.invalid || loading">{{ loading ? 'PLEASE WAIT.....' : 'SUBMIT' }}</button>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

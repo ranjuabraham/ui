@@ -1,0 +1,72 @@
+.active_menu {
+  font-weight: bold !important;
+  color: rgba(255, 56, 56, 0.83) !important;
+}
+
+.profile-sidenav {
+  height: 500px;
+  width: 100%;
+}
+
+.profile-details {
+  background-color: #fff;
+
+  .profile-link {
+    color: #474C52 !important;
+    margin-top: 10px;
+    font-size: 13px;
+    font-family: 'Montserrat SemiBold', sans-serif;
+  }
+
+  .pd-menu {
+
+    ul {
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    ul li {
+      list-style: none;
+    }
+
+    ul li {
+      margin-bottom: 22px;
+    }
+
+    ul li a {
+      color: #474C52;
+      font-family: 'Montserrat SemiBold', sans-serif;
+    }
+
+    .ac-set {
+      text-decoration: none;
+      color: #001731;
+      font-family: 'Montserrat SemiBold', sans-serif;
+      font-size: 16px;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 960px) {
+  .profile-sidenav {
+    height: 40px !important;
+
+    .mat-elevation-z1 {
+      box-shadow: unset !important;
+    }
+
+    .nav-btn {
+      width: 150px;
+    }
+
+    .active_menu {
+      font-weight: bold !important;
+      color: #8C37DB !important;
+      border: #8C37DB 1px solid !important;
+      border-radius: 0 !important;
+      line-height: 30px !important;
+    }
+  }
+}

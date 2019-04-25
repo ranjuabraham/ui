@@ -1,0 +1,108 @@
+<div class="my-account-container">
+
+  <button class="dropdown-btn" mat-button [matMenuTriggerFor]="menu">
+   <span fxLayout="row" fxLayoutAlign="start center">
+      <!--<img class="avatar" [src]="myAccount?.photoURL || 'assets/images/avatars/noavatar.png'">-->
+     <!--<mat-icon class="icon3">date_range constant</mat-icon>-->
+     <div class="icon3">
+        <img class="user-ac-icon" src="../../../../assets/images/icons/user-ac-icon.svg">
+     </div>
+       <span class="user-name" fxShow="false" fxShow.gt-sm>{{userName || myAccount?.labelName}}</span>
+      <mat-icon class="icon" fxHide fxShow.gt-xs>arrow_drop_down constant</mat-icon>
+    </span>
+  </button>
+  <mat-menu #menu="matMenu" class="toolbar-user-btn" backdropClass="my-account-menu">
+    <div fxLayout="column" fxLayoutAlign="space-between center" class="dropdown-menu">
+      <mat-icon class="icon2">arrow_drop_up constant</mat-icon>
+      <div class="booking-menu" fxLayout="row">
+        <div class="in-icon" fxFlex="30px">
+          <img src="../../../../assets/images/icons/book-icon.svg">
+        </div>
+        <div fxFlex="125px">
+          <label class="dlabel" style="">My Bookings</label>
+          <button mat-menu-item class="dbtn"><a class="book-link" routerLink="/booking/my-booking">Bookings
+          </a></button>
+        </div>
+        <div fxFlex="30px">
+          <!--<mat-icon class="notify" matBadge="20" matBadgeColor="warn">notifications_none constant</mat-icon>-->
+          <img style="width: 25px" src="../../../../assets/images/icons/notification-bell.svg"><span class="notify-count" matBadge="20"></span>
+        </div>
+      </div>
+
+      <div class="my-stuff" fxLayout="row">
+        <div class="in-icon" fxFlex="30px">
+          <img src="../../../../assets/images/icons/user-icon.svg">
+        </div>
+        <div fxFlex="155px">
+          <label class="dlabel">My stuff</label>
+          <button mat-menu-item class="dbtn"><a class="book-link" routerLink="/my-wishlist">Wishlist</a></button>
+          <button mat-menu-item class="dbtn"><a class="book-link" routerLink="/my-reviews">Reviews</a></button>
+        </div>
+      </div>
+
+
+      <div class="settings" fxLayout="row">
+        <div class="in-icon" fxFlex="30px">
+          <img src="../../../../assets/images/icons/settings-icon.svg">
+        </div>
+        <div fxFlex="155px">
+          <label class="dlabel">Settings</label>
+          <button mat-menu-item class="dbtn"><a class="book-link" routerLink="/profile">Profile</a></button>
+        </div>
+      </div>
+
+      <div class="logout" fxLayout="row">
+        <mat-icon class="in-icon" fxFlex="30px">exit_to_app constant</mat-icon>
+        <div fxFlex="155px">
+          <button mat-menu-item class="dbtn"><a href="#" class="logout-btn" (click)="logout()">Logout</a></button>
+        </div>
+      </div>
+    </div>
+
+  </mat-menu>
+
+  <!--<button mat-button (click)="isOpen = !isOpen" class="toolbar-user-btn" [class.open]="isOpen"-->
+  <!--[ngStyle.xs]="{'min-width':'70px'}">-->
+  <!--<span fxLayout="row" fxLayoutAlign="start center">-->
+  <!--&lt;!&ndash;<img class="avatar" [src]="myAccount?.photoURL || 'assets/images/avatars/noavatar.png'">&ndash;&gt;-->
+  <!--<mat-icon class="icon3">date_range constant</mat-icon>-->
+  <!--<span class="name">{{myAccount?.labelName || Admin}}</span>-->
+  <!--<mat-icon class="icon" fxHide fxShow.gt-xs>arrow_drop_down constant</mat-icon>-->
+  <!--</span>-->
+  <!--</button>-->
+
+  <!--<div class="dropdown mat-elevation-z1" [class.open]="isOpen">-->
+  <!--<mat-icon class="icon2">arrow_drop_up constant</mat-icon>-->
+  <!--<div class="content">-->
+  <!--<mat-nav-list>-->
+  <!--<div class="item-1">-->
+  <!--<div class="l-item">-->
+  <!--<mat-icon class="in-icon">event_note constant</mat-icon>-->
+  <!--<label class="dlabel">Bookings</label><br>-->
+  <!--<a  class="book-link" routerLink="/booking/my-booking">My Bookings</a>-->
+  <!--</div>-->
+  <!--<mat-icon  class="notify-icon">notifications_none constant</mat-icon>-->
+  <!--<span class="notify-badge" matBadge="20" matBadgeColor="warn"></span>-->
+  <!--</div>-->
+  <!--<mat-divider></mat-divider>-->
+  <!--<div class="item-1">-->
+  <!--<mat-icon class="in-icon">account_circle constant</mat-icon>-->
+  <!--<label class="dlabel">My stuff</label><br>-->
+  <!--<a  class="book-link" routerLink="/my-wishlist">My Wishlist</a><br>-->
+  <!--<a  class="book-link" routerLink="/my-reviews">My Reviews</a>-->
+  <!--</div>-->
+  <!--<mat-divider></mat-divider>-->
+  <!--<div class="item-1">-->
+  <!--<mat-icon class="in-icon">settings constant</mat-icon>-->
+  <!--<label class="dlabel">Settings</label><br>-->
+  <!--<a  class="book-link" routerLink="/profile">My Profile</a>-->
+  <!--</div>-->
+  <!--<mat-divider></mat-divider>-->
+  <!--<div class="item-1">-->
+  <!--<mat-icon class="in-icon">exit_to_app constant</mat-icon>-->
+  <!--<a href="#" class="logout-btn" (click)="logout()">Logout</a>-->
+  <!--</div>-->
+  <!--</mat-nav-list>-->
+  <!--</div>-->
+  <!--</div>-->
+</div>

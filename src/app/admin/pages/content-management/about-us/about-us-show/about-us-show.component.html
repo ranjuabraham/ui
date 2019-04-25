@@ -1,0 +1,89 @@
+<div fxLayout="column" class="about-us-show components-container-gt-xs" [ngClass.xs]="'components-container-xs'">
+  <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+  <div class="table-header">
+    <span class="header-sec">About US</span>
+    <button class="add-new-btn" mat-flat-button routerLink="/venue/content-management/about-us/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+      Add New
+    </button>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/content-management/about-us/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div>
+  </div>
+  <div class="table-component-holder mat-elevation-z1">
+    <div class="table-search" style="display: none">
+      <mat-form-field>
+        <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+               placeholder="Search by Description" autocomplete="off">
+      </mat-form-field>
+    </div>
+
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort class="mat-elevation-z1">
+        <!-- Header -->
+        <ng-container matColumnDef="abtUsHdr">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width15"> Header</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width15" ngClass.sm="width100" ngClass.xs="width100"
+                    data-label="Header: "> {{row.abtUsHdr}} </mat-cell>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="abtUsDet">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width40"> Description</mat-header-cell>
+          <mat-cell *matCellDef="let row" data-label="Description: " class="width40" ngClass.sm="width100"
+                    ngClass.xs="width100">
+            <span class="description">
+              <span *ngIf="row.abtUsDet.length < 100" [innerHTML]="row.abtUsDet | slice:0:100"></span>
+              <span *ngIf="row.abtUsDet.length > 100">
+                <span id="dots{{row.abtUsId}}" [innerHTML]="row.abtUsDet | slice:0:100"></span>
+                    <span id="less{{row.abtUsId}}" class="full-content" [innerHTML]="row.abtUsDet"></span>
+                     <span style="color: #5d8ed5; cursor: pointer" id="moreBtn{{row.abtUsId}}"
+                           (click)="readMore(row.abtUsId)">... Read more</span>
+              </span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Display Sequence -->
+        <ng-container matColumnDef="abtUsSeq">
+          <mat-header-cell *matHeaderCellDef class="width15">Sequence</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width15 text-center" data-label="Sequence: " ngClass.sm="width100"
+                    ngClass.xs="width100">{{row.abtUsSeq}}</mat-cell>
+        </ng-container>
+        <!-- Status -->
+        <ng-container matColumnDef="abtUsAct">
+          <mat-header-cell *matHeaderCellDef class="width15">Status</mat-header-cell>
+          <mat-cell *matCellDef="let row" data-label="Status: " class="width15" ngClass.sm="width100"
+                    ngClass.xs="width100">
+              <span *ngIf="row.abtUsAct == 1;">
+                <span style="color: green">Active</span>
+              </span>
+            <span *ngIf="row.abtUsAct != 1;">
+                <span style="color: #FE0000">De-active</span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width10">
+            Action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100">
+            <a mat-icon-button routerLink="/venue/content-management/about-us/edit/{{row.prdctDetId}}/{{row.abtUsId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5,10, 25, 100]"></mat-paginator>
+    </div>
+  </div>
+</div>

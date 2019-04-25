@@ -1,0 +1,7 @@
+.mat-drawer-container {
+  background-color: #FFFFFF;
+  color: rgba(0, 0, 0, 0.87);
+}
+::ng-deep.mat-drawer-content{
+  overflow: hidden !important;
+}

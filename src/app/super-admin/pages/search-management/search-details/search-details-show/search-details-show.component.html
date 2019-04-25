@@ -1,0 +1,107 @@
+<div fxLayout="column" class="search-details-show components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px">
+
+  <div fxFlex class="table-component-holder mat-elevation-z4">
+    <mat-toolbar class="table-header">
+        <h1 class="mat-headline center-align">Search Details</h1>
+    </mat-toolbar>
+    <hr/>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <div style="width: 50%">
+        <span>
+        <a mat-flat-button style="background-color: lightseagreen" routerLink="/admin/search-details/create">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>Add Detail</a></span>
+        </div>
+        <div style="width: 50%">
+           <span class="tool-btn">
+          <button mat-flat-button [matMenuTriggerFor]="menu" style="background-color: red">
+           TOOLS
+                    <mat-icon _ngcontent-c11=""
+                              class="sidenav-dropdown-indicator rotate mat-icon material-icons ng-star-inserted indicateOpen"
+                              role="img" aria-hidden="true" ng-reflect-klass="sidenav-dropdown-indicator rot"
+                              ng-reflect-ng-class="[object Object]"> expand_more </mat-icon>
+
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>print</mat-icon>
+              <span>Print</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon><i class="fa">&#xf1c3;</i> </mat-icon>
+           <span> Export to Excel</span>
+            </button>
+          </mat-menu>
+      </span>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="table-search">
+      <mat-form-field>
+        <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+               placeholder="Search" autocomplete="off">
+      </mat-form-field>
+    </div>
+    <div class="table-container">
+      <table mat-table #table [dataSource]="dataSource" matSort>
+
+        <!-- Serial Number -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell *matHeaderCellDef>S.No</th>
+          <td mat-cell *matCellDef="let i = index"> {{ i + 1 }}</td>
+        </ng-container>
+
+        <!-- Search Details -->
+        <ng-container matColumnDef="searchDetDesc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Search Detail</th>
+          <td mat-cell *matCellDef="let row"> {{row.searchDetDesc}}</td>
+        </ng-container>
+
+        <!-- Search Category -->
+        <ng-container matColumnDef="searchDesc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Search Category</th>
+          <td mat-cell *matCellDef="let row"> {{row.searchDesc}}</td>
+        </ng-container>
+
+        <!-- Sequence -->
+        <ng-container matColumnDef="sequence">
+          <th mat-header-cell *matHeaderCellDef>Sequence</th>
+          <td mat-cell *matCellDef="let row">
+            {{row.searchDetSeq}}
+          </td>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef>status</th>
+          <td mat-cell *matCellDef="let row" style="text-align: center">
+            <mat-chip-list>
+              <span *ngIf="row.searchDetAct == 1;"><mat-chip style="background-color: green"
+                                                            selected>Active</mat-chip></span>
+              <span *ngIf="row.searchDetAct != 1;"><mat-chip color="warn" selected>De-active</mat-chip></span>
+            </mat-chip-list>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>
+            Action
+          </th>
+          <td mat-cell *matCellDef="let row;">
+            <a mat-icon-button color="accent"
+               routerLink="/admin/search-details/edit/{{row.searchDetId}}">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </a>
+          </td>
+        </ng-container>
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
+
+    </div>
+  </div>
+</div>

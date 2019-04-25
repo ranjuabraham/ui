@@ -1,0 +1,59 @@
+.editVenueCategory{
+  background-color: white;
+}
+.form-header {
+  background-color: #327ebd;
+  color: white;
+  padding: 0 5px;
+}
+
+.validation-message{
+  background-color: #00BCD4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+}
+
+.container > * {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  padding-top: 6px;
+}
+
+.mat-form-field {
+  font-size: 16px;
+  flex-grow: 1;
+}
+
+.invalid-feedback {
+  color: #f44336;
+  font-size: 13px;
+  font-family: 'Montserrat', sans-serif;
+  padding: 2px;
+}
+
+.mat-error {
+  float: right;
+}
+
+//text editor css
+.widgetHolder{
+  margin: 0 0 20px 0;
+  background-color:white;
+}
+
+:host #discipline-qe /deep/ .ql-container{
+  height: 250px;
+}
+::ng-deep.widgetHolder .is-invalid {
+  .ql-container {
+    border-color: #f44336 !important;
+  }
+}
+//end text editor css

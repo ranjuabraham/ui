@@ -1,0 +1,74 @@
+<div id="my-wishlist">
+  <div class="theme-container">
+    <div class="hd-container">
+      <div class="header-1"><h3>My wishlist <span class="wishlist-count" *ngIf="count">({{count}})</span></h3></div>
+      <div class="wishlist-container">
+        <div class="mat-elevation-z1" [@fadeIn]>
+          <div class="wishlist">
+            <div fxLayout="column" fxLayoutAlign="center center" class="without-table" *ngIf="count == 0">
+              <div><img style="width: 210px" src="../../../../assets/images/icons/whislist.svg"></div>
+              <div class="no-data">No Wishlist Yet!</div>
+            </div>
+            <div class="list-box mb30" *ngIf="wishlistData">
+              <div class="loop-list" *ngFor="let wish of wishlistData.list">
+                <div fxLayout="row">
+
+                  <div class="hall-image" fxFlex="20" fxFlex.sm="30" fxFlex.xs="30">
+                    <img class="hall-img" src="{{wish.ovrAttrDetURL}}" alt="Image">
+                  </div>
+
+                  <div class="venue-details" fxFlex="45" fxFlex.sm="70" fxFlex.xs="70">
+                    <div class="hall-name"> {{wish.prdctDetDesc}}</div>
+                    <div class="hall-address">
+                      <mat-icon>location_on constant</mat-icon>
+                      {{wish.city}} - {{wish.pincode}}</div>
+                    <div class="hall-price">{{wish.tariff | currency:'INR':'symbol':'1.0-0'}} <span class="onwards">onwards</span>
+                      <button style="cursor: text;" mat-flat-button class="hall-discount"
+                              *ngIf="wish.discVal > 0">{{wish.discVal}}%
+                      </button>
+                    </div>
+                    <div class="hall-rating" *ngIf="wish.userRating > 0">
+                      <mat-icon>star constant</mat-icon>
+                      {{wish.userRating}}</div>
+
+                    <div fxHide fxShow.lt-md="true">
+                      <button mat-stroked-button class="check-btn"
+                              (click)="checkAvailability(wish.prdctDetId, wish.subPrdctDetId)">Check Availability
+                      </button>
+                      <button mat-flat-button class="book-btn"><a class="book-reserve-btn" target="_blank"
+                                                                  [routerLink]="['/chennai', appService.findAndReplace(wish.prdctHint, ' ', '-').toLowerCase(),  appService.findAndReplace(wish.prdctDetDesc, ' ', '-').toLowerCase()]"
+                                                                  [queryParams]="{categoryId: wish.prdctId, venueId: wish.prdctDetId, hallId: wish.subPrdctDetId, date: '0'}">Book
+                        or Reserve</a></button>
+                      <button color="warn" mat-icon-button
+                              (click)="deleteDialog(userId, wish.prdctDetId, wish.prdctDetDesc)">
+                        <mat-icon>delete constant</mat-icon>
+                      </button>
+                    </div>
+
+                  </div>
+                  <div fxFlex="25" fxHide fxShow.gt-sm>
+                    <button mat-stroked-button class="check-btn"
+                            (click)="checkAvailability(wish.prdctDetId, wish.subPrdctDetId)">Check Availability
+                    </button>
+                    <button mat-flat-button class="book-btn"><a class="book-reserve-btn" target="_blank"
+                                                                [routerLink]="['/chennai', appService.findAndReplace(wish.prdctHint, ' ', '-').toLowerCase(),  appService.findAndReplace(wish.prdctDetDesc, ' ', '-').toLowerCase()]"
+                                                                [queryParams]="{categoryId: wish.prdctId, venueId: wish.prdctDetId, hallId: wish.subPrdctDetId, date: '0'}">Book
+                      or Reserve</a></button>
+                  </div>
+                  <div fxFlex="10" fxHide fxShow.gt-sm>
+                    <button mat-icon-button color="warn" (click)="deleteDialog(userId, wish.prdctDetId, wish.prdctDetDesc)">
+                      <mat-icon>delete constant</mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <mat-divider style="margin: 8px 0" *ngIf="count"></mat-divider>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

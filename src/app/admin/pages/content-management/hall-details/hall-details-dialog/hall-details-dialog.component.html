@@ -1,0 +1,71 @@
+  <div>
+    <div style="float:right; color: red;cursor: pointer;" (click)="closeDialog()"><mat-icon>close</mat-icon></div>
+    <div><h3 mat-dialog-title style="text-align: center; font-weight: bold">Transaction Details </h3></div>
+  </div>
+  <div class="container">
+   
+    <div class="overflow-height">
+      <table id="dialog-box" >
+        <tr>
+          <td>Hall Name</td>
+          <td>{{data.hallName}}</td>
+        </tr> 
+        <tr>
+          <td>Hall Description</td>
+          <td>{{data.hallDesc}}</td>
+        </tr>
+        <tr>
+            <td>Is Default</td>
+            <td><span *ngIf="data.isDefault === 1" >Yes</span>
+              <span *ngIf="data.isDefault !== 1" >No</span></td>
+        </tr>
+        <tr>
+            <td>Hourly Flag</td>
+            <td><span *ngIf="data.hourlyFlg === 1" >Yes</span>
+              <span *ngIf="data.hourlyFlg !== 1" >No</span>
+            </td>
+        </tr>
+        <tr *ngIf="data.hourlyFlg === 1">
+            <td>Hourly Cost(per hour)</td>
+            <td>{{data.hourlyCost}}
+            </td>
+        </tr>
+        <tr>
+            <td>Buffet Flag</td>
+            <td><span *ngIf="data.buffetFlg === 1" >Yes</span>
+              <span *ngIf="data.buffetFlg !== 1" >No</span>
+            </td>
+        </tr>
+        <tr *ngIf="data.buffetFlg === 1">
+            <td>Minimum Pax</td>
+            <td>{{data.minimumPax}}
+            </td>
+        </tr>
+        <tr *ngIf="data.buffetFlg === 1">
+            <td>Maximum Pax</td>
+            <td>{{data.maximumPax}}
+            </td>
+        </tr>
+        <tr>
+            <td>Discount Flag</td>
+            <td><span *ngIf="data.disocuntFlg === 1" >Yes</span>
+              <span *ngIf="data.disocuntFlg !== 1" >No</span>
+            </td>
+        </tr>
+        <tr *ngIf="data.disocuntFlg === 1">
+            <td>Muhurtham Discount </td>
+            <td>{{data.muhurtDisc}}%  </td>
+        </tr><tr *ngIf="data.disocuntFlg === 1">
+            <td>Non Muhurtham Discount</td>
+            <td>{{data.nonMuhurtDisc}}% </td>
+        </tr><tr *ngIf="data.disocuntFlg === 1">
+            <td>Spl Day Discount</td>
+            <td>{{data.splDayDisc}}% </td>
+        </tr><tr *ngIf="data.disocuntFlg === 1">
+            <td>Valid Till</td>
+            <td>{{data.discStDt | date:'dd/MM/yyyy'}}  </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+      

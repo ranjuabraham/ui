@@ -1,0 +1,96 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="events-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Events</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/events/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/events/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+         <!-- Hall Name -->
+         <ng-container matColumnDef="subPrdctDetId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header class="width20"> Hall Name</mat-header-cell>>
+            <mat-cell *matCellDef="let row" class="width20">
+                <mat-chip-list>
+                  <span *ngIf="row.subPrdctDetId == 0;">All Halls </span>
+                  <span *ngIf="row.subPrdctDetId != 0;">{{row.subPrdctDetId}} </span>
+                </mat-chip-list></mat-cell>>
+          </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="evtHdr">
+          <mat-header-cell *matHeaderCellDef class="width30">Event Name</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width30" ngClass.sm="width100" ngClass.xs="width100" data-label="Event Name: "> {{row.evtHdr}}</mat-cell>
+        </ng-container>
+
+        <!-- Type of Promotion-->
+        <ng-container matColumnDef="evtShwFor">
+            <mat-header-cell *matHeaderCellDef class="width20">Event Allowed For</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Event For: ">
+                <span *ngIf="row.evtShwFor == 1;"><span>Muhurtham Only</span></span>
+                <span *ngIf="row.evtShwFor == 2;"><span>Non-Muhurtham</span></span>
+                <span *ngIf="row.evtShwFor != 2 && row.evtShwFor != 1;"><span>All Days</span></span>
+            </mat-cell>
+          </ng-container>
+
+         <!-- Sequence-->
+         <ng-container matColumnDef="evtSeq">
+          <mat-header-cell *matHeaderCellDef class="width10">Sequence</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Sequence: "> {{row.evtSeq}}</mat-cell>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="evtAct">
+          <mat-header-cell *matHeaderCellDef class="width10">Status</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+            <span *ngIf="row.evtAct === 1;">
+                <span style="color: green">Active</span>
+              </span>
+            <span *ngIf="row.evtAct !== 1;">
+                <span style="color: #FE0000">De-active</span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width10"> Action  </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                <a mat-icon-button routerLink="/venue/events/edit/{{row.prdctDetId}}/{{row.evtId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,11 @@
+<div class="close-btn-outer">
+  <button mat-mini-fab color="warn" (click)="close()"><mat-icon>close</mat-icon></button>
+</div>
+
+<div mat-dialog-content>
+  <div class="header">Chargeable Amenities</div>
+  <ul class="content" *ngFor="let chargeableAmenities of chargeableAmenitiesData">
+    <li>{{chargeableAmenities['facSpec']}}</li>
+  </ul>
+</div>
+

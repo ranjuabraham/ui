@@ -1,0 +1,66 @@
+@mixin mat-list-icon($size: 24px) {
+  font-size: $size;
+  height: $size;
+  width: $size;
+}
+@mixin mat-chip() {
+  padding: 1px 7px;
+}
+
+@mixin sidemenu-item($theme,$icon-size) {
+  .sidenav-dropdown-indicator {
+    transition: transform .25s;
+    &.indicateOpen {
+      transform: rotate(180deg);
+    }
+  }
+  mat-nav-list {
+    overflow: hidden;
+    padding-top: 0px;
+
+  }
+  .menu-item{
+    padding-left: 10px;
+    font-family: $font-family-semiBold;
+    font-size: 12px;
+  }
+  .mat-list-text{
+    padding-left: 10px !important;
+    font-family: $font-family-semiBold;
+    font-size: 12px;
+  }
+  .primary{
+    transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
+    padding-top: 0px;
+  }
+  .secondaryMenu {
+    //background:  mat-color($primary, 500); ;
+    transition: max-height .4s cubic-bezier(.35, 0, .25, 1);
+    padding-top: 0px;
+    background-color: whitesmoke;
+  }
+
+  .mat-nav-list .mat-list-item .mat-list-icon{
+    @include mat-list-icon($icon-size);
+  }
+  .mat-chip:not(.mat-basic-chip){
+    @include mat-chip()
+  }
+  .mat-nav-list .mat-list-item {
+    font-size: 14px;
+  }
+
+
+}
+
+.active{
+  background-color: #8C37DB !important;
+  color: #FFFFFF !important;
+}
+.mat-list-item:hover{
+  background-color: #8C37DB !important;
+  color: #FFFFFF !important;
+}
+.active:focus{
+  background-color: #8C37DB !important;
+}

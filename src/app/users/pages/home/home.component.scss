@@ -1,0 +1,389 @@
+@import "../../@theme/styles/variables";
+.mat-elevation-z4-hd[_ngcontent-c12] {
+  box-shadow: 1px 0px 0px 0px #d4d4d4, 0px 1px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* banner section */
+.banner-section {
+  font-family: $font-family;
+  .banner-image {
+    background-image: url("../../../../assets/images/banner/violet-banner.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    height: 455px;
+    opacity: 1;
+    .banner-container {
+      padding-left: 8%;
+      margin-left: auto;
+      margin-right: auto;
+
+      .banner-header {
+        font-size: 1.7em;
+        color: #ffffff;
+        letter-spacing: 1px;
+        font-family: $font-family-semiBold;
+        font-weight: bold;
+      }
+
+      .banner-header-1 {
+        font-size: 1em;
+        color: #ffffff;
+        margin-top: 10px;
+        letter-spacing: 2px;
+        font-family:  $font-family-semiBold;
+      }
+
+      /* banner menu */
+      .search-menu {
+        margin-top: 15px;
+        margin-bottom: 1px;
+        .banner-menu {
+          font-family:  $font-family-semiBold;
+          padding: 11px 13px 11px 13px;
+          min-width: 11%;
+          background-color: #fff;
+          text-align: center;
+          a {
+            text-decoration: none;
+            color: #556b7f;
+            font-size: 13px;
+          }
+          .active_menu {
+            color: red !important;
+          }
+        }
+      }
+
+    }
+  }
+}
+.content-loader{
+  padding: 0 3%;
+  .ph-item {
+    padding: 10px 0 10px !important;
+    border: unset !important;
+    border-radius: 0 !important;
+    box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  }
+  .ph-picture {
+    height: 170px !important;
+  }
+}
+
+/* home banner bottom */
+.banner-btm-section{
+  background-color: #F1F1F1;
+  .info-bar {
+    .mat-card {
+      height: 100px;
+      .content {
+        margin-left: 10px;
+        p {
+          font-weight: 500;
+        }
+        span {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+//::ng-deep .cdk-overlay-pane {
+//  position: fixed !important;
+//  padding-right: 8px;
+//  padding-top: 3px;
+//}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 960px) {
+  .banner-container {
+    padding-top: 10%;
+    padding-left: 2% !important;
+    padding-right: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:0;
+    .mbn-heater{
+      font-size: 16px !important;
+      color: #ffffff;
+      letter-spacing: 1px;
+      font-family:  $font-family-semiBold;
+      text-align: center;
+      font-weight: bold;
+      padding: 0px 45px;
+      line-height: 1.7;
+    }
+    .mbn-header1{
+      color: #ffffff;
+      margin-top: 10px;
+      letter-spacing: 2px;
+      font-family:  $font-family-semiBold;
+      text-align: center;
+      padding-bottom:7%;
+      padding: 0 -46px;
+      font-weight: bold;
+      line-height: 1.7;
+      font-size: 12px !important;
+    }
+  }
+  .banner-section {
+    .banner-image {
+      background:#8c37db !important;
+      height: 600px !important;
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 960px) {
+  .banner-container {
+    padding-top: 4%;
+    padding-left: 2% !important;
+    padding-right: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    //.banner-header {
+    //  font-size: 1.2em !important;
+    //}
+  }
+  .carousel-header{
+    margin-left: 12px !important;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .banner-container {
+    padding-top: 4%;
+    padding-left: 8% !important;
+    padding-right: 2%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+///* Large devices (laptops/desktops, 992px and up) */
+//@media only screen and (min-width: 992px) {...}
+//
+///* Extra large devices (large laptops and desktops, 1200px and up) */
+//@media only screen and (min-width: 1200px) {...}
+
+/* ------------------------------------- end banner section ----------------------------------------------------------- */
+
+
+/* ------------------------------------- service section ----------------------------------------------------------- */
+.service-cnt{
+  .mat-card{
+    padding: 16px !important;
+  }
+  .item-icon{
+    width: 38px !important;
+    height: 38px;
+    img{
+      width: 100%;
+    }
+  }
+  .icon2{
+    img{
+      width: 90% !important;
+    }
+  }
+  .light-block.mat-card {
+    background: #f1f1f145 !important;;
+    box-shadow: none !important;
+  }
+  .header{
+    font-family: Montserrat, sans-serif;
+    font-size: 16px;
+    color: #556B7F;
+    padding-top: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+}
+
+/* ------------------------------------- popular halls section ----------------------------------------------------------- */
+.popular-halls-container{
+  margin: 0 1% 0 1%;
+}
+.popular-halls-section {
+  .carousel-header {
+    font-family:  $font-family;
+    color: #001731;
+    font-size: 21px;
+    margin-top: 30px;
+    margin-left: 63px;
+    font-weight: bold;
+  }
+}
+
+/*---------------------- Mobile App section ------------*/
+.mobile-app-section{
+  padding: 4% 10% 0% 10%;
+  .mobileAppHeader{
+    color: #333333;
+    font-size: 1.7em;
+    font-family:  $font-family-semiBold;
+  }
+  .mobileAppCnt{
+    color: #687B8E !important;
+    font-family: $font-family;
+    line-height: 29px;
+    font-size: 19px;
+    padding: 10px 200px 10px 0px;
+  }
+  .mobileAppImage{
+    img{
+      width: 370px;
+      height: 370px;
+    }
+  }
+  .mobileAppIcon{
+    width: 50%;
+  }
+}
+
+
+
+/* ----------------------- quick contact style -------------------*/
+
+.hd-qc-section{
+  float: right;
+  position: fixed;
+  right: 0;
+  top: 125px;
+  background-color: #fff;
+  border-radius: 20px 2px 0px 20px;
+  z-index: 9999;
+  line-height: 30px !important;
+  padding: 0 12px !important;
+  min-width: 50px;
+}
+
+.qc-container {
+  position: fixed;
+  float: right;
+  right: 30px;
+  top: 100px;
+  z-index: 9999;
+  font-family: $font-family-semiBold;
+  .qc-header {
+    background-color: #8c37db;
+    padding: 8px 50px 8px 50px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  ::ng-deep.mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 3px !important;
+  }
+  .qc-form {
+    background-color: #ffffff;
+    padding: 12px;
+    .mat-form-field {
+      width: 100%;
+    }
+    .form-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #556b7f;
+      letter-spacing: 0.4px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .user-type {
+      padding: 10px 0px 16px 0px;
+    }
+    .radio-btn {
+      margin-left: 4px;
+    }
+    .mat-error{
+      float: right !important;
+    }
+    ::ng-deep .mat-form-field-subscript-wrapper {
+      font-size: 66%;
+      margin-top: 0.66666667em;
+      top: calc(100% - 1em);
+    }
+    ::ng-deep .mat-radio-container {
+      height: 15px !important;
+      width: 12px !important;
+      margin-left: 14px;
+    }
+    ::ng-deep .mat-radio-outer-circle {
+      height: 15px !important;
+      width: 15px !important;
+    }
+    ::ng-deep .mat-radio-inner-circle {
+      position: absolute;
+      height: 19px;
+      left: -2px;
+      top: -2px;
+      width: 19px;
+    }
+    ::ng-deep .mat-radio-checked .mat-radio-inner-circle {
+      transform: scale(.4);
+    }
+    ::ng-deep .mat-radio-label-content {
+      font-size: 12px;
+      color: #556b7f;
+      letter-spacing: 0.4px;
+    }
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: .2em;
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+      padding: 4px !important;
+    }
+    ::ng-deep .mat-form-field-infix {
+      border-top: 0.1em solid transparent;
+    }
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+      border-radius: 0 !important;
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+      border-radius: 0 !important;
+    }
+    ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+      border-color: $primary !important;
+    }
+    ::ng-deep.mat-radio-button.mat-accent .mat-radio-inner-circle{
+      background-color: $primary;
+    }
+    input.mat-input-element {
+      font-size: 13px !important;
+    }
+    textarea.mat-input-element {
+      padding: 14px 0 !important;
+      font-size: 13px !important;
+    }
+    .submit-btn {
+      background-color: #00aa00;
+      min-width: 125px !important;
+      line-height: 31px !important;
+      padding: 0 16px !important;
+      margin-top: 8px;
+      color: #fff;
+      font-family: $font-family;
+      font-weight: $font-weight;
+      border-radius: 0 !important;
+    }
+    .close-btn{
+      padding: 20px 0px 2px 0px;
+      cursor: pointer;
+      ::ng-deep .mat-icon {
+        height: 33px;
+        width: 33px;
+        padding: 4px;
+        border: $primary 1px solid;
+        border-radius: 50px;
+        font-size: 33px;
+        color: $primary;
+      }
+    }
+  }
+}
+/* ----------------------- end quick contact style -------------------*/
+

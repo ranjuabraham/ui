@@ -1,0 +1,269 @@
+@import "../../../@theme/styles/variables";
+
+.approval-request-container {
+  //font-family: $font-family;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F6F6F6;
+
+  .approval-request-section {
+    padding: 20px;
+
+    .header-row {
+      padding: 8px 0 18px 10px;
+      font-family: $font-family;
+      margin-left: 30px;
+
+      .header {
+        padding-left: 10px;
+        font-family: $font-family-semiBold;
+        font-weight: 700;
+        font-size: 18px;
+      }
+    }
+
+    .section-1 {
+      .re-img {
+        padding: 26px 70px;
+      }
+
+      .content-box {
+        font-family: $font-family;
+
+        .content {
+          padding: 20px 40px;
+          border: 1px #8C37DB solid;
+          background: rgba(238, 219, 255, 45);
+          color: #8C37DB;
+
+          .header {
+            font-family: $font-family-semiBold;
+            font-weight: 700;
+            font-size: 18px;
+            color: #333333;
+            margin-bottom: 12px;
+          }
+
+          .approval-process {
+            padding: 0;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            list-style: none;
+            line-height: 30px;
+
+            .list {
+              position: relative;
+              .res-text {
+                margin-left: 17px;
+                display: inline-block;
+                color: #8C37DB;
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .section-2 {
+      .header {
+        font-family: $font-family-semiBold;
+        font-weight: 700;
+        font-size: 18px;
+        color: #333333;
+      }
+
+      .content {
+        font-family: $font-family;
+        padding: 15px 25px 6px 5px;
+        font-size: 13px;
+        line-height: 25px;
+        .note-text{
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .section-3 {
+      font-family: $font-family;
+      margin-bottom: 30px;
+
+      .header {
+        font-family: $font-family-semiBold;
+        font-weight: 700;
+        font-size: 18px;
+        color: #333333;
+        padding-bottom: 8px;
+      }
+
+      .booking-info {
+        margin-bottom: 20px;
+        font-size: 13px;
+        font-family: $font-family-semiBold;
+        font-weight: bold;
+      }
+
+      .booking-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+        .header-1{
+          font-family: $font-family-semiBold;
+          font-weight: 700;
+          font-size: 13px;
+        }
+
+        .m-btm-10 {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .section-4 {
+      font-family: $font-family;
+      margin-bottom: 30px;
+      .header {
+        font-family: $font-family-semiBold;
+        font-weight: 700;
+        font-size: 18px;
+        color: #333333;
+        margin-bottom: 12px;
+      }
+
+      .billing-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+        .header-1{
+          font-family: $font-family-semiBold;
+          font-weight: 700;
+          font-size: 13px;
+        }
+        .discount{
+          ::ng-deep.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+            background-color: #FFEDD8;
+            color: #FF8800;
+            font-size: 12px;
+            min-height: 18px;
+          }
+        }
+        .re-description {
+          padding: 20px 40px;
+          background: rgba(247, 239, 255, 100);
+          color: #8C37DB;
+          margin-top: 28px;
+        }
+      }
+    }
+
+    .section-5 {
+      font-family: $font-family;
+      .header {
+        font-family: $font-family-semiBold;
+        font-weight: 700;
+        font-size: 18px;
+        color: #333333;
+        margin-bottom: 12px;
+      }
+
+      .customer-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+        .header-1{
+          font-family: $font-family-semiBold;
+          font-weight: 700;
+          font-size: 13px;
+        }
+      }
+    }
+    .section-6{
+      font-family: $font-family;
+      margin-bottom: 30px;
+      .header {
+        font-family: $font-family-semiBold;
+        font-weight: 700;
+        font-size: 18px;
+        color: #333333;
+      }
+
+      .food-menu-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+        .header-1{
+          font-family: $font-family-semiBold;
+          font-weight: 700;
+          font-size: 13px;
+        }
+        .b-value{
+        }
+      }
+    }
+
+
+
+    //mobile responsive extra small scree (xs)
+    .section-1{
+      .m-img{
+        img{
+          width: 145px !important;
+        }
+      }
+      .content-box{
+        .m-content{
+          padding: 8px 10px;
+        }
+        .m-header{
+          padding-bottom: 10px;
+          font-size: 13px;
+        }
+      }
+    }
+    .m-section-2{
+      margin-top: 20px;
+      .m-content{
+        padding: 20px 0px 0px 0px;
+        .m-text{
+          margin-left: 20px !important;
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    .m-section-4{
+      .m-billing-details{
+        padding: 10px 6px;
+        .m-header-1{
+          font-size: 12px;
+          padding-right: 6px;
+        }
+        .m-re-description{
+          padding: 7px 6px;
+          margin-top: 8px;
+          font-size: 12px;
+          line-height: 25px;
+        }
+      }
+    }
+
+    .m-section-5{
+      .m-header-1{
+      }
+    }
+
+    .m-section-6{
+      .m-food-menu-details{
+        padding: 10px 15px;
+        line-height: 20px;
+        font-size: 12px;
+      }
+
+    }
+  }
+}

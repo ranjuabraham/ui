@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-width: 450px;
+}
+
+.container > * {
+  width: 100%;
+}
+
+
+#venue-report {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#venue-report td, #venue-report th {
+  border: 1px solid #ddd;
+  padding: 7px;
+}
+
+#venue-report tr:nth-child(even){background-color: #d3dae2c7;}
+
+#venue-report tr:hover {background-color: #ddd;}
+
+#venue-report th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+}

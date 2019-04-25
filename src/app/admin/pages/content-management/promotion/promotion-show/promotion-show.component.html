@@ -1,0 +1,98 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="promotion-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Promotions</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/promotion/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/promotion/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+         <!-- Header -->
+         <ng-container matColumnDef="offerHdr">
+          <mat-header-cell *matHeaderCellDef class="width20">Header</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Header: "><span [innerHTML]="row.offerHdr"></span> </mat-cell>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="offerShort">
+          <mat-header-cell *matHeaderCellDef class="width40">Description</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width40" ngClass.sm="width100" ngClass.xs="width100" data-label="Description: "> <span [innerHTML]="row.offerShort"></span></mat-cell>
+        </ng-container>
+
+        <!-- Type of Promotion-->
+        <ng-container matColumnDef="offerTyp">
+            <mat-header-cell *matHeaderCellDef class="width10">Promo Type</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Promo Type: ">
+                <span *ngIf="row.offerTyp == 1;"><span>OFFER</span></span>
+                <span *ngIf="row.offerTyp != 1;"><span>AD</span></span>
+            </mat-cell>
+          </ng-container>
+
+         <!-- Sequence-->
+         <ng-container matColumnDef="offerSeq">
+          <mat-header-cell *matHeaderCellDef class="width10">Sequence</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Sequence: "> {{row.offerSeq}}</mat-cell>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="offerAct">
+          <mat-header-cell *matHeaderCellDef class="width10">Status</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+            <span *ngIf="row.offerAct === 1;">
+                <span style="color: green">Active</span>
+              </span>
+            <span *ngIf="row.offerAct !== 1;">
+                <span style="color: #FE0000">De-active</span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width10">
+            Action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                  <button mat-icon-button
+                          (click)="showDetails(row.prdctDetId, row.offerId, row.offerHdr, row.offerShort, row.offerDet, row.offerSeq, row.offerAct)">
+                         <mat-icon class="material-icons view-btn">visibility</mat-icon>
+                  </button>
+              </span>
+              <span>
+                <a mat-icon-button routerLink="/venue/promotion/edit/{{row.prdctDetId}}/{{row.offerId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

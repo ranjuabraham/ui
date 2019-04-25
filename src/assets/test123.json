@@ -1,0 +1,207 @@
+{
+  "productDetId": "74",
+  "subHallId": 384,
+  "eventName": "Buffet Basis (Rent Free)",
+  "userId": 8,
+  "bookingId": "1550122961627",
+  "bookingLevel": 3,
+  "buffetData": [
+    {
+      "limit": 1,
+      "category": "Welcome Drink or Soup",
+      "value": [
+        {
+          "itemId": 2324,
+          "itemHdr": "Fruit Punch",
+          "itemIdx": "F205B109C382N2324E",
+          "selected": true
+        }
+      ],
+      "categoryId": 382
+    },
+    {
+      "limit": 2,
+      "category": "Salads",
+      "value": [
+        {
+          "itemId": 2343,
+          "itemHdr": "Laccha Onion Salad",
+          "itemIdx": "F205B109C383N2343E",
+          "selected": true
+        },
+        {
+          "itemId": 2346,
+          "itemHdr": "Beansprouted Salad",
+          "itemIdx": "F205B109C383N2346E",
+          "selected": true
+        }
+      ],
+      "categoryId": 383
+    },
+    {
+      "limit": 1,
+      "category": "Main Course - Chicken",
+      "value": [
+        {
+          "itemId": 2352,
+          "itemHdr": "Kadai Chicken Dry",
+          "itemIdx": "F205B109C384N2352E",
+          "selected": true
+        }
+      ],
+      "categoryId": 384
+    },
+    {
+      "limit": 1,
+      "category": "Main Course - Mutton",
+      "value": [
+        {
+          "itemId": 2362,
+          "itemHdr": "Mutton Rogan Josh",
+          "itemIdx": "F205B109C385N2362E",
+          "selected": true
+        }
+      ],
+      "categoryId": 385
+    },
+    {
+      "limit": 2,
+      "category": "Main Course - Veg",
+      "value": [
+        {
+          "itemId": 2372,
+          "itemHdr": "Cauliflower Mochai Khorma",
+          "itemIdx": "F205B109C392N2372E",
+          "selected": true
+        },
+        {
+          "itemId": 2373,
+          "itemHdr": "Cauliflower Manchurian",
+          "itemIdx": "F205B109C392N2373E",
+          "selected": true
+        }
+      ],
+      "categoryId": 392
+    },
+    {
+      "limit": 1,
+      "category": "Choice of Dal",
+      "value": [
+        {
+          "itemId": 2390,
+          "itemHdr": "Dal Makhani",
+          "itemIdx": "F205B109C386N2390E",
+          "selected": true
+        }
+      ],
+      "categoryId": 386
+    },
+    {
+      "limit": 1,
+      "category": "Rice",
+      "value": [
+        {
+          "itemId": 2403,
+          "itemHdr": "Tomato Rice",
+          "itemIdx": "F205B109C387N2403E",
+          "selected": true
+        }
+      ],
+      "categoryId": 387
+    },
+    {
+      "limit": 1,
+      "category": "Indian Bread",
+      "value": [
+        {
+          "itemId": 2417,
+          "itemHdr": "Naan",
+          "itemIdx": "F205B109C388N2417E",
+          "selected": true
+        }
+      ],
+      "categoryId": 388
+    },
+    {
+      "limit": 1,
+      "category": "Curd",
+      "value": [
+        {
+          "itemId": 2425,
+          "itemHdr": "Curd Rice",
+          "itemIdx": "F205B109C389N2425E",
+          "selected": true
+        }
+      ],
+      "categoryId": 389
+    },
+    {
+      "limit": 1,
+      "category": "Choice of Ice Cream",
+      "value": [
+        {
+          "itemId": 2429,
+          "itemHdr": "Vanilla Ice Cream",
+          "itemIdx": "F205B109C390N2429E",
+          "selected": true
+        }
+      ],
+      "categoryId": 390
+    },
+    {
+      "limit": 1,
+      "category": "Choice of Desserts",
+      "value": [
+        {
+          "itemId": 2431,
+          "itemHdr": "Gulab Jamun",
+          "itemIdx": "F205B109C391N2431E",
+          "selected": true
+        }
+      ],
+      "categoryId": 391
+    }
+  ],
+  "eventStartDate": "20|02|2019",
+  "eventEndDate": "aN|aN|NaN",
+  "formData": {
+    "eventEndDate": "20-2-2019",
+    "eventTypeId": 151,
+    "productId": 74,
+    "subHallId": 384,
+    "foodTypeId": 205,
+    "sessionName": "Dinner ( 06:00 PM - 10:00 PM )",
+    "eventTypeName": "Buffet Basis (Rent Free)",
+    "additionalHours": 0,
+    "sessionId": 367,
+    "userId": 8,
+    "eventStartDate": "20|02|2019",
+    "foodTypeName": "Mixed (Veg and 2 Non Veg)(Rs.850)"
+  },
+  "tariffData": {
+    "subTotalAmount": 153000,
+    "buffetCostAmount": 170000,
+    "gstAmount": 7650,
+    "totalAmount": 160650,
+    "guaranteedPax": 200,
+    "gstValue": 5,
+    "offerDiscountValue": 10,
+    "pricePerHeadCost": 850,
+    "offerDiscountAmount": 17000
+  },
+  "blockType": 1,
+  "customerData": {
+    "userId": 8,
+    "name": "HD Admin",
+    "email": "halls.chennai42@gmail.com",
+    "mobile": 9940005705,
+    "gender": "M",
+    "countryCode": 91,
+    "address": {
+      "address": "adasdasd asd asdasd asd as d",
+      "agree": true
+    },
+    "userTypeId": 1,
+    "userType": "user"
+  }
+}

@@ -1,0 +1,100 @@
+<div fxLayout="column" class="aboutus-create-sec components-container-gt-xs" [ngClass.xs]="'components-container-xs'">
+  <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+  <div class="form-container" fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+       fxLayoutGap="10px">
+      <div fxFlex class="createAboutUs form-component-holder mat-elevation-z1">
+        <div class="container"  *ngIf="aboutData">
+          <form [formGroup]="aboutUsForm" (ngSubmit)="updateAboutUs()" fxLayout="column" fxFlex="100">
+            <div class="container" *ngFor="let content of aboutData['result']" style="padding: 2% 4%">
+              <div class="table-header">
+                <h3 class="center-align">Edit About us</h3>
+              </div>
+              <div class="form" style="display:none">
+                <mat-form-field>
+                  <input matInput  formControlName="abtUsId" placeholder="ID" [(ngModel)]="content.abtUsId">
+                </mat-form-field>
+              </div>
+
+              <div class="form">
+                <mat-form-field>
+                  <input matInput  formControlName="abtUsHdr" placeholder="Header" [(ngModel)]="content.abtUsHdr">
+                </mat-form-field>
+              </div>
+
+              <div class="form">
+                <div fxFlex="100"  fxLayout="column" fxLayoutAlign="center"
+                     class="widgetHolder ">
+                  <quill-editor #disciplineQE id="discipline-qe" [(ngModel)]="content.abtUsDet"
+                                formControlName="abtUsDet" style=" min-height: 170px;" placeholder="Description"
+                                [required]="true"
+                                [ngClass]="{ 'is-invalid': submitted && f.abtUsDet.errors }"></quill-editor>
+
+                  <div *ngIf="submitted && f.abtUsDet.errors" class="invalid-feedback">
+                    <div *ngIf="f.abtUsDet.errors.required">Enter Description
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form">
+                <mat-form-field>
+                  <mat-select formControlName="abtUsSeq" placeholder="Display Sequence" [(ngModel)]="content.abtUsSeq">
+                    <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.value">
+                      {{sequence.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <div class="form">
+                <mat-form-field>
+                  <mat-select formControlName="abtUsAct" placeholder="Is Active" [(ngModel)]="content.abtUsAct">
+                    <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                      {{status.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <!--<div class="form">-->
+                <!--<ngx-recaptcha2 #captchaElem-->
+                                <!--[siteKey]="siteKey"-->
+                                <!--(expire)="handleExpire()"-->
+                                <!--(load)="handleLoad()"-->
+                                <!--(success)="handleSuccess($event)"-->
+                                <!--formControlName="recaptcha">-->
+                <!--</ngx-recaptcha2>-->
+              <!--</div>-->
+              <!--- google captcha -->
+              <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+
+                <div fxFlex="50" fxFlex.xs="100">
+                  <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                  <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                    <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                    </div>
+                  </div>
+                </div>
+
+
+                <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                  <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                       fxLayoutAlign.xs="space-around center">
+                    <button mat-raised-button class="save-btn">Save</button>
+                    <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+
+              <!--<div class="float" style="float: right">-->
+                <!--<button mat-raised-button class="btn btn-primary" style="margin-right: 10px" color="warn"-->
+                        <!--(click)="goBack()">Cancel </button>-->
+                <!--<button mat-raised-button class="btn btn-primary" style="margin-right: 10px" color="primary">Update</button>-->
+              <!--</div>-->
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+

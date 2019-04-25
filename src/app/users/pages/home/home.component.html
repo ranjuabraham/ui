@@ -1,0 +1,446 @@
+<button mat-raised-button class="hd-qc-section" (click)="quickContact()"
+        *ngIf="contact == true">
+  <mat-icon style="color: #7F30C8">email</mat-icon>
+</button>
+<div *ngIf="contactOpen == true">
+  <div class="qc-container mat-elevation-z6">
+    <div class="qc-header">
+      <div>Quick Contact</div>
+    </div>
+    <!--<div class="alert alert-danger" *ngIf="data == 'FAILURE'">-->
+    <!--Oops! Something went wrong. Please try again later-->
+    <!--</div>-->
+    <!--<div class="alert alert-danger" *ngIf="data == 'ERROR'">-->
+    <!--Oops! Something went wrong. Please try again later-->
+    <!--</div>-->
+    <div class="qc-form" fxLayoutGap="0">
+      <form [formGroup]="quickContactForm" (click)="onSubmit()">
+        <div class="form">
+          <div class="form-label">
+            <label>Name</label>
+          </div>
+
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="cntName" maxlength="50" required autocomplete="off"
+                   id="#cntName" autofocus>
+            <mat-error *ngIf="quickContactForm.controls['cntName'].hasError('required')"> Enter Name</mat-error>
+
+          </mat-form-field>
+        </div>
+        <div class="form">
+          <div class="form-label">
+            <label>Email</label>
+          </div>
+          <mat-form-field appearance="outline">
+            <input type="email" matInput formControlName="cntEmailId" maxlength="30" required autocomplete="off">
+            <mat-error *ngIf="quickContactForm.controls['cntEmailId'].hasError('required')"> Enter  Email
+            </mat-error>
+            <mat-error
+              *ngIf="quickContactForm.controls['cntEmailId'].hasError('invalidEmail') || quickContactForm.controls['cntEmailId'].hasError('email')">
+              Invalid email address
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form">
+          <div class="form-label">
+            <label>Phone Number</label>
+          </div>
+
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="cntNumber" minlength="10" maxlength="10" autocomplete="off"
+                   (keypress)="keyPress($event)" required>
+            <mat-error *ngIf="quickContactForm.controls['cntNumber'].hasError('required')"> Enter Phone Number
+            </mat-error>
+            <mat-error *ngIf="quickContactForm.controls['cntNumber'].hasError('minlength')"> Phone should be
+              min 10 chars.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form user-type">
+          <label class="form-label">I am</label>
+          <mat-radio-group class="radio-btn" formControlName="usrTyp">
+            <mat-radio-button value="1" checked>User</mat-radio-button>
+            <mat-radio-button value="2">Hall Partner</mat-radio-button>
+          </mat-radio-group>
+          <!--<mat-error *ngIf="quickContactForm.controls['usrTyp'].hasError('required')"> Select user type </mat-error>-->
+        </div>
+
+        <div class="form">
+          <div class="form-label">
+            <label>Reason to contact</label>
+          </div>
+          <mat-form-field appearance="outline">
+            <textarea matInput formControlName="cntInfo" maxlength="100" required></textarea>
+            <mat-error *ngIf="quickContactForm.controls['cntInfo'].hasError('required')"> Enter your Reason</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form" fxLayoutAlign="center">
+          <button mat-flat-button class="btn btn-primary submit-btn"
+                  [disabled]="loading">{{ loading ? 'Sending...' : 'SUBMIT' }}</button>
+
+        </div>
+        <div fxLayoutAlign="center">
+          <div class="close-btn" (click)="quickContactCloseBtn()">
+            <mat-icon>close constant</mat-icon>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+<div class="banner-section">
+  <div class="banner-image">
+    <div class="theme-container">
+      <div class="banner-container">
+        <div class="banner-header mbn-heater">Book online at low prices from 1000+ Venues</div>
+        <div class="banner-header-1 mbn-header1"
+             fxShow.gt-xs>Find. Compare. Check Availability. Get Discounts. Save Time .
+        </div>
+
+        <!--<div class="search-menu">-->
+        <!--<div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign="start" fxLayoutGap="6px">-->
+        <!--<div class="banner-menu"><a routerLink="/search/marriage-halls" [routerLinkActive]="'active_menu'">MARRIAGE HALLS</a>-->
+        <!--</div>-->
+        <!--<div class="banner-menu"><a routerLink="/search/mini-halls" [routerLinkActive]="'active_menu'">MINI HALLS</a>-->
+        <!--</div>-->
+        <!--<div class="banner-menu"><a routerLink="/search/banquet-halls" [routerLinkActive]="'active_menu'">BANQUET HALLS</a>-->
+        <!--</div>-->
+        <!--<div class="banner-menu"><a routerLink="/search/party-halls" [routerLinkActive]="'active_menu'">PARTY HALLS</a>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+        <app-banner-search></app-banner-search>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!------- banner bottom -------->
+
+<div class="banner-btm-section">
+  <div class="theme-container">
+  <div fxLayout="row" class="info-bar service-cnt" fxHide fxShow.gt-xs fxHide.sm>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+      <mat-card class="light-block item-1" fxLayout="column" fxLayoutAlign="start center">
+      <span class="item-icon icon2">
+          <img src="../../../assets/images/icons/verified.svg">
+      </span>
+        <p class="header">VERIFIED HALLS</p>
+      </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+      <mat-card class="light-block item-1" fxLayout="column" fxLayoutAlign="start center">
+      <span class="item-icon">
+      <img src="../../../assets/images/icons/save-money.svg">
+      </span>
+        <p class="header">SAVE MONEY</p>
+      </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+      <mat-card class="light-block item-1" fxLayout="column" fxLayoutAlign="start center">
+      <span class="item-icon">
+      <img src="../../../assets/images/icons/customers.svg">
+      </span>
+        <p class="header">HAPPY CUSTOMERS</p>
+      </mat-card>
+    </div>
+    <div fxFlex="100" fxFlex.gt-md="25" fxFlex.gt-xs="50">
+      <mat-card class="light-block item-1" fxLayout="column" fxLayoutAlign="start center">
+      <span class="item-icon icon2">
+      <img src="../../../assets/images/icons/secured.svg">
+      </span>
+        <p class="header">100% SECURED</p>
+      </mat-card>
+    </div>
+  </div>
+  </div>
+</div>
+<!------- end banner bottom -------->
+<div class="theme-container">
+  <div class="popular-halls-container mb30">
+    <div class="popular-halls-section">
+      <div class="carousel-header">Popular Marriage Halls</div>
+
+      <div class="mt20 content-loader" fxLayout="row" fxLayoutAlign="space-around center" *ngIf="placeholderLoader">
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+     <span *ngIf="popularMarriageHalls">
+       <app-marriage-halls [popularMarriageHalls]="popularMarriageHalls"></app-marriage-halls>
+     </span>
+
+    </div>
+
+    <div class="popular-halls-section">
+      <div class="carousel-header">Popular Mini Halls</div>
+      <div class="mt20 content-loader" fxLayout="row" fxLayoutAlign="space-around center" *ngIf="placeholderLoader">
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <span *ngIf="popularMiniHalls">
+      <app-mini-halls [popularMiniHalls]="popularMiniHalls"></app-mini-halls>
+      </span>
+    </div>
+
+    <div class="popular-halls-section">
+      <div class="carousel-header">Popular Banquet Halls</div>
+      <div class="mt20 content-loader" fxLayout="row" fxLayoutAlign="space-around center" *ngIf="placeholderLoader">
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <span *ngIf="popularBanquetHalls">
+      <app-banquet-halls [popularBanquestHalls]="popularBanquetHalls"></app-banquet-halls>
+      </span>
+    </div>
+    <div class="popular-halls-section">
+      <div class="carousel-header">Popular Party Halls</div>
+      <div class="mt20 content-loader" fxLayout="row" fxLayoutAlign="space-around center" *ngIf="placeholderLoader">
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div fxFlex="30" class="col-12 col-sm-6">
+          <div class="ph-item">
+            <div class="ph-col-12">
+              <div class="ph-picture"></div>
+              <div class="ph-row">
+                <div class="ph-col-4"></div>
+                <div class="ph-col-8 empty"></div>
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+            <div>
+              <div class="ph-row">
+                <div class="ph-col-12"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <span *ngIf="popularPartyHalls">
+      <app-party-halls [popularPartyHalls]="popularPartyHalls"></app-party-halls>
+      </span>
+    </div>
+  </div>
+</div>
+<!--<div class="hd-container" fxHide fxShow.gt-xs fxHide.sm>-->
+<!--<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center" class="mobile-app-section">-->
+<!--<div fxFlex="70">-->
+<!--<div class="mobileAppHeader">-->
+<!--Book Venue on the GO-->
+<!--</div>-->
+<!--<div class="mobileAppCnt">-->
+<!--Find best venue around your location with great-->
+<!--exclusive deals. Download app today and stay-->
+<!--connected - anywhere, anytime.-->
+<!--</div>-->
+<!--<div class="mobileAppIcon">-->
+<!--<img src="../../../../assets/images/icons/mobile-app-icon.svg">-->
+<!--</div>-->
+<!--</div>-->
+<!--<div fxFlex="30">-->
+<!--<div class="mobileAppImage">-->
+<!--<img src="../../../../assets/images/icons/mobile.svg">-->
+<!--</div>-->
+<!--</div>-->
+<!--&lt;!&ndash;<img src="../../../assets/images/others/mobile-app.svg">&ndash;&gt;-->
+<!--</div>-->
+<!--</div>-->
+
+<div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top transition"
+     (click)="scrollToTop()">
+  <mat-icon>arrow_upward</mat-icon>
+</div>

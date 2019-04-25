@@ -1,0 +1,311 @@
+@import "../../../@theme/styles/variables";
+
+.header-top {
+  //height: 35px;
+  font-family: $font-family;
+  font-size: 12px;
+
+  .item-1 {
+    border-right: #e5e5e5 1px solid;
+    font-weight: 600;
+    color: #556c7e;
+    padding-right: 30px;
+  }
+
+  .item-2 {
+    font-weight: 600;
+    color: #5E23DC;
+    padding-left: 35px;
+  }
+
+  .item-4 {
+    .register-btn {
+      background-color: #00AA00;
+      color: #FFFFFF;
+      min-width: 85px;
+      line-height: 20px;
+      padding: 0 24px;
+      border-radius: 42px;
+      font-size: 12px !important;
+    }
+  }
+
+  .item-3 {
+    font-weight: 600;
+    color: #556B7F;
+  }
+
+  .item-5 {
+    font-weight: 600;
+    padding-left: 25px;
+    color: #556B7F;
+
+    .phone-icon {
+      background-color: #8C37DB;
+      border-radius: 50%;
+      padding: 3px 4px;
+      margin-right: 7px;
+      font-size: 10px;
+
+      i {
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+.header-bottom {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #8C37DB !important;
+  height: 48px !important;
+  min-height: 48px !important;
+
+  ::ng-deep.mat-toolbar-row, .mat-toolbar-single-row {
+    padding: 0 4px !important;
+  }
+
+  .toggle-btn {
+    width: 22px;
+  }
+
+  .menu-link {
+    cursor: pointer;
+  }
+
+  .hd-logo {
+    width: 150px;
+    margin-top: 6px;
+  }
+
+  .center-menu {
+    font-size: 13px;
+    color: #FFFFFF;
+  }
+
+  .signin-link {
+    //vertical-align: -webkit-baseline-middle;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .mobileSignin {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    vertical-align: middle;
+    padding-left: 50px;
+  }
+
+  .center-menu {
+    .nav-menu {
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      font-weight: 900;
+
+      a {
+        text-decoration: none;
+        color: #FFFFFF;
+      }
+    }
+  }
+
+  .sidenav-toggle {
+    color: #FFFFFF;
+  }
+}
+
+
+.menu-item {
+  .mat-button {
+    width: 100%;
+    font-weight: 400;
+    text-transform: uppercase;
+
+    &.expanded {
+      .menu-expand-icon {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .mat-button-wrapper {
+    padding-left: 16px;
+  }
+}
+
+/* Extra small devices (phones, 960px and down) */
+@media only screen and (max-width: 960px) {
+  .hd-logo {
+    width: 100px !important;
+    margin-top: 10px !important;
+  }
+  .header-top {
+    padding: 0 10px;
+    font-size: 12px;
+    height: 31px;
+    font-family: 'Montserrat', sans-serif;
+
+    .item-left {
+      min-width: 60%;
+
+      .item-2 {
+        margin-left: 0px;
+      }
+    }
+
+    .item-right {
+      min-width: 50%;
+    }
+  }
+  .header-bottom {
+    .user-icon {
+      img {
+        width: 20px;
+        vertical-align: sub;
+        padding-left: 10px;
+      }
+
+      .login-link {
+        color: #ffffff;
+        font-family: $font-family-semiBold;
+        font-size: 14px;
+        padding-left: 8px
+      }
+    }
+
+    .phone-btn {
+      margin-top: 4px;
+
+      .phone-icon {
+        width: 20px;
+      }
+    }
+
+    .phone-btn-1 {
+      margin-top: 4px;
+      padding: 0 15px;
+
+      .phone-icon {
+        width: 20px;
+        vertical-align: sub;
+      }
+    }
+  }
+
+  .sticky {
+    display: none !important;
+  }
+
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-width: 100%;
+  z-index: 5000;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+.menu-active {
+  border-bottom: #FFFFFF 2px solid;
+  padding-bottom: 6px;
+}
+
+
+.mobile-sidenav {
+  position: unset;
+
+  .user-sidenav {
+    position: fixed;
+    width: 250px;
+    height: 100%;
+
+    .mat-drawer-inner-container {
+      overflow: scroll !important;
+    }
+
+    .close-icon {
+      width: 25px;
+      position: fixed;
+      left: 280px;
+      top: 25px;
+    }
+
+    .social-icon {
+      width: 26px;
+      padding: 6px 30px 0 0;
+      vertical-align: bottom;
+    }
+  }
+
+  .login-sec {
+    padding: 15px 18px;
+
+    .login-btn {
+      background-color: #00AA00;
+      color: #ffffff;
+      font-family: $font-family-semiBold;
+      width: 98%;
+      border-radius: 0;
+      margin-top: 10px;
+      font-size: 15px;
+    }
+    .user-ac-icon{
+      width: 25px;
+      vertical-align: middle;
+    }
+    .account-name{
+      vertical-align: sub;
+      margin-left: 13px;
+      font-family: 'Montserrat SemiBold', sans-serif;
+      font-weight: bold;
+      text-transform: uppercase;
+      font-size: 14px;
+      color: #5E23DC;
+    }
+  }
+
+  .nav-menu {
+    display: block;
+    padding: 4px 20px;
+    color: #556B7F;
+    font-family: Montserrat;
+    font-weight: 900;
+    text-align: left;
+    letter-spacing: 0.3px;
+  }
+
+  .more-option {
+    width: 100%;
+    color: #556B7F;
+    font-family: Montserrat;
+    font-weight: 900;
+    text-align: left;
+    letter-spacing: 0.3px;
+  }
+
+  ::ng-deep.mat-expansion-panel-body {
+    padding: 0 10px 12px !important;
+  }
+
+  ::ng-deep.mat-expansion-panel:not([class*='mat-elevation-z']) {
+    box-shadow: unset !important;
+  }
+}
+
+.example-container {
+  position: unset;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

@@ -1,0 +1,100 @@
+<div class="booking-container">
+  <div class="theme-container">
+    <div class="booking_tle padding-0">
+      <span><h3>Bookings</h3></span>
+    </div>
+    <app-booking-menu></app-booking-menu>
+
+    <div  class="container booking-table mb30" fxLayout="row" fxLayout.xs="column"
+          fxLayoutAlign="start stretch" fxLayoutGap="40px" fxLayoutGap.xs="0">
+      <div fxFlex class="table-component-holder mat-elevation-z1">
+<!--        <mat-toolbar class="table-header">-->
+<!--          <div>-->
+<!--            <h1 class="mat-headline center-align">My Reservations</h1>-->
+<!--          </div>-->
+<!--        </mat-toolbar>-->
+
+        <div fxLayout="column" fxLayoutAlign="center center"  class="without-table" *ngIf="count == 0">
+          <div><img style="width: 210px"  src="../../../../assets/images/icons/my-booking.svg"></div>
+          <div class="no-data">No Reservations Yet!</div>
+        </div>
+
+
+
+        <div class="table-container" *ngIf="count > 0">
+          <mat-table  [dataSource]="dataSource" matSort>
+            <!-- Booked On Column -->
+            <ng-container matColumnDef="bookedOn">
+              <mat-header-cell *matHeaderCellDef style="width: 7%" >Booked Date</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Booked Date: "> {{row.bookedOn}}</mat-cell>
+            </ng-container>
+
+            <!-- Start Date column -->
+            <ng-container matColumnDef="muhurtDts">
+              <mat-header-cell  *matHeaderCellDef  style="width: 7%"> Start Date</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Start Date: "> {{row.muhurtDts}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="endDt">
+              <mat-header-cell *matHeaderCellDef style="width: 7%">End Date</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="End Date: "> {{row.endDt}}</mat-cell>
+            </ng-container>
+
+            <!-- Event column -->
+            <ng-container matColumnDef="evtName">
+              <mat-header-cell *matHeaderCellDef style="width: 14%">Event</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Event: "> {{row.evtName}}</mat-cell>
+            </ng-container>
+
+            <!-- Duration column -->
+            <ng-container matColumnDef="durName">
+              <mat-header-cell *matHeaderCellDef style="width: 15%">Session</mat-header-cell>
+              <mat-cell class="duration_cl" *matCellDef="let row" data-label="Session: "> {{row.durName}}</mat-cell>
+            </ng-container>
+
+            <!-- Foot Type column -->
+            <ng-container matColumnDef="fdTypName">
+              <mat-header-cell *matHeaderCellDef style="width: 13%">Food type</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Food type: "> {{row.fdTypName}}</mat-cell>
+            </ng-container>
+
+            <!-- Hall Name column -->
+            <ng-container matColumnDef="dcdeHdr">
+              <mat-header-cell *matHeaderCellDef style="width: 12%">Hall Name</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Hall Name: "> {{row.dcdeHdr}}</mat-cell>
+            </ng-container>
+
+            <!-- Status column -->
+            <ng-container matColumnDef="status">
+              <mat-header-cell *matHeaderCellDef style="width: 10%;">Status</mat-header-cell>
+              <mat-cell *matCellDef="let row" data-label="Status: "> {{row.status}}</mat-cell>
+            </ng-container>
+
+            <!-- Paid Status column -->
+            <ng-container matColumnDef="paidStatus">
+              <mat-header-cell *matHeaderCellDef style="width: 5%">Paid Status</mat-header-cell>
+              <mat-cell class="paid-status-cl" *matCellDef="let row" data-label="Paid Status: "> {{row.paidStatus}}</mat-cell>
+            </ng-container>
+
+
+            <!-- Action -->
+            <ng-container matColumnDef="links">
+              <mat-header-cell *matHeaderCellDef style="width: 10%">
+                Action
+              </mat-header-cell>
+              <mat-cell *matCellDef="let row;" data-label="Action: ">
+                <button mat-flat-button color="accent" class="pay-now-btn" (click)="payNow(row.txnId, row.prdctDetId)" *ngIf="row.status === 'Approved' && row.paidStatus === 'No'">Pay Now</button>
+                <button mat-flat-button color="accent" class="pay-now-btn" (click)="payNow(row.txnId, row.prdctDetId)" *ngIf="row.status === 'Approved' && row.paidStatus === 'Partial'">Pay Now</button>
+                <div *ngIf="row.status === 'Requested'" style="color: #00aa00;">Approval in process</div>
+              </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;">
+            </mat-row>
+          </mat-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

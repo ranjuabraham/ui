@@ -1,0 +1,192 @@
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
+}
+
+::ng-deep .mat-dialog-container {
+  padding: 0px !important;
+}
+
+.mat-tab-group, .log-in-left {
+  padding: 20px 30px !important;
+}
+
+.mat-tab-group {
+  border-left: #e8e8e8 1px solid;
+}
+
+.log-in-left .lgn-header {
+  color: #566b80;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.forgot-link {
+  text-align: center;
+  margin: 30px 0 10px 0;
+  color: #cccccc;
+  a {
+    cursor: pointer;
+  }
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.close-btn {
+  position: fixed;
+  top: 49px;
+  right: 145px;
+  width: 79px;
+}
+
+::ng-deep .cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.73) !important;
+}
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0.4em 0 0.7em 0 !important;
+}
+
+.hd-login {
+  .login-container {
+    //width: 100%;
+    height: auto;
+    .login-left {
+      width: 45%;
+      float: left;
+      .login-img{
+
+      }
+    }
+    .login-right {
+      //width: 60%;
+    }
+
+  }
+
+  ::ng-deep .mat-tab-header {
+    border-bottom: 0px solid rgba(0, 0, 0, 0) !important;
+  }
+  ::ng-deep .mat-tab-label {
+    color: rgba(113, 111, 111, 0.87);
+  }
+  .login-box {
+    margin-top: 15px;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .form-inline {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-inline label {
+    margin: 17px 10px 5px 0;
+    font-size: 13px;
+    color: rgba(86, 107, 128, 0.87);
+    font-weight: 500;
+    letter-spacing: 0.8px;
+  }
+
+  //.form-inline input {
+  //  vertical-align: middle;
+  //  margin: 5px 0px 5px 0;
+  //  padding: 12px;
+  //  background-color: #fff;
+  //  border: 1px solid #ddd;
+  //}
+
+  .form-inline button {
+    padding: 4px 20px;
+    background-color: #00aa01;
+    //border: 1px solid #ddd;
+    color: white;
+    cursor: pointer;
+  }
+
+  .form-inline button:hover {
+    background-color: #00aa01;
+  }
+
+  @media (max-width: 800px) {
+
+    .form-inline {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+}
+
+/* active tab */
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+  color: #fe0000;
+  border: none !important;
+}
+
+::ng-deep .mat-tab-list .mat-tab-label .mat-tab-label-content {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+::ng-deep .mat-tab-list .mat-tab-label {
+  //padding: 0 35px;
+  //justify-content: left;
+}
+
+::ng-deep .mat-tab-label {
+  padding: 0px 0px !important;
+}
+
+/* ink bar */
+::ng-deep .mat-ink-bar {
+  //background-color: var(--primary-color,#1F89CE) !important;
+  background-color: var(--primary-color, rgba(39, 170, 255, 0)) !important;
+}
+@media only screen and (max-width: 768px) {
+  ::ng-deep .cdk-overlay-pane{
+    width: 98% !important;
+    max-width: 98vw !important;
+  }
+  .mat-tab-group{
+    padding: 15px 15px !important;
+  }
+  .close-btn{
+    position: fixed;
+    top: 66px;
+    right: 141px;
+    width: 97px;
+  }
+}

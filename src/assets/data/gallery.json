@@ -1,0 +1,80 @@
+[
+  {
+    "imgFtr": "KSV Mahal",
+    "imgFtrDet": "Exterior View",
+    "imgHdr": "KSV Mahal",
+    "imgId": 787,
+    "imgMover": "KSV Mahal",
+    "imgPath": "",
+    "imgSeq": 1,
+    "imgType": "https://www.hallsdiary.com/upload/ksv/KSV_h.jpeg",
+    "imgTypId": 2,
+    "prdctDetId": 25,
+    "prdctId": 0
+  },
+  {
+    "imgFtr": "KSV Mahal",
+    "imgFtrDet": "Stage Decoration",
+    "imgHdr": "KSV Mahal",
+    "imgId": 792,
+    "imgMover": "KSV Mahal",
+    "imgPath": "",
+    "imgSeq": 2,
+    "imgType": "https://www.hallsdiary.com/upload/ksv/KSV_4.jpeg",
+    "imgTypId": 1,
+    "prdctDetId": 25,
+    "prdctId": 0
+  },
+  {
+    "imgFtr": "KSV Mahal",
+    "imgFtrDet": "Seating ",
+    "imgHdr": "KSV Mahal",
+    "imgId": 791,
+    "imgMover": "KSV Mahal",
+    "imgPath": "",
+    "imgSeq": 3,
+    "imgType": "https://www.hallsdiary.com/upload/ksv/KSV_3.jpeg",
+    "imgTypId": 1,
+    "prdctDetId": 25,
+    "prdctId": 0
+  },
+  {
+    "imgFtr": "KSV Mahal",
+    "imgFtrDet": "Seating",
+    "imgHdr": "KSV Mahal",
+    "imgId": 789,
+    "imgMover": "KSV Mahal",
+    "imgPath": "",
+    "imgSeq": 4,
+    "imgType": "https://www.hallsdiary.com/upload/ksv/KSV_1.jpeg",
+    "imgTypId": 4,
+    "prdctDetId": 25,
+    "prdctId": 0
+  },
+  {
+    "imgFtr": "KSV Mahal",
+    "imgFtrDet": "Seating Arrangements",
+    "imgHdr": "KSV Mahal",
+    "imgId": 788,
+    "imgMover": "KSV Mahal",
+    "imgPath": "",
+    "imgSeq": 5,
+    "imgType": "https://www.hallsdiary.com/upload/ksv/KSV_5.jpeg",
+    "imgTypId": 4,
+    "prdctDetId": 25,
+    "prdctId": 0
+  },
+  {
+    "imgFtr": "KSV Mahal",
+    "imgFtrDet": "Stage",
+    "imgHdr": "KSV Mahal",
+    "imgId": 790,
+    "imgMover": "KSV Mahal",
+    "imgPath": "",
+    "imgSeq": 6,
+    "imgType": "https://www.hallsdiary.com/upload/ksv/KSV_2.jpeg",
+    "imgTypId": 4,
+    "prdctDetId": 25,
+    "prdctId": 0
+  }
+]

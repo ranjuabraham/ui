@@ -1,0 +1,18 @@
+<div class="close-btn" (click)="dialogCloce()"><img class="close-icon" src="../../../../../assets/images/icons/close-btn.svg"></div>
+<div class="box-container" fxLayout="column" [ngStyle.lt-sm]="'min-height: 800px;'">
+  <div class="horizontal-container" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="stretch" fxFlex="auto">
+    <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="100%">
+      <div class="content-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="auto">
+        <slideshow [height]="height"
+                   [minHeight]="'400px'"
+                   [autoPlay]="true"
+                   [showArrows]="true"
+                   [imageUrls]="galleryData"
+                   [showDots]="true"
+                   [lazyLoad]="galleryData?.length > 1"
+                   [autoPlayWaitForLazyLoad]="true">
+        </slideshow>
+      </div>
+    </div>
+  </div>
+</div>

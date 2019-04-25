@@ -1,0 +1,15 @@
+@import "../../../@theme/styles/variables";
+.my-review-confirmation-dialog{
+  .mat-dialog-title {
+    margin: 0 0 20px;
+    display: block;
+    font-family: $font-family;
+    font-weight: 700;
+    font-size: 16px;
+  }
+  button{
+    font-family: $font-family;
+    font-weight: 700;
+    font-size: 16px;
+  }
+}

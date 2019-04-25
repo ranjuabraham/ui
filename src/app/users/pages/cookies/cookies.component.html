@@ -1,0 +1,18 @@
+<div class="about-container">
+  <div class="violet-bg"></div>
+  <div class="theme-container">
+<div class="hd-container pos-top">
+
+    <div fxLayout="column" fxLayoutAlign="space-between center" class="mat-elevation-z1">
+      <div class="abt-content">
+        <div class="abt-header">Cookies</div>
+        <div class="inner-cnt">
+          <div *ngFor="let cookie of cookiesData">
+            <div class="abt-cnt"><span [innerHTML]="cookie.helpBody"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

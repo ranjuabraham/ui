@@ -1,0 +1,69 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="buffet-tariff-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Buffet Count</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/pax-count/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/pax-count/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Hall Name -->
+        <ng-container matColumnDef="dcdeHdr">
+          <mat-header-cell *matHeaderCellDef class="width25"> Hall Name</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Hall Name: "> {{row.dcdeHdr}}</mat-cell>
+        </ng-container>
+        
+        <!-- Buffet Minimum Count  -->
+        <ng-container matColumnDef="buffCount">
+          <mat-header-cell *matHeaderCellDef class="width25"> Minimum Count</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Minimum Count "> {{row.buffCount}}</mat-cell>
+        </ng-container>
+        
+        <!-- Buffet Maximum Count  -->
+        <ng-container matColumnDef="buffMax">
+          <mat-header-cell *matHeaderCellDef class="width25"> Maximum Count</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Minimum Count "> {{row.buffMax}}</mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width25">Action </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                <a mat-icon-button routerLink="/venue/pax-count/edit/{{row.prdctDetId}}/{{row.buffId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

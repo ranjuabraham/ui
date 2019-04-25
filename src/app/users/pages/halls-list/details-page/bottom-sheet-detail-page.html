@@ -1,0 +1,145 @@
+
+<div class="close-btn" (click)="dialogCloce()"><img class="close-icon" src="../../../../../assets/images/icons/close-btn.svg"></div>
+<div fxLayout.xs="row" fxLayoutAlign="start" class="detailsPage_amenitiesContainer">
+    <div fxFlex="50">
+            <div fxLayout="column wrap" class="amenitiesList">
+                    <div class="amenitiesItem">
+                      <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/seating-icon.svg">
+                      <span class="amenitiesLabel-m">Seating :</span>
+                      <span *ngFor="let amenities of amenitiesData">
+                      <span *ngIf="amenities['facName'] === 'Seating'">
+                        <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                      </span>
+                    </span>
+                    </div>
+    
+    
+                    <div class="amenitiesItem">
+                      <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/floor-icon.svg">
+                      <span class="amenitiesLabel-m">Floor :</span>
+                      <span *ngFor="let amenities of amenitiesData">
+                      <span *ngIf="amenities['facName'] === 'Hall on Floor'">
+                        <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                      </span>
+                    </span>
+                    </div>
+    
+                    <div class="amenitiesItem">
+                      <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/cars-icon.svg">
+                      <span class="amenitiesLabel-m">Cars :</span>
+                      <span *ngFor="let amenities of amenitiesData">
+                      <span *ngIf="amenities['facName'] === 'Cars'">
+                        <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                      </span>
+                    </span>
+                    </div>
+    
+                    <div class="amenitiesItem">
+                      <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/bike-icon.svg">
+                      <span class="amenitiesLabel-m">Bikes :</span>
+                      <span *ngFor="let amenities of amenitiesData">
+                      <span *ngIf="amenities['facName'] === 'Bikes'">
+                        <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                      </span>
+                    </span>
+                    </div>
+    
+                    <div class="amenitiesItem">
+                      <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/room-icon.svg">
+                      <span class="amenitiesLabel-m">Room :</span>
+                      <span *ngFor="let amenities of amenitiesData">
+                    <span *ngIf="amenities['facName'] === 'Rooms'">
+                    <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                    </span>
+                    </span>
+                    </div>
+                    
+                    <div class="amenitiesItem">
+                            <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/dining-icon.svg">
+                            <span class="amenitiesLabel-m">Dining :</span>
+                            <span *ngFor="let amenities of amenitiesData">
+                            <span *ngIf="amenities['facName'] === 'Dining'">
+                              <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                            </span>
+                          </span>
+                          </div>
+          
+                          <div class="amenitiesItem">
+                            <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/backup-icon.svg">
+                            <span class="amenitiesLabel-m">Backup :</span>
+                            <span *ngFor="let amenities of amenitiesData">
+                            <span *ngIf="amenities['facName'] === 'Backup'">
+                              <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                            </span>
+                          </span>
+                          </div>
+          
+                  </div>
+    </div>
+    <div fxFlex="50">
+        <div fxLayout="column" class="amenitiesList">
+                <div class="amenitiesItem">
+                        <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/dining-level-icon.svg">
+                        <span class="amenitiesLabel-m">Dining Level :</span>
+                        <span *ngFor="let amenities of amenitiesData">
+                        <span *ngIf="amenities['facName'] === 'Hall on Dining'">
+                          <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                        </span>
+                      </span>
+                      </div>
+      
+                      <div class="amenitiesItem">
+                        <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/restaurant-icon.svg">
+                        <span class="amenitiesLabel-m">Restaurant :</span>
+                        <span *ngFor="let amenities of amenitiesData">
+                        <span *ngIf="amenities['facName'] === 'Restaurant'">
+                          <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                        </span>
+                      </span>
+                      </div>
+                      <div class="amenitiesItem">
+                            <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/floating-icon.svg">
+                            <span class="amenitiesLabel-m">Floating :</span>
+                            <span *ngFor="let amenities of amenitiesData">
+                            <span *ngIf="amenities['facName'] === 'Floating'">
+                              <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                            </span>
+                          </span>
+                          </div>
+          
+          
+          
+                          <div class="amenitiesItem">
+                            <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/cars-icon.svg">
+                            <span class="amenitiesLabel-m">Hall Size :</span>
+                            <span *ngFor="let amenities of amenitiesData">
+                            <span *ngIf="amenities['facName'] === 'Hall Size'">
+                              <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                            </span>
+                          </span>
+                          </div>
+          
+                          <div class="amenitiesItem">
+                            <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/conference-icon.svg">
+                            <span class="amenitiesLabel-m">Conference :</span>
+                            <span *ngFor="let amenities of amenitiesData">
+                            <span *ngIf="amenities['facName'] === 'Conference'">
+                              <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                            </span>
+                          </span>
+                          </div>
+          
+                          <div class="amenitiesItem">
+                            <img class="amenitiesIcon-m" src="../../../../assets/images/icons/details-page/lift-icon.svg">
+                            <span class="amenitiesLabel-m">Lifts :</span>
+                            <span *ngFor="let amenities of amenitiesData">
+                            <span *ngIf="amenities['facName'] === 'Lifts'">
+                              <span class="amenitiesValue-m">{{amenities['facSpec']}}</span>
+                            </span>
+                          </span>
+                          </div>
+          
+        </div>
+    </div>
+    
+</div>

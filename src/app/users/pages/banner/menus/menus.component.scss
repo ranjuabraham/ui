@@ -1,0 +1,19 @@
+.search-menu {
+  margin-top: 15px;
+}
+.banner-menu {
+  font-family: 'Montserrat', sans-serif;
+  padding: 11px 13px 11px 13px;
+  min-width: 11%;
+  background-color: #fff;
+  text-align: center;
+  a {
+    text-decoration: none;
+    color: #556b7f;
+    font-size: 13px;
+    font-weight: 600;
+  }
+}
+.active_menu {
+  color: red !important;
+}

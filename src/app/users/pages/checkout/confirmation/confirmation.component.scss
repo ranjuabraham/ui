@@ -1,0 +1,242 @@
+@import "../../../@theme/styles/variables";
+
+.confirmation-container {
+  .invoice-box {
+    font-family: $font-family;
+  }
+
+  .confirmation-section {
+    font-family: $font-family;
+    font-size: 13px;
+    padding: 20px;
+
+    .header-row {
+      padding-bottom: 30px;
+
+      .header {
+        font-weight: bold;
+        font-size: 18px;
+      }
+    }
+
+    .cus-info {
+      line-height: 30px;
+      font-size: 14px;
+      padding-bottom: 12px;
+      font-weight: $font-weight;
+    }
+
+    .confirm-details {
+      margin-bottom: 50px;
+
+      .des {
+        color: #FE0000;
+        font-size: 14px;
+        padding-bottom: 20px;
+        font-weight: $font-weight;
+      }
+
+      .customer-details {
+        border: 1px solid #D1D6DB;
+        font-weight: $font-weight;
+
+        .header {
+          padding: 15px 0;
+          background-color: #F6F6F6;
+          font-size: 16px;
+        }
+
+        .content {
+          .cus-details {
+            padding: 15px 25px;
+            line-height: 30px;
+            min-height: 125px;
+          }
+
+          .bk-details {
+            padding: 15px 25px;
+            line-height: 30px;
+          }
+        }
+
+      }
+    }
+
+    .venue-details {
+      border: 1px solid #D1D6DB;
+      font-weight: $font-weight;
+
+      .header {
+        padding: 15px 0;
+        background-color: #F6F6F6;
+        font-size: 16px;
+      }
+
+      .content {
+        .hall-details {
+          padding: 15px 25px;
+          line-height: 30px;
+          min-height: 125px;
+        }
+
+        .bk-details {
+          padding: 15px 25px;
+          line-height: 35px;
+          position: relative;
+
+          .in-divider {
+            position: relative;
+
+            .mat-card .mat-divider-horizontal {
+              width: 60% !important;
+            }
+          }
+
+          .in-discount {
+            color: #00aa00;
+          }
+
+          .invoice-total {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .cnt-1 {
+      font-weight: $font-weight;
+      padding: 17px 0;
+      font-size: 16px;
+    }
+
+    .cn-note {
+      list-style: none;
+      line-height: 40px;
+      font-weight: $font-weight;
+      font-size: 14px;
+    }
+
+    .selected-food-menus {
+      border: 1px solid #D1D6DB;
+      padding: 20px;
+
+      .header {
+        font-weight: bold;
+        font-size: 16px;
+        padding: 10px 0;
+      }
+
+      .menu-header {
+        font-weight: bold;
+      }
+    }
+
+    .invoice-footer-sec {
+      font-weight: $font-weight;
+      line-height: 30px;
+      background-color: #F6F6F6 !important;
+
+      a {
+        text-decoration: none;
+      }
+    }
+    .pdf-download-btn{
+      border: #fe0000 1px solid;
+      color: #fe0000;
+      font-family: $font-family;
+      font-weight: $font-weight;
+      border-radius: 0;
+      margin-bottom: 15px;
+    }
+    .pdf-download-btn:hover{
+      background-color: #FE4848;
+      color: #fff;
+    }
+    .pdf-download-btn:hover, .pdf-download-btn:focus {
+      box-shadow: 0 5px 18px rgba(254, 72, 72, 0.25);
+    }
+  }
+
+  .m-confirmation-section {
+    font-weight: $font-weight;
+    font-size: 12px;
+    padding: 0 !important;
+
+    .m-header-row {
+      padding: 25px !important;
+      font-size: 13px !important;
+    }
+
+    .m-cus-info {
+      padding: 0 15px;
+      font-size: 12px !important;
+    }
+
+    .m-confirm-details {
+      margin-bottom: 0 !important;
+
+      .m-des {
+        padding: 10px 15px !important;
+        font-size: 12px !important;
+      }
+
+      .m-customer-details {
+        border: 0 #D1D6DB solid;
+
+        .m-content {
+          .m-cus-details {
+            min-height: 50px !important;
+            padding: 12px 10px !important;
+          }
+
+          .bk-details {
+            padding: 12px 10px !important;
+          }
+        }
+      }
+
+      .m-venue-details {
+        border: 0 #D1D6DB solid;
+
+        .bk-details {
+          padding: 10px 10px !important;
+        }
+
+        .m-hall-details {
+          min-height: 50px !important;
+          padding: 12px 10px !important;
+        }
+      }
+    }
+
+    .m-cnt-1 {
+      padding: 14px 10px !important;
+      font-size: 12px !important;
+      line-height: 22px !important;
+    }
+
+    .m-cnt-2 {
+      padding: 0 10px !important;
+    }
+
+    .m-cn-note {
+      padding: 10px 10px !important;
+    }
+
+    .m-selected-food-menus {
+      padding: 10px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .confirmation-container {
+    .confirmation-section {
+      .cn-note {
+        line-height: 28px !important;
+        font-size: 12px !important;
+      }
+
+    }
+  }
+}

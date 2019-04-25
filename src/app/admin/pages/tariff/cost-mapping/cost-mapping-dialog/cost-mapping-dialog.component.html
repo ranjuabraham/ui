@@ -1,0 +1,41 @@
+<div class="container">
+  <div>
+    <div style="float:right; color: red;cursor: pointer;" (click)="closeDialog()"><mat-icon>close</mat-icon></div>
+    <div><h3 mat-dialog-title style="text-align: center; font-weight: bold">Maintain Price</h3></div>
+  </div>
+
+  <table id="dialog-box">
+    <tr>
+      <th>Hall Name</th>
+      <td>{{data.dcdeHdr}}</td>
+    </tr>
+    <tr>
+      <th>Event Name</th>
+      <td>{{data.evtHdr}}</td>
+    </tr>
+    <tr>
+      <th>Duration Name</th>
+      <td>{{data.durHdr}}</td>
+    </tr>
+    <tr>
+      <th>Food Type Name</th>
+      <td>{{data.fdTypHdr}}</td>
+    </tr>
+    <tr>
+      <th>Rent</th>
+      <td>{{ data.rentVal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    <tr>
+      <th>Tax (GST)</th>
+      <td>{{data.servChrg}}%</td>
+    </tr>
+    <tr>
+      <th>Miscellaneous</th>
+      <td>{{data.miscChrg | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    <tr>
+      <th>Muhurtham / Auspicious Day Charges</th>
+      <td>{{data.muhurtChrg | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+  </table>
+</div>

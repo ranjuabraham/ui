@@ -1,0 +1,27 @@
+
+<div class="close-btn-outer">
+  <button mat-button style="color: #FE0000;
+      float: right;
+      position: absolute;
+      top: 2px;
+      right: 0px;" (click)="close()"><mat-icon>close</mat-icon></button>
+</div>
+<div ngClass.xs="m-selected-menu-bottom-sheet" *ngIf="selectedFoodItems">
+  <div  class="tariff-section" *ngIf="checkedList.length > 0" ngClass.xs="m-tariff-section">
+    <div class="category-list">
+      <div class="header" ngClass.xs="m-header">
+        Selected Menu List
+        <span class="item-count" ngClass.xs="m-item-count" *ngIf="checkedList">{{checkedList.length}} ITEMS</span>
+      </div>
+          <div class="listed-item" ngClass.xs="m-listed-item" fxLayout="row wrap" fxLayoutAlign="start start">
+                <div  ngClass.xs="m-menu-list" *ngFor="let categories of selectedFoodItems;"  fxFlex.sm="50" fxFlex.xs="50">
+                  <div class="category-header" ngClass.xs="m-category-header" *ngIf="categories.count > 0">{{categories.category}}</div>
+                  <div class="selected-items" *ngFor="let items of categories.value">
+                    <span *ngIf="items['selected'] === true">{{items['itemHdr']}}</span>
+                  </div>
+                </div>
+        </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="45.625" height="45.624" viewBox="0 0 45.625 45.624">
+  <g id="Group_4106" data-name="Group 4106" transform="translate(-0.45 -0.525)">
+    <g id="Group_4105" data-name="Group 4105" transform="translate(0.45 0.525)">
+      <path id="Path_3129" data-name="Path 3129" d="M45.025,27.14,26.173,46a.485.485,0,0,1-.694,0L.6,21.12a.485.485,0,0,1,0-.694L19.459,1.574a3.581,3.581,0,0,1,5.065,0L45.036,22.086A3.578,3.578,0,0,1,45.025,27.14Z" transform="translate(-0.45 -0.525)" fill="#0a0"/>
+    </g>
+    <text id="HD" transform="translate(21.788 29.497) rotate(-45)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1" font-size="9" font-family="SegoeUI, Segoe UI"><tspan x="0" y="0">HD</tspan></text>
+  </g>
+</svg>

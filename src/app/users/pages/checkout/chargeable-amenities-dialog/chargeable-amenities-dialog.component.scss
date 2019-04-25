@@ -1,0 +1,29 @@
+@import "../../../@theme/styles/variables";
+.chargeable-amenities-dialog-container{
+  font-size: 12px;
+  .mat-dialog-container{
+    overflow: visible !important;
+    .close-btn-outer{
+      position: relative;
+      button{
+        position: absolute;
+        right: -44px;
+        top: -44px;
+      }
+    }
+
+    .header {
+      font-family: $font-family-semiBold;
+      color: #333333;
+      font-size: 18px;
+      padding-bottom: 15px;
+    }
+    .content {
+      line-height: 25px;
+      color: #333333;
+      font-family: Montserrat, sans-serif;
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+  }
+}

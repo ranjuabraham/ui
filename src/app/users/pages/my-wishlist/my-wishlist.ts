@@ -1,0 +1,30 @@
+export class MyWishlist {
+  alwBlkTyp: number;
+  attrDesc: string;
+  attrDetId: number;
+  attrId: number;
+  attrSrch: string;
+  city: string;
+  countAttr: string;
+  discVal: number;
+  facAct: number;
+  facNamAct: number;
+  facSeq: number;
+  facSubAct: number;
+  facSupAct: number;
+  hallCount: number;
+  invCost: number;
+  invCount: number;
+  ovrAttrAct: number;
+  ovrAttrDetDesc: string;
+  ovrAttrDetName: string;
+  ovrAttrDetSpec: string;
+  ovrAttrDetURL: string;
+  pincode: string;
+  prdctDetDesc: string;
+  prdctDetId: number;
+  prdctHint: string;
+  prdctId: number;
+  prdctIsDet: number;
+  tariff: number;
+}

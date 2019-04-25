@@ -1,0 +1,45 @@
+<div class="modify-search-section ">
+  <div class="modify-search-form">
+    <form [formGroup]="modifySearchForm" (ngSubmit)="onSubmit()" fxLayout="row" fxLayoutAlign="start center"
+          fxLayoutGap="20px">
+      <div fxFlex="30%" class="form">
+        <!--<mat-form-field appearance="outline">-->
+        <!--<input matInput type="text" formControlName="area" placeholder="Search for a Venue or Area">-->
+        <!--&lt;!&ndash;<mat-error *ngIf="modifySearchForm.controls['area'].hasError('required')"> Enter your&ndash;&gt;-->
+        <!--&lt;!&ndash;Venue or Area&ndash;&gt;-->
+        <!--&lt;!&ndash;</mat-error>&ndash;&gt;-->
+        <!--</mat-form-field>-->
+        <!--<mat-form-field appearance="outline" class="example-full-width">-->
+        <!--<input matInput formControlName="area" placeholder="Search for a Venue or Area" [matAutocomplete]="auto"-->
+        <!--&gt;-->
+        <!--<mat-icon matPrefix>search constant</mat-icon>-->
+        <!--<mat-autocomplete #auto="matAutocomplete">-->
+        <!--<mat-option *ngFor="let venue of filteredVenues | async" [value]="venue.searchDetDesc">-->
+        <!--<span>{{venue.searchDetDesc}}</span>-->
+        <!--</mat-option>-->
+        <!--</mat-autocomplete>-->
+        <!--</mat-form-field>-->
+
+        <ng-select [items]="venueType"
+                   bindLabel="searchDetDesc"
+                   placeholder="Search for a Venue or Area"
+                   formControlName="venue"
+                   [(ngModel)]="selectedCity">
+          <mat-icon matPrefix>search constant</mat-icon>
+        </ng-select>
+      </div>
+      <div fxFlex="30%" class="form" fxLayout.sm="column" fxLayout.xs="column">
+        <!--<mat-form-field appearance="outline" class="example-full-width">-->
+        <!--<input matInput [matDatepicker]="picker" formControlName="date" placeholder="Event date"-->
+        <!--[(ngModel)]="selectedCityName">-->
+        <!--<mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>-->
+        <!--<mat-datepicker #picker></mat-datepicker>-->
+        <!--</mat-form-field>-->
+        <!--<app-date [title]="'Select Date'" formControlName="date"></app-date>-->
+      </div>
+      <div fxFlex="30%" class="form">
+        <button mat-flat-button class="modify-search-btn">Modify Search</button>
+      </div>
+    </form>
+  </div>
+</div>

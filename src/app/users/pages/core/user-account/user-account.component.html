@@ -1,0 +1,47 @@
+<div class="user-account-container">
+
+  <div mat-button  class="toolbar-user-btn">
+    <span fxLayout="row" fxLayoutAlign="start center">
+      <!--<img class="avatar" [src]="myAccount?.photoURL || 'assets/images/avatars/noavatar.png'">-->
+      <mat-icon class="icon3" fxHide fxShow.gt-xs>account_circle constant</mat-icon>
+      <span class="name">{{userName || userAccount?.labelName}}</span>
+    </span>
+  </div>
+
+  <!--<div class="dropdown mat-elevation-z1" [class.open]="isOpen">-->
+    <!--<mat-icon class="icon2">arrow_drop_up constant</mat-icon>-->
+    <!--<div class="content">-->
+      <!--<mat-nav-list>-->
+        <!--<mat-list-item>-->
+          <!--<button mat-icon-button>-->
+            <!--<mat-icon>account_circle</mat-icon>-->
+          <!--</button>-->
+          <!--<a matLine>Profile</a>-->
+        <!--</mat-list-item>-->
+
+        <!--<mat-list-item>-->
+          <!--<a matLine>Settings</a>-->
+          <!--<button mat-icon-button>-->
+            <!--<mat-icon>settings</mat-icon>-->
+          <!--</button>-->
+        <!--</mat-list-item>-->
+
+        <!--<mat-list-item>-->
+          <!--<a matLine>Help</a>-->
+          <!--<button mat-icon-button>-->
+            <!--<mat-icon>help</mat-icon>-->
+          <!--</button>-->
+        <!--</mat-list-item>-->
+
+        <!--<mat-divider></mat-divider>-->
+
+        <!--<mat-list-item>-->
+          <!--<a matLine (click)="logout()">Logout</a>-->
+          <!--<button mat-icon-button>-->
+            <!--<mat-icon>exit_to_app</mat-icon>-->
+          <!--</button>-->
+        <!--</mat-list-item>-->
+      <!--</mat-nav-list>-->
+    <!--</div>-->
+  <!--</div>-->
+</div>

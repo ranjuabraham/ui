@@ -1,0 +1,88 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="buffet-items-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Buffet Items</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/buffet-items/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/buffet-items/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Buffet Name -->
+        <ng-container matColumnDef="buffCatg">
+            <mat-header-cell *matHeaderCellDef class="width20">Buffet Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Buffet Name: ">{{row.buffCatg}} </mat-cell>
+        </ng-container>
+        
+        <!-- Category -->
+        <ng-container matColumnDef="buffSubHdr">
+          <mat-header-cell *matHeaderCellDef class="width25">Category</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Category: "> {{row.buffSubHdr}}</mat-cell>
+        </ng-container> 
+        
+        <!-- Food Item Name -->
+        <ng-container matColumnDef="fdDesc">
+          <mat-header-cell *matHeaderCellDef class="width25">Item Name</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Item Name: "> {{row.fdDesc}}</mat-cell>
+        </ng-container>
+        
+       <!-- Sequence -->
+        <ng-container matColumnDef="fdDescSeq">
+          <mat-header-cell *matHeaderCellDef class="width10"> Sequence </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Sequence: "> {{row.fdDescSeq}}</mat-cell>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="fdDescAct">
+            <mat-header-cell *matHeaderCellDef class="width10">Status</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+              <span *ngIf="row.fdDescAct === 1;">
+                  <span style="color: green">Active</span>
+                </span>
+              <span *ngIf="row.fdDescAct !== 1;">
+                  <span style="color: #FE0000">De-active</span>
+                </span>
+            </mat-cell>
+          </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width10">Action </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                <a mat-icon-button routerLink="/venue/buffet-items/edit/{{row.prdctDetId}}/{{row.fdTypId}}/{{row.fdMenuId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
+

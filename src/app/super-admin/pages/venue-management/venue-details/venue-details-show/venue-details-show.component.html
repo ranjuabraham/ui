@@ -1,0 +1,171 @@
+<div fxLayout="column" class="venue-details-show components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="20px">
+
+  <div fxFlex class="table-component-holder mat-elevation-z4">
+    <mat-toolbar class="table-header">
+      <h1 class="mat-headline center-align">Venue Details</h1>
+    </mat-toolbar>
+    <hr/>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <div style="width: 50%">
+        <span>
+        <a mat-flat-button style="background-color: lightseagreen" routerLink="/admin/venue-details/create">
+            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon> Add Venue</a></span>
+        </div>
+        <div style="width: 50%">
+           <span class="tool-btn">
+          <button mat-flat-button [matMenuTriggerFor]="menu" style="background-color: red">
+           TOOLS
+                    <mat-icon _ngcontent-c11=""
+                              class="sidenav-dropdown-indicator rotate mat-icon material-icons ng-star-inserted indicateOpen"
+                              role="img" aria-hidden="true" ng-reflect-klass="sidenav-dropdown-indicator rot"
+                              ng-reflect-ng-class="[object Object]"> expand_more </mat-icon>
+
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>print</mat-icon>
+              <span>Print</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon><i class="fa">&#xf1c3;</i> </mat-icon>
+           <span> Export to Excel</span>
+            </button>
+          </mat-menu>
+      </span>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div class="table-search">
+      <mat-form-field>
+        <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+               placeholder="Search" autocomplete="off">
+      </mat-form-field>
+    </div>
+
+    <div class="table-container">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- Serial Number -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell *matHeaderCellDef style="width: 3%">S.No</th>
+          <td mat-cell *matCellDef="let i = index"> {{ i + 1 }}</td>
+        </ng-container>
+
+        <!-- Venue Category -->
+        <ng-container matColumnDef="prdctDesc">
+          <th mat-header-cell *matHeaderCellDef style="width: 20%" mat-sort-header>Venue Category</th>
+          <td mat-cell *matCellDef="let row"> {{row.prdctDesc}}</td>
+        </ng-container>
+
+        <!-- Venue Detail -->
+        <ng-container matColumnDef="prdctDetDesc">
+          <th mat-header-cell *matHeaderCellDef style="width: 20%" mat-sort-header>Venue Detail</th>
+          <td mat-cell *matCellDef="let row"> {{row.prdctDetDesc}}</td>
+        </ng-container>
+
+
+        <!-- Is Listed -->
+        <ng-container matColumnDef="isListed">
+          <th mat-header-cell *matHeaderCellDef style="width: 10%">Is Listed</th>
+          <td mat-cell *matCellDef="let row">
+            <span *ngIf="row.prdctIsListed == 1;">Yes</span>
+            <span *ngIf="row.prdctIsListed != 1;">No</span>
+          </td>
+        </ng-container>
+
+
+        <!--&lt;!&ndash; Is Detailed &ndash;&gt;-->
+        <!--<ng-container matColumnDef="isDetailed">-->
+        <!--<th mat-header-cell *matHeaderCellDef>Is Detailed</th>-->
+        <!--<td mat-cell *matCellDef="let row">{{row.prdctIsDet}}</td>-->
+        <!--</ng-container>-->
+
+        <!--&lt;!&ndash; Details URL &ndash;&gt;-->
+        <!--<ng-container matColumnDef="detailsUrl">-->
+        <!--<th mat-header-cell *matHeaderCellDef>Details URL</th>-->
+        <!--<td mat-cell *matCellDef="let row">{{row.prdctIsListed}}</td>-->
+        <!--</ng-container>-->
+
+        <!--&lt;!&ndash; Is Web &ndash;&gt;-->
+        <!--<ng-container matColumnDef="isWeb">-->
+        <!--<th mat-header-cell *matHeaderCellDef>Is Web</th>-->
+        <!--<td mat-cell *matCellDef="let row">{{row.prdctIsWeb}}</td>-->
+        <!--</ng-container>-->
+
+        <!--&lt;!&ndash; Web URL &ndash;&gt;-->
+        <!--<ng-container matColumnDef="webUrl">-->
+        <!--<th mat-header-cell *matHeaderCellDef>Web URL</th>-->
+        <!--<td mat-cell *matCellDef="let row">{{row.prdctWebURL}}</td>-->
+        <!--</ng-container>-->
+
+        <!-- Sequence -->
+        <ng-container matColumnDef="sequence">
+          <th mat-header-cell *matHeaderCellDef style="width: 8%">Sequence</th>
+          <td mat-cell *matCellDef="let row">{{row.prdctSeq}}</td>
+        </ng-container>
+
+        <!-- Validity -->
+        <ng-container matColumnDef="validity">
+          <th mat-header-cell *matHeaderCellDef style="width: 15%">Valid till</th>
+          <td mat-cell *matCellDef="let row">{{row.prdctEdDt}}</td>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef style="width: 10%">Status</th>
+          <td mat-cell *matCellDef="let row" style="text-align: center">
+            <mat-chip-list>
+              <span *ngIf="row.prdctDetAct == 1;"><mat-chip style="background-color: green"
+                                                            selected>Active</mat-chip></span>
+              <span *ngIf="row.prdctDetAct != 1;"><mat-chip color="warn" selected>De-active</mat-chip></span>
+            </mat-chip-list>
+          </td>
+        </ng-container>
+
+
+        <!--&lt;!&ndash; Refer Percent &ndash;&gt;-->
+        <!--<ng-container matColumnDef="referPercent">-->
+        <!--<th mat-header-cell *matHeaderCellDef>Refer Percent</th>-->
+        <!--<td mat-cell *matCellDef="let row">{{row.dcdeAct}}</td>-->
+        <!--</ng-container>-->
+
+        <!--&lt;!&ndash; Book Type &ndash;&gt;-->
+        <!--<ng-container matColumnDef="bookType">-->
+        <!--<th mat-header-cell *matHeaderCellDef>Book Type</th>-->
+        <!--<td mat-cell *matCellDef="let row">{{row.alwBookType}}</td>-->
+        <!--</ng-container>-->
+
+        <!-- Action -->
+        <ng-container matColumnDef="action" style="width: 12%">
+          <th mat-header-cell *matHeaderCellDef>
+            Action
+          </th>
+          <td mat-cell *matCellDef="let row; let i=index;">
+            <span>
+ <button mat-icon-button color="accent"
+         (click)="singleVenueDetails(row.prdctDetId, row.prdctDesc, row.prdctDetDesc, row.prdctIsListed, row.prdctIsDet, row.prdctIsWeb, row.prdctWebURL, row.prdctSeq, row.prdctStDt, row.prdctEdDt, row.prdctDetAct, row.prdctRefPct, row.alwBookType)">
+        <i class="material-icons">
+                visibility
+              </i>
+        </button>
+            </span>
+            <span>
+                <a mat-icon-button color="accent"
+                   routerLink="/admin/venue-details/edit/{{row.prdctDetId}}">
+              <mat-icon aria-label="Edit">edit</mat-icon>
+            </a>
+            </span>
+
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
+

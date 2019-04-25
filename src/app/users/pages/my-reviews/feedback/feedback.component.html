@@ -1,0 +1,138 @@
+<div class="feedback-container">
+<div class="theme-container">
+  <div class="hd-container mb30">
+    <h3 class="fb-header-1">Revise Review</h3>
+    <div class="mat-elevation-z1">
+      <div class="" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="">
+
+        <div class="feed-header">
+          <div class="fb-header">Write review about the site and helps us to Improve</div>
+        </div>
+        <div class="fb-form">
+          <div class="alert alert-danger" *ngIf="data === 'FAILURE'">
+            <strong>Error!</strong> Oops! Something went wrong. Please try again later
+          </div>
+          <div class="alert alert-danger" *ngIf="data === 'ERROR'">
+            <strong>Error!</strong> Oops! Something went wrong. Please try again later
+          </div>
+          <div class="fb-label lb1">All fields are mandatory</div>
+          <form class="feedback-form" [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+            <input formControlName="prdctDetId" [(ngModel)]="feedbackData['prdctDetId']" style="display: none">
+            <input formControlName="rvwId" [(ngModel)]="feedbackData['rvwId']" style="display: none">
+
+            <div class="form margin-bottom-20">
+              <mat-form-field [floatLabel]="feedbackForm.value.floatLabel">
+                <input matInput formControlName="rvwTitle" placeholder="Review Title"
+                       [(ngModel)]="feedbackData['rvwTitle']" maxlength="30">
+                <mat-hint class="req-label" align="end">(Maximum 30 characters)</mat-hint>
+                <mat-error *ngIf="feedbackForm.controls['rvwTitle'].hasError('required')">Enter your Review title
+                </mat-error>
+                <mat-error *ngIf="feedbackForm.controls['rvwTitle'].hasError('minlength')">maximum 30 characters
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="form margin-bottom-30" >
+              <div class="label"><label class="rt-lbl">Your Review</label></div>
+              <div class="review-field">
+                <div class="fb-label-2">
+                  <div class="lable-content"><b>Please do not include</b>: HTML, references to other retailers, pricing,
+                    personal information, any profane, inflammatory or copyrighted comments, or any copied content
+                  </div>
+                </div>
+                <mat-form-field [floatLabel]="feedbackForm.value.floatLabel" class="review-field" hintLabel="Max 200 characters">
+                  <textarea matInput #input formControlName="rvwBody" [(ngModel)]="feedbackData['rvwBody']" minlength="60" maxlength="200"></textarea>
+                  <mat-error *ngIf="feedbackForm.controls['rvwBody'].hasError('required')">Enter your Review
+                  </mat-error>
+                  <mat-hint align="end">{{input.value?.length || 0}}/200</mat-hint>
+                  <mat-error *ngIf="feedbackForm.controls['rvwBody'].hasError('minlength')">Min 60 chars required!
+                  </mat-error>
+                  <!--<mat-hint class="req-label" align="end">(Please make sure review contains maximum 200 characters)-->
+                  <!--</mat-hint>-->
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="form margin-bottom-20"  fxLayout="row"  fxLayout.xs="column"
+                 fxLayout.sm="column" fxLayoutGap="">
+              <div class="rating-box" fxFlex="40%" [ngStyle.xs]="{'max-width.%': 100}" [ngStyle.sm]="{'max-width.%': 100}" [ngStyle.md]="{'max-width.%': 40}" [ngStyle.lg]="{'max-width.%': 40}">
+                <div class="label"><label class="rt-lbl">Your Rating</label></div>
+
+                <fieldset class="rating">
+                  <span class="fb-label-4">{{rvwRating}}/5</span>
+                  <input type="radio" formControlName="rvwRating" [checked]="rvwRating===5"
+                         [(ngModel)]="feedbackData['rvwRating']"/>
+                  <label title="Excellent!" (click)='onClick(5)'>5 stars</label>
+
+                  <input type="radio" formControlName="rvwRating" [checked]="rvwRating===4"
+                         [(ngModel)]="feedbackData['rvwRating']"/>
+                  <label title="Good" (click)='onClick(4)'>4 stars</label>
+
+                  <input type="radio" formControlName="rvwRating" [checked]="rvwRating===3"
+                         [(ngModel)]="feedbackData['rvwRating']"/>
+                  <label title="Average" (click)='onClick(3)'>3 stars</label>
+
+                  <input type="radio" formControlName="rvwRating" [checked]="rvwRating===2"
+                         [(ngModel)]="feedbackData['rvwRating']"/>
+                  <label title="Low" (click)='onClick(2)'>2 stars</label>
+
+                  <input type="radio" formControlName="rvwRating" [checked]="rvwRating===1"
+                         [(ngModel)]="feedbackData['rvwRating']"/>
+                  <label title="Poor" (click)='onClick(1)'>1 star</label>
+
+
+                </fieldset>
+                <div class="rt-label"> <mat-hint class="req-label" align="end">(Click to rate on scale of 1-5)
+                </mat-hint></div>
+              </div>
+              <div class="name-field" fxFlex="60%" [ngStyle.xs]="{'max-width.%': 100}" [ngStyle.sm]="{'max-width.%': 100}" [ngStyle.md]="{'max-width.%': 60}" [ngStyle.lg]="{'max-width.%': 60}">
+                <mat-form-field>
+                  <input type="text" matInput formControlName="rvwName" placeholder="Your First Name"
+                         [(ngModel)]="feedbackData['rvwName']" maxlength="40">
+                  <mat-error *ngIf="feedbackForm.controls['rvwName'].hasError('required')">Enter your first name
+                  </mat-error>
+                  <mat-error *ngIf="feedbackForm.controls['rvwName'].hasError('maxLength')">Max 40 characters
+                  </mat-error>
+                  <mat-hint class="req-label" align="end">(Max 40 characters)</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+            <div>
+              <button mat-raised-button class="btn btn-primary fb-submit-btn" color="primary">SUBMIT</button>
+            </div>
+          </form>
+        </div>
+
+<!--        <div class="feed-header">-->
+<!--          <div class="fb-header">What makes a good review</div>-->
+<!--        </div>-->
+<!--        <div class="review-content">-->
+<!--          <div class="cnt">-->
+<!--            <div class="rc-header">Educate your readers</div>-->
+<!--            <div class="rc-txt">Provide a relevant, unbiased overview of the product. Readers are interested in the pros and the cons of the product.</div>-->
+<!--          </div>-->
+
+<!--          <div class="cnt">-->
+<!--            <div class="rc-header">Be yourself, be informative</div>-->
+<!--            <div class="rc-txt">Let your personality shine through, but it's equally important to provide facts to back up your opinion.</div>-->
+<!--          </div>-->
+
+
+<!--          <div class="cnt">-->
+<!--            <div class="rc-header">Get your facts right!</div>-->
+<!--            <div class="rc-txt">Nothing is worse than inaccurate information. If you're not really sure, research always helps.</div>-->
+<!--          </div>-->
+
+<!--          <div class="cnt">-->
+<!--            <div class="rc-header">Stay concise</div>-->
+<!--            <div class="rc-txt">Be creative but also remember to stay on topic. A catchy title will always get attention!</div>-->
+<!--          </div>-->
+<!--          <div class="cnt">-->
+<!--            <div class="rc-header">Easy to read, easy on the eyes</div>-->
+<!--            <div class="rc-txt">A quick edit and spell check will work wonders for your credibility. Also, break reviews into small, digestible paragraphs.</div>-->
+<!--          </div>-->
+<!--        </div>-->
+      </div>
+    </div>
+  </div>
+</div>
+</div>

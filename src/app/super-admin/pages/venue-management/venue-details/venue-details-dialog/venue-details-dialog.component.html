@@ -1,0 +1,77 @@
+<div class="container">
+  <h3 mat-dialog-title style="text-align: center; font-weight: bold">{{data.prdctDetDesc | uppercase}}</h3>
+
+  <table id="venue_details">
+
+    <tr>
+      <th>Venue Category</th>
+      <td>{{data.prdctDesc}}</td>
+    </tr>
+    <!--<tr>-->
+    <!--<th>Venue Detail</th>-->
+    <!--<td>{{data.prdctDetDesc}}</td>-->
+    <!--</tr>-->
+    <tr>
+      <th>Is Listed</th>
+      <td>
+        <span *ngIf="data.prdctIsListed == 1;">Yes</span>
+        <span *ngIf="data.prdctIsListed != 1;">No</span>
+      </td>
+    </tr>
+    <tr>
+      <th>Is Detailed</th>
+      <td>
+        <span *ngIf="data.prdctIsDet == 1;">Yes</span>
+        <span *ngIf="data.prdctIsDet != 1;">No</span>
+      </td>
+    </tr>
+    <tr>
+      <th>Details URL</th>
+      <td><span *ngIf="data.prdctDetURL == null || data.prdctDetURL == ''">{{'None'}}</span>{{data.prdctDetURL}}</td>
+    </tr>
+    <tr>
+      <th>Is Web</th>
+      <td>
+        <span *ngIf="data.prdctIsWeb == 1;">Yes</span>
+        <span *ngIf="data.prdctIsWeb != 1;">No</span>
+      </td>
+    </tr>
+    <tr>
+      <th>Web URL</th>
+      <td><span *ngIf="data.prdctWebURL == null || data.prdctWebURL == '' ">{{'None'}}</span>{{data.prdctWebURL}}</td>
+    </tr>
+    <tr>
+      <th>Display Sequence</th>
+      <td>{{data.prdctSeq}}</td>
+    </tr>
+    <tr>
+      <th>Start Date</th>
+      <td>{{data.prdctStDt}}</td>
+    </tr>
+    <tr>
+      <th>Valid till</th>
+      <td>{{data.prdctEdDt}}</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>
+        <span style="color: green" *ngIf="data.prdctDetAct == 1;">Active</span>
+        <span style="color: red" *ngIf="data.prdctDetAct != 1;">De-active</span>
+      </td>
+    </tr>
+    <tr>
+      <th>Refer Percent</th>
+      <td>{{data.prdctRefPct * 100}} %</td>
+    </tr>
+    <tr>
+      <th>Book Type</th>
+      <td>
+        <span *ngIf="data.alwBookType == 0;">Rent Basis</span>
+        <span *ngIf="data.alwBookType == 1;">Hourly Basis</span>
+        <span *ngIf="data.alwBookType == 2;">Buffet Only</span>
+        <span *ngIf="data.alwBookType == 3;">All Types</span>
+      </td>
+    </tr>
+
+  </table>
+</div>

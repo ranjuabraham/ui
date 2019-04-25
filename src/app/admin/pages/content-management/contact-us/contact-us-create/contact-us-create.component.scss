@@ -1,0 +1,20 @@
+//text editor css
+.widgetHolder{
+    margin: 0 0 20px 0;
+    background-color:white;
+  }
+  
+  :host #discipline-qe /deep/ .ql-container{
+    height: 200px;
+  }
+  //end text editor css
+ 
+.form {
+    display: flex;
+    padding-top: 6px;
+  }
+  
+  .mat-form-field {
+    font-size: 16px;
+    flex-grow: 1;
+  }

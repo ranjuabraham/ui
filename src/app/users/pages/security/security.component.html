@@ -1,0 +1,18 @@
+<div class="about-container">
+  <div class="violet-bg"></div>
+  <div class="theme-container">
+    <div class="hd-container pos-top">
+      <div fxLayout="column" fxLayoutAlign="space-between center" class="mat-elevation-z1">
+        <div class="abt-content">
+          <div class="abt-header">Security</div>
+          <div class="inner-cnt">
+            <div *ngFor="let security of securityData">
+              <div class="abt-cnt"><span [innerHTML]="security.helpBody"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

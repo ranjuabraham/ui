@@ -1,0 +1,26 @@
+<div class="profile-sidenav">
+  <div fxFlex class="profile-details  mat-elevation-z1 ">
+    <!--<h3>Profile details</h3>-->
+    <div fxFlex class="mat-elevation-z1 ">
+      <!--<div class="menu-container" style="padding: 10px 20px">-->
+        <!--<div class="profile-image" style="margin-bottom: 10px">-->
+          <!--<img class="avatar" [src]="'assets/images/icons/profile-image.png'"-->
+               <!--style="width: 60px; margin-top: 10px;">-->
+        <!--</div>-->
+        <!--<span class="profile-link">Change profile picture</span>-->
+      <!--</div>-->
+      <div class="pd-menu" fxHide fxShow.gt-sm>
+        <ul>
+          <li><a href="#" class="ac-set">Account Settings</a></li>
+          <li><a routerLink="/profile" [routerLinkActive]="'active_menu'">Edit Profile</a></li>
+          <li><a routerLink="/change-password" [routerLinkActive]="'active_menu'">Change Password</a></li>
+        </ul>
+      </div>
+      <div fxHide fxShow.lt-md="true">
+        <a class="nav-btn" mat-flat-button routerLink="/profile" [routerLinkActive]="'active_menu'">Edit Profile</a>
+        <a class="nav-btn" mat-flat-button routerLink="/change-password" [routerLinkActive]="'active_menu'">Change Password</a>
+      </div>
+    </div>
+  </div>
+</div>
+

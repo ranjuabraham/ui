@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.773 29.624">
+  <defs>
+    <style>
+      .cls-1 {
+        opacity: 0.64;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #001731;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-miterlimit: 10;
+        stroke-width: 1.55px;
+      }
+    </style>
+  </defs>
+  <g id="Group_2484" data-name="Group 2484" class="cls-1" transform="translate(0.775 0.775)">
+    <path id="Path_2404" data-name="Path 2404" class="cls-2" d="M23.695,13.811v-3.4A10.351,10.351,0,0,0,13.486.2h0A10.351,10.351,0,0,0,3.277,10.409v3.4a10.633,10.633,0,0,1-1.7,5.955L.3,23.169H27.523l-2.127-3.4A13.846,13.846,0,0,1,23.695,13.811Z" transform="translate(-0.3 -0.2)"/>
+    <path id="Path_2405" data-name="Path 2405" class="cls-2" d="M11.332,5.7a4.72,4.72,0,0,1-4.679,4.679C4.1,10.379,2.4,8.252,2.4,5.7" transform="translate(6.532 17.695)"/>
+  </g>
+</svg>

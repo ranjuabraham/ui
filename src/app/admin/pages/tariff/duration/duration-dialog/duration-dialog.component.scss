@@ -1,0 +1,49 @@
+@import "../../../../@theme/styles/variables";
+::ng-deep.duration-dialog-container{
+  position: relative ;
+  width: 60%;
+}
+  #dialog-box {
+    font-family: $font-family;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  #dialog-box td, #dialog-box th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  #dialog-box tr:nth-child(even){background-color: #f2f2f2;}
+
+  #dialog-box tr:hover {background-color: #ddd;}
+
+  #dialog-box th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+  }
+
+.close-btn {
+  position: absolute;
+  top: 150px;
+  right: 250px;
+  width: 30px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+  ::ng-deep.duration-dialog-container{
+    position: relative !important;
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+  .close-btn {
+    position: absolute;
+    top: -45px !important;
+    right: 30px !important;
+    width: 30px;
+    cursor: pointer;
+  }
+
+}

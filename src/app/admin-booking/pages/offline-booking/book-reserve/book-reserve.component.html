@@ -1,0 +1,500 @@
+<div class="theme-container details-page-section" style="margin-top: 20px">
+  <div class="details-container">
+    <div fxLayout.md="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="15px">
+      <div fxFlex="65" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+        <div class="box-section product-image detailsPage_hallsDetails" *ngIf="detailsData">
+          <div class="hall-name" fxLayout="row" fxLayout.xs="column">
+            <div fxFlex="70">
+              <div>{{contact['cntctUsName']}}</div>
+            </div>
+            <div fxFlex="30">
+              <div class="hall-rating" fxLayoutAlign="end center">
+                <mat-chip-list *ngIf="halls['reviewCount'] > 0">
+                  <mat-chip color="primary" selected>
+                    <mat-icon>star</mat-icon>
+                    {{halls['reviewAvg'] | number : '1.1'}}
+                  </mat-chip>
+                </mat-chip-list>
+                <div class="review-count">
+                    <span class="review-link" *ngIf="halls['reviewCount'] > 0"
+                          (click)="openReviewDialog(halls.prdctDetId)"> {{halls['reviewCount']}}
+                      Reviews</span>
+                  <span *ngIf="halls['reviewCount'] === 0"> No reviews</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hall-city">
+            <span>{{contact['city']}} - {{contact['pincode']}}</span>
+            <span class="map-icon" (click)="mapViewDialog(contact['cntctUsGmap'])"
+                  *ngIf="contact['cntctUsGmap']">
+                      <img src="{{iconUrl}}map-icon.svg"> Map</span>
+          </div>
+          <div class="product-image">
+            <ngx-gallery [options]="galleryOptions" [images]="images"></ngx-gallery>
+          </div>
+          <div class="detailsPage_subMenuList" id="detailsPage_subMenuList"
+               [ngClass]="{'mat-elevation-z5' : false, 'sticky' : isSticky}">
+            <div class="submenu-list" fxLayout="row" fxLayoutAlign="space-between center" fxLayout="row"
+                 fxLayoutAlign="space-between center">
+              <div class="detailsPage_subMenu"><a pageScroll [pageScrollOffset]="125" [pageScrollDuration]="1000"
+                                                  href="#overView">Overview</a></div>
+              <div class="detailsPage_subMenu"><a pageScroll [pageScrollOffset]="125" [pageScrollDuration]="1000"
+                                                  href="#amenities">Amenities</a></div>
+              <div class="detailsPage_subMenu"><a pageScroll [pageScrollOffset]="125" [pageScrollDuration]="1000"
+                                                  href="#chargeable-amenities">Chargeable Amenities</a></div>
+              <div class="detailsPage_subMenu"><a pageScroll [pageScrollOffset]="125" [pageScrollDuration]="1000"
+                                                  href="#highlights">Highlights</a></div>
+              <div class="detailsPage_subMenu"><a pageScroll [pageScrollOffset]="125" [pageScrollDuration]="1000"
+                                                  href="#policies">Policies</a></div>
+              <div class="detailsPage_subMenu"><a pageScroll [pageScrollOffset]="125" [pageScrollDuration]="1000"
+                                                  href="#location">location</a></div>
+            </div>
+          </div>
+          <div class="submenuDivider">
+            <mat-divider></mat-divider>
+          </div>
+
+          <div fxLayout="row">
+            <div class="detailsPage_subMenuHeader" id="overView">Overview
+            </div>
+          </div>
+          <div fxLayout="column" class="detailsPage_overviewContainer">
+            <div class="overviewContent" *ngFor="let about of abouts">
+              <span [innerHtml]="about.abtUsDet"></span>
+            </div>
+          </div>
+
+          <div fxLayout="row">
+            <div class="detailsPage_subMenuHeader" id="amenities">Amenities
+            </div>
+          </div>
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="start" class="detailsPage_amenitiesContainer">
+            <div fxFlex="33">
+              <div fxLayout="column wrap" class="amenitiesList">
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/seating-icon.svg">
+                  <span class="amenitiesLabel">Seating :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Seating'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/floor-icon.svg">
+                  <span class="amenitiesLabel">Floor :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Hall on Floor'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/cars-icon.svg">
+                  <span class="amenitiesLabel">Cars :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Cars'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/bike-icon.svg">
+                  <span class="amenitiesLabel">Bikes :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Bikes'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/room-icon.svg">
+                  <span class="amenitiesLabel">Room :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                <span *ngIf="amenities['facName'] === 'Rooms'">
+                <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                </span>
+                </span>
+                </div>
+
+              </div>
+            </div>
+            <div fxFlex="33">
+              <div fxLayout="column" class="amenitiesList">
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/dining-icon.svg">
+                  <span class="amenitiesLabel">Dining :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Dining'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/backup-icon.svg">
+                  <span class="amenitiesLabel">Backup :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Backup'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/dining-level-icon.svg">
+                  <span class="amenitiesLabel">Dining Level :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Hall on Dining'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/restaurant-icon.svg">
+                  <span class="amenitiesLabel">Restaurant :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Restaurant'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+              </div>
+            </div>
+            <div fxFlex="33">
+              <div fxLayout="column" class="amenitiesList">
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/floating-icon.svg">
+                  <span class="amenitiesLabel">Floating :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Floating'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/cars-icon.svg">
+                  <span class="amenitiesLabel">Hall Size :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Hall Size'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/conference-icon.svg">
+                  <span class="amenitiesLabel">Conference :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Conference'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+                <div class="amenitiesItem">
+                  <img class="amenitiesIcon" src="../../../../assets/images/icons/details-page/lift-icon.svg">
+                  <span class="amenitiesLabel">Lifts :</span>
+                  <span *ngFor="let amenities of amenitiesData">
+                  <span *ngIf="amenities['facName'] === 'Lifts'">
+                    <span class="amenitiesValue">{{amenities['facSpec']}}</span>
+                  </span>
+                </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+          <div fxLayout="row">
+            <div class="detailsPage_subMenuHeader" id="chargeable-amenities">Chargeable Amenities <span class="ch-info">(Payble at venue)</span>
+            </div>
+          </div>
+          <div fxLayout="column" class="detailsPage_chargeableContainer">
+            <div class="chargeableList" *ngFor="let chargeableAmenities of chargeableAmenitiesData">
+              <mat-icon>done</mat-icon>
+              <span class="chargeableItem" [innerHtml]="chargeableAmenities['facSpec']"></span>
+            </div>
+          </div>
+
+          <div fxLayout="row">
+            <div class="detailsPage_subMenuHeader" id="highlights">Highlights
+            </div>
+          </div>
+          <div fxLayout="column" class="detailsPage_highlightsContainer">
+            <div class="highlightsList" *ngFor="let highlights of highlightsData">
+              <mat-icon>done</mat-icon>
+              <span class="highlightsItem" [innerHtml]="highlights['facSpec']"></span>
+            </div>
+          </div>
+
+          <div fxLayout="row">
+            <div class="detailsPage_subMenuHeader" id="policies">Policies
+            </div>
+          </div>
+          <div fxLayout="column" class="detailsPage_termsContainer">
+            <ul class="termsContent" *ngFor="let termsAndConditions of termsAndConditionsData">
+              <li  [innerHtml]="termsAndConditions['dcdeDet']"></li>
+            </ul>
+          </div>
+
+
+          <div fxLayout="row">
+            <div class="detailsPage_subMenuHeader" id="location">location
+            </div>
+          </div>
+          <div fxLayout="column" class="detailsPage_locationContainer">
+            <div fxLayout="row" fxLayout.xs="column" class="venueContact">
+              <span class="hallName">{{contact['cntctUsName']}}</span>
+              <span class="hallAddress">{{contact['city']}} - {{contact['pincode']}}</span>
+            </div>
+            <div class="hallVenueMap">
+              <!--<iframe [src]='sanitizer.bypassSecurityTrustResourceUrl(contact.cntctUsGmap)' width="600" height="450"-->
+              <!--frameborder="0" style="border:0;" allowfullscreen></iframe>-->
+            </div>
+            <div fxLayout="column" class="venueNearBy">
+              <div class="nearByheader">NearBy</div>
+              <div class="nearByItem">
+                <img class="nearByIcon" src="../../../../assets/images/icons/details-page/bus-icon.svg">
+                <span class="nearByLabel">Bus Route :</span>
+                <span class="nearByValue">{{contact['cntctUsBus']}}</span>
+              </div>
+              <div class="nearByItem">
+                <img class="nearByIcon" src="../../../../assets/images/icons/details-page/train-icon.svg">
+                <span class="nearByLabel">Train Route :</span>
+                <span class="nearByValue">{{contact['cntctUsTS']}}</span>
+              </div>
+              <div class="nearByItem">
+                <img class="nearByIcon" src="../../../../assets/images/icons/details-page/landmark-icon.svg">
+                <span class="nearByLabel">Landmark :</span>
+                <span class="nearByValue">{{contact['cntctUsDir']}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div fxFlex="35" fxFlex.md="50" fxFlex.sm="100" fxFlex.xs="100">
+        <form [formGroup]="productDetailsForm"  class="rt-form">
+          <div class="box-section subHallDescription">
+            <div class="sub-hall-description" *ngIf="subHallDescription">
+              <img class="info-icon" src="../../../../assets/images/icons/details-page/info-icon.svg">
+              <span [innerHtml]="subHallDescription"></span>
+            </div>
+          </div>
+          <div class="box-section sub-halls-section">
+
+            <div class="select-sub-halls form-field">
+              <mat-form-field>
+                <mat-select placeholder="Choose Hall" [ngModel]="selectedSubHall"
+                            (selectionChange)="onChangeSubHalls($event)" formControlName="subHallId">
+                  <mat-option *ngFor="let subHall of subHalls" [value]=subHall.dcdeId>
+                    {{subHall.dcdeHdr}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxLayout="row" fxLayout.md="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
+              <div fxFlex="47">
+                <div class="form-field eventStartDate">
+                  <app-my-date-picker [options]="myDatePickerOptions" formControlName="startDate"
+                                      [placeholder]="placeholder"
+                                      (userDateInput)="getStartDate($event)" required></app-my-date-picker>
+                </div>
+              </div>
+              <div fxFlex="47">
+                <div class="form-field eventEndDate">
+                  <mat-form-field class="example-full-width">
+                    <span matPrefix>
+                    <img style="width: 14px" src="../../assets/images/icons/calendar-icon.svg">
+                    </span>
+                    <input type="text" matInput placeholder="Event End" [(ngModel)]="endDate" formControlName="endDate"
+                           readonly>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <mat-form-field>
+                <mat-select placeholder="Event Type" (selectionChange)="getSessions($event)"
+                            formControlName="eventTypeId">
+                  <mat-option *ngFor="let eventType of eventTypes" [value]="eventType | json">
+                    {{eventType.evtHdr}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="form-field">
+              <mat-form-field>
+                <mat-select placeholder="Session" (selectionChange)="changeSession($event)" formControlName="sessionId">
+                  <mat-option *ngFor="let session of sessionData" [value]="session | json">
+                    {{session.durHdr}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="form-field">
+              <mat-form-field>
+                <mat-select placeholder="Food Type" (selectionChange)="getTariff($event)" formControlName="foodId">
+                  <mat-option *ngFor="let Type of foodTypes" [value]="Type | json">
+                    {{Type.fdTypHdr}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="form-field" *ngIf="hourlyFlg === 1">
+              <div class="add-extra-hours" *ngIf="hours">
+                <label>Additional Hours</label>
+                <span class="btn-group">
+                  <button mat-flat-button matTooltip="Remove" class="dec-btn" [ngClass]="{'btn-disabled': count === 0}"
+                          (click)="decrement()">
+                    <mat-icon>remove</mat-icon>
+                  </button>
+                  <span class="hours-count"> {{count}} </span>
+                  <button mat-flat-button matTooltip="Add" class="increase-btn"
+                          [ngClass]="{'btn-disabled': count === maxCount}" (click)="increment()">
+                    <mat-icon>add</mat-icon>
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="tariffDetails">
+
+            <div class="box-section sub-tariff-sec" *ngIf="tariffData">
+              <div fxLayout="row" fxLayoutAlign="end center">
+                <span class="editBtn" (click)="editTariff()" *ngIf="editBtn">Edit</span>
+              </div>
+              <div class="item rent-price">
+                <span>Rent for a session</span>
+                <span style="float: right">
+                  <span class="item-amt" [ngClass]="{'old-amt': editClass}">{{rentAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                  <input type="text" class="editInput" [(ngModel)]="editRentAmt" *ngIf="editInput" (keypress)="keyPress($event)"  (keyup)="changeRentAmt()" formControlName="rentAmount">
+                </span>
+              </div>
+              <div class="item add-hours" *ngIf="count > 0">
+                <span>Additional {{count}} hours (Rs.{{hourAmount}}/hr)</span>
+                <span style="float: right">
+                  <span class="item-amt" [ngClass]="{'old-amt': editClass}">{{additionalHoursAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                  <input type="text" class="editInput" [(ngModel)]="editAdditionalHrAmt" *ngIf="editInput" formControlName="editAdditionalHrAmt" disabled>
+                </span>
+              </div>
+              <div class="item discount" *ngIf="discountValue > 0">
+             <span>Offers Discount
+               <mat-chip-list style="display: inline-block;">
+                          <mat-chip selected>
+                            {{discountValue}}%
+                          </mat-chip>
+                        </mat-chip-list>
+             </span>
+                <span style="float: right"> <span class="item-amt" [ngClass]="{'old-amt': editClass}"> - {{discountAmount | currency:'INR':'symbol':'1.0-0'}} </span>
+                  <input type="text" class="editInput" [(ngModel)]="editDiscountAmt" *ngIf="editInput" (keyup)="changeDiscountAmt()" (keypress)="keyPress($event)" formControlName="editDiscountAmt">
+                </span>
+              </div>
+              <mat-divider class="subtoal-divider" *ngIf="discountValue > 0"></mat-divider>
+              <div class="item subtotal" *ngIf="discountValue > 0">
+                <span>Subtotal</span>
+                <span style="float: right"><span class="item-amt" [ngClass]="{'old-amt': editClass}">{{subTotalAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                  <input type="text" class="editInput" [(ngModel)]="editSubTotalAmount" *ngIf="editInput" formControlName="editSubTotalAmount" disabled>
+                </span>
+              </div>
+              <div class="item gst" *ngIf="gstValue > 0">
+                <span>GST
+                <mat-chip-list style="display: inline-block;">
+                          <mat-chip selected>
+                            {{gstValue}}%
+                          </mat-chip>
+                        </mat-chip-list>
+                </span>
+                <span style="float: right"><span class="item-amt" [ngClass]="{'old-amt': editClass}">{{gstAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+                  <input type="text" class="editInput" [(ngModel)]="editGstAmt" *ngIf="editInput"  formControlName="editGstAmt" disabled>
+                </span>
+              </div>
+              <mat-divider class="total-divider"></mat-divider>
+
+              <div class="item total-amount">
+                <span>To Pay</span>
+                <span style="float: right">{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</span>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="tariffBuffetDetails">
+            <!--<div>-->
+            <div class="box-section sub-tariff-sec">
+              <div *ngFor="let price of pricePerPlate">
+                <div class="item rent-price">
+                  <span>Price per Plate</span>
+                  <span style="float: right">{{price['buffCost'] | currency:'INR':'symbol':'1.0-0'}}</span>
+                </div>
+                <div style="color: #FE0000; font-size: 12px;">Minimum Pax : {{price['buffMin']}}</div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="product-policy-section box-section" *ngIf="tariffData">
+            <div class="group-btn" *ngIf="tariffData && tariffDetails">
+              <button mat-flat-button class="book-btn" style="width: 100%" (click)="continueToBook()" *ngIf="defaultBook"><mat-icon>arrow_right_alt</mat-icon>
+                Book &nbsp;&nbsp;{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+
+              <button mat-flat-button class="book-btn" style="width: 100%" (click)="continueToEditBook()" *ngIf="editBook"><mat-icon>arrow_right_alt</mat-icon>
+                Save & Book &nbsp;&nbsp;{{totalAmount | currency:'INR':'symbol':'1.0-0'}}</button>
+            </div>
+
+            <div class="reserve-notify" *ngIf="tariffData && tariffDetails && reservePeriod">
+              <div class="notification">
+                 <span class="content">
+             Pay {{reservePercentage }}% of Total tariff to reserve / Block the date
+            for next 15 calender days
+           </span>
+              </div>
+            </div>
+            <div class="group-btn" *ngIf="tariffBuffetDetails">
+              <button mat-flat-button class="continue-menu-btn" (click)="continueToFoodMenu()"><mat-icon>arrow_right_alt</mat-icon> Choose Food Menu</button>
+            </div>
+            <div *ngIf="tariffDetails">
+              <div class="halls-info-header">Heads Up</div>
+              <div class="halls-cancellation-policy">+ Cancellation Policy</div>
+              <div class="halls-container halls-conditions">
+                <ul class="halls-conditionList">
+                  <li class="halls-conditionItem">
+                <span class="halls-conditionText">
+                  Refundable deposit or Miscellaneous charges  <span
+                  *ngIf="refundableAmount">Rs {{refundableAmount}}</span><span style="font-weight: 600"
+                                                                               *ngIf="refundableAmount === 0">{{'if any'}}</span>
+                should be payable at venue on or before
+                  {{refundDate}}
+                </span>
+                  </li>
+                  <li class="halls-conditionItem">
+                 <span class="halls-conditionText">
+                      Any additional charges incurred to any
+                additional services/amenties availed should be
+                Payable at the venue.For more details , kindly check
+                Amenties & Other services section
+                 </span>
+                  </li>
+                </ul>
+                <button mat-flat-button class="halls-termsAndCancellation">Terms and conditions</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

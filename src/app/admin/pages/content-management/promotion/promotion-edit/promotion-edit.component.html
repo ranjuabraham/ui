@@ -1,0 +1,118 @@
+<div fxLayout="column" class="form-container-sec components-container">
+  <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+  <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+         fxLayoutGap="10px">
+        <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+
+          <div class="container" *ngIf="resultInfo">
+            <form [formGroup]="promoForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+              <div class="table-header">
+                <h1 class="mat-headline center-align">Edit Promotion</h1>
+              </div>
+              <div class="form" style="display:none">
+                  <mat-form-field>
+                    <input matInput  formControlName="offerId" placeholder="ID" [(ngModel)]="resultInfo.offerId">
+                  </mat-form-field>
+              </div>
+  
+              <div class="form">
+                  <mat-form-field>
+                    <input matInput  formControlName="offerHdr" placeholder="Header" [(ngModel)]="resultInfo.offerHdr">
+                    <mat-hint align="end">{{input.value?.length || 0}}/100</mat-hint>
+                    <mat-error *ngIf="promoForm.controls['offerHdr'].hasError('required')"> Enter Header</mat-error>
+                  </mat-form-field>
+              </div>
+  
+              <div class="form">
+                <div fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center"
+                     class="widgetHolder ">
+                  <quill-editor #disciplineQE id="discipline-qe"
+                                formControlName="offerShort" style=" min-height: 170px;" placeholder="Short Description" [(ngModel)]="resultInfo.offerShort"
+                                [required]="true"
+                                [ngClass]="{ 'is-invalid': submitted && f.offerShort.errors }"></quill-editor>
+
+                  <div *ngIf="submitted && f.offerShort.errors" class="invalid-feedback">
+                    <div *ngIf="f.offerShort.errors.required">Enter Short Description
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form">
+                  <div fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="center"
+                       class="widgetHolder ">
+                    <quill-editor #disciplineQE1 id="discipline-qe1"
+                                  formControlName="offerDet" style=" min-height: 170px;" placeholder="Detailed Description" [(ngModel)]="resultInfo.offerDet"
+                                  [required]="true"
+                                  [ngClass]="{ 'is-invalid': submitted && f.offerDet.errors }"></quill-editor>
+
+                    <div *ngIf="submitted && f.offerDet.errors" class="invalid-feedback">
+                      <div *ngIf="f.offerDet.errors.required">Enter Detailed Description
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form">
+                    <mat-form-field>
+                      <input matInput #input maxlength="100" formControlName="offerHint1" placeholder="Offer Hint" [(ngModel)]="resultInfo.offerHint1">
+                    </mat-form-field>
+                </div>
+
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="offerTyp" placeholder="Offer Type" [(ngModel)]="resultInfo.offerTyp">
+                        <mat-option *ngFor="let type of displayType" [value]="type.value">
+                          {{type.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+                
+              <div class="form">
+                  <mat-form-field>
+                    <mat-select formControlName="offerSeq" placeholder="Display Sequence" [(ngModel)]="resultInfo.offerSeq">
+                      <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.value">
+                        {{sequence.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="promoForm.controls['offerSeq'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+              </div>
+  
+              <div class="form">
+                  <mat-form-field>
+                    <mat-select formControlName="offerAct" placeholder="Is Active" [(ngModel)]="resultInfo.offerAct">
+                      <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                        {{status.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="promoForm.controls['offerAct'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+              </div>
+
+              <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+
+                <div fxFlex="50" fxFlex.xs="100">
+                  <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                  <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                    <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                    </div>
+                  </div>
+                </div>
+
+
+                <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                  <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                       fxLayoutAlign.xs="space-around center">
+                    <button mat-raised-button class="save-btn">Update</button>
+                    <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+  

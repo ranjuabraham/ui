@@ -1,0 +1,82 @@
+<div fxLayout="column" class="aboutus-create-sec components-container-gt-xs" [ngClass.xs]="'components-container-xs'">
+  <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+
+  <div class="form-container" fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between" fxLayoutGap="10px">
+    <div fxFlex class="createAboutUs form-component-holder mat-elevation-z1">
+      <form [formGroup]="aboutUsForm" (ngSubmit)="addAboutUs()">
+        <div class="container" style="padding: 2% 4%">
+          <div class="table-header">
+            <h3 class="center-align">Create About us</h3>
+          </div>
+          <div class="form">
+            <mat-form-field>
+              <input matInput #input maxlength="100" formControlName="abtUsHdr" placeholder="Header">
+            </mat-form-field>
+          </div>
+
+          <div class="form">
+            <div fxFlex="100" fxFlex.xs="100" fxFlex.sm="100" fxLayout="column" fxLayoutAlign="left"
+                 class="widgetHolder ">
+              <quill-editor #disciplineQE id="discipline-qe"
+                            formControlName="abtUsDet" style=" min-height: 170px;" placeholder="Description"
+                            [required]="true"
+                            [ngClass]="{ 'is-invalid': submitted && f.abtUsDet.errors }"></quill-editor>
+
+              <div *ngIf="submitted && f.abtUsDet.errors" class="invalid-feedback">
+                <div *ngIf="f.abtUsDet.errors.required">Enter Description
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Display Sequence -->
+          <div class="form">
+            <mat-form-field>
+              <mat-select formControlName="abtUsSeq" placeholder="Display Sequence">
+                <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.value">
+                  {{sequence.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="aboutUsForm.controls['abtUsSeq'].hasError('required')"> Select anyone</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!-- Status-->
+          <div class="form">
+            <mat-form-field>
+              <mat-select formControlName="abtUsAct" placeholder="Status">
+                <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                  {{status.viewValue}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="aboutUsForm.controls['abtUsAct'].hasError('required')"> Select anyone</mat-error>
+            </mat-form-field>
+          </div>
+
+          <!--- google captcha -->
+          <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+
+            <div fxFlex="50" fxFlex.xs="100">
+              <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+              <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                </div>
+              </div>
+            </div>
+
+
+            <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+              <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                   fxLayoutAlign.xs="space-around center">
+                <button mat-raised-button class="save-btn">Save</button>
+                <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+<div class="my-review-section">
+<div class="theme-container">
+  <div class="hd-container mb30" id="my-reviews">
+    <div class="header-1"><h3>My Reviews</h3></div>
+    <div class="my-review-container">
+      <div class="mat-elevation-z1">
+        <div class="myreviews">
+          <div fxLayout="column" fxLayoutAlign="center center" class="without-table" *ngIf="count == 0">
+            <div class="header-2" fxFlexAlign="start"><h3>My Reviews</h3></div>
+            <div><img style="width: 210px" src="../../../../assets/images/icons/my-reviews.svg"></div>
+            <div class="no-data">No Wishlist Yet!</div>
+          </div>
+          <div *ngIf="myReviewsData">
+            <div fxLayout="row" fxLayoutAlign="start stretch" class="review-list"
+                 *ngFor="let myReview of myReviewsData.list">
+
+              <div fxFlex="10%" [ngStyle.xs]="{'max-width.%': 15}" [ngStyle.sm]="{'max-width.%': 15}"
+                   [ngStyle.md]="{'max-width.%': 10}" [ngStyle.lg]="{'max-width.%': 10}">
+                <div class="avatar-image"><img class="profile-img"
+                                               src="../../../assets/images/icons/my-reviews-profile.png"
+                                               alt="Profile image"></div>
+              </div>
+              <div fxFlex="70%" class="rts" [ngStyle.xs]="{'max-width.%': 60}" [ngStyle.sm]="{'max-width.%': 60}"
+                   [ngStyle.md]="{'max-width.%': 70}" [ngStyle.lg]="{'max-width.%': 70}">
+                <div class="hall-name" *ngIf="myReview.prdctDetDesc == 'ADMIN'">{{'Hallsdiary'}}</div>
+                <div class="hall-name" *ngIf="myReview.prdctDetDesc != 'ADMIN'">{{myReview.prdctDetDesc}}</div>
+                <div class="review-content">{{myReview.rvwBody}}</div>
+                <div class="user-name">{{myReview.rvwName}}</div>
+
+                <div class="hall-rating pd-10">
+                  <div><span class="rating">
+                <input type="radio"   [checked]="myReview.rvwRating===5" value="{{myReview.rvwRating}}"/>
+                <label title="Excellent!">5 stars</label>
+
+                <input type="radio"   [checked]="myReview.rvwRating===4" value="{{myReview.rvwRating}}"/>
+                <label title="Good">4 stars</label>
+
+                <input type="radio"  [checked]="myReview.rvwRating===3" value="{{myReview.rvwRating}}"/>
+                <label title="Average">3 stars</label>
+
+                <input type="radio"  [checked]="myReview.rvwRating===2" value="{{myReview.rvwRating}}"/>
+                <label title="Low">2 stars</label>
+
+                <input type="radio"  [checked]="myReview.rvwRating===1" value="{{myReview.rvwRating}}"/>
+                <label title="Poor">1 star</label>
+
+              </span></div>
+<!--                  <mat-icon color="warn">star constant</mat-icon>-->
+<!--                  <span class="rat-count">{{myReview.rvwRating}}</span>-->
+                </div>
+              </div>
+              <div fxFlex="20%"  [ngStyle.xs]="{'max-width.%': 25}" [ngStyle.sm]="{'max-width.%': 25}"
+                   [ngStyle.md]="{'max-width.%': 20}" [ngStyle.lg]="{'max-width.%': 20}">
+                <button mat-stroked-button class="revise-review-btn" color="warn"><a class="revise-btn"
+                                                                                     routerLink="/my-reviews/edit/{{myReview.rvwId}}">Revise Review</a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

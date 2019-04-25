@@ -1,0 +1,155 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container">
+              <form [formGroup]="durationForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Add Session</h1>
+                </div>
+                <div class="form" style="display:none">
+                    <mat-form-field>
+                      <input matInput  formControlName="durId" placeholder="ID">
+                    </mat-form-field>
+                </div>
+
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="evtId" placeholder="Allowed For" required>
+                        <mat-option [value]="0"> All Halls </mat-option>
+                        <mat-option *ngFor="let attribute of events" [value]="attribute.evtId">{{attribute.evtHdr}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                </div>
+
+                <div class="form">
+                    <mat-form-field>
+                      <input matInput #input formControlName="durHdr" placeholder="Session Name" required>
+                      <mat-error *ngIf="durationForm.controls['durHdr'].hasError('required')"> Enter Session name</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="durMul" placeholder="Allow Multiple Days" required>
+                        <mat-option *ngFor="let type of displayMultipleDays" [value]="type.value">
+                          {{type.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="durationForm.controls['durMul'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="adnlDurFlg" placeholder="Have An Additional Hourls" required>
+                        <mat-option *ngFor="let type of displayHourly" [value]="type.value">
+                          {{type.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="durationForm.controls['adnlDurFlg'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                    <div fxFlex="50" fxFlex.xs="50">
+                    <mat-form-field>
+                        <mat-select formControlName="durStm" placeholder="Start Time" required>
+                          <mat-option *ngFor="let type of displayHours" [value]="type.value">
+                            {{type.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="durationForm.controls['durStm'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field></div>
+                    
+                    <div fxFlex="50" fxFlex.xs="50">
+                    <mat-form-field>
+                        <mat-select formControlName="durSDay" placeholder="Start Session" required>
+                          <mat-option *ngFor="let type of displayDay" [value]="type.value">
+                            {{type.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="durationForm.controls['durSDay'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                    </div></div>
+
+                    <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                        <div fxFlex="50" fxFlex.xs="50">
+                        <mat-form-field>
+                          <mat-select formControlName="durEtm" placeholder="End Time" required>
+                            <mat-option *ngFor="let type of displayHours" [value]="type.value">
+                              {{type.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="durationForm.controls['durEtm'].hasError('required')">Select Anyone</mat-error>
+                        </mat-form-field>
+                        </div>
+
+                        <div fxFlex="50" fxFlex.xs="50">
+                        <mat-form-field>
+                          <mat-select formControlName="durEDay" placeholder="End Session" required>
+                            <mat-option *ngFor="let type of displayDay" [value]="type.value">
+                              {{type.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                          <mat-error *ngIf="durationForm.controls['durEDay'].hasError('required')">Select Anyone</mat-error>
+                        </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="form">
+                        <mat-form-field>
+                          <input type="number" matInput formControlName="durDtm" placeholder="Total Hours" required>
+                          <mat-error *ngIf="durationForm.controls['durDtm'].hasError('required')">Enter Total Hours</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="durSeq" placeholder="Display Sequence" >
+                        <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.value">
+                          {{sequence.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="durationForm.controls['durSeq'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+    
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="durAct" placeholder="Is Active" >
+                        <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                          {{status.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="durationForm.controls['durAct'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+  
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                  <div fxFlex="50" fxFlex.xs="100">
+                    <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                    <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                      <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                    <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                         fxLayoutAlign.xs="space-around center">
+                      <button mat-raised-button class="save-btn">Update</button>
+                      <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+  

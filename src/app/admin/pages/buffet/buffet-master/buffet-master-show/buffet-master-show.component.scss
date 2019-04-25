@@ -1,0 +1,187 @@
+@import "../../../../@theme/styles/variables";
+.components-container{
+  padding: 0px 20px 20px 20px;
+}
+.components-container {
+  .table-header{
+    padding: 10px 0px;
+    font-family: $font-family-semiBold;
+  }
+  .add-new-btn {
+    float: right;
+    background-color: #8C37DB !important;
+    color: #ffffff !important;
+    display: inline;
+
+    .mat-menu-item {
+      line-height: 43px;
+      height: 37px;
+      padding: 0 13px;
+    }
+
+    .fa {
+      display: inline-block;
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  .edit-btn{
+    font-size: 16px;
+    color: #fff;
+    background-color: #36AE20;
+    border-radius: 50%;
+    padding: 2px;
+  }
+  .view-btn{
+    font-size: 16px;
+    color: #fff;
+    background-color: #8C37DB;
+    border-radius: 50%;
+    padding: 2px;
+  }
+
+  .m-addbtn{
+    display: none;
+  }
+  .breadcrumb{
+    display: inline;
+  }
+
+  mat-cell, .mat-footer-cell {
+    font-size: 12px !important;
+  }
+
+}
+
+
+
+@media screen and (max-width: 960px) {
+  .components-container{
+    padding: 0px 5px 5px 5px !important;
+  }
+  .table-header{
+    font-size: 14px !important;
+    padding: 10px 8px;
+  }
+  .m-addbtn{
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    display: inline !important;
+    background-color: #8C37DB !important;
+    color: #ffffff !important;
+  }
+  .add-new-btn{
+    display: none !important;
+  }
+  .header-sec{
+    display: inline !important;
+  }
+  .breadcrumb{
+    display: none !important;
+  }
+  ::ng-deep.mat-paginator-container{
+    padding: 0px !important;
+  }
+  .mat-table {
+    border: 0;
+    vertical-align: middle;
+    font-family: $font-family;
+  }
+  .mat-table .mat-row {
+    border-bottom: 5px solid #ddd;
+    display: block;
+    min-height: unset !important;
+    padding: 0 10px;
+  }
+  .mat-table .mat-cell {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 10px;
+    text-align: justify;
+    padding: 6px 0px;
+    line-height: 16px;
+  }
+  .mat-table .mat-cell:last-child {
+    border-bottom: 0;
+  }
+  .mat-table .mat-cell:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    //text-transform: uppercase;
+    font-weight: bold;
+  }
+
+  mat-header-row{
+    display: none;
+  }
+
+  mat-footer-row::after, mat-header-row::after, mat-row::after {
+    display: inline-block;
+    min-height: 0px !important;
+    content: '';
+  }
+}
+
+.table-container{
+  .mat-table {
+    border: 0;
+    vertical-align: middle;
+    font-family: $font-family !important;
+  }
+  .mat-header-row{
+    font-family: $font-family-semiBold;
+    background-color: #E7CCFF;
+  }
+  .pd-5{
+    padding: 5px;
+  }
+  .description{
+    padding: 5px 30px 3px 5px; text-align: justify;
+  }
+  .width15{
+    min-width: 15%;
+    max-width: 15%;
+  }
+  .width20{
+    min-width: 20%;
+    max-width: 20%;
+  }
+  .width30{
+    min-width: 30%;
+    max-width: 30%;
+  }
+  .width45{
+    min-width: 45%;
+    max-width: 45%;
+    line-height: 20px !important;
+  }
+  .width50{
+    min-width: 50%;
+    max-width: 50%;
+    line-height: 20px !important;
+  }
+  .width10{
+    min-width: 10%;
+    max-width: 10%;
+  }
+  .width100{
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .full-content{
+    display: none;
+  }
+  .line20{
+    line-height: 20px !important;
+  }
+  .line15{
+    line-height: 15px !important;
+  }
+}

@@ -1,0 +1,23 @@
+<div mat-dialog-content class="book-dialog-section">
+  <div fxLayout="row wrap" fxLayout.sm="column" fxLayout.lt-sm="column"
+       fxLayoutAlign="center" fxLayoutGap="">
+    <div class="left-column" fxFlex="45%" fxFlex.sm="100%" fxHide fxShow.gt-sm>
+      <div class="book-dialog-icon">
+        <img style="width: 160px;" mat-card-image
+             src="../../../../../assets/images/icons/details-page/book-dialog-icon.svg"
+             alt="HallsDiary">
+      </div>
+    </div>
+
+
+    <div class="right-column" fxFlex="55%" fxFlex.sm="100%" fxFlex.lt.sm="100%">
+      <div class="book-info">
+        <span class="content">Do you want to confirm Booking the venue?Please note Booking Amount is non-refundable!! </span>
+        <div mat-dialog-actions class="action-btn">
+          <button mat-flat-button  cdkFocusInitial class="continue-btn" (click)="continueToBook()">Ok</button>
+          <button  mat-stroked-button class="cancel-btn" (click)="close()">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

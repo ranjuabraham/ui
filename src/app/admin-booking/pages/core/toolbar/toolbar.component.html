@@ -1,0 +1,16 @@
+
+<mat-toolbar class="header-bottom">
+  <mat-toolbar-row fxLayoutAlign="space-between center" class="logo-toolbar theme-container header-bottom top-menu"
+                   id="top-header">
+    <!--<div class="nav-menu">-->
+    <span fxHide="false" fxHide.gt-sm>
+                <button mat-button (click)="sidenav.toggle()" class="sidenav-toggle">
+                    <mat-icon>menu</mat-icon>
+                </button>
+    </span>
+      <div class="item-left" fxFlex="20%" fxFlex.sm="50" fxFlex.xs="45" fxLayoutAlign="space-between center">
+          <a routerLink="/"><img class="hd-logo" src="../../../../../assets/images/hd-logo.svg"></a>
+      </div>
+  </mat-toolbar-row>
+
+</mat-toolbar>

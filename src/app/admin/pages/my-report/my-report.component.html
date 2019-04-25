@@ -1,0 +1,147 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="amenities-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">My Report</div>
+  </div>
+
+  <div fxFlex class="table-component-holder mat-elevation-z1" style="background-color: #FFFFFF">
+    <form [formGroup]="filterForm" (ngSubmit)="filter()">
+      <div fxLayout="row wrap" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="space-around stretch" class="form-filter">
+        <div class="form" fxFlex="20" fxFlex.xs="100" fxFlex.sm="100">
+          <mat-form-field appearance="outline">
+            <mat-label>Select Category</mat-label>
+            <mat-select placeholder="Select Category" formControlName="category" [(ngModel)]="selectedCategory" >
+              <mat-option *ngFor="let category of categories" [value]="category.value">
+                {{category.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form startDate" fxFlex="20" fxFlex.xs="100" fxFlex.sm="100">
+          <my-date-picker  [options]="stDatePicker" formControlName="stDt" [placeholder]="'From'"
+                           [(ngModel)]="stDt" required></my-date-picker>
+        </div>
+        <div class="form endDate" fxFlex="20" fxFlex.xs="100" fxFlex.sm="100">
+          <my-date-picker [options]="endDatePicker" formControlName="endDt" [placeholder]="'To'"
+                          [(ngModel)]="endDt" required></my-date-picker>
+        </div>
+        <div class="form" fxFlex="40" fxFlex.xs="100" fxFlex.sm="100">
+          <button mat-flat-button class="filter-btn">Filter</button>
+          <button mat-flat-button color="primary" class="exportBtn" (click)="ExportTOExcel()">
+            <i class="fa">&#xf1c3;</i>
+            Export
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Category -->
+        <ng-container matColumnDef="dcdeHdr">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width10">Hall</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Hall: "> {{row.dcdeHdr}}</mat-cell>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="bookedOn">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width10">Booked Date</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Booked Date: ">{{row.bookedOn}}</mat-cell>
+        </ng-container>
+
+        <!-- Booked -->
+        <ng-container matColumnDef="bookedBy">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width10">Booked</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Booked: ">{{row.bookedBy}}</mat-cell>
+        </ng-container>
+        <!-- Event Date -->
+        <ng-container matColumnDef="muhurtDts">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width10">Event Date</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Event Date: ">{{row.muhurtDts}}</mat-cell>
+        </ng-container>
+        <!-- Expiry Date -->
+        <ng-container matColumnDef="expDt">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width8">Expiry Date</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width8" ngClass.sm="width100" ngClass.xs="width100" data-label="Expiry Date: ">{{row.expDt}}</mat-cell>
+        </ng-container>
+        <!-- Event Date -->
+        <ng-container matColumnDef="evtName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width15">Event Name</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width15" ngClass.sm="width100" ngClass.xs="width100" data-label="Event Name: ">{{row.evtName}}</mat-cell>
+        </ng-container>
+        <!-- Duration -->
+        <ng-container matColumnDef="durName">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width15">Duration</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width15" ngClass.sm="width100" ngClass.xs="width100"
+                    data-label="Duration: ">{{row.durName}}</mat-cell>
+        </ng-container>
+        <!-- Status -->
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width8">Status</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width8" ngClass.sm="width100" ngClass.xs="width100"
+                    data-label="Status: "><span [ngStyle]="{'color':row.status.toUpperCase() === 'APPROVED' ? 'green' : 'red' }">{{row.status}}</span></mat-cell>
+        </ng-container>
+        <!-- Duration -->
+        <ng-container matColumnDef="paidStatus">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="width8">Paid</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width8" ngClass.sm="width100" ngClass.xs="width100"
+                    data-label="Paid: "><span [ngStyle]="{'color':row.paidStatus.toUpperCase() === 'YES' ? 'green' : 'red' }">{{row.paidStatus}}</span></mat-cell>
+        </ng-container>
+
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width5">
+            Action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width5" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+           <span>
+              <button mat-icon-button
+                      (click)="showDetails(row)">
+                     <mat-icon class="material-icons view-btn">visibility</mat-icon>
+              </button>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+    </div>
+
+
+
+    <div class="table-container" #TABLES style="display: none" *ngIf="restItems">
+      <table>
+        <thead>
+        <tr>
+          <th>Hall</th>
+          <th>Booked Date</th>
+          <th>Booked</th>
+          <th>Event Date</th>
+          <th>Expiry Date</th>
+          <th>Event Name</th>
+          <th>Duration</th>
+          <th>Status</th>
+          <th>Paid Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let dataList of restItems.result">
+          <td>{{dataList.dcdeHdr}}</td>
+          <td>{{dataList.bookedOn}}</td>
+          <td>{{dataList.bookedBy}}</td>
+          <td>{{dataList.muhurtDts}}</td>
+          <td>{{dataList.expDt}}</td>
+          <td>{{dataList.evtName}}</td>
+          <td>{{dataList.durName}}</td>
+          <td>{{dataList.status}}</td>
+          <td>{{dataList.paidStatus}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

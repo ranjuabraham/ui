@@ -1,0 +1,70 @@
+@import "../../../../@theme/styles/variables";
+
+.components-container-gt-xs{
+  background-color: #F6F6F6;
+  font-family: $font-family;
+
+  .profile-details{
+    font-family: $font-family;
+  .venue-details{
+    td:first-child{
+      font-family: $font-family-semiBold;
+      font-size: 12px;
+    }
+  }
+    .contact-details{
+      td:first-child{
+        font-family: $font-family-semiBold;
+        font-size: 12px;
+      }
+    }
+    .bank-details{
+      td:first-child{
+        font-family: $font-family-semiBold;
+        font-size: 12px;
+      }
+    }
+  }
+  .mat-tab-label .mat-tab-label-content{
+    font-family: $font-family-semiBold;
+  }
+}
+td {
+    padding: 15px;
+    text-align: left;
+     font-size: 12px;
+    font-family: $font-family;
+  }
+  tr{
+    padding: 15px;
+    font: message-box;
+  }
+  mat-grid-tile{
+    padding: 30px 0 !important;
+  
+  }
+  mat-grid-list{
+    padding-bottom: 100px !important;
+  }
+  
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-width: 450px;
+  
+  }
+  
+  .container > * {
+    width: 100%;
+  }
+  table {
+    width: 100%;
+    border-color: #d9d2d280;
+    border-collapse: collapse;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  

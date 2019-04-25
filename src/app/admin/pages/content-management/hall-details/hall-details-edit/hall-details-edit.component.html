@@ -1,0 +1,157 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container" *ngIf="resultInfo">
+              <form [formGroup]="hallInfoForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Edit Hall Details</h1>
+                </div>
+  
+                <div class="form" style="display:none">
+                  <mat-form-field>
+                      <input matInput  formControlName="hallId" placeholder="ID" [(ngModel)]="resultInfo.hallId">
+                  </mat-form-field>
+                </div>
+                  
+                <!-- Hall Name -->
+                <div class="form">
+                    <mat-form-field>
+                      <input matInput #input formControlName="hallName" placeholder="Hall Name" [(ngModel)]="resultInfo.hallName" required>
+                      <mat-error *ngIf="hallInfoForm.controls['hallName'].hasError('required')">Enter Hall Name</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                <!-- Hall Description --> 
+                <div class="form">
+                  <mat-form-field>
+                    <input matInput #input formControlName="hallDesc" placeholder="Hall Description" [(ngModel)]="resultInfo.hallDesc" required>
+                    <mat-error *ngIf="hallInfoForm.controls['hallDesc'].hasError('required')">Enter Hall Description</mat-error>
+                  </mat-form-field>
+                </div>
+  
+                <!-- Is Default --> 
+                <div class="form">
+                  <mat-form-field>
+                      <mat-select formControlName="isDefault" placeholder="Is Default" [(ngModel)]="resultInfo.isDefault" required>
+                        <mat-option *ngFor="let index of displayDefault" [value]="index.value">{{index.viewValue}} </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="hallInfoForm.controls['isDefault'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+                
+                <!-- Hourly Flag --> 
+                <div class="form">
+                  <mat-form-field>
+                      <mat-select formControlName="hourlyFlg" placeholder="Is Have Hourly Session" [(ngModel)]="resultInfo.hourlyFlg" (selectionChange)="enableHourly($event)" required>
+                        <mat-option *ngFor="let index of displayFlag" [value]="index.value">{{index.viewValue}} </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="hallInfoForm.controls['hourlyFlg'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <!-- Hourly Cost-->
+                <div class="form" *ngIf="hourlyFlag === 1">
+                    <mat-form-field>
+                      <input matInput #input formControlName="hourlyCost" placeholder="Hourly Cost" [(ngModel)]="resultInfo.hourlyCost">
+                    </mat-form-field>
+                  </div>
+                
+                <!-- Buffet Flag --> 
+                <div class="form">
+                  <mat-form-field>
+                      <mat-select formControlName="buffetFlg" placeholder="Is Have Buffet Basis" [(ngModel)]="resultInfo.buffetFlg" (selectionChange)="enableBuffet($event)" required>
+                        <mat-option *ngFor="let index of displayFlag" [value]="index.value">{{index.viewValue}} </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="hallInfoForm.controls['buffetFlg'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+                
+                <!-- Minimum Pax Count-->
+                <div class="form" *ngIf="buffetFlag === 1">
+                    <mat-form-field>
+                      <input matInput #input formControlName="minimumPax" placeholder="Minimum Pax" [(ngModel)]="resultInfo.minimumPax">
+                    </mat-form-field>
+                  </div>
+                  
+                  <!-- Maximum Pax Count-->
+                  <div class="form" *ngIf="buffetFlag === 1">
+                      <mat-form-field>
+                        <input matInput #input formControlName="maximumPax" placeholder="Maximum Pax" [(ngModel)]="resultInfo.maximumPax">
+                      </mat-form-field>
+                    </div>
+                
+                <!-- Discount Flag --> 
+                <div class="form">
+                  <mat-form-field>
+                      <mat-select formControlName="disocuntFlg" placeholder="Is Have Discount" [(ngModel)]="resultInfo.disocuntFlg" (selectionChange)="enableDiscount($event)" required>
+                        <mat-option *ngFor="let index of displayFlag" [value]="index.value">{{index.viewValue}} </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="hallInfoForm.controls['disocuntFlg'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+                
+                <!-- Muhurtham Discount-->
+                <div class="form" *ngIf="discountFlag === 1">
+                    <mat-form-field>
+                      <input matInput #input formControlName="muhurtDisc" placeholder="Discount for Muhurtham Days( in %)" [(ngModel)]="resultInfo.muhurtDisc">
+                    </mat-form-field>
+                </div>
+                
+                  <!-- Non Muhurtham Discount-->
+                <div class="form" *ngIf="discountFlag === 1">
+                      <mat-form-field>
+                        <input matInput #input formControlName="nonMuhurtDisc" placeholder="Discount Non Muhurtham Days( in %)" [(ngModel)]="resultInfo.nonMuhurtDisc">
+                      </mat-form-field>
+                </div>
+                
+                <!-- Special Day Discount-->
+                <div class="form" *ngIf="discountFlag === 1">
+                    <mat-form-field>
+                        <input matInput #input formControlName="splDayDisc" placeholder="Dicount for Special Days( in %)" [(ngModel)]="resultInfo.splDayDisc">
+                    </mat-form-field>
+                </div>
+                
+                <!-- Valid Period-->
+                <div class="form" *ngIf="discountFlag === 1">
+                    <mat-form-field>
+                       <input matInput #input formControlName="discountPeriod" placeholder="Valid Days(No of Days)" [(ngModel)]="resultInfo.discountPeriod">
+                    </mat-form-field>
+                </div>
+
+                <!-- Discount Flag --> 
+                <div class="form">
+                    <mat-form-field>
+                        <mat-select formControlName="hallAct" placeholder="Is Active" [(ngModel)]="resultInfo.hallAct" required>
+                          <mat-option *ngFor="let index of displayFlag" [value]="index.value">{{index.viewValue}} </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="hallInfoForm.controls['disocuntFlg'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                  </div>
+  
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                  <div fxFlex="50" fxFlex.xs="100">
+                    <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                    <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                      <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                    </div>
+                    </div>
+                </div>
+  
+                <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                  <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                      fxLayoutAlign.xs="space-around center">
+                    <button mat-raised-button class="save-btn">Update</button>
+                    <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+    </div>
+  </div>
+    
+  

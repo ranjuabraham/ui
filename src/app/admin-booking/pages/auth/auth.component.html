@@ -1,0 +1,21 @@
+<mat-sidenav-container class="container">
+  <app-toolbar></app-toolbar>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+
+
+
+  <div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top transition" (click)="scrollToTop()">
+    <mat-icon>keyboard_arrow_up</mat-icon>
+  </div>
+
+</mat-sidenav-container>
+
+
+
+
+
+

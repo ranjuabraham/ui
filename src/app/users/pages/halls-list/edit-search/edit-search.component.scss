@@ -1,0 +1,175 @@
+@import "../../../@theme/styles/variables";
+@media only screen and (max-width:960px) {
+
+  ::ng-deep.modify-search-dialog-box {
+    max-width: 100% !important;
+    position: absolute !important;
+    top: 63px;
+    font-family: $font-family;
+    .mat-dialog-container{
+      border-radius: 0 !important;
+      padding: 0;
+    }
+    mat-form-field {
+      width: 100% !important;
+    }
+  }
+
+
+  /*modify search in top of the page */
+  .m-modify-search-section {
+    background-color: #FFFFFF;
+    padding: 15px 15px;
+    .dialog-header{
+      .header{
+        font-weight: $font-weight;
+        color: #556B7F;
+        font-size: 15px;
+      }
+      .close_btn{
+        float: right;
+        .material-icons{
+          color: #5E23DC;
+        }
+      }
+    }
+    ::ng-deep.ng-select.select-venue.is-invalid {
+      .ng-select-container {
+        border-color: #dc3545 !important;
+        height: 38px;
+      }
+    }
+
+    ::ng-deep .ng-select.select-venue {
+      .ng-select-container {
+        border: #D1D6DB 1px solid;
+        border-radius: 0 !important;
+      }
+    }
+
+    .invalid-feedback {
+      color: #dc3545;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      padding: 2px;
+    }
+
+    .modify-search-form {
+      mat-form-field {
+        width: 100% !important;
+      }
+
+      ::ng-deep .mat-form-field-wrapper {
+        padding-bottom: 0em !important;
+      }
+
+      ::ng-deep .mat-form-field-infix {
+        border-top: 0.4em solid transparent;
+      }
+
+      ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: .5em 0 .5em 0;
+      }
+
+      ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+        border-radius: 0 !important;
+      }
+
+      ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+        border-radius: 0 !important;
+      }
+
+      ::ng-deep .mat-form-field-appearance-outline .mat-form-field-prefix, .mat-form-field-appearance-outline .mat-form-field-suffix {
+        top: .5em;
+      }
+
+      ::ng-deep .mat-form-field-prefix .mat-icon-button, .mat-form-field-suffix .mat-icon-button {
+        height: 1.5em;
+        width: 1.5em;
+      }
+
+      .modify-search-btn {
+        color: #FFFFFF;
+        background-color: #00AA00;
+        width: 100%;
+        border-radius: 0 !important;
+        font-family: $font-family;
+        font-weight: $font-weight;
+        letter-spacing: .4px;
+        font-size: 16px;
+      }
+
+      ::ng-deep.mydp {
+        .selection {
+          border-radius: 4px;
+          font-size: 15px;
+          font-family: 'Montserrat', sans-serif;
+          margin-left: 5px;
+          cursor: pointer !important;
+        }
+      }
+    }
+
+    .venue-field {
+      position: relative;
+
+      .search-icon {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: #8C37DB;
+      }
+
+      /********* Ng Select box ciustom CSS ***************/
+      ::ng-deep.ng-select .ng-arrow-wrapper .ng-arrow {
+        border-color: transparent !important;
+        border-style: none !important;
+      }
+    }
+
+    .category-field {
+      ::ng-deep.ng-select .ng-select-container {
+        border-radius: 0px !important;
+      }
+    }
+
+    ::ng-deep.date-field{
+      .mydp .selectiongroup{
+        min-width: 100% !important;
+      }
+      .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 9px 0 9px 0 !important;
+      }
+      .mydp .selector {
+        position: fixed !important;
+        padding: 0;
+        border: 0 !important;
+        width: 330px !important;
+      }
+    }
+
+    ::ng-deep .mat-form-field-prefix .mat-icon-button, .modify-search-section[_ngcontent-c13] .modify-search-form[_ngcontent-c13] .mat-form-field-suffix[_ngcontent-c13] .mat-icon-button[_ngcontent-c13] {
+      height: 0.5em !important;
+      width: 2.5em !important;
+      color: #fe0000;
+      font-size: 12px;
+    }
+
+    ::ng-deep .mat-form-field-prefix, .modify-search-section[_ngcontent-c13] .modify-search-form[_ngcontent-c13] .mat-form-field-appearance-outline[_ngcontent-c13] .mat-form-field-suffix[_ngcontent-c13] {
+      top: .25em !important;
+    }
+
+    ::ng-deep .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+      margin-left: 19px !important;
+    }
+
+    //::ng-deep.mat-form-field-appearance-outline .mat-form-field-flex {
+    //  padding: 0 .20em 0 .75em !important;
+    //}
+    //
+    //::ng-deep.modify-search-section[_ngcontent-c14] .modify-search-form[_ngcontent-c14] .mat-form-field-appearance-outline .mat-form-field-infix {
+    //  padding: 12px 2px !important;
+    //}
+
+  }
+}

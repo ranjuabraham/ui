@@ -1,0 +1,122 @@
+.halls-row {
+  position: relative;
+  .mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+    background-color:#FFFFFF;
+  }
+  .swipe-arrow{
+    .material-icons{
+      color: #556B7F;
+    }
+  }
+
+
+  .halls-item {
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    text-align:center;
+    cursor:default;
+  }
+
+  .halls-item .overlay {
+    width:100%;
+    height:100%;
+    position:absolute;
+    overflow:hidden;
+    top:0;
+    left:0;
+    opacity:0;
+    background-color:rgba(0,0,0,0.5);
+    -webkit-transition:all .4s ease-in-out;
+    transition:all .4s ease-in-out
+  }
+
+  .halls-item img {
+    display:block;
+    position:relative;
+    -webkit-transition:all .4s linear;
+    transition:all .4s linear;
+  }
+
+  .halls-item h2 {
+    text-transform:uppercase;
+    color:#fff;
+    text-align:center;
+    position:relative;
+    font-size:17px;
+    background:rgba(0,0,0,0.6);
+    -webkit-transform:translatey(-100px);
+    -ms-transform:translatey(-100px);
+    transform:translatey(-100px);
+    -webkit-transition:all .2s ease-in-out;
+    transition:all .2s ease-in-out;
+    padding:10px;
+  }
+
+  .halls-item a.info {
+    text-decoration:none;
+    display:inline-block;
+    text-transform:uppercase;
+    color:#fff;
+    border:1px solid #fff;
+    background-color:transparent;
+    opacity:0;
+    filter:alpha(opacity=0);
+    -webkit-transition:all .2s ease-in-out;
+    transition:all .2s ease-in-out;
+    margin:85px 0 0;
+    padding:7px 14px;
+  }
+
+  .halls-item a.info:hover {
+    box-shadow:0 0 5px #fff;
+  }
+
+  .halls-item:hover img {
+    -ms-transform:scale(1.2);
+    -webkit-transform:scale(1.2);
+    transform:scale(1.2);
+  }
+
+  .halls-item:hover .overlay {
+    opacity:1;
+    filter:alpha(opacity=100);
+  }
+
+  .halls-item:hover h2,.halls-item:hover a.info {
+    opacity:1;
+    filter:alpha(opacity=100);
+    -ms-transform:translatey(0);
+    -webkit-transform:translatey(0);
+    transform:translatey(0);
+  }
+
+  .halls-item:hover a.info {
+    -webkit-transition-delay:.2s;
+    transition-delay:.2s;
+  }
+
+}
+
+.swiper-container {
+  padding: 16px 2px 2px 2px;
+  max-width: 92%;
+  .swiper-slide {
+    text-align: center;
+  }
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  pointer-events: auto;
+}
+
+@media only screen and (min-width: 960px) {
+  .swiper-container {
+    max-width: 90%;
+    position: unset !important;
+    .swiper-slide {
+      text-align: center;
+    }
+  }
+}

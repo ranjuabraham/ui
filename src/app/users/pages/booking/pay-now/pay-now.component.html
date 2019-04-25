@@ -1,0 +1,241 @@
+<div class="pay-now-container">
+  <div class="theme-container pay-now-section" [ngStyle.xs]="{'padding.px': 0}" [ngStyle.sm]="{'padding.px': 0}">
+    <mat-card class="mat-card-box" [ngStyle]="{'padding.px': 30}" [ngStyle.xs]="{'padding.px': 10}"
+              [ngStyle.sm]="{'padding.px': 10}" *ngIf="resData">
+
+      <div fxLayout="row" fxLayoutAlign="start center" class="header-row">
+        <div fxFlex="70" class="header">Your <span *ngIf="resData.isBlk === 1">Booking</span> <span
+          *ngIf="resData.isBlk === 2">Reservation</span> Details
+        </div>
+        <div fxFlex="30">
+          <form #form ngNoForm name="redirect" action="{{paymentData.accessUrl}}" method="POST">
+            <input type="hidden" id="encRequest" name="encRequest" [ngModel]="paymentData.encRequest">
+            <input type="hidden" name="access_code" id="access_code" [ngModel]="paymentData.accessCode">
+            <input type="hidden" name="tid" id="tid" [ngModel]="paymentData.txnId">
+            <input type="hidden" name="merchant_id" id="merchant_id" [ngModel]="paymentData.merchantId">
+            <input type="hidden" name="order_id" [ngModel]="paymentData.orderId">
+            <input type="hidden" name="currency" [ngModel]="paymentData.currency">
+            <input type="hidden" name="amount" [ngModel]="paymentData.orderAmount">
+            <input type="hidden" name="redirect_url" [ngModel]="paymentData.redirectUrl">
+            <input type="hidden" name="cancel_url" [ngModel]="paymentData.cancelUrl">
+            <input type="hidden" name="language" id="language" [ngModel]="paymentData.language">
+            <button mat-flat-button class="pay-now-btn" ngClass.xs="m-pay-btn"  (click)="ccavenuePayment()">Pay now</button>
+          </form>
+        </div>
+      </div>
+
+      <section class="booking-details-sec section-3">
+        <div class="header">
+          <span *ngIf="resData.isBlk === 1">Booking</span> <span
+          *ngIf="resData.isBlk === 2">Reservation</span> Details
+        </div>
+        <div class="booking-info" fxLayout="row" fxLayout.xs="column">
+          <span>Booked on {{bookedOn}}</span>
+          <span [ngStyle]="{'margin-left.px': 20, 'margin-right.px': 20}"
+                [ngStyle.xs]="{'margin-left.px': 20, 'margin-right.px': 20}"
+                [ngStyle.sm]="{'margin-left.px': 20, 'margin-right.px': 20}" fxHide.xs> | </span>
+          <span>Transaction Id {{resData.txnId}} </span>
+        </div>
+        <div class="booking-details">
+          <div fxLayout="row wrap" fxLayoutAlign="">
+            <div fxFlex="25" fxFlex.xs="100" class="m-btm-10">
+              <div class="header-1">Hall Name</div>
+              <div class="bk-cnt">{{resData.prdctDetDesc}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" class="m-btm-10">
+              <div class="header-1">Event</div>
+              <div class="bk-cnt">{{resData.evtName}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" class="m-btm-10">
+              <div class="header-1">Duration</div>
+              <div class="bk-cnt">{{resData.durName}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" class="m-btm-10">
+              <div class="header-1">Food Type</div>
+              <div class="bk-cnt">{{resData.fdTypName}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" class="m-btm-10">
+              <div class="header-1">Start Date</div>
+              <div class="bk-cnt">{{startDate}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" class="m-btm-10">
+              <div class="header-1">End Date</div>
+              <div class="bk-cnt">{{endDate}}</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <section class="booking-details-sec section-6" ngClass.xs="m-section-6" *ngIf="resData.bookTyp === 'BUFFET'">
+        <div class="header">
+          Food Menu Details
+        </div>
+        <div class="food-menu-details" ngClass.xs="m-food-menu-details">
+          <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutAlign="start start">
+            <div *ngFor="let buffet of selectedItems" fxFlex="25" fxFlex.sm="50" fxFlex.xs="100">
+              <div class="header-1">{{buffet.category}}</div>
+              <div *ngFor="let items of buffet.value">
+                <div *ngFor="let item of [items]">
+                  <div style="line-height: 30px" class="b-value">{{item['itemHdr']}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <section class="billing-details-sec section-4" ngClass.xs="m-section-4">
+        <div class="header">
+          Billing Details
+        </div>
+        <div class="billing-details" ngClass.xs="m-billing-details">
+          <div fxLayout="row wrap" fxLayoutAlign="">
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40">Rent for a session</div>
+              <div class="bk-cnt" fxFlex.xs="60">Rs.{{resData['rentFinal']| currency:'Rs.':'symbol':'1.0-0'}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40">GST</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{resData['taxesFinal'] | currency:'Rs.':'symbol':'1.0-0'}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap" *ngIf="resData.discVal > 0">
+              <div class="header-1 discount" ngClass.xs="m-header-1" fxFlex.xs="40">Offers Discount
+                <mat-chip-list style="display: inline-block;">
+                  <mat-chip selected>
+                    {{resData.discVal}}%
+                  </mat-chip>
+                </mat-chip-list>
+              </div>
+              <div class="bk-cnt">(-){{resData['disAmount'] | currency:'Rs.':'symbol':'1.0-0'}} (you saved)</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap" *ngIf="resData.isBlk === 1">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40" *ngIf="resData.isBlk === 1">To Pay</div>
+              <div class="bk-cnt" fxFlex.xs="60">
+                {{resData['totalFinal'] | currency:'Rs.':'symbol':'1.0-0'}}
+              </div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap" *ngIf="resData.isBlk === 2">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40" *ngIf="resData.isBlk === 2">Total</div>
+              <div class="bk-cnt" fxFlex.xs="60">
+                {{resData['totalFinal'] | currency:'Rs.':'symbol':'1.0-0'}}
+              </div>
+            </div>
+          </div>
+          <div class="divider" style="margin: 20px" fxHide.xs="true"></div>
+
+          <div fxLayout="row wrap" fxLayoutAlign="">
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap" *ngIf="resData.isBlk === 2">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40">Reservation Amount to be Paid</div>
+              <div class="bk-cnt">{{resData['rentFinal'] | currency:'Rs.':'symbol':'1.0-0'}} <span
+                style="color: #8C37DB">(Expires On {{resData['expDt']}})</span></div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40">Status</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{resData.status}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40">Paid Status</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{resData.paidStatus}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap" *ngIf="resData['miscFinal']">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex.xs="40">Misc + Deposit ( EB+ Others )</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{resData['miscFinal'] | currency:'Rs.':'symbol':'1.0-0'}} (Payable at
+                Venue)
+              </div>
+            </div>
+          </div>
+
+          <div class="re-description" ngClass.xs="m-re-description" *ngIf="resData['miscDt']">
+            <div class="content">
+              Miscellaneous+Deposit (if any) should be payable at venue on or before {{resData['miscDt']}}.
+              ( Failing to pay this amount would lead to void of booking/reservation.)
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+
+      <section class="booking-details-sec section-5" ngClass.xs="m-section-5">
+        <div class="header">
+          Customer Details
+        </div>
+        <div class="customer-details">
+          <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutAlign="">
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex="40">Name</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{userInfo.usrFrstName}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex="40">Mobile</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{userInfo.usrMobile}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex="40">Email Id</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{userInfo.emailId}}</div>
+            </div>
+            <div fxFlex="25" fxFlex.xs="100" fxLayout="column" fxLayout.xs="row wrap">
+              <div class="header-1" ngClass.xs="m-header-1" fxFlex="40">Address</div>
+              <div class="bk-cnt" fxFlex.xs="60">{{resData.address}}</div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </mat-card>
+  </div>
+
+
+  <!--Mobile responsive-->
+  <!--<div fxShow.xs>-->
+  <!--<div class="header-row">-->
+  <!--<img style="width: 22px; height: auto;  vertical-align: bottom;"-->
+  <!--src="../../../../../assets/images/icons/approval-request/star-tick-icon.svg">-->
+  <!--<span class="header">Approval Request for Booking</span>-->
+  <!--</div>-->
+  <!--<section class="section-1">-->
+  <!--<div fxLayout="row wrap" fxLayoutAlign="">-->
+  <!--<div fxFlex="50" fxFlex.xs="100">-->
+  <!--<div class="re-img">-->
+  <!--<img style="width: 185px" src="../../../../../assets/images/icons/approval-request/approval-request.svg">-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div fxFlex="50" fxFlex.xs="100">-->
+  <!--<div class="content-box">-->
+  <!--<div class="content">-->
+  <!--<div class="header">Why there is an approval process for Booking?</div>-->
+  <!--<ul>-->
+  <!--<li>-->
+  <!--<span> <img style="width: 16px; height: auto"-->
+  <!--src="../../../../../assets/images/icons/approval-request/green-tick-icon.svg"></span>-->
+
+  <!--<span class="res-text">To Avoid conflict of double booking .i.e offline  ( Booking done@venue) and online booking.</span>-->
+  <!--</li>-->
+  <!--<li>-->
+  <!--<span> <img style="width: 16px; height: auto"-->
+  <!--src="../../../../../assets/images/icons/approval-request/green-tick-icon.svg"></span>-->
+  <!--<span class="res-text">we take utmost care to get you to the confirmed booking.</span>-->
+  <!--</li>-->
+  <!--<li>-->
+  <!--<span> <img style="width: 16px; height: auto"-->
+  <!--src="../../../../../assets/images/icons/approval-request/green-tick-icon.svg"></span>-->
+  <!--<span class="res-text">During Approval process the event date is blocked. so need not worry.</span>-->
+  <!--</li>-->
+  <!--<li>-->
+  <!--<span> <img style="width: 16px; height: auto"-->
+  <!--src="../../../../../assets/images/icons/approval-request/green-tick-icon.svg"></span>-->
+  <!--<span class="res-text">For any queries , Please contact our Customer Care @916647673626763e</span>-->
+  <!--</li>-->
+  <!--</ul>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</section>-->
+  <!--</div>-->
+
+</div>

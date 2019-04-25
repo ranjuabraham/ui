@@ -1,0 +1,79 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="search-mapper-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Map Search Filter</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="30">
+      <span *ngIf="count > size">
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/search/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New  {{size+1}} / {{count}}
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/search/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+      <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+         <!-- Header -->
+        <ng-container matColumnDef="searchDesc">
+          <mat-header-cell *matHeaderCellDef class="width25">Header</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Master: "><span [innerHTML]="row.searchDesc"></span> </mat-cell>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="searchDetDesc">
+          <mat-header-cell *matHeaderCellDef class="width40">Description</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width40" ngClass.sm="width100" ngClass.xs="width100" data-label="Description: "> <span [innerHTML]="row.searchDetDesc"></span></mat-cell>
+        </ng-container>
+
+        <!-- Mapper Status -->
+        <ng-container matColumnDef="searchDetMap">
+          <mat-header-cell *matHeaderCellDef class="width25">Status</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width25" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+            <span *ngIf="row.searchDetMap === 1;">
+                <span style="color: green">Yes</span>
+              </span>
+            <span *ngIf="row.searchDetMap !== 1;">
+                <span style="color: #FE0000">No</span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width10">
+            Action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                <a mat-icon-button routerLink="/venue/search/edit/{{row.prdctDetId}}/{{row.searchId}}/{{row.searchDetId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

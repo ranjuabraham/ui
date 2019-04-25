@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.389 18.663">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #272727;
+      }
+    </style>
+  </defs>
+  <g id="battery" transform="translate(0 0)">
+    <path id="Path_3164" data-name="Path 3164" class="cls-1" d="M18,172.547H36.876v-8.383H18Zm11.335-4.789h4.213v1.195H29.335Zm-6.417-1.509h1.195v1.509h1.509v1.195H24.112v1.509H22.917v-1.509H21.408v-1.195h1.509Zm0,0" transform="translate(-17.283 -157.627)"/>
+    <path id="Path_3165" data-name="Path 3165" class="cls-1" d="M20.389,5.343V2.767H19.366V0H15.247V2.767H13.336L13.351.579,7.06.535,7.044,2.767h-1.9V0H1.023V2.767H0V5.343Zm0,0"/>
+    <path id="Path_3166" data-name="Path 3166" class="cls-1" d="M0,404.664H20.389v2.549H0Zm0,0" transform="translate(0 -388.55)"/>
+  </g>
+</svg>

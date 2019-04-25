@@ -1,0 +1,90 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="gallery-management-show components-container">
+  <div class="table-header">
+    <div class="header-sec">Gallery</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/gallery/upload">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/gallery/upload">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+    <div class="table-container">
+        <mat-table [dataSource]="dataSource" matSort>
+
+            <!-- Image  -->
+            <ng-container matColumnDef="imgPath">
+              <mat-header-cell  *matHeaderCellDef class="width30"> Image</mat-header-cell>
+              <mat-cell  *matCellDef="let row" class="width30" ngClass.sm="width100" ngClass.xs="width100" data-label="Image: "> <img alt="image" class="venue-image" [src]="row.imgPath" ></mat-cell>
+            </ng-container>
+    
+            <!--Image Description -->
+            <ng-container matColumnDef="imgFtrDet">
+              <mat-header-cell  *matHeaderCellDef mat-sort-header class="width40"> Description</mat-header-cell>
+              <mat-cell  *matCellDef="let row" class="width40" ngClass.sm="width100" ngClass.xs="width100" data-label="Description: "> {{row.imgFtrDet}} </mat-cell>
+            </ng-container>
+            
+            <!--Image Type -->
+            <ng-container matColumnDef="imgTypId">
+              <mat-header-cell  *matHeaderCellDef class="width10"> Image Type</mat-header-cell>
+              <mat-cell  *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Image Type: ">
+                <span *ngIf="row.imgTypId == 1">All</span>
+                <span *ngIf="row.imgTypId == 2">DP/Home</span>
+                <span *ngIf="row.imgTypId == 3">About Us</span>
+                <span *ngIf="row.imgTypId == 4">Facilities</span>
+                <span *ngIf="row.imgTypId == 5">Offers</span>
+                <span *ngIf="row.imgTypId == 6">Logo</span>
+              </mat-cell>
+            </ng-container>
+    
+            <!-- sequence-->
+            <ng-container matColumnDef="imgSeq">
+              <mat-header-cell  *matHeaderCellDef class="width10">Sequence</mat-header-cell>
+              <mat-cell  *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Sequence: ">{{row.imgSeq}}</mat-cell>
+            </ng-container>
+
+
+          <!-- Action -->
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef class="width10">
+              Action
+            </mat-header-cell>
+            <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                <a mat-icon-button routerLink="/venue/gallery/edit/{{row.prdctDetId}}/{{row.imgId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+
+              <span>
+                <a mat-icon-button routerLink="/venue/gallery/delete/{{row.prdctDetId}}/{{row.imgId}}">
+              <mat-icon aria-label="Edit" class="delete-btn">delete</mat-icon>
+            </a>
+            </span>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;">
+          </mat-row>
+        </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 50, 100]"></mat-paginator>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,677 @@
+<div class="modify-search-section ">
+  <div class="theme-container">
+    <div class="modify-search-form">
+      <form [formGroup]="modifySearchForm" (ngSubmit)="onModifySearch()" fxLayout="row" fxLayoutAlign="start center"
+            fxLayoutGap="20px">
+        <div fxFlex="18%" class="form category-field">
+          <ng-select [items]="categoryList" [searchable]="false" [clearable]="false"
+                     [(ngModel)]="selectedCategory"
+                     bindLabel="name"
+                     bindValue="categoryId"
+                     formControlName="categoryId"
+                     (ngModelChange)="changeCategory($event)"
+                     placeholder="Select Category">
+          </ng-select>
+        </div>
+        <div fxFlex="50%" class="form venue-field">
+          <span>
+          <ng-select class="select-venue form-control" [ngClass]="{ 'is-invalid': submitted && f.venue.errors }"
+                     [items]="venueType"
+                     bindLabel="searchDetDesc"
+                     placeholder="Search for a Venue or Area"
+                     formControlName="venue"
+
+                     [(ngModel)]="selectedArea" [clearable]="false"  disabled>
+          <ng-template ng-label-tmp let-item="item">
+            <span *ngIf="item.searchId === 2"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/map-icon.svg"/></span>
+            <span *ngIf="item.searchId === 1"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/hotel.svg"/></span>
+            {{item.searchDetDesc}}
+          </ng-template>
+
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            <span *ngIf="item.searchId === 2"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/map-icon.svg"/></span>
+            <span *ngIf="item.searchId === 1"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/hotel.svg"/></span> {{item.searchDetDesc}}
+          </ng-template>
+        </ng-select>
+        </span>
+          <div *ngIf="submitted && f.venue.errors" class="invalid-feedback">
+            <div *ngIf="f.venue.errors.required">Select your Venue or Area</div>
+          </div>
+          <i class="fas fa-search search-icon" *ngIf="!selectedArea"></i>
+        </div>
+        <div fxFlex="22%" class="form" fxLayout.sm="column" fxLayout.xs="column">
+          <app-my-date-picker [options]="searchDatePicker" formControlName="date" [(ngModel)]="date"
+                              style="margin-top: 5px">
+          </app-my-date-picker>
+        </div>
+        <div fxFlex="16%" class="form">
+          <button mat-flat-button class="modify-search-btn">Modify Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="hall-list-section">
+  <div class="theme-container">
+    <div class="pad-container">
+      <app-breadcrumb fxHide.sm="true" fxHide.xs="true"></app-breadcrumb>
+      <div class="hd-container mat-elevation-z1 no-list" *ngIf="totalRecords === 0">
+        <div fxLayout="column" fxLayoutAlign="center center" class="without-table">
+          <div><img style="width: 125px; margin-bottom: 25px;" src="{{iconUrl}}no-list.svg"></div>
+          <div class="no-data">No Venues found.</div>
+          <div class="no-data-1">Sorry, There were no venues found for this selection criteria We suggest you to modify
+            your search and try again.
+          </div>
+          <button mat-flat-button class="go-back-btn" (click)="goBack()">Go back</button>
+        </div>
+      </div>
+
+      <mat-sidenav-container *ngIf="totalRecords > 0">
+        <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'"
+                     class="filter-sidenav">
+          <div class="top-titlemat">
+          <span class="left-title">
+            <p style="color:white;font-size: 14px;">Sort & Filter</p>
+          </span>
+            <span class="close-slide">
+              <i *ngIf="!sidenavOpen" class="material-icons" (click)="sidenav.toggle()">clear</i>
+            </span>
+          </div>
+          <!---------------------------------- Side filer option ---------------------------------------->
+          <mat-accordion multi="true" class="filter-accordian">
+            <!-------------------- category filter ----------------------->
+            <mat-expansion-panel expanded class="">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>Category</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="categories-wrapper categories-dropdown">
+                <mat-radio-group class="category-radio-group">
+              <span *ngFor="let category of categories">
+                 <mat-radio-button class="category-radio-button" *ngIf="categories" aria-label="{{category.hallName}}"
+                                   [value]="category.id"
+                                   [checked]="category.id === checkedCategory"
+                                   (change)="onChangeCategory($event)">
+                {{category.hallName}}
+              </mat-radio-button>
+              </span>
+                </mat-radio-group>
+              </div>
+            </mat-expansion-panel>
+
+            <!-------------------- Price filter ----------------------->
+            <mat-expansion-panel expanded class="accordian-2">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>Price per session (INR)</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="categories-wrapper categories-dropdown">
+                <mat-radio-group class="category-radio-group">
+                  <div *ngFor="let capacity of hallsData">
+                    <mat-radio-button class="category-radio-button" *ngIf="capacity.ovrAttrDetName == 'Price Range'"
+                                      aria-label="{{capacity.ovrAttrDetSpec}}" [value]="capacity.attrDetId"
+                                      [checked]="selectPrice"
+                                      (change)="onChangePriceRange($event)">
+                      {{capacity.ovrAttrDetSpec}}
+                      <span class="count-badge"> ({{capacity.countAttr}})</span>
+                    </mat-radio-button>
+                  </div>
+                </mat-radio-group>
+              </div>
+            </mat-expansion-panel>
+
+            <!-------------------- Capacity filter ----------------------->
+            <mat-expansion-panel expanded class="accordian-3">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>Capacity</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="categories-wrapper categories-dropdown">
+                <mat-radio-group class="category-radio-group">
+                <span *ngFor="let capacity of hallsData">
+
+                <mat-radio-button class="category-radio-button" *ngIf="capacity.ovrAttrDetName == 'Capacity'"
+                                  aria-label="{{capacity.ovrAttrDetSpec}}" [value]="capacity.attrDetId"
+                                  [checked]="selectCapacity"
+                                  (change)="onChangeCapacity($event)">
+                  {{capacity.ovrAttrDetSpec}} <span class="count-badge"> ({{capacity.countAttr}})</span>
+                </mat-radio-button>
+                  </span>
+                </mat-radio-group>
+              </div>
+            </mat-expansion-panel>
+
+            <!-------------------- Location filter ----------------------->
+            <mat-expansion-panel expanded class="accordian-4">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h4>Location</h4>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <div class="categories-wrapper categories-dropdown location-drp">
+                <mat-radio-group class="category-radio-group">
+
+                <span *ngFor="let location of hallsData">
+
+                <mat-radio-button class="category-radio-button" *ngIf="location.ovrAttrDetName == 'Location'"
+                                  aria-label="{{location.ovrAttrDetSpec}}" [value]="location.attrDetId"
+                                  [checked]="location.attrDetId === selectedArea"
+                                  (change)="onChangeArea($event)">
+                  {{location.ovrAttrDetSpec}}
+                </mat-radio-button>
+                  </span>
+                  <span *ngFor="let area of hallsData">
+                <mat-radio-button class="category-radio-button" *ngIf="area.ovrAttrDetName == 'Chennai'"
+                                  aria-label="{{area.ovrAttrDetSpec}}" [value]="area.attrDetId"
+                                  [checked]="area.attrDetId === checkedArea"
+                                  (change)="onChangeArea($event)">
+                  {{area.ovrAttrDetSpec}} <span class="count-badge"> ({{area.countAttr}})</span>
+                </mat-radio-button>
+                  </span>
+                </mat-radio-group>
+              </div>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+          <!------ End Side filer option ---------->
+
+          <!-------------------------------- side advertisement banner ------------------------------------------------>
+          <div class="book-now-sec">
+            <div class="book-now-banner">
+            </div>
+          </div>
+          <!---------------------------------- end side advertisement banner ----------------------------------------->
+        </mat-sidenav>
+
+        <!------------------------------------- Product list section ---------------------------------------------->
+        <mat-sidenav-content class="all-products" ngClass.gt-sm="p-left">
+
+          <div class="list-count">{{totalRecords}} {{categoryName}} in Chennai <span class="rt-cnt">{{sessionContent}}</span></div>
+
+          <!------------ selected filter tag (venue name, price range, capacity, location) ------------------>
+          <div class="filter-tag" fxLayout="row wrap">
+            <mat-chip-list #chipList *ngIf="venueName">
+              <mat-chip [removable]="removeArea" (removed)="removeAreaFilter()">
+                {{venueName}}
+                <mat-icon matChipRemove *ngIf="removeArea">cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+
+            <mat-chip-list *ngIf="priceRangeText">
+              <mat-chip [removable]="removePrice" (removed)="removePriceFilter()">
+                Price ({{priceRangeText}})
+                <mat-icon matChipRemove *ngIf="removePrice">cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+
+            <mat-chip-list #chipList *ngIf="capacityName">
+              <mat-chip [removable]="removeCapacity" (removed)="removeCapacityFilter()">
+                Capacity ({{capacityName}})
+                <mat-icon matChipRemove *ngIf="removeCapacity">cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+
+            <mat-chip-list #chipList *ngIf="capacityName || priceRangeText || venueName">
+              <mat-chip color="warn" style="cursor: pointer" [removable]="clearAll" (click)="removeAllFilters()"
+                        selected>
+                CLEAR ALL
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+          <!------------------------ Price alert section  --------------------------------->
+          <div fxLayout="row"  fxLayoutAlign="space-between center"
+               class="filter-row mat-elevation-z1 text-muted" fxHide.lt-md>
+            <button *ngIf="!sidenavOpen" mat-icon-button (click)="sidenav.toggle()">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <div fxLayoutAlign="center center">
+              <div class="price-alert"><span class="price-icon"><img
+                src="{{iconUrl}}price-alert.svg"> Price alert:  </span>
+                Auspicious day's prices are less now in Chennai. Right time to book your venue!
+              </div>
+            </div>
+          </div>
+
+
+          <!------------------------ placeholder loader section  --------------------------------->
+          <div *ngIf="placeholderLoader" style="margin-top: 20px">
+            <div class="col-12" *ngFor="let loader of contentLoader" [@fadeIn]="contentLoader.length">
+
+              <div class="ph-item">
+                <div class="ph-col-4">
+                  <div class="ph-picture big"></div>
+                </div>
+                <div>
+                  <div class="ph-row">
+                    <div class="ph-col-12"></div>
+                    <div class="ph-col-12"></div>
+                    <div class="ph-col-2"></div>
+                    <div class="ph-col-10 empty"></div>
+                    <div class="ph-col-2"></div>
+                    <div class="ph-col-2"></div>
+                    <div class="ph-col-2"></div>
+                    <div class="ph-col-2"></div>
+                    <div class="ph-col-8 big"></div>
+                    <div class="ph-col-4 big empty"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="ph-row">
+                    <div class="ph-col-12"></div>
+                    <div class="ph-col-2"></div>
+                    <div class="ph-col-10 empty"></div>
+                    <div class="ph-col-8 big"></div>
+                    <div class="ph-col-4 big empty"></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!------------------------ product list  --------------------------------->
+          <div fxLayout="row wrap" class="list-wrapper ">
+            <div *ngFor="let list of listData | paginate: { id: 'server', itemsPerPage: 10, currentPage: page, totalItems: totalRecords }" [@fadeIn]="list.length" fxFlex="100" class="col">
+              <mat-card class="list-item mat-elevation-z1" [@fadeIn]="list.length">
+                <div fxLayout="row wrap">
+                  <div fxFlex="30"  class="p-1 left-column">
+                    <div class="hall-image">
+                      <div class="hall-img">
+                        <img style="cursor:pointer;" *ngIf="list.ovrAttrDetURL" src="{{list.ovrAttrDetURL}}"
+                             (click)="getHallGallery(list.prdctDetId)">
+                      </div>
+                      <mat-chip class="halls-count" *ngIf="list.hallCount > 1">{{list.hallCount}} Halls</mat-chip>
+                      <div class="wishlist" *ngIf="list.ovrAttrDetURL">
+                           <span *ngIf="list.wishList === 0">
+                            <img class="icon" id="wishlist-{{list.prdctDetId}}" style="cursor:pointer;" mat-icon-button
+                                 matTooltip="Add to wishlist"
+                                 (click)="addToWishList(userId, list.prdctDetId)"
+                                 src="{{iconUrl}}heart.svg">
+                          </span>
+                        <span *ngIf="list.wishList === 1">
+                        <img class="icon" style="cursor:pointer;" mat-icon-button
+                             src="{{iconUrl}}red-heart-icon.svg" (click)="addToWishList(userId, list.prdctDetId)">
+                        </span>
+                      </div>
+                      <div class="images-link" *ngIf="list.ovrAttrDetURL">
+                        <img mat-icon-button matTooltip="Gallery" (click)="getHallGallery(list.prdctDetId)"
+                             src="{{iconUrl}}photo-camera.svg">
+                      </div>
+                    </div>
+
+                    <div class="hall-rating" fxLayout="row">
+                      <mat-chip-list *ngIf="list['reviewCount'] > 0">
+                        <mat-chip color="primary" selected>
+                          <mat-icon>star</mat-icon>
+                          {{list['reviewAvg'] | number : '1.1'}}
+                        </mat-chip>
+                      </mat-chip-list>
+                      <div class="review-count">
+                    <span class="review-link" *ngIf="list['reviewCount'] > 0"
+                          (click)="openReviewDialog(list.prdctDetId)"> {{list.reviewCount}}
+                      Reviews</span>
+                        <span class="review-link" *ngIf="list.reviewCount === 0"
+                              (click)="writeReviewDialog(list.prdctDetId, list.prdctDetDesc)"> Write Review</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxFlex="45" fxFlex.lt-md="70" class="p-1 center-column">
+                    <div class="halls-spec">
+                      <div class="hall-name">
+                        <a target="_blank"
+                           [routerLink]="['/chennai', appService.findAndReplace(categoryName, ' ', '-').toLowerCase(), appService.findAndReplace(list.prdctDetDesc, ' ', '-').toLowerCase()]"
+                           [queryParams]="{categoryId: list.prdctId, venueId: list.prdctDetId, hallId: list.subHallId, date: '0'}"
+                           *ngIf="list.prdctDetDesc">{{list.prdctDetDesc}}</a>
+                      </div>
+
+                      <div class="hall-city" *ngIf="list.city">{{list.city}} - {{list.pincode}}
+                                                <span class="map-icon" (click)="mapViewDialog(list.googleMap)" *ngIf="list.googleMap">
+                                              <img src="{{iconUrl}}map-icon.svg"> Map</span>
+                      </div>
+
+                      <!------------------ multiple sub halls selection for mobile responsive ----------------------------->
+                      <div class="mobile-list-row" fxHide fxShow.lt-md="true">
+                        <div fxLayout="row" class="multiple-halls">
+                          <div fxFlex.xs="70%" fxFlex.gt-xs="70%">
+                            <ng-select [searchable]="false" [(ngModel)]="list.subHallName" [clearable]="false"
+                                       placeholder="Select subhall" (ngModelChange)="subHallChanged(list, $event)"
+                                       *ngIf="list.hallCount > 1">
+                              <div class="sub-halls-sec" *ngFor="let subHall of list['hallInfos']">
+                                <div *ngIf="list.hallCount > 1">
+                                  <div *ngIf="subHall.dcdeHdr != 'REVIEW'">
+                                    <div class="sub-hall-name">
+                                      <ng-option [value]="subHall.dcdeHdr">{{subHall.dcdeHdr}}</ng-option>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </ng-select>
+                          </div>
+                          <div fxFlex.lt-md="30"  class="old-price" *ngIf="list.discVal > 0">
+                            <div class="text-m">
+                              <s>{{list.tariff | currency:'INR':'symbol':'1.0-0'}}</s>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!------------------ End multiple sub halls selection for mobile responsive ----------------------------->
+
+                      <div class="sub-hall-label" fxHide fxShow.gt-md="true"
+                           title="This Venue has more than one Hall. Choose your hall" *ngIf="list.hallCount > 1">Choose
+                        your hall
+                      </div>
+                      <mat-tab-group fxLayout="row" class="multiple-halls" fxHide fxShow.gt-md="true"
+                                     *ngIf="list.hallCount > 1"
+                                     (selectedTabChange)="subHallTabChanged(list, $event)">
+                        <div class="sub-halls-sec" *ngFor="let subHall of list['hallInfos']">
+                          <div *ngIf="subHall.dcdeHdr != 'REVIEW'">
+                            <mat-tab label=" {{subHall.dcdeHdr}}" class="halls-l sub-hall-link sub-hall-btn"
+                                     [class.link-active]="list.subHallId === subHall.dcdeId">
+                            </mat-tab>
+                          </div>
+                        </div>
+                      </mat-tab-group>
+
+
+                      <!------------------ check availability link, discount, tariff amount for mobile responsive  ------------>
+                      <div class="right-column-m" fxHide.gt-sm="true">
+                          <div fxLayout="row">
+                            <div fxFlex="70" class="check-btn">
+                              <button mat-stroked-button (click)="checkAvailability(list.prdctDetId, list.subHallId)">Check Availability</button>
+                              <span class="info-icon"><mat-icon
+                                matTooltip="Check Halls  availability as per your preferred date / auspicious day. Availability can be checked for multiple halls and durations."
+                                aria-label="Button that displays a tooltip in various positions">info_outline constant</mat-icon></span>
+                            </div>
+
+<!--                            <div fxFlex="20" class="discount-val">-->
+<!--                              <mat-chip-list fxLayoutAlign="center center" class="mt10" *ngIf="list.discVal >0">-->
+<!--                                <mat-chip selected>-->
+<!--                                  {{list.discVal}}%-->
+<!--                                </mat-chip>-->
+<!--                              </mat-chip-list>-->
+<!--                            </div>-->
+
+                            <div fxFlex="30" class="new-price">
+                              <div class="new-price-val" *ngIf="list.discVal > 0">
+                                {{(list.tariff - ((list.tariff * list.discVal) / 100))
+                                | currency:'INR':'symbol':'1.0-0'}}</div>
+                              <div class="new-price-val"
+                                    *ngIf="list.discVal == 0">{{list.tariff | currency:'INR':'symbol':'1.0-0'}}
+                              </div>
+                              <div class="discount-val">
+                                <mat-chip-list  class="mt10" style="float: right" *ngIf="list.discVal >0">
+                                  <mat-chip selected>
+                                    {{list.discVal}}%
+                                  </mat-chip>
+                                </mat-chip-list>
+                              </div>
+                            </div>
+                          </div>
+
+                          <div class="amenites-mobile">
+                            <span class="amenit"><a (click)="openAmenities(list)">Amenities +</a></span>
+                            <span class="knomr"><a target="_blank"
+                                             [routerLink]="['/chennai', appService.findAndReplace(categoryName, ' ', '-').toLowerCase(), appService.findAndReplace(list.prdctDetDesc, ' ', '-').toLowerCase()]"
+                                             [queryParams]="{categoryId: list.prdctId, venueId: list.prdctDetId, hallId: list.subHallId, date: '0'}"
+                                             *ngIf="list.prdctDetDesc">Know more</a></span>
+                          </div>
+                      </div>
+
+                      <!-------------------------------  end mobile for right view column--------------------------------------------->
+
+                      <div fxLayout="row" class="list-spec">
+                        <!-------------- left list of amenities -------------->
+                        <div fxLayout="column" fxFlex="50" class="lt-spec">
+                          <div>
+                            <div class="request-subHall">
+                              <div class="amenities-items">
+                                <img src="{{iconUrl}}car.svg"> Cars:
+                                <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Cars'">{{spec.facSpec}}</span>
+                                </span>
+                              </div>
+
+                              <div class="amenities-items">
+                                <img src="{{iconUrl}}seat-icon.svg"> Seating:
+                                <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Seating'">{{spec.facSpec}}</span>
+                                </span>
+                              </div>
+
+                              <div class="amenities-items">
+                                <img src="{{iconUrl}}floating-icon.svg"> Floating:
+                                <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Floating'">{{spec.facSpec}}</span>
+                                </span>
+                              </div>
+
+                              <div class="amenities-items">
+                                <img src="{{iconUrl}}dining-icon.svg"> Dining:
+                                <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Dining'">{{spec.facSpec}}</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <a [matMenuTriggerFor]="amenitiesMenu" #accountMenuTrigger="matMenuTrigger"
+                             class="amenities-link">
+                            <span class="list-more" (click)="accountMenuTrigger">Amenities +</span>
+                          </a>
+                        </div>
+                        <!-------------- right list of amenities ------------->
+                        <div fxLayout="column" fxFlex="50"  class="rt-spec">
+                          <div>
+                            <div class="amenities-items">
+                              <img style="width: 12px" src="{{iconUrl}}bike-icon.svg"> Bikes:
+                              <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Bikes'">{{spec.facSpec}}</span>
+                                </span>
+                            </div>
+
+                            <div class="amenities-items">
+                              <img src="{{iconUrl}}hotel.svg"> Rooms:
+                              <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Rooms'">{{spec.facSpec}}</span>
+                                </span>
+                            </div>
+
+                            <div class="amenities-items">
+                              <img src="{{iconUrl}}veg-icon.svg"> Food Type:
+                              <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Restaurant'">{{spec.facSpec}}</span>
+                                </span>
+                            </div>
+
+                            <div class="amenities-items">
+                              <img src="{{iconUrl}}floor-icon.svg"> Level:
+                              <span *ngFor="let spec of list['facInfos']" class="spec-loop">
+                                  <span
+                                    *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Hall on Floor'">{{spec.facSpec}}</span>
+                                </span>
+                            </div>
+                            <span class="know-more-link">
+                            <a class="list-more" target="_blank"
+                               [routerLink]="['/chennai', appService.findAndReplace(categoryName, ' ', '-').toLowerCase(), appService.findAndReplace(list.prdctDetDesc, ' ', '-').toLowerCase()]"
+                               [queryParams]="{categoryId: list.prdctId, venueId: list.prdctDetId, hallId: list.subHallId, date: '0'}"
+                               *ngIf="list.prdctDetDesc">Know more</a>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div fxFlex="25" class="p-1 right-column" fxLayoutAlign="center center" fxShow fxHide.lt-md >
+                    <div fxLayout="column" fxLayoutAlign="center center" class="prices">
+                        <div class="hall-price-sec" *ngIf="list.tariff">
+                          <div fxLayoutAlign="center center" class="old-price mt10" *ngIf="list.discVal > 0">
+                            <s>{{list.tariff | currency:'INR':'symbol':'1.0-0'}}</s>
+                          </div>
+                          <div class="new-price mt10" *ngIf="list.discVal > 0">
+                            {{(list.tariff - ((list.tariff * list.discVal) / 100))
+                            | currency:'INR':'symbol':'1.0-0'}} <span class="onwards">onwards</span>
+                          </div>
+                          <div class="new-price mt10"
+                               *ngIf="list.discVal == 0">{{list.tariff | currency:'INR':'symbol':'1.0-0'}}
+                            <span
+                              class="onwards">onwards</span>
+                          </div>
+                          <mat-chip-list fxLayoutAlign="center center" class="mt10" *ngIf="list.discVal >0">
+                            <mat-chip selected>
+                              {{list.discVal}}%
+                            </mat-chip>
+                          </mat-chip-list>
+                          <div class="check-btn mt10">
+                              <span class="mb10" style="float: right">
+                                  <button mat-stroked-button (click)="checkAvailability(list.prdctDetId, list.subHallId)">
+                                    Check Availability
+                                  </button>
+                                  <span class="info-icon">
+                                    <mat-icon  matTooltip="Check Halls  availability as per your preferred date / auspicious day. Availability can be checked for multiple halls and durations."
+                                    aria-label="Button that displays a tooltip in various positions">info_outline constant</mat-icon>
+                                  </span>
+                              </span>
+                          </div>
+                          <div class="book-btn mt10" fxHide.lt-md="true">
+                             <span style="float: right">
+                                <button mat-flat-button (click)="bookReserve()">
+                                <a class="book-reserve-btn" target="_blank"
+                                   [routerLink]="['/chennai', appService.findAndReplace(categoryName, ' ', '-').toLowerCase(), appService.findAndReplace(list.prdctDetDesc, ' ', '-').toLowerCase()]"
+                                   [queryParams]="{categoryId: list.prdctId, venueId: list.prdctDetId, hallId: list.subHallId, date: '0'}"
+                                   *ngIf="list.prdctDetDesc">Book Now</a>
+                                </button>
+
+                            <span class="info-icon"><mat-icon matTooltip="Book :  Book Online to avail special discounts,Cash back etc.
+Reserve :  Reserve Online to avail special discounts,Cashback etc and Block your preferred date for stipulated period."
+                                                              aria-label="Button that displays a tooltip in various positions">info_outline constant</mat-icon></span>
+                             </span>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+                <mat-menu #amenitiesMenu="matMenu" [overlapTrigger]="false" panelClass="amenities-dilog"
+                          xPosition="before"
+                          class="amenities-container mat-elevation-z1">
+                  <div fxLayout="row" class="list-spec amenities-sec" (mouseleave)="accountMenuTrigger.closeMenu()">
+                    <div fxLayout="column" fxFlex="50" fxFlex.xs="50" class="lt-spec">
+                      <div>
+                        <div class="request-subHall">
+                          <div *ngFor="let spec of list['facInfos']" class="spec-loop">
+                          <span *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Lifts'"><img
+                            src="{{iconUrl}}building-elevator-doors.svg"> Elevator: <span>
+                              <img src="{{iconUrl}}green-right.svg"
+                                   *ngIf="spec.facSpec === 'Yes'">
+                                           <img src="{{iconUrl}}wrong.svg"
+                                                *ngIf="spec.facSpec === 'No'">
+                            {{spec.facSpec}}</span></span>
+                            <span
+                              *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Hall on Dining'"><img
+                              src="{{iconUrl}}dining-level.svg"> Dining Level: <span>{{spec.facSpec}}</span></span>
+                            <span
+                              *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Backup'"><img
+                              src="{{iconUrl}}battery.svg"> Power Backup: <span>
+                            <img src="{{iconUrl}}green-right.svg"
+                                 *ngIf="spec.facSpec === 'Yes'">
+                                           <img src="{{iconUrl}}wrong.svg"
+                                                *ngIf="spec.facSpec === 'No'">
+                              {{spec.facSpec}}</span></span>
+                            <span
+                              *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Rooms'"><img
+                              src="{{iconUrl}}hotel.svg"> Chargeable Rooms: <span>{{spec.facSpec}}</span></span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div fxLayout="column" fxFlex="50" fxFlex.xs="50" class="rt-spec">
+                      <div>
+                        <div *ngFor="let spec of list['facInfos']" class="spec-loop">
+                          <span class="bike" *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Valet Parking'">
+                            <img src="{{iconUrl}}bike-icon.svg"> Valet Parking: <span>{{spec['facSpec']}}</span>
+                          </span>
+                          <span *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Restaurant'">
+                            <img src="{{iconUrl}}hotel.svg"> Restaurant: <span>
+                            <img src="{{iconUrl}}green-right.svg" *ngIf="spec.facSpec === 'Yes'">
+                                           <img src="{{iconUrl}}wrong.svg" *ngIf="spec.facSpec === 'No'">
+                            {{spec['facSpec']}}</span>
+                          </span>
+                          <span *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Bar'">
+                            <img src="{{iconUrl}}veg-icon.svg"> Bar:
+                            <span>
+                               <img src="{{iconUrl}}green-right.svg" *ngIf="spec.facSpec === 'Yes'">
+                                           <img src="{{iconUrl}}wrong.svg" *ngIf="spec.facSpec === 'No'">
+                                   {{spec['facSpec']}}
+                              </span>
+                          </span>
+                          <span *ngIf="list.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Hall Size'">
+                            <img src="{{iconUrl}}square.svg"> Hall Size:
+                            <span>{{spec['facSpec']}}</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-menu>
+              </mat-card>
+            </div>
+          </div>
+          <div *ngIf="totalRecords > 10">
+            <div *ngIf="listData">
+              <div *ngIf="listData.length > 0" fxLayout="row wrap">
+                <div fxFlex="100">
+                  <mat-card class="p-0 text-center list-pagination mat-elevation-z1">
+                    <pagination-controls class="product-pagination" id="server" (pageChange)="onPageChanged($event)"
+                                         maxSize="9"
+                                         directionLinks="true" autoHide="true"
+                                         screenReaderPaginationLabel="Pagination" screenReaderPageLabel="page"
+                                         screenReaderCurrentLabel="You're on page">
+                    </pagination-controls>
+                  </mat-card>
+                </div>
+              </div>
+            </div>
+          </div>
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+
+    </div>
+  </div>
+</div>
+
+
+<header class="list-searbar m-modify-header">
+  <div class="inside-list-bar">
+    <div class="items backbtn">
+      <a [routerLink]="['/']"><i  class="material-icons">keyboard_backspace</i></a>
+    </div>
+    <div (click)="editsearch()" class="items textdiv">
+      <span class="search"><i class="material-icons">search</i></span>
+      <span class="catgsear" *ngIf="venueName"><h6>{{venueName}}</h6><p>{{mdate}}</p></span>
+      <span class="catgsear" *ngIf="!venueName"><h6>Search</h6></span>
+      <span class="editsearch"><i class="material-icons">create</i></span>
+    </div>
+    <div class="items">
+      <button class="filter-btn" *ngIf="!sidenavOpen" (click)="sidenav.toggle()">Filter</button>
+    </div>
+    <div class="items">
+      <i class="material-icons">phone</i>
+    </div>
+  </div>
+</header>

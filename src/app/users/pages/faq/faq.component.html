@@ -1,0 +1,28 @@
+<div class="faq-container">
+  <div class="theme-container">
+  <div class="faq-section">
+    <div fxLayout="column" fxLayoutAlign="center" class="">
+      <div class="abt-content">
+        <div class="abt-header">FAQ'S</div>
+        <div class="">
+          <mat-accordion>
+            <div *ngFor="let faq of faqData">
+
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title class="panel-header">
+                    {{faq.dcdeHdr}}
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p class="abt-cnt"><span [innerHTML]="faq.dcdeDet"></span></p>
+              </mat-expansion-panel>
+            </div>
+          </mat-accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+

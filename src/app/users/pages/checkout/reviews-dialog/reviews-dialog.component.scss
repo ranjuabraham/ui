@@ -1,0 +1,112 @@
+@import "../../../@theme/styles/variables";
+.review-dialog-box{
+  .mat-dialog-container{
+    padding: 45px;
+    overflow: visible !important;
+    .close-btn-outer{
+      position: relative;
+      button{
+        position: absolute;
+        right: -44px;
+        top: -44px;
+      }
+    }
+
+    .review-dialog {
+
+      .dialog-title {
+        color: #444853;
+        font-family: $font-family-semiBold;
+        padding: 6px 0px;
+      }
+      .hall-name {
+        color: #FE2626;
+        font-family: $font-family-semiBold;
+        padding: 6px 0px;
+      }
+      .write-review {
+        .review-btn {
+          background-color: #00aa00 !important;
+          color: #FFFFFF;
+          float: right;
+          img {
+            width: 12px;
+            margin-right: 7px;
+          }
+        }
+      }
+      .content-container {
+        height: 340px;
+        width: 100%;
+        overflow: auto;
+      }
+      .review-row{
+        margin-bottom: 10px;
+      }
+      .user-name{
+        font-family: $font-family-semiBold;
+        color: #444853;
+        padding: 3px 0px;
+      }
+      .post-time{
+        font-size: 13px;
+        font-family: $font-family;
+        padding: 3px 0px;
+        color: #707070;
+      }
+      .review-content{
+        font-size: 13px;
+        font-family: $font-family;
+        color: #707070;
+      }
+
+      /* rating */
+
+      .rating {
+        margin-left: 12px;
+      }
+
+      .rating:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+        clip:rect(0,0,0,0);
+      }
+
+      .rating:not(:checked) > label {
+        float:right;
+        width:1em;
+        //padding:0.1em;
+        overflow:hidden;
+        white-space:nowrap;
+        cursor:pointer;
+        font-size:100%;
+        line-height:1.2;
+        color:#ddd;
+      }
+
+      .rating:not(:checked) > label:before {
+        content: '★ ';
+      }
+
+      .rating > input:checked ~ label {
+        color: #f70;
+      }
+
+      .rating:not(:checked) > label:hover,
+      .rating:not(:checked) > label:hover ~ label {
+        color: gold;
+      }
+
+
+      .rating > input:checked ~ label:hover,
+      .rating > input:checked ~ label:hover ~ label,
+      .rating > label:hover ~ input:checked ~ label {
+        color: #ea0;
+      }
+
+    }
+  }
+}
+
+
+

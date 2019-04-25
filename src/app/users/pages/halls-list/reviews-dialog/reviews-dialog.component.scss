@@ -1,0 +1,220 @@
+@import "../../../@theme/styles/variables";
+::ng-deep .review-dialog-box {
+  position: relative !important;
+
+  .close-icon{
+    position: absolute;
+    top: -50px;
+    right: 15px;
+    width: 38px !important;
+    cursor: pointer;
+  }
+}
+/* dialog box background color custom for material */
+::ng-deep.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.68) !important;
+}
+
+::ng-deep .review-dialog-box  .mat-dialog-container {
+  padding: 45px;
+}
+
+.review-dialog {
+
+  .dialog-title {
+    color: #444853;
+    font-family: $font-family;
+    padding: 6px 0;
+    font-weight: $font-weight;
+    font-size: 18px;
+  }
+  .hall-name {
+    color: #FE2626;
+    font-family: $font-family;
+    padding: 6px 0;
+    font-weight: $font-weight;
+  }
+  .write-review {
+    .review-btn {
+      background-color: #00aa00 !important;
+      font-family: $font-family;
+      color: #FFFFFF;
+      float: right;
+      font-weight: $font-weight;
+      font-size: 16px;
+      letter-spacing: .4px;
+      border-radius: 0;
+      img {
+        width: 12px;
+        margin-right: 7px;
+      }
+    }
+  }
+  .content-container {
+    height: 340px;
+    width: 100%;
+    overflow: auto;
+  }
+  .review-row{
+    margin-bottom: 10px;
+  }
+  .user-name{
+    font-family: $font-family-semiBold;
+    color: #444853;
+    padding: 3px 0px;
+  }
+  .post-time{
+    font-size: 13px;
+    font-family: $font-family;
+    padding: 3px 0px;
+    color: #707070;
+  }
+  .review-content{
+    font-size: 13px;
+    font-family: $font-family;
+    color: #707070;
+  }
+
+  /* rating */
+
+  .rating {
+    margin-left: 12px;
+  }
+
+  .rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+  }
+
+  .rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    //padding:0.1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:100%;
+    line-height:1.2;
+    color:#ddd;
+  }
+
+  .rating:not(:checked) > label:before {
+    content: '★ ';
+  }
+
+  .rating > input:checked ~ label {
+    color: #f70;
+  }
+
+  .rating:not(:checked) > label:hover,
+  .rating:not(:checked) > label:hover ~ label {
+    color: gold;
+  }
+
+
+  .rating > input:checked ~ label:hover,
+  .rating > input:checked ~ label:hover ~ label,
+  .rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+  }
+
+}
+@media only screen and (max-width: 600px){
+  .review-dialog{
+    width: 100%!important;
+    top:115px!important;
+    
+  }
+  ::ng-deep .review-dialog-box  .mat-dialog-container {
+    padding: 0px!important;
+  }
+  ::ng-deep .review-dialog .mat-dialog-container{
+    border-radius: 5px!important;
+  }
+  ::ng-deep .review-dialog .cdk-overlay-backdrop{
+    top:115px!important;
+    background: rgba(0,0,0,0.7)!important;
+  }
+  ::ng-deep .cdk-overlay-container, ::ng-deep .cdk-global-overlay-wrapper{
+    top:5px!important;
+  }
+  ::ng-deep .review-dialog-box{
+    max-width: 90%!important;
+    width: 90%!important;
+    
+    border-radius: 0px!important;
+    top:40px!important;
+  }
+
+  .pad-m0{
+    border-bottom: 1px solid lightgray;
+    padding-top: 14px;
+    padding-left: 15px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+  }
+  .write-review{
+    padding-top: 10px;
+  }
+  ::ng-deep .write-review .mat-button-wrapper{
+    color:white!important;
+    font-size: 12px;
+  }
+  ::ng-deep .review-dialog .review-row{
+    padding: 16px;
+    border-bottom: 1px solid lightgray;
+
+  }
+  .user-img img{
+    width: 30px!important;
+    margin-right: 10px!important;
+  }
+  .review-dialog .user-name{
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .review-dialog .post-time{
+    font-size: 9px;
+    font-weight: 600;
+    color:grey;
+  }
+  .review-dialog .dialog-title{
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .review-dialog .hall-name{
+    color: #8C37DB!important;
+    font-weight: 600;
+    width: 150px;
+    font-size: 12px;
+    word-break:break-word;
+  }
+  .review-dialog .review-content{
+    font-size: 11px;
+    line-height: 22px;
+  }
+  ::ng-deep .review-dialog .mat-dialog-container{
+    position: relative;
+    top: -5px;
+  }
+  .review-dialog .write-review .review-btn{
+    height: 30px;
+    border-radius: 0px!important;
+  }
+  .review-dialog .mt-2{
+    margin-top: 00px!important;
+  }
+  .ps__rail-y .ps__thumb-y{
+    height:0px!important;
+  }
+  .ps__thumb-y{
+    height:0px!important;
+  }
+  // .content-section{
+  //   height: 80px!important;
+  // }
+  .review-row{
+    margin-bottom: 0!important;
+  }
+}

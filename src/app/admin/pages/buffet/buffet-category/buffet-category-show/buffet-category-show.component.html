@@ -1,0 +1,100 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="buffet-category-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Buffet Category</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/buffet-category/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/buffet-category/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Header -->
+        <ng-container matColumnDef="buffCatg">
+            <mat-header-cell *matHeaderCellDef class="width20">Buffet Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Buffet Name: ">{{row.buffCatg}} </mat-cell>
+        </ng-container>
+        
+        <!-- Description -->
+        <ng-container matColumnDef="buffSubHdr">
+          <mat-header-cell *matHeaderCellDef class="width30">Description / Category</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width30" ngClass.sm="width100" ngClass.xs="width100" data-label="Description: "> <span [innerHTML]="row.buffSubHdr"></span></mat-cell>
+        </ng-container>
+        
+        <!-- Is Have Live Counter  -->
+        <ng-container matColumnDef="isFlg">
+          <mat-header-cell *matHeaderCellDef class="width10"> Is Live Counter </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Is Live Counter ">
+              <span *ngIf="row.isFlg == 1;"> Yes</span>
+               <span *ngIf="row.isFlg != 1;"> No</span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- No.of Items allowed in this category -->
+        <ng-container matColumnDef="alwToChoose">
+            <mat-header-cell *matHeaderCellDef class="width10">Allow to Choose</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Choose Limit ">
+                <span *ngIf="row.alwToChoose == 0;">ALL</span>
+                <span *ngIf="row.alwToChoose != 0;"> {{row.alwToChoose}}</span>
+            </mat-cell>
+        </ng-container>
+        
+        <!-- Sequence -->
+        <ng-container matColumnDef="buffSubSeq">
+          <mat-header-cell *matHeaderCellDef class="width10"> Sequence </mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Sequence: "> {{row.buffSubSeq}}</mat-cell>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="buffSubAct">
+            <mat-header-cell *matHeaderCellDef class="width10">Status</mat-header-cell>
+            <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+              <span *ngIf="row.buffSubAct === 1;">
+                  <span style="color: green">Active</span>
+                </span>
+              <span *ngIf="row.buffSubAct !== 1;">
+                  <span style="color: #FE0000">De-active</span>
+                </span>
+            </mat-cell>
+          </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width10">Action </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                <a mat-icon-button routerLink="/venue/buffet-category/edit/{{row.prdctDetId}}/{{row.buffSubId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 50]" showFirstLastButtons></mat-paginator>
+    </div>
+  </div>
+</div>
+

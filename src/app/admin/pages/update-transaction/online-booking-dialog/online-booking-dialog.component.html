@@ -1,0 +1,78 @@
+<div>
+  <div style="float:right; color: red;cursor: pointer;" (click)="closeDialog()"><mat-icon>close</mat-icon></div>
+  <div><h3 mat-dialog-title style="text-align: center; font-weight: bold">Transaction Details </h3></div>
+</div>
+<div class="container">
+ 
+  <div class="overflow-height">
+  <table id="dialog-box" >
+    <tr>
+      <td colspan="2">
+        <span *ngIf="data.userType === 'venue'">SELF </span>
+        <span *ngIf="data.userType !== 'venue'">Hallsdiary </span>
+        <span *ngIf="data.isBlk === 2">Reservation</span>
+        <span *ngIf="data.isBlk === 1">Booking</span>
+        against Ref.No : <b>{{data.txnId}}</b> details are :</td>
+    </tr>
+    <tr>
+      <th>Hall Name</th>
+      <td>{{data.dcdeHdr}}</td>
+    </tr>
+    <tr>
+      <th>Booked On</th>
+      <td>{{data.bookedOn}}</td>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <td>{{data.startDate}} ~ {{data.endDate}}</td>
+    </tr>
+    <tr>
+      <th>Event</th>
+      <td>{{data.evtName}}</td>
+    </tr>
+    <tr>
+      <th>Session</th>
+      <td>{{data.durName}}</td>
+    </tr>
+    <tr>
+      <th>Food Type</th>
+      <td>{{data.fdTypName}}</td>
+    </tr>
+    <tr>
+      <th>Booking Type</th>
+      <td>{{data.bookTyp.toUpperCase()}}</td>
+    </tr>
+    <tr *ngIf="data.bookTyp !== 'buffet'">
+      <th>Rent / Cost</th>
+      <td>{{data.rentFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    <tr *ngIf="data.bookTyp === 'buffet'">
+        <th>Buffet Cost</th>
+        <td>{{data.buffTar | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    <tr *ngIf="data.bookTyp === 'buffet'">
+          <th>Pax Count</th>
+          <td>{{data.buffCount}}</td>
+    </tr>
+    <tr>
+      <th>Tax( GST)</th>
+      <td>{{data.taxesFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    <tr>
+      <th>Discount</th>
+      <td>{{data.disAmount | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    <tr *ngIf="data.isBlk === 2">
+      <th>Reservation</th>
+      <td>{{data.reservFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td>{{data.totalFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+    </tr>
+    </table>
+    <div style="align-content: center; padding-left: 40%;">
+      <button mat-raised-button class="cancel-btn" style="background-color: rgb(247, 118, 118); color: #ffffff;" (click)="closeDialog()">Close</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,152 @@
+
+<div class="close-btn" fxHide.xs fxHide.sm><img (click)="closeModalDialog()" class="close-icon" src="../../../../../assets/images/icons/close-btn.svg"></div>
+<div class="mtop-header mat-elevation-z0" fxHide.lg="true" fxHide.md="true">
+  <img (click)="closeModalDialog()" class="back-btn" src="../../../../assets/images/icons/back.svg">
+</div>
+<div class="container hd-login">
+  <div class="login-container" fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column"
+       fxLayoutAlign="center" fxLayoutGap="">
+    <div class="login-left" fxFlex="45%" fxFlex.sm="100%" fxHide fxShow.gt-sm>
+      <div class="log-in-left">
+        <h4 class="lgn-header">Sign in to get exclusive discounts</h4>
+        <img style="width: 210px; padding: 40px" mat-card-image src="../../../assets/images/icons/hd-login.png"
+             alt="HallsDiary">
+      </div>
+    </div>
+
+
+    <div class="login-right" fxFlex="55%" fxFlex.sm="100%" fxFlex.lt.sm="100%">
+      <mat-tab-group [selectedIndex]="selectedIndex" (selectedTabChange)="resetForm($event)">
+        <mat-tab label="Login" class="mt10 mt-login-btn" style="justify-content: left">
+          <div class="alert alert-success" *ngIf="alert">
+            <span> Registration Successful.</span>
+          </div>
+          <div class="alert alert-success alert-1" *ngIf="fgtSuccess">
+            Password sent successfully, Please check your email
+          </div>
+          <div class="login-box">
+            <p *ngIf="validationMsg" class="text-center validationMsg" style="color: red">Account does not exist</p>
+            <div class="m-login-img" fxHide.lg fxHide.md>
+              <h4 class="lgn-header">Sign in to get exclusive discounts</h4>
+              <img class="login-img"  mat-card-image src="../../../assets/images/icons/hd-login.png"
+                   alt="HallsDiary">
+            </div>
+            <form class="form-inline" [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column"
+                  fxLayoutAlign="center">
+              <mat-form-field
+                [hideRequiredMarker]="loginForm.value.hideRequired"
+                [floatLabel]="loginForm.value.floatLabel">
+                <input matInput  formControlName="emailId" placeholder="Email"
+                       autocomplete="off">
+                <mat-error *ngIf="loginForm.controls['emailId'].errors?.required">Enter your email address</mat-error>
+                <mat-error
+                  *ngIf="loginForm.controls['emailId'].hasError('invalidEmail')|| loginForm.controls['emailId'].hasError('email')">
+                  Invalid email address
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['emailId'].hasError('maxlength')">Email should be max
+                  60 chars.
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field [hideRequiredMarker]="loginForm.value.hideRequired"
+                              [floatLabel]="loginForm.value.floatLabel">
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="usrPassword"
+                       autocomplete="off" oncopy="return false" onpaste="return false" oncut="return false">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="loginForm.controls['usrPassword'].hasError('required')"> Enter your password
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['usrPassword'].hasError('minlength')"> Password should be min 6
+                  chars.
+                </mat-error>
+                <mat-error *ngIf="loginForm.controls['usrPassword'].hasError('maxlength')"> Password should be max 20
+                  chars.
+                </mat-error>
+              </mat-form-field>
+              <span class="error passwordValidation"   *ngIf="passwordMsg">Invalid Password </span>
+              <button mat-flat-button type="submit" class="mt20" [disabled]="loginForm.invalid || loading">{{ loading ? 'PLEASE WAIT...' : 'LOGIN' }}</button>
+
+            </form>
+            <div class="forgot-link">
+              <a class="forget" (click)="forgotPassword()">Forgot password?</a>
+            </div>
+          </div>
+
+        </mat-tab>
+        <mat-tab label="Sign up">
+          <div class="login-box">
+            <div class="m-login-img" fxHide.lg fxHide.md>
+              <h4 class="lgn-header">Sign in to get exclusive discounts</h4>
+              <img class="login-img"  mat-card-image src="../../../assets/images/icons/hd-login.png"
+                   alt="HallsDiary">
+            </div>
+            <p *ngIf="signUpMsg" class="alert alert-danger validationMsg">Email and Mobile Number Account already exist</p>
+            <form class="form-inline" [formGroup]="signUpForm" (ngSubmit)="addSignUpForm()" fxLayout="column">
+              <mat-form-field
+                [hideRequiredMarker]="signUpForm.value.hideRequired"
+                [floatLabel]="signUpForm.value.floatLabel">
+                <input matInput formControlName="signupEmailId" placeholder="Email"
+                       autocomplete="off" oncopy="return false" onpaste="return false" oncut="return false">
+                <mat-error *ngIf="signUpForm.controls['signupEmailId'].errors?.required">Enter your email address
+                </mat-error>
+                <mat-error
+                  *ngIf="signUpForm.controls['signupEmailId'].hasError('invalidEmail')|| signUpForm.controls['signupEmailId'].hasError('email')">
+                  Invalid email address
+                </mat-error>
+                <mat-error *ngIf="signUpForm.controls['signupEmailId'].hasError('maxlength')">Email should be max
+                  60 chars.
+                </mat-error>
+              </mat-form-field>
+              <span class="error passwordValidation"   *ngIf="signUpEmailMsg">Email address already registered</span>
+
+              <mat-form-field
+                [hideRequiredMarker]="signUpForm.value.hideRequired"
+                [floatLabel]="signUpForm.value.floatLabel">
+                <input type="text" matInput formControlName="usrFrstName" placeholder="Name"
+                       autocomplete="off" (keypress)="appService.textValidation($event)">
+                <mat-error *ngIf="signUpForm.controls['usrFrstName'].hasError('required')"> Enter your Name
+                </mat-error>
+                <mat-error *ngIf="signUpForm.controls['usrFrstName'].hasError('maxlength')">Name should be max
+                  40 chars.
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field
+                [hideRequiredMarker]="signUpForm.value.hideRequired"
+                [floatLabel]="signUpForm.value.floatLabel">
+                <input type="text" matInput formControlName="usrMobile" placeholder="Mobile number"
+                       (keypress)="keyPress($event)" minlength=10 maxlength=10
+                       autocomplete="off">
+                <mat-error *ngIf="signUpForm.controls['usrMobile'].hasError('minlength')"> Mobile number should be min
+                  10 chars.
+                </mat-error>
+                <mat-error *ngIf="signUpForm.controls['usrMobile'].hasError('required')"> Enter your mobile number
+                </mat-error>
+              </mat-form-field>
+              <span class="error passwordValidation"   *ngIf="mobileNoMsg">Mobile Number already registered</span>
+
+              <mat-form-field [hideRequiredMarker]="signUpForm.value.hideRequired"
+                              [floatLabel]="signUpForm.value.floatLabel">
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'"
+                       formControlName="signupPassword"
+                       autocomplete="off" oncopy="return false" onpaste="return false" oncut="return false">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-error *ngIf="signUpForm.controls['signupPassword'].hasError('minlength')"> Password should be min 6
+                  chars.
+                </mat-error>
+                <mat-error *ngIf="signUpForm.controls['signupPassword'].hasError('maxlength')"> Password should be max
+                  20 chars.
+                </mat-error>
+                <mat-error *ngIf="signUpForm.controls['signupPassword'].hasError('required')"> Enter your password
+                </mat-error>
+              </mat-form-field>
+
+              <button mat-flat-button type="submit" class="mt20 sign-up-btn" [disabled]="signUpForm.invalid || loading">{{ loading ? 'PLEASE WAIT...' : 'SIGN UP' }}</button>
+
+            </form>
+            <div class="terms-link"><span>By creating an account. I accept the
+<br><a target="_blank" routerLink="/terms"> Terms and Conditions</a></span></div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+<div>
+  <div style="float:right; color: #8C37DB;cursor: pointer;" (click)="closeDialog()"><mat-icon>close</mat-icon></div>
+  <div class="dialog-header">Online Booking</div>
+</div>
+<div class="container">
+
+  <div class="overflow-height">
+    <table id="dialog-box" >
+      <tr>
+        <td colspan="2">HD
+          <span *ngIf="data.isBlk === 2">Reservation</span>
+          <span *ngIf="data.isBlk === 1">Booking</span>
+          against Ref.No : <b>{{data.txnId}}</b> details are :</td>
+      </tr>
+      <tr>
+        <th>Hall Name</th>
+        <td>{{data.dcdeHdr}}</td>
+      </tr>
+      <tr>
+        <th>Booked On</th>
+        <td>{{data.bookedOn}}</td>
+      </tr>
+      <tr>
+        <th>Date</th>
+        <td>{{data.muhurtDts}} ~ {{data.endDt}}</td>
+      </tr>
+      <tr>
+        <th>Event</th>
+        <td>{{data.evtName}}</td>
+      </tr>
+      <tr>
+        <th>Session</th>
+        <td>{{data.durName}}</td>
+      </tr>
+      <tr>
+        <th>Food Type</th>
+        <td>{{data.fdTypName}}</td>
+      </tr>
+      <tr>
+        <th>Booking Type</th>
+        <td>{{data.bookTyp}}</td>
+      </tr>
+      <tr *ngIf="data.bookTyp.toUpperCase() !== 'BUFFET'">
+        <th>Rent / Cost</th>
+        <td>{{data.rentFinal | currency:'INR':'symbol':'1.0-0'}}</td>
+      </tr>
+      <tr *ngIf="data.bookTyp.toUpperCase() === 'BUFFET'">
+        <th>Buffet Cost</th>
+        <td>{{data.buffTar | currency:'INR':'symbol':'1.0-0'}}</td>
+      </tr>
+      <tr *ngIf="data.bookTyp.toUpperCase() === 'BUFFET'">
+        <th>Pax Count</th>
+        <td>{{data.buffCount}}</td>
+      </tr>
+      <tr>
+        <th>Tax( GST)</th>
+        <td>{{data.taxesFinal | currency:'INR':'symbol':'1.0-0'}}</td>
+      </tr>
+      <tr>
+        <th>Discount</th>
+        <td>{{data.disAmount | currency:'INR':'symbol':'1.0-0'}}</td>
+      </tr>
+      <tr *ngIf="data.isBlk === 2">
+        <th>Reservation</th>
+        <td>{{data.reservFinal | currency:'INR':'symbol':'1.0-0'}}</td>
+      </tr>
+      <tr>
+        <th>Total</th>
+        <td>{{data.totalFinal | currency:'INR':'symbol':'1.0-0'}}</td>
+      </tr>
+    </table>
+    <table style="margin-top: 3px" *ngIf="data.paidStatus.toUpperCase() === 'YES'">
+      <tr>
+        <td colspan="2">Customer Details:
+        </td>
+      </tr>
+      <tr>
+        <th>Name:</th>
+        <td>{{data.frstName}}</td>
+      </tr>
+      <tr>
+        <th>Address:</th>
+        <td>{{data.address}}</td>
+      </tr>
+      <tr>
+        <th>Email ID:</th>
+        <td>{{data.emailId}}</td>
+      </tr>
+      <tr>
+        <th>Phone:</th>
+        <td>{{data.mobile}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

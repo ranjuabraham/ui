@@ -1,0 +1,92 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="buffet-master-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Buffet Master</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/buffet-master/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/buffet-master/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+         <!-- Header -->
+         <ng-container matColumnDef="buffCatg">
+          <mat-header-cell *matHeaderCellDef class="width20">Buffet Name</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Buffet Name: ">{{row.buffCatg}} </mat-cell>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="buffDesc">
+          <mat-header-cell *matHeaderCellDef class="width45">Description / Terms</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width45" ngClass.sm="width100" ngClass.xs="width100" data-label="Description: "> <span [innerHTML]="row.buffDesc"></span></mat-cell>
+        </ng-container>
+
+        <!-- Type of Promotion-->
+        <ng-container matColumnDef="alwToChoose">
+            <mat-header-cell *matHeaderCellDef class="width10">Is Choosable</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Is Choosable: ">
+                <span *ngIf="row.alwToChoose == 1;"><span>Yes</span></span>
+                <span *ngIf="row.alwToChoose != 1;"><span>No</span></span>
+            </mat-cell>
+          </ng-container>
+         
+        <!-- Status -->
+        <ng-container matColumnDef="buffAct">
+          <mat-header-cell *matHeaderCellDef class="width10">Status</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+            <span *ngIf="row.buffAct === 1;">
+                <span style="color: green">Active</span>
+              </span>
+            <span *ngIf="row.buffAct !== 1;">
+                <span style="color: #FE0000">De-active</span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width15">
+            Action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width15" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                  <button mat-icon-button
+                  (click)="showDetails(row.prdctDetId, row.fdTypId, row.buffId, row.buffCatg, row.buffDesc, row.buffComp, row.buffCost, row.buffTax, row.discVal, row.reserVal, row.leafCost)">
+                         <mat-icon class="material-icons view-btn">visibility</mat-icon>
+                  </button>
+              </span>
+              <span>
+                <a mat-icon-button routerLink="/venue/buffet-master/edit/{{row.prdctDetId}}/{{row.buffId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

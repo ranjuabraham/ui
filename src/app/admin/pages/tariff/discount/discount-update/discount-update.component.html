@@ -1,0 +1,93 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container" *ngIf="resultInfo">
+              <form [formGroup]="discountForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Edit Discount</h1>
+                </div>
+  
+                <div class="form" style="display:none">
+                  <mat-form-field>
+                      <input matInput  formControlName="discId" placeholder="ID" [(ngModel)]="resultInfo.discId">
+                  </mat-form-field>
+                </div>
+                  
+                <!-- Hall Name -->
+                <div class="form">
+                  <mat-form-field>
+                    <mat-select formControlName="subPrdctDetId" placeholder="Hall Name" [(ngModel)]="resultInfo.subPrdctDetId" required>
+                      <mat-option *ngFor="let index of hallInfo" [value]="index.subPrdctDetId">{{index.dcdeHdr}} </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="discountForm.controls['subPrdctDetId'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+
+                <!-- Discount Value --> 
+                <div class="form">
+                  <mat-form-field>
+                    <input matInput #input formControlName="disAmount" placeholder="Discount (in %)" [(ngModel)]="resultInfo.disAmount" required>
+                    <mat-error *ngIf="discountForm.controls['disAmount'].hasError('required')">Enter Discount in percentage</mat-error>
+                  </mat-form-field>
+                </div>
+  
+                <!-- Discount for --> 
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="discMuhurt" placeholder="Dicount For" [(ngModel)]="resultInfo.discMuhurt">
+                        <mat-option *ngFor="let status of displayDay" [value]="status.value">
+                          {{status.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="discountForm.controls['discMuhurt'].hasError('required')">Select Anyone</mat-error>
+                   </mat-form-field>
+                  </div>
+
+                  <!-- Valid Days--> 
+                  <div class="form">
+                    <mat-form-field>
+                      <input matInput #input formControlName="validDays" placeholder="Valid Days (days)" [(ngModel)]="resultInfo.validDays" required>
+                      <mat-error *ngIf="discountForm.controls['validDays'].hasError('required')">Enter valid days</mat-error>
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Satus-->
+                  <div class="form">
+                      <mat-form-field>
+                        <mat-select formControlName="discAct" placeholder="Is Active" [(ngModel)]="resultInfo.discAct">
+                          <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                            {{status.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="discountForm.controls['discAct'].hasError('required')">Select Anyone</mat-error>
+                      </mat-form-field>
+                  </div>
+      
+  
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                  <div fxFlex="50" fxFlex.xs="100">
+                    <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                    <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                      <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                    </div>
+                    </div>
+                </div>
+  
+                <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                  <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                      fxLayoutAlign.xs="space-around center">
+                    <button mat-raised-button class="save-btn">Update</button>
+                    <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                  </div>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+    </div>
+  </div>
+    
+  

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82.064 82.064">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #e6e6e6;
+      }
+
+      .cls-2 {
+        fill: #ccc;
+      }
+    </style>
+  </defs>
+  <g id="Group_2842" data-name="Group 2842" transform="translate(-161 -294)">
+    <ellipse id="Ellipse_96" data-name="Ellipse 96" class="cls-1" cx="41.032" cy="41.032" rx="41.032" ry="41.032" transform="translate(161 294)"/>
+    <path id="Intersection_1" data-name="Intersection 1" class="cls-2" d="M0,24.02C.946,10.615,13.585,0,29.037,0c14.971,0,27.3,9.963,28.915,22.774a40.847,40.847,0,0,1-29.6,12.7A40.8,40.8,0,0,1,0,24.02Z" transform="translate(173.291 340.592)"/>
+    <ellipse id="Ellipse_97" data-name="Ellipse 97" class="cls-2" cx="14.134" cy="14.134" rx="14.134" ry="14.134" transform="translate(187.898 309.601)"/>
+  </g>
+</svg>

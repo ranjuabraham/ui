@@ -1,0 +1,70 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="reservation-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Maintain Reservation</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field" style="display:none;"></div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/reservation/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/reservation/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+         <!-- Hall Name -->
+         <ng-container matColumnDef="bfwk">
+          <mat-header-cell *matHeaderCellDef class="width20">Before Week</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Before Week: ">{{row.bfwk}}</mat-cell>
+        </ng-container>
+
+         <!-- Event Type-->
+         <ng-container matColumnDef="afwk">
+          <mat-header-cell *matHeaderCellDef class="width20">After Week</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="After Week: "> {{row.afwk}}</mat-cell>
+        </ng-container>
+        
+        <!-- Duration Type-->
+        <ng-container matColumnDef="bfdy">
+         <mat-header-cell *matHeaderCellDef class="width20">Before Days</mat-header-cell>
+         <mat-cell mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Before Days: "> {{row.bfdy}}</mat-cell>
+        </ng-container>
+        
+        <!-- food Type Name-->
+        <ng-container matColumnDef="resVal">
+         <mat-header-cell *matHeaderCellDef class="width20">Reservation Value(%)</mat-header-cell>
+         <mat-cell mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Reservation Value: "> {{row.resVal}}</mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width20">Action</mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+            <span>
+                <a mat-icon-button routerLink="/venue/reservation/edit/{{row.prdctDetId}}/{{row.resrId}}">
+                <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

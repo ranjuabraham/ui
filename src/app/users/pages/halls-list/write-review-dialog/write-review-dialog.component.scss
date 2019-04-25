@@ -1,0 +1,210 @@
+@import "../../../@theme/styles/variables";
+
+::ng-deep .write-review-dialog-box {
+  position: relative !important;
+
+  .close-icon {
+    position: absolute;
+    top: -50px;
+    right: 15px;
+    width: 38px !important;
+    cursor: pointer;
+  }
+}
+
+/* dialog box background color custom for material */
+::ng-deep.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.68) !important;
+}
+
+.success {
+  background: #388E3C !important;
+}
+
+.new-review-dialog {
+  padding: 0;
+  margin: 0;
+
+  .dialog-header {
+    border-bottom: #ccc 1px solid;
+  }
+
+  .title {
+    padding: 2% 0 .5% 0;
+  }
+
+  .content-sec {
+    padding: 10px;
+  }
+
+  .mat-dialog-container {
+    padding: 15px !important;
+  }
+
+  .dialog-title {
+    color: #444853;
+    font-family: $font-family;
+    padding: 0 0 20px;
+    font-size: 16px;
+    font-weight: $font-weight;
+  }
+
+  .hall-name {
+    color: #FE2626;
+    font-family: $font-family;
+    font-weight: $font-weight;
+    padding: 6px 0;
+  }
+
+  .user-name {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    color: #444853;
+    padding: 3px 0;
+  }
+
+  .city {
+    font-size: 12px;
+    color: #444853;
+  }
+
+  .cancel-btn, .post-btn {
+    font-family: $font-family-semiBold;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .cancel-btn {
+    color: #FE0000;
+  }
+
+  .post-btn {
+    color: #00a000;
+  }
+
+  /*textarea field */
+  mat-form-field {
+    width: 100%;
+  }
+
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+    border-radius: 0;
+  }
+
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 0;
+  }
+
+  /* rating */
+
+  .rating {
+    margin-left: 12px;
+  }
+
+  .rating:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .rating:not(:checked) > label {
+    float: right;
+    width: 1em;
+    //padding:0.1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 170%;
+    line-height: 1.2;
+    color: #E2E2E2;
+  }
+
+  .rating:not(:checked) > label:before {
+    content: '★ ';
+  }
+
+  .rating > input:checked ~ label {
+    color: #f70;
+  }
+
+  .rating:not(:checked) > label:hover,
+  .rating:not(:checked) > label:hover ~ label {
+    color: gold;
+  }
+
+
+  .rating > input:checked ~ label:hover,
+  .rating > input:checked ~ label:hover ~ label,
+  .rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+  ::ng-deep .write-review-dialog-box .cdk-overlay-backdrop {
+    top: -14px !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+  }
+  .dialog-header {
+    position: relative;
+  }
+  .write-review-dialog-box {
+    width: 90%;
+  }
+  ::ng-deep .write-review-dialog-box {
+    max-width: 90% !important;
+    width: 90% !important;
+    border-radius: 0 !important;
+    top: 0 !important;
+  }
+  ::ng-deep .write-review-dialog-box .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    margin: 0px 0px !important;
+  }
+  .new-review-dialog .title {
+    padding: 6% 3% 2.5% 5%;
+  }
+  .new-review-dialog .dialog-title {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: Montserrat, sans-serif;
+  }
+  .new-review-dialog .content-sec {
+    padding: 6px 25px 18px 21px;
+  }
+  .new-review-dialog .hall-name {
+    color: #8C37DB !important;
+    font-weight: 600;
+    font-family: Montserrat, sans-serif;
+  }
+  .new-review-dialog .user-name {
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  .new-review-dialog .city {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+  ::ng-deep .write-review-dialog-box .mat-button-wrapper {
+    font-weight: 600 !important;
+  }
+  ::ng-deep .write-review-dialog-box .mat-input-element {
+    font-size: 12px !important;
+    line-height: 22px !important;
+  }
+  ::ng-deep .write-review-dialog-box .mat-dialog-content {
+    max-height: 88vh !important;
+  }
+  .new-review-dialog .rating:not(:checked) > label {
+    font-size: 72%;
+
+  }
+  .review-row {
+    padding-bottom: 10px;
+  }
+  ::ng-deep .write-review-dialog-box .mat-dialog-container {
+    padding: 0 !important;
+  }
+}

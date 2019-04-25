@@ -1,0 +1,81 @@
+@import "../../../@theme/styles/variables";
+
+::ng-deep.check-availability-dialog {
+  position: relative !important;
+
+  .close-icon{
+    position: absolute;
+    top: 10px;
+    right: -45px;
+    width: 28px !important;
+  }
+
+  ::ng-deep.mydp .day-instruction tr td{
+    padding: 10px 40px !important;
+  }
+
+}
+
+.check-availability-container {
+  .dialog-header {
+    font-family: $font-family;
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  ::ng-deep.mat-form-field {
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  ::ng-deep.mat-select-value-text {
+    font-family: $font-family-semiBold;
+  }
+  ::ng-deep.mydp .headermonthtxt {
+    width: 250px !important;
+    max-width: 250px !important;
+  }
+  ::ng-deep.mydp .selector {
+    margin-top: 2px;
+    border: 1px solid #ccccccb3;
+    z-index: 0 !important;
+    box-shadow: unset !important;
+  }
+
+  ::ng-deep.mydp .day-instruction tr td {
+    font-size: 14px;
+    padding: 7px 30px;
+  }
+
+}
+
+@media screen and (max-width: 960px) {
+  ::ng-deep.check-availability-dialog {
+    min-width: 98% !important;
+  }
+  ::ng-deep.mydp .headermonthtxt {
+    width: 130px !important;
+    max-width: 130px !important;
+  }
+  .dialog-header {
+    font-size: 12px !important;
+  }
+  ::ng-deep.mydp .day-instruction tr td {
+    font-size: 10px !important;
+    padding: 7px 6px !important;
+  }
+  ::ng-deep.selector {
+    height: 340px !important;
+  }
+  ::ng-deep.mat-select-value-text {
+    font-size: 12px;
+  }
+  ::ng-deep .check-availability-dialog .mat-dialog-container{
+    padding: 13px !important;
+  }
+  .close-btn .close-icon{
+    position: absolute;
+    top: -40px !important;
+    right: 15px !important;
+  }
+}
+

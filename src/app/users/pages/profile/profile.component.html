@@ -1,0 +1,265 @@
+<div class="theme-container profile-container-sec">
+  <div class="hd-container">
+    <div class="profile-header"><h3>Profile details</h3></div>
+    <div class="profile-container mb30" fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column"
+         fxLayoutAlign="start stretch" fxLayoutWrap fxLayoutGap="4%">
+
+      <div fxFlex="18%">
+        <app-sidemenu></app-sidemenu>
+      </div>
+      <div class="profile-form" fxFlex.lg="79%" fxFlex.md="75%"
+           fxFlex.sm="100%">
+        <div fxFlex class="form-component-holder mat-elevation-z1 prform">
+          <h3 class="pform-header" fxHide fxShow.gt-sm="true">My Profile</h3>
+          <div class="pform-in">
+            <div *ngIf="profileData">
+              <div class="form-row pform">
+
+                <form [formGroup]="profileForm" (ngSubmit)="addProfileForm()" fxLayout="column">
+                  <div style="display: none">
+                    <mat-form-field>
+                      <input type="text" matInput formControlName="action" [(ngModel)]="profileData['action']">
+                    </mat-form-field>
+                  </div>
+                  <div style="display: none">
+                    <mat-form-field *ngIf="profileData['action'] === 'update'">
+                      <input type="text" matInput formControlName="addrId" [(ngModel)]="profileData['addrId']">
+                    </mat-form-field>
+                  </div>
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrName" placeholder="First Name"
+                               [(ngModel)]="profileData['addrName']" required>
+                        <mat-error *ngIf="profileForm.controls['addrName'].hasError('required')"> Enter your
+                          First Name
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="fgroup">
+                      <mat-form-field
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="lastName" placeholder="Last Name"
+                               [(ngModel)]="profileData['lastName']">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field>
+                        <input type="number" matInput formControlName="mobileNumber" placeholder="Mobile Number"
+                               [(ngModel)]="mobileNumber" readonly>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="fgroup">
+                      <mat-form-field
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrPh" (keypress)="keyPress($event)" minlength="6"
+                               maxlength="12" placeholder="landline Number" [(ngModel)]="profileData['addrPh']">
+                        <mat-error *ngIf="profileForm.controls['addrPh'].hasError('minlength')"> Landline number should be
+                          min 6 chars.
+                        </mat-error>
+                        <mat-error *ngIf="profileForm.controls['addrPh'].hasError('maxlength')"> Landline number should be
+                          max 12 chars.
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrStr" placeholder="Area / Landmark"
+                               [(ngModel)]="profileData['addrStr']">
+                      </mat-form-field>
+                    </div>
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrCity" placeholder="City"
+                               [(ngModel)]="profileData['addrCity']" required>
+                        <mat-error *ngIf="profileForm.controls['addrCity'].hasError('required')"> Enter your
+                          City
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <mat-select formControlName="addrState" placeholder="State"
+                                    [(ngModel)]="profileData['addrState']" required>
+                          <option>--- Select State ---</option>
+                          <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.viewValue">
+                            {{sequence.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="profileForm.controls['addrState'].hasError('required')"> Select your State
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrZip" placeholder="Pincode"
+                               (keypress)="keyPress($event)"  minlength="6" maxlength="6"
+                               [(ngModel)]="profileData['addrZip']"  required>
+                        <mat-error *ngIf="profileForm.controls['addrZip'].hasError('required')"> Enter your Pincode
+                        </mat-error>
+                        <mat-error *ngIf="profileForm.controls['addrZip'].hasError('minlength')"> Phone should be Min 6
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="form">
+                    <mat-form-field [floatLabel]="profileForm.value.floatLabel" hintLabel="Max 250 characters" class="address-field">
+                  <textarea matInput #input formControlName="address" placeholder="Permanent Address"
+                            [(ngModel)]="profileData['address']" maxlength="250"></textarea>
+                      <mat-hint align="end">{{input.value?.length || 0}}/250</mat-hint>
+                    </mat-form-field>
+                  </div>
+                  <button *ngIf="profileData['action'] == 'add'" mat-raised-button  type="submit" class="btn btn-primary save-btn">SAVE CHANGES
+                  </button>
+                  <div class="float" *ngIf="profileData['action'] == 'update'">
+                    <button  type="submit" mat-raised-button class="btn btn-primary update-btn" style="">Update account
+                    </button>
+                  </div>
+                </form>
+              </div>
+              <div class="float" *ngIf="profileData['action'] == 'add'">
+                <a mat-raised-button class="btn btn-primary form-reset-btn" color="primary" (click)="resetForm()">RESET</a>
+              </div>
+            </div>
+
+
+            <div *ngIf="!profileData">
+              <div class="form-row pform">
+
+                <form [formGroup]="profileForm" (ngSubmit)="addProfileForm()" fxLayout="column">
+                  <div style="display: none">
+                    <mat-form-field>
+                      <input type="text" matInput formControlName="action">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrName" placeholder="First Name" required>
+                        <mat-error *ngIf="profileForm.controls['addrName'].hasError('required')"> Enter your
+                          First Name
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="fgroup">
+                      <mat-form-field
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="lastName" placeholder="Last Name">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field>
+                        <input type="number" matInput formControlName="mobileNumber" placeholder="Mobile Number"
+                               [(ngModel)]="mobileNumber" readonly>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="fgroup">
+                      <mat-form-field
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrPh" (keypress)="keyPress($event)" minlength="6"
+                               maxlength="12" placeholder="Phone Number">
+                        <mat-error *ngIf="profileForm.controls['addrPh'].hasError('minlength')"> Phone should be
+                          min 8 chars.
+                        </mat-error>
+                        <mat-error *ngIf="profileForm.controls['addrPh'].hasError('maxlength')"> Phone should be
+                          max 12 chars.
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrStr" placeholder="Area / Landmark">
+                      </mat-form-field>
+                    </div>
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrCity" placeholder="City" required>
+                        <mat-error *ngIf="profileForm.controls['addrCity'].hasError('required')"> Enter your
+                          City
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+
+                  <div class="form">
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <mat-select formControlName="addrState" placeholder="State" required>
+                          <option>--- Select State ---</option>
+                          <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.viewValue">
+                            {{sequence.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="profileForm.controls['addrState'].hasError('required')"> Select your State
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                    <div class="fgroup">
+                      <mat-form-field
+                        [hideRequiredMarker]="profileForm.value.hideRequired"
+                        [floatLabel]="profileForm.value.floatLabel">
+                        <input type="text" matInput formControlName="addrZip" placeholder="Pincode"
+                               (keypress)="keyPress($event)"  minlength="6" maxlength="6" required>
+                        <mat-error *ngIf="profileForm.controls['addrZip'].hasError('required')"> Enter your Pincode
+                        </mat-error>
+                        <mat-error *ngIf="profileForm.controls['addrZip'].hasError('minlength')"> Pincode Should be min 6
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <div class="form">
+                    <mat-form-field [floatLabel]="profileForm.value.floatLabel" class="address-field">
+                      <textarea matInput formControlName="address" placeholder="Permanent Address"></textarea>
+                    </mat-form-field>
+                  </div>
+                  <button  mat-raised-button  type="submit" class="btn btn-primary save-btn">SAVE CHANGES
+                  </button>
+                </form>
+              </div>
+              <div class="float">
+                <a mat-raised-button class="btn btn-primary form-reset-btn" color="primary" (click)="resetForm()">RESET</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

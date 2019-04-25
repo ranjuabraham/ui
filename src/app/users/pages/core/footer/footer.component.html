@@ -1,0 +1,72 @@
+<div class="hd-footer" id="hd-footer">
+  <div class="theme-container">
+  <div class="hd-container" style="padding-top: 35px; padding-bottom: 30px">
+    <div fxLayout="row" fxFlexAlign="space-between center" class="ft-top">
+      <div fxLayout="column" fxFlex="25%" fxHide.xs fxHide.sm>
+        <h3 class="ft-header">COMPANY</h3>
+        <div class="ft-menu"><a routerLink="/about-us">About us</a></div>
+        <div class="ft-menu"><a routerLink="/faq">FAQ</a></div>
+        <div class="ft-menu"><a routerLink="/terms">Terms & Conditions</a></div>
+        <div class="ft-menu"><a routerLink="/privacy">Privacy</a></div>
+        <div class="ft-menu"><a routerLink="/security">Security</a></div>
+        <div class="ft-menu"><a routerLink="/feedback">Feedback</a></div>
+      </div>
+      <div fxFlex="25%" fxHide.xs fxHide.sm>
+        <h3 class="ft-header">BUSINESS</h3>
+        <div class="ft-menu"><a routerLink="/register-venue">Register a Venue</a></div>
+        <div class="ft-menu"><a routerLink="/how-it-works">How it works?</a></div>
+        <div class="ft-menu"><a routerLink="/cookies">Cookies Policy</a></div>
+        <div class="ft-menu"><a routerLink="/disclaimer">Disclaimer</a> </div>
+      </div>
+      <div fxFlex="25%" fxHide.xs fxHide.sm>
+        <h3 class="ft-header">SOCIAL</h3>
+        <div  fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="30px">
+          <a target="_blank" href="https://www.facebook.com/hallsdiary"><div class="ft-social-icon fb"><i class="fab fa-facebook-f"></i></div></a>
+          <a target="_blank" href="https://twitter.com/@hallsdiary"> <div class="ft-social-icon twitter"><i class="fab fa-twitter"></i></div></a>
+          <div class="ft-social-icon youtube" title="we are working on it"><i class="fab fa-youtube"></i></div>
+        </div>
+
+      </div>
+      <div  [ngStyle.sm]="{'max-width.%': 100}" [ngStyle.md]="{'max-width.%': 25}" [ngStyle.lg]="{'max-width.%': 25}" class="ft-contact">
+        <h3 class="ft-header">CONTACT</h3>
+        <div fxLayout="column" *ngIf="contactData">
+          <div fxLayout="row" class="mrg-bt">
+            <div class="lt" fxFlex="12%"><div class="ft-addr"><mat-icon>location_on constant</mat-icon></div></div>
+            <div class="rt" fxFlex="88%">{{contactData['address']}}</div>
+          </div>
+          <div fxLayout="row" class="mrg-bt">
+            <div class="lt" fxFlex="12%"><div class="ft-email"><mat-icon>email constant</mat-icon></div></div>
+            <div class="rt" fxFlex="88%">{{contactData['email']}}</div>
+          </div>
+          <div fxLayout="row" class="mrg-bt">
+            <div class="lt" fxFlex="12%"><div class="ft-phone"><mat-icon>phone constant</mat-icon></div></div>
+            <div class="rt" fxFlex="88%">{{contactData['phone']}}</div>
+          </div>
+          <div fxLayout="row">
+            <div class="lt" fxFlex="12%"><div class="ft-phone"><mat-icon>phone_iphone constant</mat-icon></div></div>
+            <div class="rt" fxFlex="88%">{{contactData['mobile']}}</div>
+          </div>
+        </div>
+          <!--<div class="ft-addr">-->
+            <!--<mat-icon>location_on constant</mat-icon>-->
+            <!--{{contactData['address']}}</div>-->
+          <!---->
+          <!--<div class="ft-phone"><mat-icon>phone constant</mat-icon>{{contactData['phone']}}</div>-->
+          <!--<div class="ft-email"><mat-icon>phone_iphone constant</mat-icon>{{contactData['mobile']}}</div>-->
+
+      </div>
+    </div>
+
+    <div fxLayout="column" fxFlexAlign="space-between center">
+      <mat-divider fxHide.lg fxHide.md></mat-divider>
+      <div class="ft-header-1">Payment Methods</div>
+      <img class="ft-payment"  src="../../../../../assets/images/icons/payment-card-icon.svg">
+    </div>
+    <mat-divider></mat-divider>
+
+    <div fxLayout="row" fxLayoutAlign="center center" class="ft-btm">
+      <div class="poweredby">@2018 Hallsdiary.com. Powered by <a target="_blank" href="http://www.m2consul.in/" style="color: #fff;">M2 Consultancies</a></div>
+    </div>
+  </div>
+  </div>
+</div>

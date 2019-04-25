@@ -1,0 +1,212 @@
+<div fxLayout="column" class="components-container-gt-xs" [ngClass.xs]="'components-container-xs'" fxLayoutGap="">
+  <mat-toolbar class="table-header" fxLayout="row">
+      <div class="mat-headline center-align">Venue Primary Details</div>
+      <div>
+      <a mat-flat-button style="background-color: lightseagreen;  float: right"
+      routerLink="/venue/venue-profile/edit">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon> Edit</a></div>
+  </mat-toolbar>
+  <div style="padding: 0 20%;" [ngStyle.xs]="{'padding.%': 0}">
+    <mat-card>
+      <mat-tab-group class="profile-details" *ngIf="resultInfo">
+        <mat-tab label="Venue Details">
+          <table class="venue-details" *ngIf="resultInfo" border="1">
+            <tbody>
+            <tr>
+              <td>Venue Name</td>
+              <td>{{resultInfo.venueHdr}}</td>
+            </tr>
+            <tr>
+              <td>Venue Type</td>
+              <td>
+                <span *ngIf="resultInfo.hallTypId === 4">Marriage Halls</span>
+                <span *ngIf="resultInfo.hallTypId === 3">Mini Halls</span>
+                <span *ngIf="resultInfo.hallTypId === 7">Banquet Halls</span>
+                <span *ngIf="resultInfo.hallTypId === 2">Party Halls</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Process Type</td>
+              <td>{{resultInfo.procType}}</td>
+            </tr>
+            <tr>
+              <td>No.of Halls</td>
+              <td>{{resultInfo.hallCount}}</td>
+            </tr>
+            <tr>
+              <td>City</td>
+              <td>{{resultInfo.branchHdr}}</td>
+            </tr>
+            </tbody>
+          </table>
+
+        </mat-tab>
+        <mat-tab label="Contact Details">
+          <table class="contact-details" *ngIf="resultInfo" border="1">
+            <tbody>
+            <tr>
+              <td>Venue Owner Name</td>
+              <td>{{resultInfo.venOwnName}}</td>
+            </tr>
+            <tr>
+              <td>Venue Owner Mobile</td>
+              <td>{{resultInfo.venOwnMob}}</td>
+            </tr>
+            <tr>
+              <td>Venue Owner E-Mail</td>
+              <td>{{resultInfo.venOwnMail}}</td>
+            </tr>
+            <tr>
+              <td>Contact Person Name</td>
+              <td>{{resultInfo.venContName}}</td>
+            </tr>
+            <tr>
+              <td>Contact Person Mobile</td>
+              <td>{{resultInfo.venContMob}}</td>
+            </tr>
+            <tr>
+              <td>Contact Person E-Mail</td>
+              <td>{{resultInfo.venContMail}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </mat-tab>
+        <mat-tab label="Bank Details">
+          <table class="bank-details" *ngIf="resultInfo" border="1">
+                <tr>
+                  <td>Venue GSTIN</td>
+                  <td>{{resultInfo.venueGST |uppercase }}</td>
+                </tr>
+                <tr>
+                  <td>Name of Bank</td>
+                  <td>{{resultInfo.bankName}}</td>
+                </tr>
+                <tr>
+                  <td>Bank Branch</td>
+                  <td>{{resultInfo.branchHdr}}</td>
+                </tr>
+                <tr>
+                  <td>Account No</td>
+                  <td>{{resultInfo.accNo}}</td>
+                </tr>
+                <tr>
+                  <td>IFSC Code</td>
+                  <td>{{resultInfo.accIfsc}}</td>
+                </tr>
+              </table>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+
+  <!--<div fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"-->
+       <!--fxLayoutGap="10px">-->
+    <!--<div fxFlex.sm="100" class="cdk-card-holder" fxFlex.lg="100" fxFlex.md="100"-->
+         <!--fxFlex.sm="100">-->
+      <!--<div fxFlex class="createVenue form-component-holder mat-elevation-z1">-->
+        <!--<hr/>-->
+        <!--<mat-toolbar>-->
+          <!--<mat-toolbar-row>-->
+            <!--<div style="width:100%">-->
+        <!--<span>-->
+        <!--<a mat-flat-button style="background-color: lightseagreen;  float: right"-->
+           <!--routerLink="/venue/venue-profile/edit">-->
+            <!--<mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon> Edit</a></span>-->
+            <!--</div>-->
+          <!--</mat-toolbar-row>-->
+        <!--</mat-toolbar>-->
+
+        <!--<table *ngIf="resultInfo">-->
+          <!--<td colspan="3">-->
+            <!--<table border="1">-->
+
+              <!--<tbody>-->
+              <!--<tr>-->
+                <!--<td class="a" colspan="2" align="center">Venue Details</td>-->
+              <!--</tr>-->
+
+              <!--<tr>-->
+                <!--<td>Venue Name</td>-->
+                <!--<td>{{resultInfo.venueHdr}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Venue Type</td>-->
+                <!--<td>-->
+                  <!--<span *ngIf="resultInfo.hallTypId === 4">Marriage Halls</span>-->
+                  <!--<span *ngIf="resultInfo.hallTypId === 3">Mini Halls</span>-->
+                  <!--<span *ngIf="resultInfo.hallTypId === 7">Banquet Halls</span>-->
+                  <!--<span *ngIf="resultInfo.hallTypId === 2">Party Halls</span>-->
+                <!--</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Process Type</td>-->
+                <!--<td>{{resultInfo.procType}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>No.of Halls</td>-->
+                <!--<td>{{resultInfo.hallCount}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>City</td>-->
+                <!--<td>{{resultInfo.branchHdr}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td class="a" colspan="2" align="center">Contact Details</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Venue Owner Name</td>-->
+                <!--<td>{{resultInfo.venOwnName}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Venue Owner Mobile</td>-->
+                <!--<td>{{resultInfo.venOwnMob}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Venue Owner E-Mail</td>-->
+                <!--<td>{{resultInfo.venOwnMail}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Contact Person Name</td>-->
+                <!--<td>{{resultInfo.venContName}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Contact Person Mobile</td>-->
+                <!--<td>{{resultInfo.venContMob}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Contact Person E-Mail</td>-->
+                <!--<td>{{resultInfo.venContMail}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td class="a" colspan="2" align="center">Bank Details</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Venue GSTIN</td>-->
+                <!--<td>{{resultInfo.venueGST |uppercase }}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Name of Bank</td>-->
+                <!--<td>{{resultInfo.bankName}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Bank Branch</td>-->
+                <!--<td>{{resultInfo.branchHdr}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>Account No</td>-->
+                <!--<td>{{resultInfo.accNo}}</td>-->
+              <!--</tr>-->
+              <!--<tr>-->
+                <!--<td>IFSC Code</td>-->
+                <!--<td>{{resultInfo.accIfsc}}</td>-->
+              <!--</tr>-->
+              <!--</tbody>-->
+            <!--</table>-->
+          <!--</td>-->
+        <!--</table>-->
+
+
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+</div>

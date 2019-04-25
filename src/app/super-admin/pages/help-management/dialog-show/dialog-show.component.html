@@ -1,0 +1,29 @@
+<div class="container">
+  <h3 mat-dialog-title style="text-align: center; font-weight: bold">{{data.helpTypDesc | uppercase}}</h3>
+
+  <table id="venue_details">
+
+    <tr>
+    <th>Name</th>
+    <td>{{data.helpDesc}}</td>
+  </tr>
+
+    <tr>
+      <th>Sequence</th>
+      <td>{{data.helpSeq}}</td>
+    </tr>
+
+    <tr>
+      <th>Status</th>
+      <td>
+        <span style="color: green" *ngIf="data.helpAct == 1;">Active</span>
+        <span style="color: red" *ngIf="data.helpAct != 1;">De-active</span>
+      </td>
+    </tr>
+    <tr>
+      <th>Content</th>
+      <td><span [innerHTML]="data.helpBody"></span></td>
+    </tr>
+
+  </table>
+</div>

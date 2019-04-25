@@ -1,0 +1,47 @@
+{
+  "name": "KSV Mahal",
+  "list": [
+    {
+      "action": "",
+      "prdctDetDesc": "KSV Mahal",
+      "prdctDetId": 25,
+      "rvwBody": "sds",
+      "rvwDate": "2018-06-25",
+      "rvwId": 19,
+      "rvwName": "dsd",
+      "rvwRating": 1,
+      "rvwTitle": "sdss",
+      "rvwTotal": "0",
+      "rvwUse": "0",
+      "usrId": 0
+    },
+    {
+      "action": "",
+      "prdctDetDesc": "KSV Mahal",
+      "prdctDetId": 25,
+      "rvwBody": "rest for review",
+      "rvwDate": "2018-06-25",
+      "rvwId": 18,
+      "rvwName": "suresgh",
+      "rvwRating": 4,
+      "rvwTitle": "test",
+      "rvwTotal": "0",
+      "rvwUse": "0",
+      "usrId": 0
+    },
+    {
+      "action": "",
+      "prdctDetDesc": "KSV Mahal",
+      "prdctDetId": 25,
+      "rvwBody": "Nice hall at pleasant Location",
+      "rvwDate": "2017-04-13",
+      "rvwId": 14,
+      "rvwName": "Kumar",
+      "rvwRating": 2,
+      "rvwTitle": "Nice One",
+      "rvwTotal": "0",
+      "rvwUse": "0",
+      "usrId": 0
+    }
+  ]
+}

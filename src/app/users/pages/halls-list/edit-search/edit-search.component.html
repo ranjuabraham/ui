@@ -1,0 +1,85 @@
+<div class="m-modify-search-section">
+  <div class="dialog-header">
+    <span class="header">Edit Search</span><span class="close_btn"><i (click)="onNoClick()" class="material-icons">clear</i></span>
+  </div>
+  <div class="searchform">
+    <div class="search-container modify-search-form mt20">
+      <form [formGroup]="modifySearchForm" (ngSubmit)="onModifySearch()" fxLayout="column"
+            fxLayoutGap="20px">
+        <div  class="form category-field">
+          <ng-select [items]="categoryList" [searchable]="false" [clearable]="false"
+                     [(ngModel)]="selectedCategory"
+                     bindLabel="name"
+                     bindValue="categoryId"
+                     formControlName="categoryId"
+                     (ngModelChange)="changeCategory($event)"
+                     placeholder="Select Category">
+          </ng-select>
+        </div>
+        <div  class="form venue-field">
+        <span *ngIf="!selectedArea">
+            <ng-select class="select-venue form-control" [ngClass]="{ 'is-invalid': submitted && f.venue.errors }"
+                       [items]="venueType"
+                       bindLabel="searchDetDesc"
+                       bindValue="searchDetId"
+                       placeholder="Search for a Venue or Area"
+                       formControlName="venue" [clearable]="false" (ngModelChange)="changeVenue($event)" disabled>
+          <ng-template ng-label-tmp let-item="item">
+            <span *ngIf="item.searchId === 2"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/map-icon.svg"/></span>
+            <span *ngIf="item.searchId === 1"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/hotel.svg"/></span>
+            {{item.searchDetDesc}}
+          </ng-template>
+
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            <span *ngIf="item.searchId === 2"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/map-icon.svg"/></span>
+            <span *ngIf="item.searchId === 1"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/hotel.svg"/></span> {{item.searchDetDesc}}
+          </ng-template>
+        </ng-select>
+        </span>
+          <span *ngIf="selectedArea">
+          <ng-select class="select-venue form-control" [ngClass]="{ 'is-invalid': submitted && f.venue.errors }"
+                     [items]="venueType"
+                     bindLabel="searchDetDesc"
+                     bindValue="searchDetId"
+                     placeholder="Search for a Venue or Area"
+                     formControlName="venue"
+                     [(ngModel)]="selectedArea" [clearable]="false" (ngModelChange)="changeVenue($event)" disabled>
+          <ng-template ng-label-tmp let-item="item">
+            <span *ngIf="item.searchId === 2"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/map-icon.svg"/></span>
+            <span *ngIf="item.searchId === 1"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/hotel.svg"/></span>
+            {{item.searchDetDesc}}
+          </ng-template>
+
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            <span *ngIf="item.searchId === 2"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/map-icon.svg"/></span>
+            <span *ngIf="item.searchId === 1"><img height="15" width="15"
+                                                   src="../../../../assets/images/icons/hall-list/hotel.svg"/></span> {{item.searchDetDesc}}
+          </ng-template>
+        </ng-select>
+        </span>
+          <div *ngIf="submitted && f.venue.errors" class="invalid-feedback">
+            <div *ngIf="f.venue.errors.required">Select your
+              Venue or Area
+            </div>
+          </div>
+          <i class="fas fa-search search-icon" *ngIf="!selectedArea"></i>
+          <!--<mat-icon matPrefix>search constant</mat-icon>-->
+        </div>
+        <div class="form date-field">
+          <app-my-date-picker [options]="searchDatePicker" formControlName="date" [(ngModel)]="date">
+          </app-my-date-picker>
+        </div>
+        <div class="form">
+          <button mat-flat-button class="modify-search-btn">Modify Search</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

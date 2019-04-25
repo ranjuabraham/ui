@@ -1,0 +1,65 @@
+<div class="container">
+  <h3 mat-dialog-title style="text-align: center; font-weight: bold">{{data.rptPrdctDetDesc | uppercase}}</h3>
+
+  <table id="venue-report">
+
+    <tr>
+      <th>Booked On</th>
+      <td>{{data.bookedOn}}</td>
+    </tr>
+    <tr>
+      <th>Start date</th>
+      <td>{{data.rptPrdctStDt}} </td>
+    </tr>
+    <tr>
+      <th>End date</th>
+      <td>{{data.rptPrdctEdDt}} </td>
+    </tr>
+    <tr>
+      <th>Book / Reserve</th>
+      <td>{{data.rptIsBlk}}</td>
+    </tr>
+    <tr>
+      <th>Transaction Id</th>
+      <td>{{data.rptTransactionId}}</td>
+    </tr>
+    <tr>
+      <th>Transaction Status</th>
+      <td>{{data.rptTransStatus}} </td>
+    </tr>
+    <tr>
+      <th>PG Trans No</th>
+      <td>{{data.rptPgTransNo}}</td>
+    </tr>
+    <tr>
+      <th>TotalAmount Book/Reserve</th>
+      <td>{{data.rptTotalAmount}}</td>
+    </tr>
+    <tr>
+      <th>HD Share</th>
+      <td>{{data.rptPrdctWebShare}}</td>
+    </tr>
+    <tr>
+      <th>Owner Share</th>
+      <td>{{data.rptPrdctOwnerShare}}</td>
+    </tr>
+    <tr>
+      <th>Citrus Share</th>
+      <td>
+       {{data.rptPrdctCitrusShare}}
+      </td>
+    </tr>
+    <tr>
+      <th>Book Trans Id</th>
+      <td>{{data.bkTxnId}}</td>
+    </tr>
+    <tr>
+      <th>Book Trans Status</th>
+      <td>{{data.bkTxnStat}}</td>
+    </tr>
+    <tr>
+      <th>Book PG Trans No</th>
+      <td>{{data.bkPgTxnNo}}</td>
+    </tr>
+  </table>
+</div>

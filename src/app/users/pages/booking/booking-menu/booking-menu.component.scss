@@ -1,0 +1,37 @@
+@import "../../../@theme/styles/variables";
+.booking-menu{
+  font-family: $font-family;
+  padding: 1em 0 1.7em 0;
+  .mat-icon{
+    vertical-align: middle;
+  }
+  .item{
+    color: #556B7F;
+    font-size: 16px;
+    padding: 11px 4px 8px 10px;
+    font-weight: $font-weight;
+  }
+  a{
+    text-decoration: none;
+  }
+  .active_menu{
+    color: #8C37DB !important;
+  }
+ ::ng-deep .mat-badge-medium .mat-badge-content {
+    width: 20px;
+    height: 20px;
+    line-height: 21px;
+    font-size: 11px;
+  }
+  ::ng-deep .mat-badge-medium.mat-badge-overlap.mat-badge-after .mat-badge-content {
+    right: -10px;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .booking-menu{
+    .item{
+      font-size: 14px !important;
+      padding: 10px 2px 8px 7px !important;
+    }
+  }
+}

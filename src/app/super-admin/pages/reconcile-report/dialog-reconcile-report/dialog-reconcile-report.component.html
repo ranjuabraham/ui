@@ -1,0 +1,54 @@
+<div class="container">
+  <h3 mat-dialog-title style="text-align: center; font-weight: bold">{{data.rptPrdctDetDesc | uppercase}}</h3>
+
+  <table id="venue-report">
+    <tr>
+      <th>Venue Type</th>
+      <td>{{data.rptPrdctId}}</td>
+    </tr>
+    <tr>
+      <th>Booked On</th>
+      <td>{{data.bookedOn}}</td>
+    </tr>
+    <tr>
+      <th>Venue Id</th>
+      <td>{{data.rptPrdctDetId}} </td>
+    </tr>
+    <tr>
+      <th>Venue Name</th>
+      <td>{{data.rptPrdctDetDesc}} </td>
+    </tr>
+    <tr>
+      <th>User Name</th>
+      <td>{{data.userName}}</td>
+    </tr>
+    <tr>
+      <th>Event Name</th>
+      <td>{{data.evtName}}</td>
+    </tr>
+
+    <tr>
+      <th>TotalAmount Book/Reserve</th>
+      <td>{{data.rptTotalAmount}}</td>
+    </tr>
+    <tr>
+      <th>HD Share</th>
+      <td>{{data.rptPrdctWebShare}}</td>
+    </tr>
+    <tr>
+      <th>Owner Share</th>
+      <td>{{data.rptPrdctOwnerShare}}</td>
+    </tr>
+    <tr>
+      <th>Citrus Share</th>
+      <td>
+        {{data.rptPrdctCitrusShare}}
+      </td>
+    </tr>
+
+    <tr>
+      <th>HD Re-Con Amount</th>
+      <td>{{data.reconcileAmount}}</td>
+    </tr>
+  </table>
+</div>

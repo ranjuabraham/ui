@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Marriage Halls", "hasSubCategory": false, "parentId": 0 },
+  { "id": 20, "name": "Mini Halls", "hasSubCategory": false, "parentId": 0 },
+  { "id": 30, "name": "Banquet Halls", "hasSubCategory": false, "parentId": 0 },
+  { "id": 30, "name": "Party Halls", "hasSubCategory": false, "parentId": 0 }
+
+]

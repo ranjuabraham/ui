@@ -1,0 +1,561 @@
+@import "../../@theme/styles/variables";
+/* banner menu */
+.search-menu {
+  margin-top: 15px;
+
+  .banner-menu {
+    font-family: 'Montserrat SemiBold', sans-serif;
+    padding: 11px 2px 11px 2px;
+    min-width: 15%;
+    text-align: center;
+    font-weight: bold;
+    a {
+      text-decoration: none;
+      color: #556b7f;
+      font-size: 12px;
+      font-family: 'Montserrat SemiBold', sans-serif;
+      font-weight: bold;
+    }
+
+
+
+  }
+  .active_menu {
+    color: #7F30C8 !important;
+    background-color: #FFFFFF !important;
+  }
+  .cl-effect-5{
+    min-width: 15%;
+    .catg-link{
+      min-width: 100% !important;
+      border-radius: 0 !important;
+      background-color: #F8F8F8;
+      color: #556B7F;
+      cursor: pointer;
+      line-height: 42px !important;
+    }
+  }
+
+  ::ng-deep .mat-form-field-placeholder{
+    color:red;
+  }
+  ::ng-deep .mydp .selector{
+    width:120% !important;
+  }
+
+
+}
+
+.mat-elevation-z4-hd[_ngcontent-c12] {
+  box-shadow: 1px 0px 0px 0px #d4d4d4, 0px 1px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 1px rgba(0, 0, 0, 0.04);
+}
+
+/* banner search section */
+
+.search-container {
+  background-color: #ffffff;
+
+  .search-section {
+    .mat-icon {
+      font-size: 1.2em;
+    }
+  }
+  ::ng-deep.mat-form-field-infix {
+    padding: 0.8em 0 !important;
+    border-top: unset !important;
+  }
+
+  ::ng-deep.ng-select.ng-select-single .ng-select-container {
+    height: 40px;
+  }
+  ::ng-deep.ng-select .ng-select-container {
+    width: 90%;
+  }
+  .search-btn {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #00aa00;
+    color: #ffffff;
+    min-width: 162px !important;
+    border-radius: 0 !important;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    width: 100%;
+    line-height: 38px !important;
+  }
+
+  ::ng-deep.ng-select.select-venue.is-invalid {
+    .ng-select-container {
+      border-color: #dc3545 !important;
+    }
+  }
+
+  ::ng-deep .ng-select.select-venue {
+    .ng-select-container {
+      border: #D1D6DB 1px solid;
+      border-radius: 0px !important;
+    }
+  }
+
+  .invalid-feedback {
+    color: #dc3545;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2px;
+    position: relative;
+    top: -20px;
+  }
+
+  .venue-field {
+    position: relative !important;
+
+    .search-icon {
+      position: relative;
+      top: -28px;
+      left: 10px;
+      width: 13px;
+      margin-left: 8px;
+    }
+  }
+  ::ng-deep .ng-value .ng-star-inserted{
+    font-size: 15px;
+  }
+  ::ng-deep .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    margin-left: 24px !important;
+  }
+  ::ng-deep .ng-reflect-placeholder{
+    color: red !important;
+  }
+  ::ng-deep.ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+  }
+  ::ng-deep.ng-select div, .ng-select input, .ng-select span {
+    font-size: 13px;
+  }
+  /*------- calender css */
+  ::ng-deep .mydp {
+    font-family: $font-family !important;
+
+    .selector {
+      animation: selectorfadein 0.1s;
+      box-shadow: 0 3px 10px #999999b3;
+      z-index: 10126;
+    }
+    table tr th {
+      font-weight: 500 !important;
+      font-size: 12px !important;
+      border: 0px solid #ccc0;
+    }
+
+    .weekdaytitle {
+      background-color: #ffffff !important;
+      color:#8c37db !important;
+      font-weight: bold !important;
+      padding-top: 3px !important;
+      padding-bottom: 5px !important;
+      font-size: 11px;
+      vertical-align: middle;
+      max-width: 45px;
+      /* color: #fe0000 !important; */
+    }
+
+    .day-instruction {
+      width: 100%;
+      background-color: #ffffff;
+
+      tr td {
+        font-size: 12px;
+        padding: 12px 14px !important;
+      }
+    }
+
+    .auspiciousDayOnly {
+      tr td {
+        float: right;
+      }
+    }
+
+    //.monthlabel {
+    //  margin-left: 35px;
+    //}
+    .headermonthtxt {
+      width: 105px !important;
+      max-width: 105px !important;
+    }
+
+    .header td:nth-child(1) {
+      padding-left: 40px !important;
+      padding-top: 10px;
+      padding-bottom: 6px;
+
+    }
+
+    .header td:nth-child(3) {
+      padding-right: 40px !important;
+      padding-top: 10px;
+      padding-bottom: 6px;
+    }
+
+    .header td:nth-child(2) {
+      padding-top: 10px;
+      padding-bottom: 6px;
+    }
+
+    .header tr:nth-child(1) {
+      background-color: #8c37db !important;
+      color: #ffffff !important;
+    }
+
+    .headerbtn, .headerlabelbtn, .headerbtncell {
+      background: #8c37db !important;
+      color: #ffffff !important
+    }
+
+    .headerlabelbtn {
+      font-size: 16px !important;
+    }
+
+    .selectorarrow:after {
+      border-color: rgba(250, 250, 250, 0);
+      border-bottom-color: #8c37db !important;
+    }
+
+    .red-label {
+      background-color: #FE4848;
+    }
+
+    .green-label {
+      background-color: #00AA00;
+    }
+
+    .violet-label {
+      background-color: #8458FF;
+    }
+
+    .red-label, .green-label, .violet-label {
+      height: 8px;
+      width: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    .caltable, .mydp .monthtable, .mydp .yeartable {
+      table-layout: fixed;
+      width: 100%;
+      height: calc(100% - 80px) !important;
+      background-color: #FFF;
+      font-size: 12px;
+    }
+
+    .markdate1 {
+      //background-color: #00BCD4;
+      color: #ffffff !important;
+      line-height: 26px;
+      width: 26px !important;
+      display: inline-block;
+      border-radius: 50% !important;
+    }
+
+    .caltable, .yeartable, .daycell, .monthcell, .yearcell {
+      border-collapse: collapse;
+      color: #020202 !important;
+      line-height: 1.1;
+    }
+
+    .disabled {
+      cursor: default !important;
+      color: #CCC !important;
+      background: #FBEFEF;
+    }
+
+    .caltable, .monthtable, .yeartable {
+      height: calc(100% - 80px) !important;
+      background-color: #FFF;
+    }
+
+    // tooltip
+    .tooltip .tooltiptext {
+      visibility: hidden;
+      width: 100px;
+      background-color: black;
+      color: #fff;
+      text-align: center;
+      border-radius: 6px;
+      padding: 5px 0;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      margin-left: -60px;
+      font-size: 10px;
+    }
+
+    .tooltip .tooltiptext::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      margin-left: -5px;
+      border-width: 5px;
+      border-style: solid;
+      border-color: black transparent transparent transparent;
+    }
+
+    .tooltip:hover .tooltiptext {
+      visibility: visible;
+    }
+
+  }
+  .search-section {
+    padding: 14px 27px 14px 27px;
+
+    .search-location {
+      color: #7F30C8;
+
+      .location {
+        color: #7F30C8;
+        font-size: 14px;
+        margin-bottom: 6px;
+        letter-spacing: 0.7px;
+        font-family: 'Montserrat SemiBold', sans-serif;
+        font-weight: bold;
+      }
+    }
+
+    .mat-icon {
+      color: #7F30C8;
+    }
+
+    /*placeholder text color*/
+    ::-webkit-input-placeholder {
+      font-family: 'Montserrat', sans-serif;
+      color: #556b7f !important;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    ::-moz-placeholder {
+      color: peachpuff;
+      font-size: 13px;
+    }
+
+    :-ms-input-placeholder {
+      color: peachpuff;
+      font-size: 13px;
+    }
+
+    ::placeholder {
+      color: peachpuff;
+      font-size: 12px;
+    }
+
+    /*End placeholder text color*/
+    ::ng-deep .loc-search, .event-date .mat-form-field-appearance-outline .mat-form-field-flex {
+      position: relative !important;
+      height: 55px;
+    }
+
+    ::ng-deep.ng-select .ng-select-container .ng-value-container .ng-placeholder {
+      font-family: 'Montserrat', sans-serif;
+      color: #556b7f !important;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+      border-radius: 0 !important;
+    }
+
+    ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+      border-radius: 0 !important;
+    }
+
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 1em;
+    }
+
+    ::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 10px;
+    }
+
+    ::ng-deep .current-loc .mat-form-field-wrapper {
+      padding-bottom: 0px;
+    }
+
+  }
+
+  .search-btm {
+    font-family: 'Montserrat', sans-serif;
+    border-top: #cccccc 1px solid;
+
+    .label-text {
+      color: #fe0000;
+      padding: 19px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+
+  ::ng-deep .mat-form-field {
+    display: inline-block;
+    position: relative;
+    text-align: left;
+    min-width: 100% !important;
+  }
+  ::ng-deep.mydp .selectiongroup{
+    min-width: 100% !important;
+
+  }
+
+  ::ng-deep.ng-select .ng-select-container .ng-value-container .ng-input>input {
+    margin-top: 6px !important;
+  }
+  ::ng-deep.ng-dropdown-panel{
+    width: 90%;
+  }
+
+  ::ng-deep.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-disabled {
+    color: #fe0000;
+  }
+
+  /********* Ng Select box ciustom CSS ***************/
+  ::ng-deep.ng-select .ng-arrow-wrapper .ng-arrow {
+    border-color: transparent !important;
+    border-style: none !important;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .search-container{
+    .banner-container {
+      padding-top: 4%;
+      padding-left: 2% !important;
+      padding-right: 2%;
+      margin-left: auto;
+      margin-right: auto;
+
+      .banner-header {
+        font-size: 1.2em !important;
+      }
+
+      .banner-header-1 {
+        font-size: 11px !important;
+      }
+    }
+    .banner-section {
+      .banner-image {
+        height: 560px !important;
+      }
+    }
+  }
+
+}
+
+
+
+@media only screen and (max-width: 960px) {
+  .search-menu{
+    margin-bottom: 0 !important;
+    .m-banner-menu{
+      font-family: 'Montserrat SemiBold', sans-serif;
+      min-width: 15%;
+      background-color: #FFFFFF;
+      text-align: center;
+      font-weight: bold;
+      padding: 6px 13px 6px 13px !important;
+      color: #556B7F;
+      a{
+        font-size: 12px !important;
+        text-decoration: none;
+      }
+    }
+  }
+  .search-container{
+    ::ng-deep .mydp .selector{
+      width:101% !important;
+    }
+    .date-pick{
+      width: 100%;
+    }
+    ::ng-deep.ng-select .ng-select-container {
+      width: 100% !important;
+    }
+    ::ng-deep .mat-form-field {
+      display: inline-block;
+      position: relative;
+      text-align: left;
+      min-width: 100% !important;
+    }
+    ::ng-deep .mydp.selectiongroup{
+      min-width: 100% !important;
+
+    }
+  }
+
+}
+
+
+
+
+.catg-link{
+  text-decoration: none;
+  font-size: 12px;
+}
+
+//
+//.banner-menu a {
+//  position: relative;
+//  display: inline-block;
+//  outline: none;
+//  color: #fff;
+//  text-decoration: none;
+//  text-transform: uppercase;
+//  letter-spacing: 0.3px;
+//  font-weight: 400;
+//  text-shadow: 0 0 1px rgba(255,255,255,0.3);
+//  font-size: 1.35em;
+//}
+//
+//.banner-menu a:hover,
+//.banner-menu a:focus {
+//  outline: none;
+//}
+//
+///* Effect 5: same word slide in */
+//.cl-effect-5 a {
+//  overflow: hidden;
+//  padding: 0 4px;
+//  height: 1em;
+//}
+//
+//.cl-effect-5 a span {
+//  position: relative;
+//  display: inline-block;
+//  -webkit-transition: -webkit-transform 0.3s;
+//  -moz-transition: -moz-transform 0.3s;
+//  transition: transform 0.3s;
+//}
+//
+//.cl-effect-5 a span::before {
+//  position: absolute;
+//  top: 100%;
+//  content: attr(data-hover);
+//  font-weight: 700;
+//  -webkit-transform: translate3d(0,0,0);
+//  -moz-transform: translate3d(0,0,0);
+//  transform: translate3d(0,0,0);
+//}
+//
+//.cl-effect-5 a:hover span,
+//.cl-effect-5 a:focus span {
+//  -webkit-transform: translateY(-100%);
+//  -moz-transform: translateY(-100%);
+//  transform: translateY(-100%);
+//}
+//
+///* Effect 5: same word slide in and border bottom */
+//

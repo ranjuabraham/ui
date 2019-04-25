@@ -1,0 +1,109 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="duration-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Session</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/duration/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/duration/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+  <div fxFlex class="table-component-holder mat-elevation-z1">
+        <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+         <!-- Supported Event -->
+         <ng-container matColumnDef="evtId">
+          <mat-header-cell *matHeaderCellDef class="width10"> Event For</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Event For: ">
+              <span *ngIf="row.evtId == 0;">All Events</span>
+              <span *ngIf="row.evtId != 0;">{{row.evtId}} </span>
+             </mat-cell>
+        </ng-container>
+
+        <!-- Description -->
+        <ng-container matColumnDef="durHdr">
+          <mat-header-cell *matHeaderCellDef class="width30"> Description</mat-header-cell>
+          <mat-cell *matCellDef="let row" class="width30" ngClass.sm="width100" ngClass.xs="width100" data-label="Duration: "> {{row.durHdr}}</mat-cell>
+        </ng-container>
+
+        <!-- Occupy more than a day-->
+        <ng-container matColumnDef="durMul">
+            <mat-header-cell *matHeaderCellDef class="width10"> Multiple Days</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Multiple Days: ">
+                <span *ngIf="row.durMul == 1;"><span>Yes</span></span>
+                <span *ngIf="row.durMul != 1;"><span>No</span></span>
+            </mat-cell>
+          </ng-container>
+
+         <!-- Timimg Duration-->
+         <ng-container matColumnDef="time">
+          <mat-header-cell *matHeaderCellDef class="width20"> Timing</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Time: ">
+              {{row.durStm}}
+              <span *ngIf="row.durSDay == 1">AM </span>
+              <span *ngIf="row.durSDay != 1">PM </span>
+               &nbsp; (to) {{row.durEtm}}
+              <span *ngIf="row.durEDay == 1">AM</span>
+              <span *ngIf="row.durEDay != 1">PM</span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Status -->
+        <ng-container matColumnDef="durAct">
+          <mat-header-cell *matHeaderCellDef class="width10"> Status</mat-header-cell>
+          <mat-cell mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Status: ">
+            <span *ngIf="row.durAct === 1;">
+                <span style="color: green">Active</span>
+              </span>
+            <span *ngIf="row.durAct !== 1;">
+                <span style="color: #FE0000">De-active</span>
+              </span>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Action -->
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef class="width10">
+            Action
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row;" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+              <span>
+                  <button mat-icon-button
+                        (click)="showDetails(row.prdctDetId, row.evtId, row.durId, row.durHdr, row.durSeq, row.durAct, row.durMul, row.adnlDurFlg, row.durStm, row.durEtm, row.durSDay, row.durEDay, row.durDtm, row.durSeq)">
+                        <mat-icon class="material-icons view-btn">visibility</mat-icon>
+                  </button>
+              </span>
+              <span>
+                <a mat-icon-button routerLink="/venue/duration/edit/{{row.prdctDetId}}/{{row.durId}}">
+              <mat-icon aria-label="Edit" class="edit-btn">edit</mat-icon>
+            </a>
+            </span>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10, 25, 50]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

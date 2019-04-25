@@ -1,0 +1,66 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container">
+              <form [formGroup]="foodTypeForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Add Food Type</h1>
+                </div>
+
+                <div class="form">
+                  <mat-form-field>
+                    <input matInput #input formControlName="fdTypHdr" placeholder="Food Type Name" required>
+                    <mat-error *ngIf="foodTypeForm.controls['fdTypHdr'].hasError('required')">Enter Food Type Name</mat-error>
+                  </mat-form-field>
+                </div>
+  
+                <div class="form">
+                  <mat-form-field>
+                    <mat-select formControlName="fdTypSeq" placeholder="Display Sequence" required>
+                      <mat-option *ngFor="let sequence of displaySequence" [value]="sequence.value">
+                        {{sequence.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="foodTypeForm.controls['fdTypSeq'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+  
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="fdTypAct" placeholder="Is Active" required >
+                        <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                          {{status.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="foodTypeForm.controls['fdTypAct'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+  
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+  
+                  <div fxFlex="50" fxFlex.xs="100">
+                    <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                    <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                      <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                    <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                         fxLayoutAlign.xs="space-around center">
+                      <button mat-raised-button class="save-btn">Add</button>
+                      <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+  

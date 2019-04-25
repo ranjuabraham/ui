@@ -1,0 +1,115 @@
+<div fxLayout="column" class="form-container-sec components-container">
+  <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+  <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+         fxLayoutGap="10px">
+        <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+
+          <div class="container" *ngIf="resultInfo">
+            <form [formGroup]="costMapperForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+              <div class="table-header">
+                <h1 class="mat-headline center-align">Edit Maintain Price</h1>
+              </div>
+
+              <div class="form" style="display:none">
+                <mat-form-field>
+                    <input matInput  formControlName="valId" placeholder="ID" [(ngModel)]="resultInfo.valId">
+                </mat-form-field>
+              </div>
+                
+              <!-- Hall Name -->
+              <div class="form">
+                <mat-form-field>
+                  <mat-select formControlName="subPrdctDetId" placeholder="Hall Name" [(ngModel)]="resultInfo.subPrdctDetId" required>
+                    <mat-option *ngFor="let index of halls" [value]="index.subPrdctDetId">{{index.dcdeHdr}} </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="costMapperForm.controls['subPrdctDetId'].hasError('required')">Select Anyone</mat-error>
+                </mat-form-field>
+              </div>
+                
+              <!-- Event Name -->
+              <div class="form">
+                <mat-form-field>
+                  <mat-select formControlName="evtId" placeholder="Event Name" [(ngModel)]="resultInfo.evtId" required>
+                    <mat-option *ngFor="let index of events" [value]="index.evtId">{{index.evtHdr}} </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="costMapperForm.controls['evtId'].hasError('required')">Select Anyone</mat-error>
+                </mat-form-field>
+              </div>
+                
+              <!-- Duration Name -->
+              <div class="form">
+                <mat-form-field>
+                  <mat-select formControlName="durId" placeholder="Duration Name" [(ngModel)]="resultInfo.durId" required>
+                    <mat-option *ngFor="let index of duration" [value]="index.durId">{{index.durHdr}} </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="costMapperForm.controls['durId'].hasError('required')">Select Anyone</mat-error>
+                </mat-form-field>
+              </div>
+                
+              <!-- Food Type Name -->
+              <div class="form">
+                <mat-form-field>
+                  <mat-select formControlName="fdTypId" placeholder="Food Type Name" [(ngModel)]="resultInfo.fdTypId" required>
+                    <mat-option *ngFor="let index of foodType" [value]="index.fdTypId">{{index.fdTypHdr}} </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="costMapperForm.controls['fdTypId'].hasError('required')">Select Anyone</mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Rent Value-->
+              <div class="form">
+                <mat-form-field>
+                  <input type="number" matInput formControlName="rentVal" placeholder="Rent / Buffet Cost" [(ngModel)]="resultInfo.rentVal" required>
+                  <mat-error *ngIf="costMapperForm.controls['rentVal'].hasError('required')">Enter Rent / Buffet Cost</mat-error>
+                </mat-form-field>
+              </div>
+              
+              <!-- Service Charge (Tax / GST)-->
+              <div class="form">
+                <mat-form-field>
+                  <mat-select formControlName="servChrg" placeholder="Tax (GST)" [(ngModel)]="resultInfo.servChrg" required>
+                    <mat-option *ngFor="let index of displayTax" [value]="index.value">
+                      {{index.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                <mat-error *ngIf="costMapperForm.controls['servChrg'].hasError('required')">Select Anyone</mat-error>
+                </mat-form-field>
+              </div>
+
+              <!-- Misc Value-->
+              <div class="form">
+                <mat-form-field>
+                    <input type="number" matInput formControlName="miscChrg" placeholder="Miscellaneous (Payable at venue)" [(ngModel)]="resultInfo.miscChrg" >
+                </mat-form-field>
+              </div>
+
+              <!-- Muhurtham / Auspicious Day Charges ( If Any)-->
+              <div class="form">
+                <mat-form-field>
+                  <input type="number" matInput formControlName="muhurtChrg" placeholder="Muhurtham / Auspicious Day (only on functions)" [(ngModel)]="resultInfo.muhurtChrg" >
+                </mat-form-field>
+              </div>
+
+            <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                <div fxFlex="50" fxFlex.xs="100">
+                  <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                  <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                    <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                  </div>
+                  </div>
+              </div>
+
+              <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                    fxLayoutAlign.xs="space-around center">
+                  <button mat-raised-button class="save-btn">Update</button>
+                  <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                </div>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+  </div>
+</div>
+  

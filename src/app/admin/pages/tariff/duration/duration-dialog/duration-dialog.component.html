@@ -1,0 +1,52 @@
+<!-- <img src="../../../assets/images/icons/close-btn.svg" class="close-btn" (click)="closeDialog()"> -->
+<div class="container">
+    <div>
+      <div style="float:right; color: red;cursor: pointer;" (click)="closeDialog()"><mat-icon>close</mat-icon></div>
+      <div><h3 mat-dialog-title style="text-align: center; font-weight: bold">Duration</h3></div>
+    </div>
+    <table id="dialog-box" >
+      <tr>
+        <th>Event For</th>
+        <td><span *ngIf="data.evtId == 0;">All Events</span>
+            <span *ngIf="data.evtId != 0;">{{data.evtId}} </span></td>
+      </tr>
+      <tr>
+        <th>Duration</th>
+        <td>{{data.durName}}</td>
+      </tr>
+      <tr>
+        <th>Multiple Days</th>
+        <td><span *ngIf="data.durMul == 1;"><span>Yes</span></span>
+          <span *ngIf="data.durMul != 1;"><span>No</span></span></td>
+      </tr>
+      <tr>
+        <th>Hourly Flag</th>
+        <td><span *ngIf="data.adnlDurFlg == 1;"><span>Yes</span></span>
+          <span *ngIf="data.adnlDurFlg != 1;"><span>No</span></span></td>
+      </tr>
+      <tr>
+          <th>Start Time</th>
+          <td><span>{{data.durStm}}&nbsp;</span>
+              <span *ngIf="data.durSDay == 1;"><span>AM</span></span>
+              <span *ngIf="data.durSDay != 1;"><span>PM</span></span>
+          </td>
+      </tr>
+      <tr>
+          <th>End Time</th>
+          <td><span>{{data.durEtm}}&nbsp;</span>
+              <span *ngIf="data.durEDay == 1;"><span>AM</span></span>
+              <span *ngIf="data.durEDay != 1;"><span>PM</span></span>
+          </td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>
+          <span *ngIf="data.durAct == 1;"><span>Active</span></span>
+          <span *ngIf="data.durAct != 1;"><span>De-Active</span></span></td>
+      </tr>
+      <tr>
+          <th>Sequence</th>
+          <td>{{data.durSeq}}</td>
+        </tr>
+    </table>
+  </div>

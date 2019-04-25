@@ -1,0 +1,46 @@
+export class Report {
+  // rptPrdctId: number;
+  // rptPrdctDetId: number;
+  // rptPrdctStDt: string;
+  // rptPrdctEdDt: string;
+  prdctDesc: string;
+  prdctDetDesc: string;
+  prdctId: number;
+  prdctDetId: number;
+
+  accIfsc: string;
+  accNo: number;
+  bankBrach: string;
+  bankBranchCode: string;
+  bankName: string;
+  bkPgTxnNo: string;
+  bkTxnId: string;
+  bkTxnStat: string;
+  bookedOn: string;
+  evtName: string;
+  hallName: string;
+  rptIsBlk: number;
+  rptPgTransNo: string;
+  rptPrdctCitrusShare: number;
+  rptPrdctDetDesc: string;
+  rptPrdctDetId: number;
+  rptPrdctEdDt: string;
+  rptPrdctId: number;
+  rptPrdctOnDt: string;
+  rptPrdctOwnerShare: number;
+  rptPrdctStDt: string;
+  rptPrdctWebShare: number;
+  rptResTotal: number;
+  rptSubPrdctDetId: number;
+  rptTotalAmount: number;
+  rptTransStatus: string;
+  rptTransactionId: number;
+  subTtlAmout: number;
+  subTtlCitrusShare: number;
+  subTtlOwnrShare: number;
+  subTtlWebShare: number;
+  userName: string;
+  venOwnMail: string;
+  venOwnMob: number;
+  venOwnName: string;
+}

@@ -1,0 +1,13 @@
+<div class="container">
+  <h4 mat-dialog-title> Are you sure want to delete all the records from ' {{data.prdctDetDesc}} ' under the list of ' {{data.prdctDesc}} '?</h4>
+
+  <div mat-dialog-actions>
+    <div class="float" style="margin-left: 38%">
+      <button mat-raised-button class="btn btn-primary" style="margin-right: 10px" color="warn"
+              (click)="goBack()">Cancel
+      </button>
+      <button mat-raised-button class="btn btn-primary" color="primary" (click)="delete(data.prdctDetId)">Delete</button>
+    </div>
+  </div>
+
+</div>

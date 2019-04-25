@@ -1,0 +1,40 @@
+<div class="container">
+    <div>
+      <div style="float:right; color: red;cursor: pointer;" (click)="closeDialog()"><mat-icon>close</mat-icon></div>
+      <div><h3 mat-dialog-title style="text-align: center; font-weight: bold">Buffet Master</h3></div>
+    </div>
+    <table id="dialog-box" >
+      <tr>
+        <th>Buffet Name</th>
+        <td>{{data.buffCatg}}</td>
+      </tr>
+      <tr>
+        <th>Buffet Description</th>
+        <td><span [innerHTML]="data.buffDesc"></span></td>
+      </tr>
+      <tr>
+        <th>Complement Items</th>
+        <td><span [innerHTML]="data.buffComp"></span></td>
+      </tr>
+      <tr>
+        <th>Buffet Cost</th>
+        <td>{{data.buffCost | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+      </tr>
+      <tr>
+          <th>Buffet Tax</th>
+          <td>{{data.buffTax}}%</td>
+      </tr>
+      <tr>
+        <th>Buffet Discount</th>
+        <td>{{data.discVal}}%</td>
+      </tr>
+      <tr>
+          <th>Reservation Cost</th>
+          <td>{{data.reserVal}}%</td>
+      </tr>
+      <tr>
+          <th>Leaf Cost</th>
+          <td>{{data.leafCost | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+      </tr>
+    </table>
+  </div>

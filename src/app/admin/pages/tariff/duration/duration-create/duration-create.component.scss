@@ -1,0 +1,92 @@
+@import "../../../../@theme/styles/variables";
+//text editor css
+.form-container-sec {
+  background-color: #F6F6F6 !important;
+  font-family: $font-family;
+
+  .form-container {
+    padding: 2% 15%;
+    .container{
+      padding: 2% 5%;
+    }
+
+    .mat-form-field {
+      font-size: 16px;
+      flex-grow: 1;
+      width: 100%;
+    }
+  }
+
+  .invalid-feedback {
+    color: #f44336;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 2px;
+  }
+
+  .mat-error {
+    float: right;
+  }
+
+  ::ng-deep.widgetHolder .is-invalid {
+    .ql-container {
+      border-color: #f44336 !important;
+    }
+  }
+
+  .action-btn {
+    float: right;
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+    .save-btn {
+      background-color: #36AE20;
+      color: #ffffff;
+      font-family: $font-family;
+      margin-right: 35px;
+      width: 140px;
+    }
+
+    .cancel-btn {
+      background-color: #EE0808;
+      color: #ffffff;
+      font-family: $font-family;
+      width: 140px;
+    }
+  }
+}
+
+.widgetHolder {
+  margin: 10px 0 20px 0;
+  background-color: white;
+}
+
+:host #discipline-qe /deep/ .ql-container {
+  height: 170px;
+}
+:host #discipline-qe1 /deep/ .ql-container {
+  height: 170px;
+}
+//end text editor css
+
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+
+@media screen and (max-width: 960px) {
+  .form-container {
+    padding: 3% 1% !important;
+    .container{
+      padding: 3% 3% !important;
+      background-color: #ffffff;
+    }
+  }
+  .header-sec {
+    display: inline !important;
+  }
+  .breadcrumb {
+    display: none !important;
+  }
+}

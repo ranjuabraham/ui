@@ -1,0 +1,146 @@
+@import "../../@theme/styles/variables";
+
+.profile-container-sec {
+  background-color: $bg-color
+}
+
+.profile-header {
+  h3 {
+    margin-left: 0;
+    font-size: 18px;
+    padding: 22px 0;
+    font-family: 'Montserrat SemiBold', sans-serif;
+    color: #001731 !important;
+  }
+}
+
+.profile-form {
+  .mat-error {
+    float: right;
+  }
+
+  .prform {
+    background-color: #fff;
+  }
+
+  .pform-header {
+    margin-left: 60px;
+    padding: 20px 0px;
+  }
+
+  .pform-in {
+    padding: 8px 60px;
+
+    //::ng-deep .mat-form-field-label{
+    //  color: #474C52 !important;
+    //}
+  }
+
+  .update-btn {
+    margin-right: 10px;
+    margin-top: 18px;
+    background-color: #00aa01;
+    color: #ffffff;
+    width: 90%;
+  }
+
+  .save-btn {
+    background-color: #00aa01;
+    color: #ffffff;
+    width: 35%;
+  }
+
+  .form-reset-btn {
+    background-color: #fe4847;
+    color: #ffffff;
+    width: 23%;
+    margin-left: 100px;
+    float: right;
+    top: -35px;
+    margin-right: 80px;
+  }
+
+  .mat-elevation-z4-hd {
+    box-shadow: 0px 0px 0px 1px rgba(212, 212, 212, 1), 0px 1px 0px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.pform .form .fgroup {
+  width: 50%;
+  float: left;
+}
+
+.pform .form .fgroup mat-form-field {
+  width: 80%;
+}
+
+.pform .form .address-field {
+  width: 90%;
+}
+
+@media only screen and (max-width: 960px) {
+  .profile-container-sec {
+    background-color: #FFFFFF !important;
+
+    .mat-elevation-z1 {
+      box-shadow: unset !important;
+    }
+
+  }
+
+  /* For mobile phones: */
+  .profile-container {
+    //margin-top: 10px !important;
+  }
+  .profile-form {
+    margin-left: 4px !important;
+    margin-bottom: 30px;
+
+    .pform-in {
+      padding: 8px 0;
+    }
+
+    .pform-header {
+      margin-left: 32px
+    }
+
+    .pform .form .fgroup {
+      width: 100%
+    }
+
+    .profile-form {
+      margin-right: 4px !important;
+    }
+
+    .pform .form .fgroup mat-form-field {
+      width: 100%;
+    }
+
+    .pform .form .address-field {
+      width: 100%;
+    }
+
+    .form-reset-btn {
+      margin-left: 30px;
+    }
+
+    .save-btn {
+      width: 47%;
+    }
+  }
+
+}
+
+
+app-profile {
+  margin-left: 20px;
+}
+
+app-profile {
+  width: 80%;
+}
+
+.profile-container {
+  font-family: 'Montserrat', sans-serif;
+  min-height: 500px;
+}

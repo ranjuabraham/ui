@@ -1,0 +1,205 @@
+@import "../../../@theme/styles/variables";
+
+.pay-now-container {
+  //font-family: $font-family;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F6F6F6;
+
+  .mat-card-box{
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
+    border: 1px #D1D6DB solid !important;
+  }
+
+  .pay-now-section {
+    padding: 20px;
+
+    .header-row {
+      .header {
+        font-family: $font-family-semiBold
+      }
+      .pay-now-btn{
+        background-color: #00AA00;
+        color: #FFFFFF;
+        width: 118px;
+        font-family: $font-family-semiBold;
+        border-radius: 0px;
+        font-size: 13px;
+        padding: 0px;
+        line-height: 32px;
+      }
+    }
+
+
+
+
+
+    .section-3 {
+      font-family: $font-family;
+      margin-bottom: 30px;
+
+      .header {
+        font-family: $font-family-semiBold;
+        padding-bottom: 8px;
+        margin-top: 30px;
+      }
+
+      .booking-info {
+        margin-bottom: 20px;
+        font-size: 13px;
+      }
+
+      .booking-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+        .header-1{
+          font-family: $font-family-semiBold;
+        }
+
+        .m-btm-10 {
+          margin-bottom: 10px;
+        }
+      }
+    }
+
+    .section-4 {
+      font-family: $font-family;
+      margin-bottom: 30px;
+      .header {
+        font-family: $font-family-semiBold;
+        padding-bottom: 20px;
+      }
+
+      .billing-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+
+        .discount{
+          ::ng-deep.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+            background-color: #FFEDD8;
+            color: #FF8800;
+            font-size: 12px;
+            min-height: 18px;
+          }
+        }
+        .header-1{
+          font-family: $font-family-semiBold;
+        }
+
+        .re-description {
+          padding: 20px 40px;
+          background: rgba(247, 239, 255, 100);
+          color: #8C37DB;
+          margin-top: 28px;
+        }
+      }
+    }
+
+    .section-5 {
+      font-family: $font-family;
+      .header {
+        font-family: $font-family-semiBold;
+        padding-bottom: 20px;
+      }
+
+      .customer-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+        .header-1{
+          font-family: $font-family-semiBold;
+        }
+      }
+    }
+    .section-6{
+      font-family: $font-family;
+      margin-bottom: 30px;
+      .header {
+        font-family: $font-family-semiBold;
+        padding-bottom: 20px;
+      }
+
+      .food-menu-details {
+        padding: 20px 20px;
+        border: 1px #D1D6DB solid;
+        line-height: 30px;
+        font-size: 13px;
+        .header-1{
+          font-family: $font-family-semiBold;
+        }
+        .b-value{
+        }
+      }
+    }
+
+
+
+    //mobile responsive extra small scree (xs)
+    .m-pay-btn{
+      width: 90px !important;
+      font-size: 12px !important;
+      line-height: 30px !important;
+    }
+    .section-1{
+      .m-img{
+        img{
+          width: 145px !important;
+        }
+      }
+      .content-box{
+        .m-content{
+          padding: 8px 10px;
+        }
+        .m-header{
+          padding-bottom: 10px;
+          font-size: 13px;
+        }
+      }
+    }
+    .m-section-2{
+      margin-top: 20px;
+      .m-content{
+        padding: 20px 0px 0px 0px;
+        .m-text{
+          margin-left: 20px !important;
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    .m-section-4{
+      .m-billing-details{
+        padding: 10px 6px;
+        .m-header-1{
+          font-size: 12px;
+          padding-right: 6px;
+        }
+        .m-re-description{
+          padding: 7px 6px;
+          margin-top: 8px;
+          font-size: 12px;
+          line-height: 25px;
+        }
+      }
+    }
+
+    .m-section-5{
+      .m-header-1{
+      }
+    }
+
+    .m-section-6{
+      .m-food-menu-details{
+        padding: 10px 15px;
+        line-height: 20px;
+        font-size: 12px;
+      }
+
+    }
+  }
+}

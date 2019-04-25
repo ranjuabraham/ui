@@ -1,0 +1,31 @@
+<img src="../../../assets/images/icons/close-btn.svg" class="close-btn" (click)="closeDialog()">
+<div class="container">
+    <h3 mat-dialog-title style="text-align: center; font-weight: bold">Promotions</h3>
+  
+    <table id="dialog-box" >
+      <tr>
+        <th>Header</th>
+        <td>{{data.offerHdr}}</td>
+      </tr>
+      <tr>
+        <th>Short Description</th>
+        <td><span [innerHTML]="data.offerShort"></span></td>
+      </tr>
+      <tr>
+        <th>Description</th>
+        <td><span [innerHTML]="data.offerDet"></span></td>
+      </tr>
+      <tr>
+        <th>Sequence</th>
+        <td>{{data.offerSeq}}</td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>{{data.offerAct}}</td>
+      </tr>
+      <tr style="display:none">
+        <th>Offer Image</th>
+        <td>{{data.offerImg}}</td>
+      </tr>
+    </table>
+  </div>

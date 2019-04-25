@@ -1,0 +1,130 @@
+<div class="close-btn"><img (click)="dialogClose()"class="close-icon" src="../../../../../assets/images/icons/close-btn.svg"></div>
+
+<div mat-dialog-content class="amenities-dialog-container">
+  <div fxLayout="column">
+    <div class="venue-name">{{data.prdctDetDesc}}</div>
+    <div class="address-info">{{data.city}} - {{data.pincode}}</div>
+  </div>
+
+  <mat-divider class="mt10 mb15"></mat-divider>
+  <div class="amenities-sec">
+    <div class="header mb10">Amenities+</div>
+    <div fxLayout="column" class="amenities-list">
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Cars'"><img class="amenities-icon" src="{{violet}}car.svg"> Car : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Bikes'"><img class="amenities-icon" src="{{violet}}bike-icon.svg"> Bikes : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Seating'"> <img class="amenities-icon" src="{{violet}}seat-icon.svg"> Seating : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Floating'"> <img class="amenities-icon" src="{{violet}}floating-icon.svg"> Floating : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Dining'"> <img class="amenities-icon" src="{{violet}}dining-icon.svg"> Dining : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Rooms'"><img class="amenities-icon" src="{{violet}}hotel.svg"> Rooms : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Restaurant'"> <img class="amenities-icon" src="{{violet}}veg-icon.svg"> Food Type : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Hall on Floor'"><img class="amenities-icon" src="{{violet}}floor-icon.svg"> Level : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Lifts'">
+           <img class="amenities-icon" src="{{violet}}building-elevator-doors.svg"> Elevator :
+           <img src="{{iconUrl}}green-right.svg" *ngIf="spec.facSpec === 'Yes'">
+           <img src="{{iconUrl}}wrong.svg" *ngIf="spec.facSpec === 'No'">
+           {{spec.facSpec}}
+         </span>
+       </span>
+      </div>
+
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Backup'">
+           <img class="amenities-icon" src="{{violet}}battery.svg"> Power Backup :
+           <img src="{{iconUrl}}green-right.svg" *ngIf="spec.facSpec === 'Yes'">
+           <img src="{{iconUrl}}wrong.svg" *ngIf="spec.facSpec === 'No'">
+           {{spec.facSpec}}
+         </span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Rooms'"><img class="amenities-icon" src="{{violet}}hotel.svg"> Chargeable Rooms : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Valet Parking'"><img class="amenities-icon" src="{{violet}}valet-parking-icon.svg">  Valet Parking : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Restaurant'">
+           <img class="amenities-icon" src="{{violet}}hotel.svg"> Restaurant :
+           <img src="{{iconUrl}}green-right.svg" *ngIf="spec.facSpec === 'Yes'">
+           <img src="{{iconUrl}}wrong.svg" *ngIf="spec.facSpec === 'No'">
+           {{spec.facSpec}}
+         </span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Bar'">
+           <img class="amenities-icon" src="{{violet}}cheers.svg"> Bar :
+           <img src="{{iconUrl}}green-right.svg" *ngIf="spec.facSpec === 'Yes'">
+           <img src="{{iconUrl}}wrong.svg" *ngIf="spec.facSpec === 'No'">
+           {{spec.facSpec}}
+         </span>
+       </span>
+      </div>
+
+      <div class="amenities-items">
+       <span *ngFor="let spec of data['facInfos']" class="spec-loop">
+         <span *ngIf="data.prdctDetId == spec['prdctDetId'] && spec['facName'] == 'Hall Size'"><img class="amenities-icon" src="{{violet}}hall-size.svg">  Hall Size : {{spec.facSpec}}</span>
+       </span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+

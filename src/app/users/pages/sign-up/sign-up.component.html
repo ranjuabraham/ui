@@ -1,0 +1,35 @@
+<form class="form-inline" [formGroup]="signUpForm" (ngSubmit)="addSignUpForm()" fxLayout="column" fxFlex="100%">
+  <mat-form-field>
+    <input matInput formControlName="signupEmailId" placeholder="Email"  [formControl]="signUpEmailIdFormControl"  autocomplete="off" required>
+    <mat-error *ngIf="signUpEmailIdFormControl.invalid">{{getSignUpEmailErrorMessage()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input type="text" matInput formControlName="usrFrstName" placeholder="Name" [formControl]="signUpNameFormControl"
+           autocomplete="off" [formControl]="signUpNameFormControl" required>
+    <mat-error *ngIf="signUpNameFormControl.invalid">{{getSignUpNameError()}}</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput formControlName="usrMobile" placeholder="Mobile number" (keypress)="keyPress($event)"
+           [formControl]="signUpMobileFormControl" minlength=10 maxlength=10
+           autocomplete="off" required>
+    <mat-error *ngIf="signUpMobileFormControl.invalid">{{getSignUpMobileError()}}</mat-error>
+  </mat-form-field>
+
+  <!--<label class="margin-top">PASSWORD <span style="color: #ababab"><small>( Min 8 characters)</small></span></label>-->
+  <!--<mat-form-field appearance="outline">-->
+  <!--<input type="password" matInput formControlName="signupPassword" placeholder="" minlength=8-->
+  <!--autocomplete="off"/>-->
+  <!--</mat-form-field>-->
+
+
+  <mat-form-field>
+    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="signupPassword"
+           [formControl]="signUpPasswordFormControl" minlength=8 autocomplete="off">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    <mat-error *ngIf="signUpPasswordFormControl.invalid">{{getSignUpPassError()}}</mat-error>
+  </mat-form-field>
+
+  <button mat-flat-button type="submit" class="margin-top-20">SIGN UP</button>
+</form>

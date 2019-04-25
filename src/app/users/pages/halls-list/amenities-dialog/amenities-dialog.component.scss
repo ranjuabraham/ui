@@ -1,0 +1,70 @@
+@import "../../../@theme/styles/variables";
+::ng-deep.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.75) !important;
+}
+::ng-deep.amenities-dialog-box {
+  width: 100% !important;
+  max-width: 100% !important;
+  position: relative !important;
+  font-family: $font-family;
+
+  .close-icon {
+    position: absolute;
+    top: -50px;
+    right: 15px;
+    width: 38px !important;
+    cursor: pointer;
+  }
+
+  .mat-dialog-content {
+    max-height: 85vh !important;
+  }
+}
+
+.amenities-dialog-container {
+  .venue-name {
+    font-size: 16px;
+    line-height: 16px;
+    color: #8C37DB;
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .address-info {
+    font-size: 13px;
+    line-height: 16px;
+    color: grey;
+    font-weight: 700;
+  }
+
+  .amenities-sec {
+    .header {
+      font-weight: $font-weight;
+      font-size: 18px;
+      color: #444853;
+    }
+
+    .amenities-list {
+      line-height: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      .amenities-icon {
+        width: 20px;
+        height: 21px;
+        vertical-align: middle;
+        margin-top: -6px;
+      }
+
+      .spec-loop {
+        img {
+          width: 15px;
+          margin-right: 9px;
+          vertical-align: text-bottom;
+        }
+      }
+    }
+
+  }
+}
+
+

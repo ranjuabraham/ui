@@ -1,0 +1,78 @@
+<div fxLayout="column" class="contactUs-sec components-container-gt-xs" [ngClass.xs]="'components-container-xs'">
+  <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+  <div class="table-header">
+    <span class="header-sec">Contact Us</span>
+    <button class="add-new-btn" *ngIf="resultInfo" mat-flat-button
+            routerLink="/venue/content-management/contact-us/edit/{{resultInfo.prdctDetId}}/{{resultInfo.cntctUsId}}">
+      <mat-icon aria-label="Example icon-button with a heart icon">mode_edit</mat-icon>
+      Add New
+    </button>
+
+    <button class="mine m-addbtn" *ngIf="resultInfo" mat-mini-fab
+            routerLink="/venue/content-management/contact-us/edit/{{resultInfo.prdctDetId}}/{{resultInfo.cntctUsId}}">
+      <mat-icon aria-label="Example icon-button with a heart icon">mode_edit</mat-icon>
+    </button>
+  </div>
+  <div fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+       fxLayoutGap="10px">
+    <div fxFlex class="contactUs form-component-holder mat-elevation-z1">
+
+      <hr/>
+
+      <table *ngIf="resultInfo">
+        <tr>
+            <td class="sub_header">Venue Name</td>
+            <td> {{resultInfo.cntctUsName}} </td>
+        </tr>
+        <tr>
+            <td class="sub_header">Phone No</td>
+            <td> {{resultInfo.cntctUsPhn}} </td>
+        </tr>
+
+        <tr>
+            <td class="sub_header">Mobile</td>
+            <td> {{resultInfo.cntctUsMob2}} </td>
+        </tr>
+
+        <tr>
+          <td class="sub_header">City</td>
+          <td> {{resultInfo.city}} </td>
+        </tr>
+        <tr>
+          <td class="sub_header">Pincode</td>
+          <td> {{resultInfo.pincode}} </td>
+        </tr>
+        <tr>
+          <td class="sub_header">Address</td>
+          <td> {{resultInfo.cntctUsAddr}} </td>
+        </tr>
+        <tr>
+          <td class="sub_header">E-Mail Address</td>
+          <td> {{resultInfo.cntctUsEmail}} </td>
+        </tr>
+        <tr>
+          <td class="sub_header">HD Blog URL</td>
+          <td>{{resultInfo.cntctUsWeb1}}</td>
+        </tr>
+        <tr>
+          <td class="sub_header">Train Station</td>
+          <td>{{resultInfo.cntctUsTS}}</td>
+        </tr>
+        <tr>
+          <td class="sub_header">Bus</td>
+          <td>{{resultInfo.cntctUsBus}}</td>
+        </tr>
+        <tr>
+          <td class="sub_header">Directions</td>
+          <td>{{resultInfo.cntctUsDir}}</td>
+        </tr>
+        <tr style="display:none">
+          <td class="sub_header">Google Map URL</td>
+          <td>Google URL</td>
+        </tr>
+        <!-- <td>{{resultInfo.cntctUsGmap}}</td>-->
+      </table>
+
+    </div>
+  </div>
+</div>

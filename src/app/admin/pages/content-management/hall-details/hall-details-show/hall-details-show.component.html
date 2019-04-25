@@ -1,0 +1,104 @@
+<app-breadcrumb class="breadcrumb"></app-breadcrumb>
+<div fxLayout="column" class="hall-details-show-sec components-container">
+  <div class="table-header">
+    <div class="header-sec">Hall Details</div>
+
+    <div fxLayout="row" fxLayoutAlign="end end">
+      <div fxFlex="70" class="table-search-field">
+        <mat-form-field>
+          <input class="search-field" matInput (keyup)="applyFilter($event.target.value)"
+                 placeholder="Search by Description" autocomplete="off">
+        </mat-form-field>
+      </div>
+      <div fxFlex="30">
+      <span>
+        <button class="add-new-btn" mat-flat-button routerLink="/venue/hall-details/create">
+          <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+          Add New
+        </button>
+      </span>
+      </div>
+    </div>
+
+    <button class="mine m-addbtn" mat-mini-fab routerLink="/venue/hall-details/create">
+      <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+    </button>
+  </div>
+ 
+    <div fxFlex class="table-component-holder mat-elevation-z1" *ngIf="dataSource">
+      <div class="table-container">
+      <mat-table [dataSource]="dataSource" matSort>
+
+        <!-- Hall Name -->
+          <ng-container matColumnDef="hallName">
+            <mat-header-cell *matHeaderCellDef class="width30"> Hall Name</mat-header-cell>
+            <mat-cell *matCellDef="let row" class="width30" ngClass.sm="width100" ngClass.xs="width100" data-label="Hall Name: "> {{row.hallName}}</mat-cell>
+          </ng-container>
+  
+          <!-- Is Default -->
+           <ng-container matColumnDef="idDefault" class="width10" style="width: 10%; -ms-flex-item-align: center;">
+              <mat-header-cell *matHeaderCellDef class="width10"> Is Default</mat-header-cell>
+              <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Is Default: ">
+                  <span *ngIf="row.isDefault === 1">Yes</span>
+                  <span *ngIf="row.isDefault !== 1">No</span></mat-cell>
+          </ng-container>
+  
+          <!-- Hourly Flag-->
+          <ng-container matColumnDef="hourly" class="width10">
+              <mat-header-cell *matHeaderCellDef class="width10">Hourly Flag</mat-header-cell>
+              <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Have hourly: ">
+                  <span *ngIf="row.hourlyFlg === 1">Yes</span>
+                  <span *ngIf="row.hourlyFlg !== 1">No</span></mat-cell>
+          </ng-container>
+  
+          <!-- Buffet Flag -->
+          <ng-container matColumnDef="buffet" class="width10">
+              <mat-header-cell *matHeaderCellDef class="width10">Pax Count</mat-header-cell>
+              <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Pax Count: ">
+                  <span *ngIf="row.buffetFlg === 1">Yes</span>
+                  <span *ngIf="row.buffetFlg !== 1">No</span></mat-cell>
+          </ng-container>
+  
+          <!-- Discunt Flag -->
+          <ng-container matColumnDef="discount" class="width10">
+              <mat-header-cell *matHeaderCellDef class="width10"> Discount Flag</mat-header-cell>
+              <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Discount Flag: ">
+                  <span *ngIf="row.disocuntFlg === 1">Yes</span>
+                  <span *ngIf="row.disocuntFlg !== 1">No</span></mat-cell>
+          </ng-container>
+  
+          <!-- Status -->
+          <ng-container matColumnDef="status" class="width10">
+               <mat-header-cell *matHeaderCellDef class="width10"> Status </mat-header-cell>
+              <mat-cell *matCellDef="let row" class="width10" ngClass.sm="width100" ngClass.xs="width100" data-label="Is Active: ">
+                  <span *ngIf="row.hallAct == 1;"> <span style="color: green">Active</span></span>
+                <span *ngIf="row.hallAct != 1;"> <span style="color: #FE0000">De-active</span></span>
+              </mat-cell>
+         </ng-container>
+  
+          <!-- Action -->
+          <ng-container matColumnDef="action">
+              <mat-header-cell *matHeaderCellDef class="width20">Action </mat-header-cell>
+              <mat-cell *matCellDef="let row;" class="width20" ngClass.sm="width100" ngClass.xs="width100" data-label="Action: ">
+                <span>
+                  <button mat-icon-button title="View Details"
+                          (click)="showDetails(row)">
+                         <mat-icon class="material-icons view-btn">visibility</mat-icon>
+                  </button>
+                </span>  
+                <span>
+                  <a mat-icon-button title="Update Transaction" routerLink="/venue/hall-details/edit/{{row.prdctDetId}}/{{row.hallId}}">
+                  <mat-icon aria-label="Approve" class="edit-btn">edit</mat-icon></a>
+                </span>
+              </mat-cell>
+          </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;">
+        </mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[10]"></mat-paginator>
+    </div>
+  </div>
+</div>
+

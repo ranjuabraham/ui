@@ -1,0 +1,167 @@
+@import "../../@theme/styles/variables";
+.my-review-section{
+  background-color: $bg-color;
+}
+#my-reviews {
+  font-family: $font-family;
+  .header-1{
+    padding: 20px 0;
+    color: #001731;
+    font-family: $font-family-semiBold;
+    font-weight: bold;
+  }
+  .my-review-container {
+    margin-right: auto;
+    margin-left: auto;
+    .myreviews {
+      background-color: #ffffff;
+      .review-list {
+        border-bottom: #ececec 1px solid;
+        padding: 12px 40px;
+        .avatar-image {
+          .profile-img {
+            width: 50px;
+            height: auto;
+            margin-top: 10px;
+          }
+        }
+        .rts {
+          line-height: 24px;
+          .user-name {
+            font-weight: bold;
+            font-size: 13px;
+            font-family: $font-family-semiBold;
+            color: hsla(212, 100%, 10%, 67%);
+
+          }
+          .review-content {
+            font-size: 13px;
+            color: #7e8185;
+          }
+          .hall-name {
+            font-weight: bold;
+            font-size: 14px;
+            font-family: $font-family-semiBold;
+          }
+          .hall-rating {
+            font-size: 13px;
+            ::ng-deep .mat-icon {
+              height: 16px !important;
+              width: 14px !important;
+              font-size: 14px !important;
+              color: #f4020e;
+              vertical-align: middle !important;
+            }
+            .rat-count{
+              margin-left: 5px;
+            }
+          }
+        }
+      }
+      .revise-review-btn{
+        line-height: 26px;
+        padding: 0 8px;
+        font-size: 12px;
+        border-radius: 0;
+        border-color: #fe0000;
+        font-family: $font-family-semiBold;
+      }
+      .revise-btn{
+        color: #fe0000;
+        text-decoration: none;
+      }
+
+    }
+    .header-2 {
+      color: #FE4848;
+      padding: 18px 0 0 22px;
+      font-family: $font-family-semiBold;
+    }
+
+    /* rating */
+
+    .rating {
+      float:left;
+    }
+
+    .rating:not(:checked) > input {
+      position:absolute;
+      top:-9999px;
+      clip:rect(0,0,0,0);
+    }
+
+    .rating:not(:checked) > label {
+      float:right;
+      width:1em;
+      //padding:0.1em;
+      overflow:hidden;
+      white-space:nowrap;
+      cursor:pointer;
+      font-size:100%;
+      line-height:1.2;
+      color:#ddd;
+    }
+
+    .rating:not(:checked) > label:before {
+      content: '★ ';
+    }
+
+    .rating > input:checked ~ label {
+      color: #f70;
+    }
+
+    .rating:not(:checked) > label:hover,
+    .rating:not(:checked) > label:hover ~ label {
+      color: gold;
+    }
+
+
+    .rating > input:checked ~ label:hover,
+    .rating > input:checked ~ label:hover ~ label,
+    .rating > label:hover ~ input:checked ~ label {
+      color: #ea0;
+    }
+  }
+
+  @media only screen and (max-width: 960px) {
+    .my-review-section{
+      background-color: #ffffff !important;
+      .hd-container{
+        padding: 0 !important;
+      }
+    }
+    .my-review-container{
+      .mat-elevation-z1{
+        box-shadow: unset !important;
+      }
+      .review-list{
+        padding: 12px 0px !important;
+      }
+      .revise-review-btn{
+        line-height: 18px !important;
+        padding: 0 3px !important;
+        font-size: 11px !important;
+      }
+      .review-content{
+        font-size: 11px !important;
+        line-height: 20px !important;
+      }
+      .review-list{
+        .hall-name{
+          font-size: 13px !important;
+        }
+      }
+      .user-name{
+        font-size: 12px !important;
+      }
+    }
+    .avatar-image {
+      .profile-img {
+        width: 30px !important;
+        height: auto;
+        margin-top: 10px;
+      }
+    }
+
+  }
+}

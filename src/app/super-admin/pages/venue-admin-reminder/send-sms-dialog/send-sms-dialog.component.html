@@ -1,0 +1,12 @@
+<div class="container">
+  <h4 mat-dialog-title>  Are you sure send a reminder SMS?</h4>
+  <div mat-dialog-actions>
+    <div class="float" style="margin-left: 20%">
+      <button mat-raised-button class="btn btn-primary" style="margin-right: 10px" color="warn"
+              (click)="goBack()">Cancel
+      </button>
+      <button mat-raised-button class="btn btn-primary" color="primary" (click)="sendSms(data.prdctDetId, data.txnId)">Sent</button>
+    </div>
+  </div>
+
+</div>

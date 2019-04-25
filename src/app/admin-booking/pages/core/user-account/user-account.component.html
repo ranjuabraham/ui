@@ -1,0 +1,10 @@
+<div class="user-account-container">
+
+  <div mat-button  class="toolbar-user-btn">
+    <span fxLayout="row" fxLayoutAlign="start center">
+      <!--<img class="avatar" [src]="myAccount?.photoURL || 'assets/images/avatars/noavatar.png'">-->
+      <mat-icon class="icon3" fxHide fxShow.gt-xs>account_circle constant</mat-icon>
+      <span class="name">{{userName || userAccount?.labelName}}</span>
+    </span>
+  </div>
+</div>

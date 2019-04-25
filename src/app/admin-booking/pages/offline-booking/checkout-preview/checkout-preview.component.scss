@@ -1,0 +1,697 @@
+@import "../../../@theme/styles/variables";
+
+.checkout-preview-page {
+  font-family: $font-family;
+  .mat-card-box{
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px 0px rgba(0, 0, 0, 0) !important;
+    border: 1px #D1D6DB solid !important;
+  }
+
+  .preview-header {
+    padding: 20px 0px;
+    color: #333333;
+    font-family: $font-family-semiBold;
+    font-size: 20px;
+  }
+
+  .venue-gallery{
+    position: relative;
+    .venue-image {
+      img {
+        height: 200px;
+        width: 100%;
+      }
+    }
+    .images-link {
+      background-color: #8458FF;
+      border-radius: 50%;
+      position: absolute;
+      right: 15px;
+      bottom: 18px;
+      width: 35px;
+      height: 35px;
+
+      img {
+        width: 19px;
+        position: absolute;
+        left: 8px;
+        bottom: 9px;
+      }
+    }
+  }
+
+
+  .venue-details {
+    .venue-name {
+      font-size: 19px;
+      color: #333333;
+      font-family: $font-family-semiBold;
+    }
+
+    .venue-address {
+      margin-top: 10px;
+
+      .venue-city {
+        color: #687B8E;
+        font-size: 12px;
+        font-family: $font-family-semiBold;
+      }
+
+      .map-icon {
+        color: #8C37DB;
+        margin-left: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-family: $font-family-semiBold;
+
+        img {
+          width: 9px;
+        }
+      }
+    }
+
+    .hall-rating {
+      padding: 12px 10px 5px 10px;
+
+      .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+        background-color: #00AA00;
+        color: white;
+        font-family: 'Montserrat SemiBold', sans-serif;
+      }
+
+      .mat-standard-chip {
+        padding: 6px 10px;
+        min-height: 24px;
+      }
+
+      .mat-icon {
+        background-repeat: no-repeat;
+        display: inline-block;
+        fill: currentColor;
+        height: 14px;
+        width: 17px;
+      }
+
+      .material-icons {
+        font-size: 13px
+      }
+
+      .review-count {
+        font-family: 'Montserrat SemiBold', sans-serif;
+        font-size: 13px;
+        color: #8C37DB;
+        margin-left: 14px;
+        margin-top: 8px;
+
+        .review-link {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .booking-details {
+    font-family: $font-family;
+    line-height: 30px;
+    .event-date{
+      color: #333333;
+      font-size: 20px;
+      font-family: $font-family;
+    }
+    .event-type, .session-type, .food-type, .additional-hours{
+      font-size: 14px;
+      color: #687B8E;
+    }
+    .to-pay{
+      float: right;
+      display: block;
+      font-family: $font-family-semiBold;
+      font-size: 20px;
+    }
+    .save-amount{
+      color: #8C37DB;
+      font-size: 14px;
+      float: right;
+    }
+    .arrow-icon {
+      padding: 0px 20px;
+
+      mat-icon {
+        vertical-align: text-bottom;
+        color: #333333;
+      }
+    }
+
+    .venue-edit-link {
+      color: #8C37DB;
+      float: right;
+      cursor: pointer;
+      font-family: $font-family-semiBold;
+    }
+  }
+.customer-details{
+  font-family: $font-family;
+  .card-header{
+    font-family: $font-family-semiBold;
+    font-size: 18px;
+    .profile-edit-link {
+      color: #8C37DB;
+      float: right;
+      cursor: pointer;
+    }
+  }
+  .profile-preview{
+    padding: 20px;
+    line-height: 32px;
+    .label{
+      font-family: $font-family-semiBold;
+      color: #333333;
+    }
+    .item{
+      color: #687B8E;
+    }
+  }
+
+}
+
+  .profile-edit-form{
+    font-family: $font-family;
+    .profile-preview{
+      padding: 18px 0 0px 20px;
+      line-height: 30px;
+      .label{
+        font-family: $font-family-semiBold;
+        color: #333333;
+      }
+      .item{
+        color: #687B8E;
+      }
+    }
+    mat-card-header{
+      font-family: $font-family-semiBold;
+      font-size: 18px;
+      color: #333333;
+      ::ng-deep.mat-card-header-text {
+        margin: 0 0px;
+      }
+    }
+    .editProfileForm{
+      padding: 20px;
+      .customer-contact{
+        .mat-form-field{
+          width: 90%;
+        }
+      }
+      .save-amount{
+        color: #8C37DB;
+        font-size: 14px;
+        float: right;
+      }
+      .mat-form-field{
+        width: 90%;
+      }
+      .customer-address{
+        .mat-form-field{
+          width: 70%;
+        }
+      }
+      .pay-details{
+        //.amount-details{
+        //  width: 70%;
+        //}
+        .total{
+          font-family: $font-family-semiBold;
+        }
+      }
+      .agree-checkbox{
+        font-family: $font-family;
+        .amenities-link, .polices-link{
+          text-decoration: none;
+          color: #8C37DB;
+        }
+      }
+      mat-card-actions{
+        padding: 10px;
+        .continue-btn{
+          color: #FFFFFF;
+          background-color: #00aa01;
+          width: 20%;
+        }
+      }
+    }
+  }
+
+  .venue-edit-form {
+    //margin-top: 30px;
+
+    .event-form-field {
+      padding: 22px 10px;
+    }
+
+    .venue-name {
+      font-size: 19px;
+      color: #333333;
+      font-family: $font-family-semiBold;
+    }
+
+    ::ng-deep.select-sub-halls {
+      .label {
+        font-size: 10px;
+        color: #556B7F;
+        font-family: $font-family;
+      }
+       .mat-form-field{
+         width: 100%;
+       }
+      .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 0px 0px 6px 0;
+      }
+
+      .mat-form-field-wrapper {
+        padding-bottom: 0;
+        background: #8C37DB;
+      }
+
+      .mat-select-placeholder {
+        color: rgb(245, 245, 245);
+        font-size: 12px;
+      }
+
+      .mat-select-arrow {
+        color: rgb(255, 255, 255);
+      }
+
+      .mat-form-field-infix {
+        border-top: 7px solid transparent;
+      }
+
+      .mat-select-value {
+        color: rgba(255, 255, 255, 0.87);
+        font-size: 12px;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-start {
+        border-radius: 0;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-end {
+        border-radius: 0;
+      }
+    }
+
+    .venue-address {
+      margin-top: 10px;
+
+      .venue-city {
+        color: #687B8E;
+        font-size: 12px;
+        font-family: $font-family-semiBold;
+      }
+
+      .map-icon {
+        color: #8C37DB;
+        margin-left: 6px;
+        cursor: pointer;
+        font-size: 12px;
+        font-family: $font-family-semiBold;
+
+        img {
+          width: 9px;
+        }
+      }
+    }
+
+    .hall-rating {
+      padding: 12px 10px 5px 10px !important;
+
+      .mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+        background-color: #00AA00;
+        color: white;
+        font-family: 'Montserrat SemiBold', sans-serif;
+      }
+
+      .mat-standard-chip {
+        padding: 4px 7px;
+        min-height: 18px;
+      }
+
+      .mat-icon {
+        background-repeat: no-repeat;
+        display: inline-block;
+        fill: currentColor;
+        height: 12px;
+        width: 17px;
+      }
+
+      .material-icons {
+        font-size: 12px
+      }
+
+      .mat-chip {
+        font-size: 12px;
+      }
+
+      .review-count {
+        font-family: 'Montserrat SemiBold', sans-serif;
+        font-size: 12px;
+        color: #8C37DB;
+        margin-left: 14px;
+        margin-top: 2px;
+
+        .review-link {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .event-form {
+    ::ng-deep.event-start-date {
+      .label {
+        font-size: 12px;
+        color: #8F9DAA;
+      }
+
+      .mydp .selectiongroup {
+        width: 100%;
+      }
+
+      .mat-form-field {
+        width: 100% !important;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 0px 0 10px 0;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-flex {
+        padding: 0 0px 0 6px;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        top: 2px;
+        background: #F8F8F8;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-start {
+        border-radius: 0;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-end {
+        border-radius: 0;
+      }
+
+      .mat-input-element {
+        font-family: $font-family;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+    }
+
+    ::ng-deep.event-end-date {
+      .label {
+        font-size: 12px;
+        color: #8F9DAA;
+      }
+
+      .mat-form-field {
+        font-family: $font-family;
+        width: 100%;
+      }
+
+      .mat-form-field-appearance-legacy .mat-form-field-underline {
+        background-color: rgba(255, 255, 255, 0);
+      }
+
+      .mat-form-field-label-wrapper {
+        left: 10px;
+      }
+
+      .mat-input-element {
+        font-family: $font-family;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+    }
+
+    ::ng-deep.event-type, ::ng-deep.food-type {
+      .label {
+        font-size: 12px;
+        color: #8F9DAA;
+      }
+
+      .mat-form-field {
+        font-family: $font-family;
+        width: 100%;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 0px 0 10px 0;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-flex {
+        padding: 0 0px 0 6px;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        top: 2px;
+        background: #F8F8F8;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-start {
+        border-radius: 0;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-end {
+        border-radius: 0;
+      }
+
+      .mat-input-element {
+        font-family: $font-family;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+
+      .mat-select-value-text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+      }
+    }
+
+
+    ::ng-deep.session-type {
+      .label {
+        font-size: 12px;
+        color: #8F9DAA;
+      }
+
+      .mat-form-field {
+        font-family: $font-family;
+        width: 100%;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-infix {
+        padding: 0px 0 10px 0;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-flex {
+        padding: 0 0px 0 6px;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline {
+        top: 2px;
+        background: #F8F8F8;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-start {
+        border-radius: 0;
+      }
+
+      .mat-form-field-appearance-outline .mat-form-field-outline-end {
+        border-radius: 0;
+      }
+
+      .mat-input-element {
+        font-family: $font-family;
+        margin-left: 10px;
+        font-size: 14px;
+      }
+
+      .mat-select-value-text {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 12px;
+      }
+    }
+
+    .add-extra-hours {
+      .label {
+        font-size: 12px;
+        color: #8F9DAA;
+      }
+
+      .add-extra-hours-btn {
+        border: 1px #CACCCE dashed;
+        padding: 2px;
+      }
+
+
+      .btn-group {
+        margin-left: 25px;
+      }
+
+      .btn-disabled {
+        border-color: #e0e0e0;
+        //background: #999 !important;
+        color: #8F9DAA !important;
+        cursor: not-allowed;
+        opacity: 0.45;
+        pointer-events: none;
+      }
+
+      .dec-btn, .increase-btn {
+        color: #8C37DB;
+        min-width: 15px !important;
+        line-height: 32px !important;
+        padding: 0 0px !important;
+      }
+
+      .hours-count {
+        font-size: 20px;
+        font-weight: 900;
+        line-height: 1;
+        color: #8C37DB;
+        height: 24px;
+        padding: 4px 5px;
+        font-family: $font-family;
+      }
+    }
+  }
+
+
+  .sub-tariff-sec {
+    padding: 10px 20px;
+
+    .item {
+      padding: 8px 0px;
+      font-family: $font-family;
+      color: #556B7F;
+      font-size: 14px;
+    }
+
+    ::ng-deep.mat-standard-chip {
+      transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+      display: inline-flex;
+      padding: 1px 8px;
+      border-radius: 4px;
+      align-items: center;
+      cursor: default;
+      margin-left: 27px !important;
+    }
+
+    ::ng-deep.mat-chip.mat-standard-chip.mat-chip-selected.mat-primary {
+      background-color: #FFEDD8;
+      color: #FF8800;
+    }
+  }
+
+   .book-reserve-btn{
+     margin-top: 20px;
+     .book-info{
+      background-color: #F2E5FF;
+       padding: 12px;
+       .book-info-cnt{
+         color: #8C37DB;
+         text-align: center;
+         font-size: 12px;
+         font-family: $font-family;
+       }
+     }
+     .reserve-btn, .book-btn{
+       margin-top: 20px;
+       background-color: #00AA00 !important;
+       color: #FFFFFF !important;
+       padding: 3px 50px;
+       font-family: $font-family;
+     }
+   }
+  .selected-menu-sec{
+    font-family: $font-family;
+    font-size: 14px;
+    .header{
+      font-family: $font-family-semiBold;
+      display: inline-block;
+      padding-bottom: 15px;
+      font-size: 18px;
+    }
+    .menu-list{
+      padding-bottom: 20px;
+      line-height: 25px;
+    }
+    .item-count{
+      color: #8C37DB;
+      margin-left: 25px;
+    }
+    .edit-link{
+      text-decoration: none;
+      color: #8C37DB;
+      float: right;
+      cursor: pointer;
+      font-family: Montserrat SemiBold, sans-serif;
+    }
+  }
+
+
+}
+
+//Mobile responsive style (extra small - xs)
+.m-checkout-preview-page{
+  .m-preview-header{
+    padding: 13px 0px !important;
+    font-size: 18px !important;
+    text-align: center;
+  }
+  .m-mat-cart-box{
+    padding: 8px !important;
+    .m-venue-gallery{
+      img{
+        height: 75px !important;
+      }
+    }
+    .m-venue-name{
+      font-size: 14px;
+    }
+    .m-booking-details{
+      line-height: 25px !important;
+    }
+    .m-event-date{
+      font-size: 13px !important;
+      font-family: $font-family-semiBold;
+      .m-arrow-icon{
+        vertical-align: sub !important;
+       .mat-icon{
+         font-size: 16px;
+       }
+      }
+    }
+
+  }
+
+  .m-selected-menu-sec{
+    font-size: 12px;
+    .m-header{
+      font-size: 16px !important;
+    }
+    .m-menu-list{
+      padding-bottom: 8px;
+      line-height: 22px;
+    }
+  }
+  .m-customer-details{
+    .m-profile-preview{
+      padding: 10px 0 0px 5px;
+      line-height: 25px;
+      font-size: 12px;
+    }
+  }
+}

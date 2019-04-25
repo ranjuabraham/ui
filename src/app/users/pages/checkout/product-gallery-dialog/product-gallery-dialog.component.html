@@ -1,0 +1,22 @@
+<div class="close-btn-outer">
+  <button mat-mini-fab color="primary" (click)="close()"><mat-icon>close</mat-icon></button>
+</div>
+<div mat-dialog-content class="box-container" fxLayout="column" [ngStyle.lt-sm]="'min-height: 800px;'">
+  <div class="horizontal-container" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="stretch" fxFlex="auto">
+    <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="100%">
+      <div class="content-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="auto">
+        <slideshow [height]="height"
+                   [minHeight]="'400px'"
+                   [autoPlay]="true"
+                   [showArrows]="true"
+                   [imageUrls]="galleryData"
+                   [showDots]="true"
+                   [lazyLoad]="galleryData?.length > 1"
+                   [autoPlayWaitForLazyLoad]="true">
+        </slideshow>
+      </div>
+    </div>
+  </div>
+</div>
+
+

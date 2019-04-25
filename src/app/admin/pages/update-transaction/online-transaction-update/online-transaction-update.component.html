@@ -1,0 +1,126 @@
+<div fxLayout="column" class="form-container-sec components-container">
+  <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+  <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+         fxLayoutGap="10px">
+        <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+
+          <div class="container" *ngIf="resultInfo">
+            <form [formGroup]="transactionForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+              <div class="table-header">
+                <h1 class="mat-headline center-align">Update Online Transaction</h1>
+              </div>
+              <div class="form" style="display:none">
+                  <mat-form-field>
+                    <input matInput  formControlName="txnId" placeholder="ID" [(ngModel)]="resultInfo.txnId">
+                  </mat-form-field>
+                  <mat-form-field>
+                      <input matInput  formControlName="usrId" placeholder="ID" [(ngModel)]="resultInfo.usrId">
+                    </mat-form-field>
+              </div>
+ 
+              <div class="overflow-height">
+                <table id="dialog-box" >
+                  <tr>
+                        <th>Transaction Id</th>
+                        <td>{{resultInfo.txnId}}</td>
+                      </tr>
+                  <tr>
+                    <th>Hall Name</th>
+                    <td>{{resultInfo.dcdeHdr}}</td>
+                  </tr>
+                  <tr>
+                      <th>Booked On</th>
+                      <td>{{resultInfo.bookedOn}}</td>
+                  </tr>
+                  <tr>
+                      <th>Event Type</th>
+                      <td>{{resultInfo.bookTyp}}</td>
+                  </tr>
+                  <tr>
+                      <th>Event Date</th>
+                      <td>{{resultInfo.muhurtDts}} ~ {{resultInfo.endDt}}</td>
+                  </tr>
+                  <tr>
+                      <th>Event Name</th>
+                      <td>{{resultInfo.evtName}}</td>
+                  </tr>
+                  <tr>
+                      <th>Duration Name</th>
+                      <td>{{resultInfo.durName}}
+                        <span *ngIf="resultInfo.adnlDurHrs != 0"> + additional {{resultInfo.adnlDurHrs}} hour(s)</span>
+                      </td>
+                  </tr>
+                  <tr>
+                      <th>Food Type</th>
+                      <td>{{resultInfo.fdTypName}}</td>
+                  </tr>
+                  <tr>
+                      <th>Paid Status</th>
+                      <td>{{resultInfo.paidStatus}}</td>
+                  </tr>
+                  <tr *ngIf="eventTypeName !== 'buffet'">
+                      <th>Rent / Cost</th>
+                      <td>{{resultInfo.rentFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+                  </tr>
+                  <tr *ngIf="eventTypeName === 'buffet'">
+                        <th>Buffet Cost</th>
+                        <td>{{resultInfo.buffTar | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+                  </tr>
+                  <tr *ngIf="eventTypeName === 'buffet'">
+                          <th>Pax Count</th>
+                          <td>{{resultInfo.buffCount}}</td>
+                  </tr>
+                  <tr>
+                    <th>Discount</th>
+                      <td>{{resultInfo.disAmount | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+                  </tr>
+                  <tr>
+                    <th>Sub Total</th>
+                      <td>{{subAmount | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+                  </tr>
+                  <tr>
+                      <th>Tax( GST@ {{resultInfo.servChrg}}%)</th>
+                      <td>{{resultInfo.taxesFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+                  </tr>
+                  <tr *ngIf="resultInfo.isBlk === 2">
+                     <th>Reservation</th>
+                     <td>{{resultInfo.reservFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+                  </tr>
+                  <tr>
+                      <th>Total</th>
+                      <td>{{resultInfo.totalFinal | currency: 'INR' : 'symbol' : '1.0-0'}}</td>
+                    </tr>
+                  <tr>
+                      <th>Status</th>
+                      <td><mat-form-field>
+                          <mat-select formControlName="status" [(ngModel)]="statFlag" required>
+                            <mat-option *ngFor="let attribute of displayStatus" [value]="attribute.value">{{attribute.viewValue}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field></td>
+                  </tr>
+                  <tr><td>
+                  <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                    <div fxFlex="50" fxFlex.xs="100">
+                      <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                      <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                        <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.</div>
+                      </div>
+                  </div></div>
+                  </td><td>
+                  <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                      <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                          fxLayoutAlign.xs="space-around center">
+                          <button mat-raised-button class="save-btn">Update</button>
+                          <button mat-raised-button class="cancel-btn" (click)="goBack()">Go Back</button>
+                      </div>
+                  </div>
+                  </td></tr>
+              </table>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+  </div>
+  

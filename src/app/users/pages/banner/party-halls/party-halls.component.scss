@@ -1,0 +1,234 @@
+//.mat-elevation-z4-hd[_ngcontent-c12] {
+//  box-shadow: 1px 0px 0px 0px #d4d4d4, 0px 1px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 1px rgba(0, 0, 0, 0.04);
+//}
+//
+//.banner-section {
+//  font-family: 'Montserrat', sans-serif !important;
+//  //min-height: 460px;
+//  .banner-image {
+//    background-image: url("../../../../assets/images/banner/banner5.jpg");
+//    background-repeat: repeat-x;
+//    height: 460px;
+//    opacity: 1;
+//    .banner-container {
+//      padding-top: 4%;
+//      padding-left: 8%;
+//      margin-left: auto;
+//      margin-right: auto;
+//
+//      .banner-header {
+//        font-size: 1.5em;
+//        font-weight: bolder;
+//        color: #ffffff;
+//      }
+//      .banner-header-1 {
+//        font-size: 1em;
+//        color: #ffffff;
+//        margin-top: 10px;
+//        font-weight: 500;
+//      }
+//      .search-container {
+//        background-color: #ffffff;
+//        .search-section {
+//          .mat-icon {
+//            font-size: 1.4em;
+//          }
+//
+//          ::ng-deep .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button, .mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+//            display: block;
+//            font-size: x-small;
+//            //width: 2em;
+//            //height: 2em;
+//            color: #fe0000;
+//          }
+//        }
+//        .mat-form-field {
+//          width: 90%;
+//        }
+//        ::ng-deep .mat-form-field-infix {
+//          padding: 0.5em 0 !important;
+//          border-top: 0.4em solid transparent;
+//        }
+//        .search-btn {
+//          font-family: 'Montserrat', sans-serif;
+//          background-color: #00aa00;
+//          color: #ffffff;
+//          min-width: 162px !important;
+//          border-radius: 0px !important;
+//          font-size: 15px;
+//          font-weight: bold;
+//          letter-spacing: 1px;
+//        }
+//      }
+//
+//    }
+//  }
+//
+//}
+//
+//.search-section {
+//  padding: 14px 27px 14px 27px;
+//  .search-location {
+//    color: #fe0000;
+//    .location {
+//      font-size: 13px;
+//      margin-bottom: 6px;
+//    }
+//  }
+//  .location {
+//    color: #fe0000;
+//    font-weight: 600;
+//  }
+//  .mat-icon {
+//    color: #fe0000;
+//  }
+//  /*placeholder text color*/
+//  ::-webkit-input-placeholder {
+//    font-family: 'Montserrat', sans-serif;
+//    color: #556b7f !important;
+//    font-size: 12px;
+//    font-weight: bold;
+//  }
+//  ::-moz-placeholder {
+//    color: peachpuff;
+//    font-size: 13px;
+//  }
+//  :-ms-input-placeholder {
+//    color: peachpuff;
+//    font-size: 13px;
+//  }
+//  ::placeholder {
+//    color: peachpuff;
+//    font-size: 12px;
+//  }
+//  /*End placeholder text color*/
+//  ::ng-deep .loc-search, .event-date .mat-form-field-appearance-outline .mat-form-field-flex {
+//    position: initial !important;
+//  }
+//  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-flex {
+//    padding: 0 .75em 0 1.2em;
+//  }
+//  //::ng-deep .event-date  .mat-form-field-appearance-outline .mat-form-field-flex {
+//  //  padding: 0 .75em 0 0;
+//  //  margin-top: 0;
+//  //  position: relative;
+//  //}
+//  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start {
+//    border-radius: 0 !important;
+//  }
+//
+//  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+//    border-radius: 0 !important;
+//  }
+//  ::ng-deep .mat-form-field-wrapper {
+//    padding-bottom: 1em;
+//  }
+//  ::ng-deep .mat-form-field-wrapper {
+//    padding-bottom: 10px;
+//  }
+//}
+//
+//.search-btm {
+//  font-family: 'Montserrat', sans-serif;
+//  border-top: #cccccc 1px solid;
+//  .label-text {
+//    color: #fe0000;
+//    padding: 19px;
+//    font-size: 13px;
+//    font-weight: bold;
+//  }
+//}
+//
+//::ng-deep .cdk-overlay-pane {
+//  position: fixed !important;
+//}
+//
+////@media only screen and (max-width: 768px) {
+////  /* For mobile phones: */
+////  .banner-container {
+////    padding-top: 4%;
+////    padding-left: 2% !important;
+////    padding-right: 2%;
+////    margin-left: auto;
+////    margin-right: auto;
+////    .banner-header {
+////      font-size: 1.2em !important;
+////    }
+////    .banner-header-1{
+////      font-size: 11px !important;
+////    }
+////  }
+////  .banner-section{
+////    .banner-image{
+////      height: 560px !important;
+////    }
+////  }
+////}
+//
+///* Extra small devices (phones, 600px and down) */
+//@media only screen and (max-width: 600px) {
+//  .banner-container {
+//    padding-top: 4%;
+//    padding-left: 2% !important;
+//    padding-right: 2%;
+//    margin-left: auto;
+//    margin-right: auto;
+//    .banner-header {
+//      font-size: 1.2em !important;
+//    }
+//    .banner-header-1{
+//      font-size: 11px !important;
+//    }
+//  }
+//  .banner-section{
+//    .banner-image{
+//      height: 560px !important;
+//    }
+//  }
+//}
+//
+//
+///* Small devices (portrait tablets and large phones, 600px and up) */
+//@media only screen and (min-width: 600px) {
+//  .banner-container {
+//    padding-top: 4%;
+//    padding-left: 2% !important;
+//    padding-right: 2%;
+//    margin-left: auto;
+//    margin-right: auto;
+//    .banner-header {
+//      font-size: 1.2em !important;
+//    }
+//    //.banner-header-1{
+//    //  font-size: 11px !important;
+//    //}
+//  }
+//  //.banner-section{
+//  //  .banner-image{
+//  //    height: 580px !important;
+//  //  }
+//  //}
+//}
+//
+///* Medium devices (landscape tablets, 768px and up) */
+//@media only screen and (min-width: 768px) {
+//  .banner-container {
+//    padding-top: 4%;
+//    padding-left: 8% !important;
+//    padding-right: 2%;
+//    margin-left: auto;
+//    margin-right: auto;
+//    //.banner-header {
+//    //  font-size: 1.2em !important;
+//    //}
+//    //.banner-header-1{
+//    //  font-size: 11px !important;
+//    //}
+//  }
+//}
+//
+/////* Large devices (laptops/desktops, 992px and up) */
+////@media only screen and (min-width: 992px) {...}
+////
+/////* Extra large devices (large laptops and desktops, 1200px and up) */
+////@media only screen and (min-width: 1200px) {...}

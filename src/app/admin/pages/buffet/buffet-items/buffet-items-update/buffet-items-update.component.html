@@ -1,0 +1,115 @@
+<div fxLayout="column" class="form-container-sec components-container">
+    <app-breadcrumb class="breadcrumb"></app-breadcrumb>
+    <div class="form-container"  fxLayout="row" fxLayout.sm="column" fxLayout.lt-sm="column" fxLayoutAlign="start space-between"
+           fxLayoutGap="10px">
+          <div fxFlex class="bg-white form-component-holder mat-elevation-z1">
+  
+            <div class="container" *ngIf="resultInfo">
+              <form [formGroup]="buffetForm" (ngSubmit)="updateItems()" fxLayout="column" fxFlex="100">
+                <div class="table-header">
+                  <h1 class="mat-headline center-align">Edit Buffet Items</h1>
+                </div>
+  
+                <div class="form" style="display:none">
+                  <mat-form-field>
+                      <input matInput  formControlName="fdMenuId" placeholder="ID" [(ngModel)]="resultInfo.fdMenuId">
+                  </mat-form-field>
+                </div>
+                  
+                <!-- Food Type Selection -->
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="fdTypId" placeholder="Select FoodType" [(ngModel)]="resultInfo.fdTypId" (selectionChange)="loadBuffetCategory($event)">
+                        <mat-option [value]='0'>--Select--</mat-option>
+                        <mat-option *ngFor="let items of foodItems" [value]="items.fdTypId">
+                          {{items.fdTypHdr}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="buffetForm.controls['fdTypId'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                </div>
+                
+                <!-- Buffet Master -->
+                <div class="form">
+                    <mat-form-field>
+                      <mat-select formControlName="buffId" placeholder="Select Buffet Master" [(ngModel)]="resultInfo.buffId" required>
+                        <mat-option [value]='0'>--Select--</mat-option>
+                        <mat-option *ngFor="let items of master" [value]="items.buffId">
+                          {{items.buffCatg}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="buffetForm.controls['buffId'].hasError('required')">Select Anyone</mat-error>
+                    </mat-form-field>
+                 </div>
+                 
+                 <!-- Buffet Category -->
+                 <div class="form">
+                     <mat-form-field>
+                       <mat-select formControlName="buffSubId" placeholder="Select Buffet Category" [(ngModel)]="resultInfo.buffSubId" required>
+                         <mat-option [value]='0'>--Select--</mat-option>
+                         <mat-option *ngFor="let items of category" [value]="items.buffSubId">
+                           {{items.buffSubHdr}}
+                         </mat-option>
+                       </mat-select>
+                       <mat-error *ngIf="buffetForm.controls['buffSubId'].hasError('required')">Select Anyone</mat-error>
+                     </mat-form-field>
+                  </div>
+                  
+                  <div class="form">
+                      <mat-form-field>
+                        <input matInput #input formControlName="fdDesc" placeholder="Item Name" [(ngModel)]="resultInfo.fdDesc" required>
+                        <mat-error *ngIf="buffetForm.controls['fdDesc'].hasError('required')">Enter Item Name</mat-error>
+                      </mat-form-field>
+                  </div>
+                  
+               
+                <!-- Sequence  -->
+                <div class="form">
+                  <mat-form-field>
+                      <mat-select formControlName="fdDescSeq" placeholder="Sequence" [(ngModel)]="resultInfo.fdDescSeq" required>
+                        <mat-option *ngFor="let type of displaySequence" [value]="type.value">
+                          {{type.viewValue}}
+                        </mat-option>
+                      </mat-select>
+                      <mat-error *ngIf="buffetForm.controls['fdDescSeq'].hasError('required')">Select Anyone</mat-error>
+                  </mat-form-field>
+                </div>
+                  
+                 <!-- Status-->
+                <div class="form">
+                  <mat-form-field>
+                    <mat-select formControlName="fdDescAct" placeholder="Is Active" [(ngModel)]="resultInfo.fdDescAct">
+                      <mat-option *ngFor="let status of displayStatus" [value]="status.value">
+                        {{status.viewValue}}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="buffetForm.controls['fdDescAct'].hasError('required')">Select Anyone</mat-error>
+                 </mat-form-field>
+                </div>
+                
+                <!-- Captch Validation -->
+                <div class="form" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
+                    <div fxFlex="50" fxFlex.xs="100">
+                      <re-captcha formControlName="captcha" [required]="true"></re-captcha>
+                      <div *ngIf="submitted && f.captcha.errors" class="invalid-feedback">
+                        <div *ngIf="f.captcha.errors.required">Recaptcha requires verification.
+                      </div>
+                      </div>
+                  </div>
+    
+                  <!-- Action -->
+                  <div fxFlex="50" fxFlex.xs="100" class="action-btn">
+                    <div fxLayout="row" fxLayout.xs="row" fxLayoutAlign="end center" fxLayoutAlign.sm="space-around center"
+                        fxLayoutAlign.xs="space-around center">
+                      <button mat-raised-button class="save-btn">Update</button>
+                      <button mat-raised-button class="cancel-btn" (click)="goBack()">Cancel</button>
+                    </div>
+                  </div>
+                </div>
+                </form>
+              </div>
+            </div>
+   </div>
+</div>
+      
+    
